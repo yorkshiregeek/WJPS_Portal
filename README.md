@@ -1,4 +1,4 @@
 WJPS_Portal
 ===========
 
-Portal Application for James Proctor
+Portal Application for WJPS by Jason hayhurst
