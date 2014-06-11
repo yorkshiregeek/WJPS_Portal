@@ -12,7 +12,12 @@
         //Connection Constructor
         function Connection()
         {
-            $this->c_connection = mysql_connect($this->c_server,$this->c_username,$this->c_password) or die ("Sorry - unable to connect to MySQL" . mysql_error());
+            //$this->c_connection = mysql_connect($this->c_server,$this->c_username,$this->c_password) or die ("Sorry - unable to connect to MySQL" . mysql_error());
+        $mysqli = new mysqli("$this->c_server", "$this->c_username", "$this->c_password", "ATHP");
+        if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}
+
         }
         
         //Get Connection
