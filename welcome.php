@@ -31,7 +31,13 @@
 			if(Users::login(0)){
 			?>
     			
-    			<h2>Welcome,</h2>
+    			<h2>Welcome <? 
+    			$User = new Users($UID);
+    			$Name = $User->getusername();
+    			print($Name).',';
+
+
+    			 ?> </h2>
     			
     			<p>Welcome to the restricted area of <? print(SITENAME); ?> website. From here you can view <a href="documents.php">documents</a> and <a href="notices.php">notices</a>.</p>
     			
