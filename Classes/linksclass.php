@@ -50,7 +50,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Links WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
                 $this->c_URL = $row["URL"];
@@ -65,7 +65,7 @@
         {
         	$WQ = new WriteQuery("INSERT INTO Links (Title,URL, Deleted) VALUES ('" . $this->gettitle() . "', '" . $this->geturl() ."', 0)");
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID -> insert_id;
         }
         
         function save()
@@ -93,7 +93,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Link = new Links($row["IDLNK"]);
 				$Row1 = array($Link->gettitle()," ");
 				$Row2 = array($Link->geturl()," ");
@@ -123,7 +123,7 @@
         	
         	$Col = 1;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         	
         		$Link = new Links($row["IDLNK"]);
    

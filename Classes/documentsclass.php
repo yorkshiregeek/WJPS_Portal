@@ -111,7 +111,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Documents WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Section = new Sections($row["SectionIDLNK"]);
                 $this->c_Filename = $row["Filename"];
@@ -164,7 +164,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Document = new Documents($row["IDLNK"]);
 				$Section = $Document->getsection();
 				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
@@ -204,7 +204,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Document = new Documents($row["IDLNK"]);
 				$Section = $Document->getsection();
 				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
@@ -526,7 +526,8 @@
         	
         	print("<ul>");
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$Doc = new Documents($row["IDLNK"]);
         		
         		print("<li><a href=\"downloads.php?did=" . $Doc->getid() . "\">" . $Doc->getfilename() . "</a></li>");

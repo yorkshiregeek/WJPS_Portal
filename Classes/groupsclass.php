@@ -55,7 +55,7 @@
         {
         	$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Sections WHERE GroupIDLNK = " . $this->getid() . " AND Deleted = 0;");
         	
-        	$row = mysql_fetch_array($RQ->getresults());
+        	$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
         	
         	return $row["COUNT(IDLNK)"];
         }
@@ -64,7 +64,7 @@
         {
         	$RQ0 = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $this->getid() . " AND Deleted = 0;");
         	        	
-        	while($row = mysql_fetch_array($RQ0->getresults())){
+        	while($row = $RQ0->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Sections = $Sections . ", " . $row["IDLNK"];
         	}
         	
@@ -73,7 +73,7 @@
         	if($Sections != ""){        	
         		$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK IN (" . $Sections . ") AND Deleted = 0;");
 	        	//echo($RQ->getquery());
-	        	$row = mysql_fetch_array($RQ->getresults());
+	        	$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
 	        	
 	        	return $row["COUNT(IDLNK)"];
         	} else {
@@ -88,7 +88,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Groups WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Group = $row["GroupName"];
                 $this->c_Description = $row["Description"];
@@ -119,7 +119,7 @@
         	
         	print("<ul>");
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         	
         		$Lab = new Labs($row["IDLNK"]);
         		
@@ -153,7 +153,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Group = new Groups($row["IDLNK"]);
 				$Row1 = array("<span class=\"title\"><a href='documents.php?gid=" . $Group->getid() . "'>" . $Group->getgroup() . "</a></span><br/><span class=\"content\">" . $Group->getdescription() . "</span>"," ");
 				$Row2 = array($Group->getsections()," ");
@@ -192,7 +192,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Group = new Groups($row["IDLNK"]);
 				$Row1 = array("<span class=\"title\"><a href='documents.php?gid=" . $Group->getid() . "'>" . $Group->getgroup() . "</a></span><br/><span class=\"content\">" . $Group->getdescription() . "</span>"," ");
 				$Row2 = array($Group->getsections(),"sections");

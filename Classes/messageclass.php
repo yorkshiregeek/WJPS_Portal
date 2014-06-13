@@ -98,8 +98,9 @@
         	
         	//$Cats = new array;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
-        		$CatArray[$Counter] = $row["CategoryIDLNK"];
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+        		
+                $CatArray[$Counter] = $row["CategoryIDLNK"];
         		
         		$Counter ++;
         	}
@@ -150,7 +151,7 @@
         function getnumreplies(){
         	$RQ = new ReadQuery("SELECT COUNT(*) FROM Messages WHERE ParentIDLNK = " . $this->getid() . " AND Deleted = 0;");
         	
-        	$row = mysql_fetch_array($RQ->getresults());
+        	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
         	
         	return $row[0];
         }
@@ -162,7 +163,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Messages WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
                 $this->c_Message = $row["Message"];
@@ -184,7 +185,9 @@
         	$WQ = new WriteQuery("INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . $this->getmessage() . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "','" . $this->gettimeadded() . "'," . $PB->getid() . ", 0)");
         	//echo($WQ->getquery());
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID -> insert_id;
+
+
         }
         
         function save()
@@ -243,7 +246,7 @@
         	
         	$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE ParentIDLNK = " . $StartID . " AND Deleted = 0 ORDER BY DateAdded, TimeAdded");
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		//$Categorys .= "," . $row["CategoryIDLNK"];
         		$Message .= Messages::generatemessage($row["IDLNK"],false,$Email);
         	}
@@ -287,7 +290,7 @@
 				
 			print("<p>The list below shows all messages you have been sent. If you were the author of the message you can edit and delete the message.</p>");
 			
-			print("<p><a href='messages.php?mid=-1'><img src=\"Images/email_add.png\" alt=\"Add New Message\"/>Add New Message</a></p>");
+			print("<p><a href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span> Add New Message</a></p>");
 			
 			
 			//echo($RQ->getquery());
@@ -302,8 +305,11 @@
             $RowCounter = 0;
             
             $RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
+
+            echo("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 			
-			while($row = mysql_fetch_array($RQ0->getresults())){
+
+			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Categorys .= "," . $row["CategoryIDLNK"];
 			}
 			
@@ -312,13 +318,13 @@
 			if($RQ1->getnumberofresults() != 0){
 			
 			
-				while($row = mysql_fetch_array($RQ1->getresults())){
+				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){
 					$Messages .= "," . $row["MessageIDLNK"];
 				}
 				
 				$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE IDLNK IN (" . substr($Messages,1) . ") AND Deleted = 0 ORDER BY DateAdded DESC");
             
-				while($row = mysql_fetch_array($RQ->getresults())){
+				while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 					$Message = new Messages($row["IDLNK"]);
 					$DA = $Message->getdateadded();
 					$Row1 = array("<span class=\"title\"><a href=\"?mid=" . $Message->getid() . "\">" . $Message->gettitle() . "</a></span>"," ");
@@ -355,7 +361,7 @@
 							
 			$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE Deleted = 0 ORDER BY DateAdded");
 			
-			//echo($RQ->getquery());
+			echo($RQ->getquery());
 			
 			$Col1 = array("Message","noticetitle",1);
 			$Col2 = array("Date Added","documents",1);
@@ -365,14 +371,14 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Message = new Messages($row["IDLNK"]);
 				$DA = $Message->getdateadded();
 				$Row1 = array("<span class=\"title\"><a href=\"?mid=" . $Message->getid() . "\">" . $Message->getmessage() . "</a></span>"," ");
 				$Row2 = array($DA->getnormaldate()," ");	
 				$Row3 = array($Message->getpostedby()->getfullname()," ");				
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
-				$Row4 = array("<a onclick=\"confirmdialog('Delete Message " . $Notice->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Message\"/></a>","button");
+				$Row4 = array("<a onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Message\"/></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);
 
@@ -548,7 +554,7 @@
         static public function lastmessages(){
         	$RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 			
-			while($row = mysql_fetch_array($RQ0->getresults())){
+			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Categorys .= "," . $row["CategoryIDLNK"];
 			}
 			
@@ -556,7 +562,7 @@
 			
 			if($RQ1->getnumberofresults() != 0){
 						
-				while($row = mysql_fetch_array($RQ1->getresults())){
+				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){
 					$Messages .= "," . $row["MessageIDLNK"];
 				}
 				
@@ -564,7 +570,7 @@
         	
 	        	print("<ul>");
 	        	
-	        	while($row = mysql_fetch_array($RQ->getresults())){
+	        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 	        		$Message = new Messages($row["IDLNK"]);
 	        		
 	        		print("<li><a href=\"messages.php?mid=" .$Message->getid() . "\">" . $Message->gettitle() . "</a></li>");

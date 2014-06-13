@@ -52,7 +52,7 @@
                 $RQ = new ReadQuery("SELECT * FROM Positions WHERE PositionIDLNK = " . $ID . ";");
                 
 
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Position = stripslashes($row["Position"]);
                 $this->c_Order = $row["DisplayOrder"];
@@ -94,7 +94,7 @@
             $Rows = array();
             $RowCounter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Position = new Positions($row["PositionIDLNK"]);
         		$Row1 = array($Position->getposition()," ");
         		if($RowCounter == 0){
@@ -221,7 +221,7 @@
 	    		
 	    		//echo($RQ->getquery());
 	    		
-	    		$row = mysql_fetch_array($RQ->getresults());
+	    		$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
 	    		
 	    		$PrevPos = new Positions($row[0]);
 	    		
@@ -243,7 +243,7 @@
 	    	
 	    		$RQ = new ReadQuery("SELECT PositionIDLNK FROM Positions WHERE DisplayOrder > " . $MovePos->getorder() . " AND Deleted = 0 ORDER BY DisplayOrder LIMIT 0,1;");
 	    		
-	    		$row = mysql_fetch_array($RQ->getresults());
+	    		$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
 	    		
 	    		$PrevPos = new Positions($row[0]);
 	    		
@@ -272,7 +272,7 @@
 			
 			$Counter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				//echo($row[1]);NOTT
 				$ReturnArray[$Counter] = array($row[0],$row[1]);
 				$Counter ++;
@@ -296,7 +296,7 @@
 			
 			$PositionsID = "";
 			
-			while($row0 = mysql_fetch_array($RQ0->getresults())){
+			while($row0 = $RQ0->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$PositionsID .= "," . $row0[0];
 			}
 		
@@ -316,7 +316,7 @@
 			
 			$Counter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				//echo($row[1]);
 				$ReturnArray[$Counter] = array($row[0],$row[1]);
 				$Counter ++;

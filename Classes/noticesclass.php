@@ -76,13 +76,13 @@
         	
         	//$Cats = new array;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$CatArray[$Counter] = $row["CategoryIDLNK"];
         		
         		$Counter ++;
         	}
         	
-        	//print_r($CatArray);
+        	print_r($CatArray);
         	
         	return $CatArray;
         }
@@ -132,7 +132,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Notices WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
                 $this->c_Notice = $row["Notice"];
@@ -152,7 +152,9 @@
         	$WQ = new WriteQuery("INSERT INTO Notices (Title, Notice, DateAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . $this->getnotice() . "', '" . $DA->getdatabasedate() . "'," . $PB->getid() . ", 0)");
         	//echo($WQ->getquery());
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID -> insert_id;
+
+       
         }
         
         function save()
@@ -209,7 +211,7 @@
             
             $RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 			
-			while($row = mysql_fetch_array($RQ0->getresults())){
+			while($row = $RQ0->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Categorys .= "," . $row["CategoryIDLNK"];
 			}
 			
@@ -218,13 +220,13 @@
 			if($RQ1->getnumberofresults() != 0){
 			
 			
-				while($row = mysql_fetch_array($RQ1->getresults())){
+				while($row = $RQ1->getresults()->fetch_array(MYSQLI_ASSOC)){
 					$Notices .= "," . $row["NoticeIDLNK"];
 				}
 				
 				$RQ = new ReadQuery("SELECT IDLNK FROM Notices WHERE IDLNK IN (" . substr($Notices,1) . ") AND Deleted = 0 ORDER BY DateAdded DESC");
             
-				while($row = mysql_fetch_array($RQ->getresults())){
+				while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 					$Notice = new Notices($row["IDLNK"]);
 					$DA = $Notice->getdateadded();
 					$Row1 = array("<span class=\"title\"><a href=\"?nid=" . $Notice->getid() . "\">" . $Notice->gettitle() . "</a></span>"," ");
@@ -264,7 +266,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Notice = new Notices($row["IDLNK"]);
 				$DA = $Notice->getdateadded();
 				$Row1 = array("<span class=\"title\"><a href=\"?nid=" . $Notice->getid() . "\">" . $Notice->gettitle() . "</a></span>"," ");
@@ -391,7 +393,9 @@
         static public function lastnotices(){
         	$RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 			
-			while($row = mysql_fetch_array($RQ0->getresults())){
+
+
+			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Categorys .= "," . $row["CategoryIDLNK"];
 			}
 			
@@ -400,7 +404,7 @@
 			if($RQ1->getnumberofresults() != 0){
 			
 			
-				while($row = mysql_fetch_array($RQ1->getresults())){
+				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){
 					$Notices .= "," . $row["NoticeIDLNK"];
 				}
 				
@@ -408,7 +412,7 @@
         	
 	        	print("<ul>");
 	        	
-	        	while($row = mysql_fetch_array($RQ->getresults())){
+	        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 	        		$Notice = new Notices($row["IDLNK"]);
 	        		
 	        		print("<li><a href=\"notices.php?nid=" .$Notice->getid() . "\">" . $Notice->gettitle() . "</a></li>");

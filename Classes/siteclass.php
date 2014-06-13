@@ -117,7 +117,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Sites WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Trust = new Trusts($row["TrustIDLNK"]);
                 $this->c_Name = $row["Name"];
@@ -138,7 +138,7 @@
         {
         	$Trust = $this->gettrust();
         	$WQ = new WriteQuery("INSERT INTO Sites (TrustIDLNK,Name,AddressLine1,AddressLine2,Town,Postcode,Telephone,Fax,Deleted) VALUES (" . $Trust->getid() . ",'" . $this->getname() . "','" . $this->getaddressline1() . "','" . $this->getaddressline2() . "', '" . $this->gettown() . "','" . $this->getpostcode() . "','" . $this->gettelephone() . "','" . $this->getfax() . "', 0)");
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID -> insert_id;
         }
         
         function save()
@@ -170,7 +170,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Site = new Sites($row["IDLNK"]);
 				$Row1 = array($Site->getname()," ");
 				$Row2 = array($Site->gettelephone()," ");
@@ -203,7 +203,7 @@
         	$Rows = array();
         	$RowCounter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$Site = new Sites($row["IDLNK"]);
         		$Row1 = array("<a href=\"?sid=" . $Site->getid() . "\">" . $Site->getname() . "</a>"," ");
         		$Row2 = array($Site->gettelephone()," ");

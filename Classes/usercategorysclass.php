@@ -39,7 +39,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM UserCategorys WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
                 $this->c_Deleted = $row["Deleted"];
@@ -72,7 +72,7 @@
         	
         	$Counter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		//echo($row[1]);
         		$ReturnArray[$Counter] = array($row[0],$row[1]);
         		$Counter ++;
@@ -94,7 +94,7 @@
         	
         	$Counter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		//echo($row[1]);
         		$ReturnArray[$Counter] = array($row[0],$row[1]);
         		$Counter ++;
@@ -102,14 +102,14 @@
         	
         	return $ReturnArray;
         	
-        	//printf($ReturnArray);
+        	printf($ReturnArray);
         }
         
         public static function gettotal()
         {
         	$RQ = new ReadQuery("SELECT Count(*) FROM UserCategorys WHERE Deleted = 0;");
         	
-        	$row = mysql_fetch_array($RQ->getresults());
+        	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
         	
         	return $row[0];
         }

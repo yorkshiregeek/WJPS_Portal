@@ -13,11 +13,18 @@
         function Connection()
         {
             //$this->c_connection = mysql_connect($this->c_server,$this->c_username,$this->c_password) or die ("Sorry - unable to connect to MySQL" . mysql_error());
-        $mysqli = new mysqli("$this->c_server", "$this->c_username", "$this->c_password", "ATHP");
-        if ($mysqli->connect_errno) {
-        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
+        $this->c_connection = new mysqli("$this->c_server", "$this->c_username", "$this->c_password", "portal");
+        if ($this->c_connection->connect_errno) 
+            {
+                printf("Connect failed: %s\n", $this->c_connection->connect_error);
+                exit();
+            }
 
+        }
+
+        public function query($sql)
+        {
+        return $this->c_connection->query($sql);
         }
         
         //Get Connection

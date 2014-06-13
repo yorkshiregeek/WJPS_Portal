@@ -80,7 +80,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Contacts WHERE ContactIDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Trust = new Trusts($row["TrustIDLNK"]);
                 $this->c_Position = new Positions($row["PositionIDLNK"]);
@@ -135,7 +135,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Contact = new Contacts($row[0]);
 				$Position = $Contact->getposition();
 				
@@ -173,7 +173,7 @@
         	$Rows = array();
         	$RowCounter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$Contact = new Contacts($row[0]);
         		$Position = $Contact->getposition();
         		
@@ -374,14 +374,14 @@
         		$Rows = array();
         		$RowCounter = 0;
         		
-        		while($row = mysql_fetch_array($RQ->getresults())){
+        		while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         			$Contact = new Contacts($row[0]);
         			$Position = $Contact->getposition();
         			
         			//echo($Position);
-        			$Row1 = array("<a href=\"?aid=1&amp;cid=" . $Contact->getid() . "\">" . $Contact->getname() . "</a>"," ");
-        			$Row3 = array($Contact->gettrust()->gettrust()," ");
-        			$Row2 = array($Position->getposition()," ");
+        			$Row1 = array("<a href=\"?aid=1&amp;cid=". $Contact->getid() . "\">" . $Contact->getname() . "</a>"," ");
+        			$Row3 = array($Contact->gettrust()," ");
+        			$Row2 = array($Position," ");
         			
         			
         			$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);

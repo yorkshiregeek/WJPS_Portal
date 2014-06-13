@@ -94,7 +94,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Events WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
                 $this->c_Details = $row["Details"];
@@ -144,7 +144,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Event = new Events($row["IDLNK"]);
 				$Row1 = array($Event->gettitle()," ");
 				$Row2 = array($Event->getlocation()," ");
@@ -179,7 +179,7 @@
 	        	
 	        	print("<dl>");
 	        	
-	        	while($row = mysql_fetch_array($RQ->getresults()))
+	        	while($RQ->getresults()->fetch_array(MYSQLI_ASSOC))
 	        	{
 	        		$Event = new Events($row["IDLNK"]);
 	        		

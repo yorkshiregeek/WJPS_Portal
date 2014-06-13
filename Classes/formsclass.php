@@ -51,7 +51,7 @@
                     }
                 print("</dl>");
                 if($Button){
-                    print("<input type=\"submit\" id=\"submit\" name=\"submit\" value=\"" . $Button . "\"/>");
+                    print("<input type=\"submit\" class=\"btn btn-default\" id=\"submit\" name=\"submit\" value=\"" . $Button . "\"/>");
                 }                 
             print("</form>");
         }

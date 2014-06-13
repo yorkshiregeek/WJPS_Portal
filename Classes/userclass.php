@@ -146,7 +146,7 @@
         	
         	//$Cats = new array;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$CatArray[$Counter] = $row["CategoryIDLNK"];
         		
         		$Counter ++;
@@ -163,7 +163,10 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Users WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                //$row = mysql_fetch_array($RQ->getresults());
+                
+                //Added by JNH to update depracted fetcharray
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Username = $row["Username"];
                 $this->c_Password = $row["Password"];
@@ -225,7 +228,7 @@
 				
 			print("<p>The list below shows all the system users. From this page you can add, edit or delete users.</p>");
 			
-			print("<p><a href='users.php?uid=-1'><img src=\"Images/user_add.png\" alt=\"Add New User\"/>Add New User</a></p>");
+			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-asterisk\" alt=\"Add New User\"/></span>Add New User</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Users WHERE Deleted = 0 ORDER BY Surname, Firstname");
 			
@@ -240,15 +243,17 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$User = new Users($row["IDLNK"]);
 				$Row1 = array($User->getusername()," ");
 				$Row2 = array($User->getfirstname() . " " . $User->getsurname()," ");
 				$Row3 = array($User->gethospital()," ");
 				$Row4 = array($User->getuserleveldesc()," ");
-				$Row5 = array("<a href=?rid=". $User->getid() ." title=\"Reset Password\"><img src=\"Images/user_go.png\" alt=\"Reset Password\"></a>","button");
-				$Row6 = array("<a href=?uid=". $User->getid() ." title=\"Edit User\"><img src=\"Images/user_edit.png\" alt=\"Edit User\"/></a>","button");
-				$Row7 = array("<a onclick=\"confirmdialog('Delete User " . $User->getusername() . "', '?uid=". $User->getid() ."&amp;aid=10');\" title=\"Delete User\"><img src=\"Images/user_delete.png\" alt=\"Delete User\"/></a>","button");
+				$Row5 = array("<a href=?rid=". $User->getid() ." title=\"Reset Password\"><span class =\"glyphicon glyphicon-user alt=\"Reset Password\"></span></a>","button");
+               
+            
+				$Row6 = array("<a href=?uid=". $User->getid() ." title=\"Edit User\"><span class=\"glyphicon glyphicon-pencil\" alt=\"Edit User\"/></span></a>","button");
+				$Row7 = array("<a onclick=\"confirmdialog('Delete User " . $User->getusername() . "', '?uid=". $User->getid() ."&amp;aid=10');\" title=\"Delete User\"><span class=\"glyphicon glyphicon-remove\" alt=\"Delete User\"/></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5,$Row6,$Row7);
                 $RowCounter ++;
@@ -500,7 +505,7 @@
         	
         	//echo($RQ0->getquery());
         	
-        	while($row = mysql_fetch_array($RQ0->getresults()))
+        	while($row = $RQ0->getresults()->fetch_array(MYSQLI_ASSOC))
         	{
         		$Users .= "," . $row["UserIDLNK"];
         	}
@@ -511,7 +516,7 @@
         	
         	$List = "";
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$User = new Users($row["IDLNK"]);
         		$List .= ";" . $User->getemail();
         	}
@@ -590,7 +595,10 @@
         	
         	if($RQ->getnumberofresults() > 0)
         	{
-        		$row = mysql_fetch_array($RQ->getresults());
+        	
+                //Updated by JNH to new MYSQLI_ASSOC           
+                 
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
         		
         		$User = new Users($row["IDLNK"]);
         		

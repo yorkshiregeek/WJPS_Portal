@@ -53,7 +53,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Trusts WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
                 $this->c_ID = $ID;
                 $this->c_Trust = $row["Trust"];
                 $this->c_Deleted = $row["Deleted"];
@@ -95,7 +95,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				$Trust = new Trusts($row["IDLNK"]);
 				$Row1 = array("<a href=\"?stid=" . $Trust->getid() . "\">" . $Trust->gettrust() . "</a>"," ");
 				$Row2 = array($Trust->getsites(),"middle");
@@ -130,7 +130,7 @@
         	$Rows = array();
         	$RowCounter = 0;
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Trust = new Trusts($row["IDLNK"]);
         		$Row1 = array("<a href=\"?tid=" . $Trust->getid() . "\">" . $Trust->gettrust() . "</a>"," ");
         		$Row2 = array($Trust->getsites(),"middle");

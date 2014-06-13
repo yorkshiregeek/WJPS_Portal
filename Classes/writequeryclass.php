@@ -56,7 +56,8 @@
         {
             $this->c_query = $query;
             if($this->c_query){
-                $this->c_results=mysql_query($this->c_database,$this->c_query,$this->c_connection->getconnection());
+              
+                 $this->c_results=$this->c_connection->query($this->c_query);
             }//end if
         }
     

@@ -6,9 +6,8 @@
     	static function PageHeader($PageTitle,$ExtraScripts){
     	
     	?>
-    		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    	
-    		<html xmlns="http://www.w3.org/1999/xhtml">
+    		<!DOCTYPE html>
+            <html lang="en">
     		
     		<? Templates::MetaHeader($PageTitle,$ExtraScripts); ?>
     		       	
@@ -33,9 +32,14 @@
     		    <meta name="description" content="<? print(METADESC); ?>"/>
     		    <meta name="keywords" content="<? print(METAKEYWORDS); ?>"/>
     		    <meta name="revised" content="<? print(METAREVISED); ?>"/>
-    		    <link rel="stylesheet" type="text/css" href="styles.css"/>
     		    
+    		    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+                <link rel="stylesheet" type="text/css" href="css/styles.css"/>
     		    <script type="text/javascript" src="Script/Script.js"></script>
+                 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="js/bootstrap.min.js"></script>
     		    
     		    <?
     		    

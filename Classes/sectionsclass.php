@@ -66,7 +66,7 @@
         function getdocuments()
         {
           	$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK = " . $this->getid() . " AND Deleted = 0;");
-        	$row = mysql_fetch_array($RQ->getresults());
+        	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
         	
         	return $row["COUNT(IDLNK)"];
 
@@ -78,7 +78,7 @@
             if($ID > 0){
                 //Load Using ID
                 $RQ = new ReadQuery("SELECT * FROM Sections WHERE IDLNK = " . $ID . ";");
-                $row = mysql_fetch_array($RQ->getresults());
+                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Group = new Groups($row["GroupIDLNK"]);
                 $this->c_Section = $row["Section"];
@@ -124,7 +124,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Section = new Sections($row["IDLNK"]);
 				$Row1 = array("<span class=\"title\"><a href=\"?sid=" . $Section->getid() . "&amp;sgid=" . $GID . "\">" . $Section->getsection() . "</a></span><br/><span class=\"content\">" . $Section->getdescription() . "</span>"," ");
 				$Row2 = array($Section->getdocuments(),"documents");				
@@ -162,7 +162,7 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = mysql_fetch_array($RQ->getresults())){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Section = new Sections($row["IDLNK"]);
 				$Row1 = array("<span class=\"title\"><a href=\"?sid=" . $Section->getid() . "&amp;sgid=" . $GID . "\">" . $Section->getsection() . "</a></span><br/><span class=\"content\">" . $Section->getdescription() . "</span>"," ");
 				$Row2 = array($Section->getdocuments(),"documents");

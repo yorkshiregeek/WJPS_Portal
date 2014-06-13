@@ -70,9 +70,11 @@
         	//echo($query);
             $this->c_query = $query;
             if($this->c_query){
-                $this->c_results=mysql_db_query($this->c_database,$this->c_query,$this->c_connection->getconnection());
-                //$this->c_results=mysql_query($this->c_query);
-                $this->c_number_of_results=mysql_num_rows($this->c_results);
+                $this->c_results=$this->c_connection->query($this->c_query);
+               
+                // printf("Select returned %d rows.\n", $this->c_results->num_rows);
+                $this->c_number_of_results=$this->c_results->num_rows;
+
                 //echo($query);
             }//end if
         }
