@@ -1,7 +1,3 @@
-
-@import url("bootstrap.css");
-
-
 body{
 	text-align:centre;
 	border:0;
@@ -71,6 +67,10 @@ a{
 	text-decoration: none;
 }
 
+a:hover{
+	text-decoration: none;
+}
+
 img{
 	border:0;
 }
@@ -122,14 +122,14 @@ textarea{
 	position:relative;
 	height:77px;
 	width: 900px;
-	background: url(Images/ATHP.gif) no-repeat 0% 10%;
+	background: url(../Images/ATHP.gif) no-repeat 0% 10%;
 }
 
 #header #logo{
 	height:77px;
 	position: relative;
 	left: 800px;
-	background: url(Images/PharmacyCross.gif) no-repeat 0% 10%;
+	background: url(../Images/PharmacyCross.gif) no-repeat 0% 10%;
 }
 
 #menu{
@@ -142,7 +142,7 @@ textarea{
 
 #menu ul li{
 	color: #000000;
-	list-style-image: url(Images/Arrow.gif);
+	list-style-image: url(../Images/Arrow.gif);
 }
 
 #menu ul li a{
@@ -183,7 +183,7 @@ textarea{
 }
 
 #content dl dd ul li{
-	list-style-image: url(Images/Arrow.gif);
+	list-style-image: url(../Images/Arrow.gif);
 }
 
 #content dl dd dl dt{
@@ -208,12 +208,12 @@ textarea{
 
 #content ul li{
 	color: #000000;
-	list-style-image: url(Images/Arrow.gif);
+	list-style-image: url(../Images/Arrow.gif);
 }
 
 #content ul li.col2{
 	color: #000000;
-	list-style-image: url(Images/Arrow.gif);
+	list-style-image: url(../Images/Arrow.gif);
 	position:relative;
 	top: -14px;
 	left: 280px;
@@ -371,7 +371,7 @@ textarea{
 
 
 #content table.admintable td span.title{
-	background: url(Images/Arrow.gif) no-repeat 0% 3px;
+	background: url(../Images/Arrow.gif) no-repeat 0% 3px;
 	padding-left: 10px;
 	font-weight: bold;
 }
@@ -508,6 +508,7 @@ ul.tabs li{
 	border: 1px solid #08ae42;
 	border-bottom: 0px;
 	margin-right: 5px;
+	box-sizing: initial;
 }
 
 ul.tabs li a{
