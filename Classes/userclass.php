@@ -228,7 +228,7 @@
 				
 			print("<p>The list below shows all the system users. From this page you can add, edit or delete users.</p>");
 			
-			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-asterisk\" alt=\"Add New User\"/></span>Add New User</a></p>");
+			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-plus\" alt=\"Add New User\"/></span>Add New User</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Users WHERE Deleted = 0 ORDER BY Surname, Firstname");
 			
@@ -249,11 +249,11 @@
 				$Row2 = array($User->getfirstname() . " " . $User->getsurname()," ");
 				$Row3 = array($User->gethospital()," ");
 				$Row4 = array($User->getuserleveldesc()," ");
-				$Row5 = array("<a href=?rid=". $User->getid() ." title=\"Reset Password\"><span class =\"glyphicon glyphicon-user alt=\"Reset Password\"></span></a>","button");
+				$Row5 = array("<a href=?rid=". $User->getid() ." title=\"Reset Password\"><span class =\"glyphicon glyphicon-refresh alt=\"Reset Password\"></span></a>","button");
                
             
 				$Row6 = array("<a href=?uid=". $User->getid() ." title=\"Edit User\"><span class=\"glyphicon glyphicon-pencil\" alt=\"Edit User\"/></span></a>","button");
-				$Row7 = array("<a onclick=\"confirmdialog('Delete User " . $User->getusername() . "', '?uid=". $User->getid() ."&amp;aid=10');\" title=\"Delete User\"><span class=\"glyphicon glyphicon-remove\" alt=\"Delete User\"/></span></a>","button");
+				$Row7 = array("<a onclick=\"confirmdialog('Delete User " . $User->getusername() . "', '?uid=". $User->getid() ."&amp;aid=10');\" title=\"Delete User\"><span class=\"glyphicon glyphicon-trash\" alt=\"Delete User\"/></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5,$Row6,$Row7);
                 $RowCounter ++;

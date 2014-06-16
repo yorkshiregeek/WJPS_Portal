@@ -306,7 +306,7 @@
             
             $RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 
-            echo("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
+            //echo("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
 			
 
 			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){
@@ -361,7 +361,7 @@
 							
 			$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE Deleted = 0 ORDER BY DateAdded");
 			
-			echo($RQ->getquery());
+			//echo($RQ->getquery());
 			
 			$Col1 = array("Message","noticetitle",1);
 			$Col2 = array("Date Added","documents",1);

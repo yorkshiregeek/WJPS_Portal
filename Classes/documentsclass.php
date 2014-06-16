@@ -190,7 +190,7 @@
 				
 			print("<p>The list below shows all the documents in " . $Section->getsection() . ".");
 						
-			print("<p><a href='documents.php?did=-1&amp;dsid=" . $SID . "'><img src=\"Images/page_add.png\" alt=\"Add New Section\"/>Add New Document</a></p>");
+			print("<p><span class=\"glyphicon glyphicon-plus\"></span><a href='documents.php?did=-1&amp;dsid=" . $SID . "'> Add New Document</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE SectionIDLNK = " . $Section->getid() . " AND Deleted = 0 ORDER BY Filename");
 			

@@ -14,7 +14,7 @@
     			print("<hr/>");
     			print("<h2>Menu</h2>");
     			
-    			print("<ul>");
+    			print("<ul class = \"nav nav-pills nav-stacked\">");
     				print("<li " . $Home . "><a href=\"index.php\">Welcome</a></li>");
     				print("<li " . $Links . "><a href=\"links.php\">Links</a></li>");
     				print("<li " . $Login . "><a href=\"welcome.php\">Login</a></li>");
@@ -43,7 +43,7 @@
            		print("<hr/>");
     			print("<h2>Menu</h2>");
     			
-    			print("<ul>");
+    			print("<ul class = \"nav nav-pills nav-stacked\">");
     				print("<li " . $Home . "><a href=\"index.php\">Welcome</a></li>");
     				print("<li " . $Links . "><a href=\"links.php\">Links</a></li>");
     				print("<li " . $Logout . "><a href=\"logout.php\">Logout</a></li>");
@@ -52,7 +52,7 @@
     			
     			print("<h2>User Menu</h2>");
     			
-    			print("<ul>");
+    			print("<ul class = \"nav nav-pills nav-stacked\">");
     				print("<li " . $Docs . "><a href=\"documents.php\">Documents</a></li>");
     				print("<li " . $Dir . "><a href=\"directory.php\">Directory</a></li>");
     				print("<li " . $Messages . "><a href=\"messages.php\">Messages</a></li>");
@@ -84,7 +84,7 @@
    				print("<hr/>");
     			print("<h2>Menu</h2>");
     			
-    			print("<ul>");
+    			print("<ul class = \"nav nav-pills nav-stacked\">");
     				print("<li " . $Welcome . "><a href=\"welcome.php\">Welcome</a></li>");
     				print("<li " . $Links . "><a href=\"links.php\">Links</a></li>");
     				print("<li " . $Logout . "><a href=\"logout.php\">Logout</a></li>");
@@ -93,7 +93,7 @@
     			
     			print("<h2>Admin</h2>");
     			
-    			print("<ul>");
+    			print("<ul class = \"nav nav-pills nav-stacked\">");
     				print("<li " . $Users . "><a href=\"users.php\">User Admin</a></li>");
     				print("<li " . $Docs . "><a href=\"documents.php\">Documents</a></li>");
     				print("<li " . $Dir . "><a href=\"directory.php\">Directory</a></li>");

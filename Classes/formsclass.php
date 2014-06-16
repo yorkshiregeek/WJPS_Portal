@@ -39,13 +39,13 @@
             if($OnSubmit){$OnSubmit = " onsubmit=\"" . $OnSubmit . "\"";}
             if($Enc){$Enc = " enctype=\"multipart/form-data\"";}
             
-            print("<form class=\"adminform\" name=\"" . $FormName . "\" id=\"" . $FormName . "\" method=\"post\" action=\"" . $Action . "\"" . $OnSubmit . $Enc . ">");
+            print("<form class=\"form-group\" name=\"" . $FormName . "\" id=\"" . $FormName . "\" method=\"post\" action=\"" . $Action . "\"" . $OnSubmit . $Enc . ">");
                 print("<dl>");
                     foreach($Fields as $Field)
                     {
                         if($Field[1] != "Hidden")
                         {
-                            print("<dt id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
+                            print("<dt class=\"form-control\" id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
                         }
                         forms::generatefield($Field);
                     }
@@ -60,11 +60,11 @@
         {
             if($OnSubmit){$OnSubmit = " onsubmit=\"" . $OnSubmit . "\"";}
             if($Enc){$Enc = " enctype=\"multipart/form-data\"";}
-            print("<form class=\"adminformmini\" name=\"" . $FormName . "\" id=\"" . $FormName . "\" method=\"post\" action=\"" . $Action . "\"" . $OnSubmit . $Enc . ">");
+            print("<form class=\"form-group\" name=\"" . $FormName . "\" id=\"" . $FormName . "\" method=\"post\" action=\"" . $Action . "\"" . $OnSubmit . $Enc . ">");
                 print("<dl>");
                     foreach($Fields as $Field)
                     {
-                        print("<dt id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
+                        print("<dt class=\"form-control\" id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
                         forms::generatefield($Field);
                     }
                 print("</dl>");
@@ -72,7 +72,7 @@
                     if($Button[2]){
                         $Class= " class=\"" . $Button[2] . "\"";
                     }
-                    print("<input type=\"submit\" id=\"submit\" name=\"submit\" value=\"" . $Button . "\"/>");
+                    print("<input class=\"form-control\" type=\"submit\" id=\"submit\" name=\"submit\" value=\"" . $Button . "\"/>");
                 }
             print("</form>");
         }
@@ -99,10 +99,10 @@
             if($Type == "Text")
             {
                 //Text Box
-                print("<dd id=\"" . $Name . "Field\"><input type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\"" . $ReadOnly . "/></dd>");
+                print("<dd  id=\"" . $Name . "Field\"><input class=\"form-control\" placeholder = \"Enter Title Here\" type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\"" . $ReadOnly . "/></dd>");
             } elseif($Type == "DynamicText") {
                 //Dynamic Text Box
-                print("<dd id=\"" . $Name . "Field\"><input type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\" onchange=\"" . $Action . "\"/><span id=\"" . $Name . "Image\"></span></dd>");
+                print("<dd  id=\"" . $Name . "Field\"><input class=\"form-control\" type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\" onchange=\"" . $Action . "\"/><span id=\"" . $Name . "Image\"></span></dd>");
             } elseif($Type == "DatePicker"){
                 //Date Picker
                 $dp = new datepicker();
@@ -128,7 +128,7 @@
                 print("<input type=\"hidden\" name=\"" . $Name . "\" id=\"" . $Name . "\" value=\"" . $Value . "\"\>");
             } elseif($Type == "TextArea") {
                 //Text Area
-                print("<dd id=\"" . $Name . "Field\"><textarea name=\"" . $Name . "\" id=\"" . $Name . "\" cols=\"" . $Cols . "\" rows=\"" . $Rows . "\"" . $ReadOnly . ">" . $Value . "</textarea></dd>");
+                print("<dd id=\"" . $Name . "Field\"><textarea class=\"form-control\" placeholder =\"Enter Message Here\" name=\"" . $Name . "\" id=\"" . $Name . "\" cols=\"" . $Cols . "\" rows=\"" . $Rows . "\"" . $ReadOnly . ">" . $Value . "</textarea></dd>");
             } elseif($Type == "File") {
                 //File Input
                 print("<dd id=\"" . $Name . "Field\"><input type=\"file\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\"/></dd>");
@@ -137,7 +137,7 @@
                 print("<dd id=\"" . $Name . "Field\"><input type=\"file\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" onchange=\"" . $Action ."\"/></dd>");
             } elseif($Type == "Select") {
                 //Select
-                print("<dd id=\"" . $Name . "Field\" class=\"" . $Class . "\"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
+                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . "\"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
                     foreach($Options as $Option)
                     {
                         if($Option[0] == $Value){
@@ -158,15 +158,15 @@
                 if($Value == $Options)
                 {
                     //Checked
-                    print("<dd id=\"" . $Name . "Field\"><input type=\"checkbox\" name=\"" . $Name . "\" value=\"" . $Options . "\" checked=\"checked\" " . $OnChange . "/></dd>");
+                    print("<dd id=\"" . $Name . "Field\"><input class=\"checkbox\" type=\"checkbox\" name=\"" . $Name . "\" value=\"" . $Options . "\" checked=\"checked\" " . $OnChange . "/></dd>");
                 } else {
                     //Unchecked
-                    print("<dd id=\"" . $Name . "Field\"><input type=\"checkbox\" name=\"" . $Name . "\" value=\"" . $Options . "\" " . $OnChange . "/></dd>");
+                    print("<dd id=\"" . $Name . "Field\"><input class=\"checkbox\" type=\"checkbox\" name=\"" . $Name . "\" value=\"" . $Options . "\" " . $OnChange . "/></dd>");
                 }
             } elseif($Type == "CheckboxArray") {
                 //Checkbox Array
                 print("<dd id=\"" . $Name . "Field\">");
-                    print("<table id=\"" . $Name  . "Table\" class=\"checkboxtable\">");
+                    print("<table id=\"" . $Name  . "Table\" class=\"table\">");
                         $ColCounter = 1;
                         $CheckCounter = 1;
                         foreach($Options as $Option)
@@ -177,9 +177,9 @@
                                 print("<tr>");
                                 if(Forms::checkedoption($Option[0],$Value))
                                 {
-                                    print("<td>" . $Option[1] . ":</td><td><input type=\"checkbox\" name=\"" . $Name . $CheckCounter . "\" value =\"" . $Option[0] . "\" checked=\"checked\"" . $Disabled . "/></td>");
+                                    print("<td>" . $Option[1] . ":</td><td><input class=\"checkbox\" type=\"checkbox\" name=\"" . $Name . $CheckCounter . "\" value =\"" . $Option[0] . "\" checked=\"checked\"" . $Disabled . "/></td>");
                                 } else {
-                                    print("<td>" . $Option[1] . ":</td><td><input type=\"checkbox\" name=\"" . $Name . $CheckCounter . "\" value =\"" . $Option[0] . "\"" . $Disabled . "/></td>");
+                                    print("<td>" . $Option[1] . ":</td><td><input class=\"checkbox\" type=\"checkbox\" name=\"" . $Name . $CheckCounter . "\" value =\"" . $Option[0] . "\"" . $Disabled . "/></td>");
                                 }
                             //} elseif($ColCounter == 4) {
                             //    if(Forms::checkedoption($Option[0],$Value))
@@ -206,7 +206,7 @@
             } elseif($Type == "OptionsArray") {
                 //Options Array
                 print("<dd id=\"" . $Name . "Field\">");
-                    print("<table id=\"" . $Name  . "Table\" class=\"checkboxtable\">");
+                    print("<table id=\"" . $Name  . "Table\" class=\"table\">");
                         $ColCounter = 1;
                         $CheckCounter = 1;
                         foreach($Options as $Option)

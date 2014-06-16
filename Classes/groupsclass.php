@@ -178,7 +178,7 @@
 				
 			print("<p>The list below shows all document groups. From this page you can add, edit or delete groups.</p>");
 			
-			print("<p><a href='documents.php?gid=-1'><img src=\"Images/group_add.png\" alt=\"Add New Group\"/>Add New Group</a></p>");
+			print("<p><a href='documents.php?gid=-1'><span class=\"glyphicon glyphicon-plus\"></span> Add New Group</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 ORDER BY GroupName");
 			
@@ -197,10 +197,11 @@
 				$Row1 = array("<span class=\"title\"><a href='documents.php?gid=" . $Group->getid() . "'>" . $Group->getgroup() . "</a></span><br/><span class=\"content\">" . $Group->getdescription() . "</span>"," ");
 				$Row2 = array($Group->getsections(),"sections");
 				$Row3 = array($Group->getdocuments(),"documents");
-				$Row4 = array("<a href=?gid=". $Group->getid() ."&amp;aid=5><img src=\"Images/group_edit.png\" alt=\"Edit Group\"/></a>","button");
+				$Row4 = array("<a href=?gid=". $Group->getid() ."&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt=\"Edit\"></span> Edit </a>");
+                           
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
 				
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Group " . $Group->getgroup() . "', '?gid=". $Group->getid() ."&amp;aid=10');\"><img src=\"Images/group_delete.png\" alt=\"Delete User\"/></a>","button");
+				$Row5 = array("<a onclick=\"confirmdialog('Delete Group " . $Group->getgroup() . "', '?gid=". $Group->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt =\"edit\"></span> Delete</a>");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
                 $RowCounter ++;
