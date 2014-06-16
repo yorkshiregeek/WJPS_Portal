@@ -13,7 +13,7 @@
         function Connection()
         {
             //$this->c_connection = mysql_connect($this->c_server,$this->c_username,$this->c_password) or die ("Sorry - unable to connect to MySQL" . mysql_error());
-        $this->c_connection = new mysqli("$this->c_server", "$this->c_username", "$this->c_password", "portal");
+        $this->c_connection = new mysqli("$this->c_server", "$this->c_username", "$this->c_password", DBNAME);
         if ($this->c_connection->connect_errno) 
             {
                 printf("Connect failed: %s\n", $this->c_connection->connect_error);
