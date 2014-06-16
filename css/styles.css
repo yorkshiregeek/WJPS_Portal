@@ -279,16 +279,11 @@ label{
 	left:  450px;
 }
 
-
-#content table.admintable{
-	padding: 5px;
-	font-size: 12px;
-}
-
 #content table.admintable th{
 	background: #08ae42;
 	padding: 5px;
 	color: #ffffff;
+	text-align: center;
 }
 
 #content table.admintable th.username{
@@ -370,14 +365,11 @@ label{
 }
 
 
-#content table.admintable td{
-	padding: 2px;
-}
+
 
 
 #content table.admintable td span.title{
-	background: url(../Images/Arrow.gif) no-repeat 0% 3px;
-	padding-left: 10px;
+
 	font-weight: bold;
 }
 

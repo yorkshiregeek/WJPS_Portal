@@ -226,7 +226,7 @@
 	    				$Message .= "<td>&nbsp;</td>";
 	    			} else {
 		    			if(($Mess->getpostedby()->getid() == $_SESSION["userid"] && !$Header) || ($User->getuserlevel() > 1)){
-		    				$Message .= "<td class=\"deletebtn\"><a onclick=\"confirmdialog('Delete Reply posted on " . $Mess->getdateadded()->getnormaldate() . "', '?mid=". $Mess->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Message\"/></a></td>";
+		    				$Message .= "<td class=\"deletebtn\"><a alt = \"Delete\" onclick=\"confirmdialog('Delete Reply posted on " . $Mess->getdateadded()->getnormaldate() . "', '?mid=". $Mess->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a></td>";
 		    			} else {
 		    				$Message .= "<td>&nbsp;</td>";
 		    			}
@@ -333,7 +333,7 @@
 					$Row3 = array($Message->getpostedby()->getfullname()," ");
 					
 					if($Message->getpostedby()->getid() == 	 $_SESSION["userid"]){
-						$Row4 = array("<a onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Message\"/></a>","button");
+						$Row4 = array("<a alt = \"Delete\" onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a>","button");
 					} else {
 						$Row4 = array(""," ");
 					}
@@ -357,7 +357,7 @@
 				
 			print("<p>The list below shows all messages.</p>");
 			
-			print("<p><a href='messages.php?mid=-1'><img src=\"Images/email_add.png\" alt=\"Add New Message\"/>Add New Message</a></p>");
+			print("<p><a alt = \" Add New Message\"href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span>Add New Message</a></p>");
 							
 			$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE Deleted = 0 ORDER BY DateAdded");
 			
@@ -378,7 +378,7 @@
 				$Row2 = array($DA->getnormaldate()," ");	
 				$Row3 = array($Message->getpostedby()->getfullname()," ");				
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
-				$Row4 = array("<a onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Message\"/></a>","button");
+				$Row4 = array("<a alt = \"Delete Message\" onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);
 

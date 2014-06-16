@@ -228,7 +228,7 @@
 				
 			print("<p>The list below shows all the system users. From this page you can add, edit or delete users.</p>");
 			
-			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-plus\" alt=\"Add New User\"/></span>Add New User</a></p>");
+			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-plus\" alt=\"Add New User\"/></span> Add New User</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Users WHERE Deleted = 0 ORDER BY Surname, Firstname");
 			
@@ -620,7 +620,7 @@
         
         static private function loginform()
         {	
-        	$UsernameField = array("Username:","Text","username",30,0);
+        	$UsernameField = array("Username:","Text","username",30,0,'','Enter your username.');
         	$PasswordField = array("Password:","Password","password",30,0);
         	
         	$Fields = array($UsernameField,$PasswordField);

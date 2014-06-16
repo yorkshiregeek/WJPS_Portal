@@ -84,12 +84,14 @@
             $Cols = $Field[3];
             $Rows = $Field[4];
             $Value = $Field[5];
-            $Options = $Field[6];
-            $Action = $Field[7];
-            $ReadOnly = $Field[8];
-            $Class= $Field[9];
-            $RowHeaders = $Field[10];
-            $ColumnHeaders = $Field[11];
+            $EntryText = $Field[6];
+            $Options = $Field[7];
+            $Action = $Field[8];
+            $ReadOnly = $Field[9];
+            $Class= $Field[10];
+            $RowHeaders = $Field[11];
+            $ColumnHeaders = $Field[12];
+            
             
             if($ReadOnly){ 
                 $ReadOnly = " readonly = \"readonly\" "; 
@@ -99,7 +101,7 @@
             if($Type == "Text")
             {
                 //Text Box
-                print("<dd  id=\"" . $Name . "Field\"><input class=\"form-control\" placeholder = \"Enter Title Here\" type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\"" . $ReadOnly . "/></dd>");
+                print("<dd  id=\"" . $Name . "Field\"><input class=\"form-control\" placeholder = \"" . $EntryText ."\" type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\"" . $ReadOnly . "/></dd>");
             } elseif($Type == "DynamicText") {
                 //Dynamic Text Box
                 print("<dd  id=\"" . $Name . "Field\"><input class=\"form-control\" type=\"text\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" value=\"" . $Value . "\" onchange=\"" . $Action . "\"/><span id=\"" . $Name . "Image\"></span></dd>");

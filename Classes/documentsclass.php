@@ -190,7 +190,7 @@
 				
 			print("<p>The list below shows all the documents in " . $Section->getsection() . ".");
 						
-			print("<p><span class=\"glyphicon glyphicon-plus\"></span><a href='documents.php?did=-1&amp;dsid=" . $SID . "'> Add New Document</a></p>");
+			print("<p><a href='documents.php?did=-1&amp;dsid=" . $SID . "'><span class=\"glyphicon glyphicon-plus\" alt= \"Add New Document\" ></span>Add New Document</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE SectionIDLNK = " . $Section->getid() . " AND Deleted = 0 ORDER BY Filename");
 			
@@ -210,8 +210,8 @@
 				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
 				$Row2 = array($Document->getdatemodified()->getnormaldate()," ");
 				$Row3 = array(Documents::display_filesize($Document->getfilesize())," ");
-				$Row4 = array("<a href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><img src=\"Images/page_edit.png\" alt=\"Edit Section\"/></a>","button");		
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><img src=\"Images/page_delete.png\" alt=\"Delete Folder\"/></a>","button");
+				$Row4 = array("<a  href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");		
+				$Row5 = array("<a  onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Folder\"></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
                 $RowCounter ++;

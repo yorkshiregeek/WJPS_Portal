@@ -130,7 +130,7 @@
      		
      		print("<p>The list below shows all the events in the system.</p>");
      		
-     		print("<p><a href='events.php?eid=-1'><img src=\"Images/calendar_add.png\" alt=\"Add Event\"/>Add New Event</a></p>");
+     		print("<p><a href='events.php?eid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add Event\"></span> Add New Event</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Events WHERE Deleted = 0 ORDER BY EventDate DESC, EventTime, Title");
 			
@@ -149,8 +149,8 @@
 				$Row1 = array($Event->gettitle()," ");
 				$Row2 = array($Event->getlocation()," ");
 				$Row3 = array($Event->geteventdate()->getnormaldate() . " " . $Event->geteventtime()," ");
-				$Row4 = array("<a href=\"?eid=". $Event->getid() ."\"><img src=\"Images/calendar_edit.png\" alt=\"Edit Event\"/></a>","button");
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Event " . $Event->gettitle() . "', '?eid=". $Event->getid() ."&amp;aid=10');\"><img src=\"Images/calendar_delete.png\" alt=\"Delete Event\"/></a>","button");
+				$Row4 = array("<a href=\"?eid=". $Event->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Event\"></span></a>","button");
+				$Row5 = array("<a onclick=\"confirmdialog('Delete Event " . $Event->gettitle() . "', '?eid=". $Event->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Event\"></span></a>","button");
 				//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);

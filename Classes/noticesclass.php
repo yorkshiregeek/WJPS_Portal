@@ -252,7 +252,7 @@
 				
 			print("<p>The list below shows all notices.</p>");
 			
-			print("<p><a href='notices.php?nid=-1'><img src=\"Images/email_add.png\" alt=\"Add New Notice\"/>Add New Notice</a></p>");
+			print("<p><a href='notices.php?nid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add New Notice\"></span> Add New Notice</a></p>");
 							
 			$RQ = new ReadQuery("SELECT IDLNK FROM Notices WHERE Deleted = 0 ORDER BY DateAdded");
 			
@@ -273,7 +273,7 @@
 				$Row2 = array($DA->getnormaldate()," ");	
 				$Row3 = array($Notice->getpostedby()->getfullname()," ");				
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
-				$Row4 = array("<a onclick=\"confirmdialog('Delete Notice " . $Notice->gettitle() . "', '?nid=". $Notice->getid() ."&amp;aid=10');\"><img src=\"Images/email_delete.png\" alt=\"Delete Notice\"/></a>","button");
+				$Row4 = array("<a onclick=\"confirmdialog('Delete Notice " . $Notice->gettitle() . "', '?nid=". $Notice->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Notice\"></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);
 

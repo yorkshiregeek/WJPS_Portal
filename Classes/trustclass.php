@@ -81,7 +81,7 @@
      		
      		print("<p>The list below shows all the trusts in the system.</p>");
      		
-     		print("<p><a href='directory.php?tid=-1'><img src=\"Images/building_add.png\" alt=\"Add New Trust\"/>Add New Trust</a></p>");
+     		print("<p><a href='directory.php?tid=-1'><span class=\"glyphicon glyphicon-plus\"></span>Add New Trust</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Trusts WHERE Deleted = 0 ORDER BY Trust");
 			
@@ -100,8 +100,8 @@
 				$Row1 = array("<a href=\"?stid=" . $Trust->getid() . "\">" . $Trust->gettrust() . "</a>"," ");
 				$Row2 = array($Trust->getsites(),"middle");
 				$Row3 = array($Trust->getcontacts(),"middle");
-				$Row4 = array("<a href=\"?tid=". $Trust->getid() ."\"><img src=\"Images/building_edit.png\" alt=\"Edit Trust\"/></a>","button");
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Trust " . $Trust->gettrust() . "', '?tid=". $Trust->getid() ."&amp;aid=10');\"><img src=\"Images/building_delete.png\" alt=\"Delete Trust\"/></a>","button");
+				$Row4 = array("<a href=\"?tid=". $Trust->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt =\"Edit\" ></span></a>","button");
+				$Row5 = array("<a onclick=\"confirmdialog('Delete Trust " . $Trust->gettrust() . "', '?tid=". $Trust->getid() ."&amp;aid=10');\"><span alt =\"Edit\" class=\"glyphicon glyphicon-trash\"></span></a>");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
                 $RowCounter ++;

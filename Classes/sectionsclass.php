@@ -149,7 +149,7 @@
 				
 			print("<p>The list below shows all " . $Group->getgroup() . " groups. From this page you can add, edit or delete sections.</p>");
 			
-			print("<p><a href='documents.php?sid=-1&amp;sgid=" . $GID . "'><img src=\"Images/folder_add.png\" alt=\"Add New Section\"/>Add New Section</a></p>");
+			print("<p><a href='documents.php?sid=-1&amp;sgid=" . $GID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Section</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $GID . " AND Deleted = 0 ORDER BY Section");
 			
@@ -166,10 +166,10 @@
 				$Section = new Sections($row["IDLNK"]);
 				$Row1 = array("<span class=\"title\"><a href=\"?sid=" . $Section->getid() . "&amp;sgid=" . $GID . "\">" . $Section->getsection() . "</a></span><br/><span class=\"content\">" . $Section->getdescription() . "</span>"," ");
 				$Row2 = array($Section->getdocuments(),"documents");
-				$Row3 = array("<a href=?sid=". $Section->getid() ."&amp;sgid=" . $Group->getid() . "&amp;aid=5><img src=\"Images/folder_edit.png\" alt=\"Edit Section\"/></a>","button");
+				$Row3 = array("<a alt = \"Edit Section\" href=?sid=". $Section->getid() ."&amp;sgid=" . $Group->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\"></span></a>","button");
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
 				
-				$Row4 = array("<a onclick=\"confirmdialog('Delete Section " . $Section->getsection() . "', '?sgid=" . $GID . "&amp;sid=". $Section->getid() ."&amp;aid=10');\"><img src=\"Images/folder_delete.png\" alt=\"Delete Folder\"/></a>","button");
+				$Row4 = array("<a alt = \"Delete Folder\" onclick=\"confirmdialog('Delete Section " . $Section->getsection() . "', '?sgid=" . $GID . "&amp;sid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);
                 $RowCounter ++;

@@ -80,7 +80,7 @@
      		
      		print("<p>The list below shows all the links in the system.</p>");
      		
-     		print("<p><a href='linkm.php?lid=-1'><img src=\"Images/link_add.png\" alt=\"Add New Link\"/>Add New Link</a></p>");
+     		print("<p><a href='linkm.php?lid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add New Link\"></span> Add New Link</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Links WHERE Deleted = 0 ORDER BY Title");
 			
@@ -97,8 +97,8 @@
 				$Link = new Links($row["IDLNK"]);
 				$Row1 = array($Link->gettitle()," ");
 				$Row2 = array($Link->geturl()," ");
-				$Row3 = array("<a href=\"?lid=". $Link->getid() ."\"><img src=\"Images/link_edit.png\" alt=\"Edit Link\"/></a>","button");
-				$Row4 = array("<a onclick=\"confirmdialog('Delete Link " . $Link->gettitle() . "', '?lid=". $Link->getid() ."&amp;aid=10');\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
+				$Row3 = array("<a href=\"?lid=". $Link->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");
+				$Row4 = array("<a onclick=\"confirmdialog('Delete Link " . $Link->gettitle() . "', '?lid=". $Link->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Link\"></span></a>","button");
 				//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);

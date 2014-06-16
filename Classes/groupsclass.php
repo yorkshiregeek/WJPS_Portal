@@ -117,16 +117,16 @@
         	
         	$RQ = new ReadQuery("SELECT IDLNK FROM Labs WHERE Deleted = 0 ORDER BY LabName");
         	
-        	print("<ul>");
+        	print("<ul class = \"nav nav-tabs\">");
         	
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         	
         		$Lab = new Labs($row["IDLNK"]);
         		
         		if($Lab->getid() == $LID){
-        			print("<li class=\"selected\"><a href=\"lab.php?lid=" . $Lab->getid() . "\">" . $Lab->getlabname() . "</a></li>");
+        			print("<li class=\"active\"><a href=\"lab.php?lid=" . $Lab->getid() . "\">" . $Lab->getlabname() . "</a></li>");
 				} else {
-					print("<li><a href=\"lab.php?lid=" . $Lab->getid() . "\">" . $Lab->getlabname() . "</a></li>");
+					print("<li><a data-toggle=\"tab\" href=\"lab.php?lid=" . $Lab->getid() . "\">" . $Lab->getlabname() . "</a></li>");
 				}
         	}
         	
@@ -197,11 +197,11 @@
 				$Row1 = array("<span class=\"title\"><a href='documents.php?gid=" . $Group->getid() . "'>" . $Group->getgroup() . "</a></span><br/><span class=\"content\">" . $Group->getdescription() . "</span>"," ");
 				$Row2 = array($Group->getsections(),"sections");
 				$Row3 = array($Group->getdocuments(),"documents");
-				$Row4 = array("<a href=?gid=". $Group->getid() ."&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt=\"Edit\"></span> Edit </a>");
+				$Row4 = array("<a href=?gid=". $Group->getid() ."&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt=\"Edit\"></span></a>");
                            
 				//$Row6 = array("<a href=?lid=-". $Lab->getid() ."><img src=\"Images/building_delete.png\" alt=\"Delete Lab\"/></a>","button");
 				
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Group " . $Group->getgroup() . "', '?gid=". $Group->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt =\"edit\"></span> Delete</a>");
+				$Row5 = array("<a onclick=\"confirmdialog('Delete Group " . $Group->getgroup() . "', '?gid=". $Group->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt =\"edit\"></span></a>");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
                 $RowCounter ++;
