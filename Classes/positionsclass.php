@@ -117,6 +117,8 @@
         	}
         	
         	Tables::generateadmintable("positionstable",$Cols,$Rows);
+
+        	//generateadminsorttable
         
         }
         

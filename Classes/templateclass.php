@@ -79,7 +79,7 @@
     		    	<? MetaData::GoogleAnalytics(); ?>
     		      <!-- Scripts for bootstrap tab loading-->
 
-                <script src="js/jquery.loadmask.js"></script>
+                <<script src="js/jquery.loadmask.js"></script>
                 <script src="js/bootstrap-remote-tabs.js"></script>
     		    </body>
     		    

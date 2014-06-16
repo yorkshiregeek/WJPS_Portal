@@ -497,9 +497,9 @@
         {
         	$MessageCategoryArray = UserCategory::generatearraybyuser($_SESSION["userid"]);
         
-          	$TitleField = array("Title:","Text","title",65,0,$Title);
-        	$MessageField = array("Message:","TextArea","message",85,7,$Message);
-        	$CategoryField = array("Category:","CheckboxArray","messagecategory",0,0,$MessagesCategory,$MessageCategoryArray);
+          	$TitleField = array("Title:","Text","title",65,0,$Title,"Enter a message title");
+        	$MessageField = array("Message:","TextArea","message",85,7,$Message,"Enter a message");
+        	$CategoryField = array("Category:","CheckboxArray","messagecategory",0,0,$MessagesCategory,"",$MessageCategoryArray);
         	
 			$Fields = array($TitleField,$MessageField,$CategoryField);
 
