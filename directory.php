@@ -9,6 +9,9 @@
 	include_once("Classes/contactclass.php");
 	
 	$Scripts[0] = "Script/DirectoryScript.js";
+
+	$Scripts[1] = "js/jquery-draggable.js";
+
 	
 	Templates::PageHeader("Directory",$Scripts);
 
@@ -68,7 +71,7 @@
 						
 					print("</ul>");
 					
-					print("<div class=\"directory\">");
+					print("<div class=\"directory tabbable\">");
 				
 					Trusts::addedit($TID);
 					
