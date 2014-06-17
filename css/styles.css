@@ -6,6 +6,34 @@ body{
 	font-family:Arial, Helvetica;
 }
 
+/* For the draggable table class */
+ul li {
+    min-width: 200px;
+}
+.dragging li.ui-state-hover {
+    min-width: 240px;
+}
+.dragging .ui-state-hover a {
+    color:green !important;
+    font-weight: bold;
+}
+th,td {
+    text-align: right;
+    padding: 2px 4px;
+    border: 1px solid;
+}
+.connectedSortable tr, .ui-sortable-helper {
+    cursor: move;
+}
+.connectedSortable tr:first-child {
+    cursor: default;
+}
+.ui-sortable-placeholder {
+    background: yellow;
+}
+/*End of table class */
+
+
 h1{
 	border:0;
 	padding:0;
