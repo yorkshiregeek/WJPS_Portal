@@ -11,8 +11,8 @@
         
         static public function generateadmintable($ID,$Cols,$Rows)
         {
-            print("<table id-\"table-draggable1\" class=\"admintable table table-hover\" id=\"" . $ID . "\">\n");
-            print ("<tbody class=\"connectedSortable ui-sortable\">");
+            print("<table class=\"sorted_table admintable table table-hover\" id=\"" . $ID . "\">\n");
+            print("<tbody>");
                 print("<tr>\n");
                 foreach($Cols as $Col)
                 {

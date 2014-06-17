@@ -1,35 +1,37 @@
-$(document).ready(function() {
-     $tabs = $(".tabbable");
+// Sortable rows
+$('.sorted_table').sortable({
+  containerSelector: 'table',
+  itemPath: '> tbody',
+  itemSelector: 'tr',
+  placeholder: '<tr class="placeholder"/>'
+})
 
-    $('.nav-tabs a').click(function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-    })
+// Sortable column heads
+var oldIndex
+$('.sorted_head tr').sortable({
+  containerSelector: 'tr',
+  itemSelector: 'th',
+  placeholder: '<th class="placeholder"/>',
+  vertical: false,
+  onDragStart: function (item, group, _super) {
+    oldIndex = item.index()
+    item.appendTo(item.parent())
+    _super(item)
+  },
+  onDrop: function  (item, container, _super) {
+    var field,
+    newIndex = item.index()
     
-    $( "tbody.connectedSortable" )
-        .sortable({
-            connectWith: ".connectedSortable",
-            items: "> tr:not(:first)",
-            appendTo: $tabs,
-            helper:"clone",
-            zIndex: 999990,
-            start: function(){ $tabs.addClass("dragging") },
-            stop: function(){ $tabs.removeClass("dragging") }
-        })
-        .disableSelection()
-    ;
-    
-    var $tab_items = $( ".nav-tabs > li", $tabs ).droppable({
-      accept: ".connectedSortable tr",
-      hoverClass: "ui-state-hover",
-      over: function( event, ui ) {
-        var $item = $( this );
-        $item.find("a").tab("show");
-        
-      },
-      drop: function( event, ui ) {
-        return false;
-      }
-    });
-    
-});
+    if(newIndex != oldIndex)
+      item.closest('table').find('tbody tr').each(function (i, row) {
+        row = $(row)
+        field = row.children().eq(oldIndex)
+        if(newIndex)
+          field.before(row.children()[newIndex])
+        else
+          row.prepend(field)
+      })
+
+    _super(item)
+  }
+})
