@@ -45,7 +45,7 @@
                     {
                         if($Field[1] != "Hidden")
                         {
-                            print("<dt class=\"form-control\" id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
+                            print("<dt class=\"\" id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
                         }
                         forms::generatefield($Field);
                     }
@@ -139,7 +139,7 @@
                 print("<dd id=\"" . $Name . "Field\"><input type=\"file\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" onchange=\"" . $Action ."\"/></dd>");
             } elseif($Type == "Select") {
                 //Select
-                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . "\"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
+                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . " checkbox\"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
                     foreach($Options as $Option)
                     {
                         if($Option[0] == $Value){

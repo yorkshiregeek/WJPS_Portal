@@ -415,7 +415,7 @@
         	
         	$UserCategoryArray = UserCategory::generatearray();
         	
-        	$UsernameField = array("Username:","Text","username",30,0,$Username,"","",!$Add);
+        	$UsernameField = array("Username:","Text","username",30,0,$Username,"Enter username","","",!$Add);
             $FirstnameField = array("Firstname:","Text","firstname",30,0,$Firstname);
             $SurnameField = array("Surname:","Text","surname",30,0,$Surname);
             $EmailField = array("Email Address:","Text","email",30,0,$Email);
@@ -476,7 +476,7 @@
         {
         	$RQ = new ReadQuery("SELECT IDLNK FROM Users WHERE Email = '" . $Email . "';");
         	if($RQ->getnumberofresults() > 0){
-				$row = mysql_fetch_array($RQ->getresults());
+				$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
 				return $row["IDLNK"];
 			} else {
         		return 0;	
@@ -489,7 +489,7 @@
         	
         	$List = "";
         	
-        	while($row = mysql_fetch_array($RQ->getresults())){
+        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		$User = new Users($row["IDLNK"]);
         		$List .= "," . $User->getemail();
         	}
