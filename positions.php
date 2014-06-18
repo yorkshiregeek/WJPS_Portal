@@ -66,7 +66,10 @@
 			print("</div>");
 		
 		?>
-		
+			<script type="text/javascript" src="js/jquery-sortable.js"></script>
+			<script type="text/javascript" src="js/jquery-draggable.js"></script>
+			
+
 	</div>
 	
 <?
@@ -74,3 +77,4 @@
 	Templates::PageFooter();
 
 ?>
+			

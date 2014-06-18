@@ -9,6 +9,9 @@
 	include_once("Classes/contactclass.php");
 	
 	$Scripts[0] = "Script/DirectoryScript.js";
+	$Scripts[1] = "js/jquery-draggable.js";  	
+	
+
 	
 	Templates::PageHeader("Directory",$Scripts);
 
@@ -252,9 +255,9 @@
 			}
 		
 		} 
-		    			
+		  			
 	?>
-	
+<script type="text/javascript" src="js/jquery-draggable.js"></script>
 </div>
     	
 <?
