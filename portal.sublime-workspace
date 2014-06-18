@@ -3,63 +3,28 @@
 	{
 		"selected_items":
 		[
+			[
+				"Parent",
+				"ParentIDLNK"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "<?php\n\n    class Messages\n    {\n    \n        //Class Varibles\n        var $c_ID;\n        var $c_Title;\n        var $c_Message;\n        var $c_ParentID;\n        var $c_DateAdded;\n        var $c_TimeAdded;\n        var $c_PostedBy;\n        var $c_Deleted;\n        \n        function getid()\n        {\n            return $this->c_ID;\n        }\n        \n        function settitle($Val)\n        {\n            $this->c_Title = $Val;\n        }\n        \n        function gettitle()\n        {\n            return $this->c_Title;\n        }\n        \n        function setmessage($Val)\n        {\n        	$this->c_Message = $Val;\n        }\n        \n        function getmessage()\n        {\n        	return $this->c_Message;\n        }\n        \n        function setparentid($Val)\n        {\n        	$this->c_ParentID = $Val;\n        }\n        \n        function getparentid()\n        {\n        	return $this->c_ParentID;\n        }\n        \n        function setdateadded($Val)\n        {\n            $this->c_DateAdded = $Val;\n        }\n        \n        function getdateadded()\n        {\n            return $this->c_DateAdded;\n        }\n        \n        function settimeadded($Val)\n        {\n        	$this->c_TimeAdded = $Val;\n        }\n        \n        function gettimeadded()\n        {\n        	return $this->c_TimeAdded;\n        }\n\n		function setpostedby($Val)\n        {\n            $this->c_PostedBy = $Val;\n        }\n        \n        function getpostedby()\n        {\n            return $this->c_PostedBy;\n        }\n               \n        function setdeleted($Val)\n        {\n            $this->c_Deleted = $Val;\n        }\n        \n        function getdeleted()\n        {\n            return $this->c_Deleted;\n        }\n        \n        function getcategorys()\n        {\n        	$RQ = new ReadQuery(\"SELECT CategoryIDLNK FROM MessagesCategorys WHERE MessageIDLNK = \" . $this->getid() . \" AND Deleted = 0;\");\n        	\n        	//echo($RQ->getquery());\n        \n        	$Counter = 0;\n        	\n        	//$Cats = new array;\n        	\n        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n        		\n                $CatArray[$Counter] = $row[\"CategoryIDLNK\"];\n        		\n        		$Counter ++;\n        	}\n        	\n        	//print_r($CatArray);\n        	\n        	return $CatArray;\n        }\n        \n        function getcategorysbydesc()\n        {\n        	$CategorysArray = $this->getcategorys();\n        	\n        	if($CategorysArray != \"\"){\n        	\n	        	$Cats = \"\";\n	        	\n	        	foreach($CategorysArray as $Cat)\n	        	{\n	        		$CatObj = new UserCategory($Cat);\n	        		$Cats .= \", \" . $CatObj->gettitle();\n	        	}\n        	\n        	}\n        	\n        	return substr($Cats,1);\n        }\n        \n        function getcategorysbyid()\n        {\n        	$CategorysArray = $this->getcategorys();\n        	\n        	if($CategorysArray != \"\"){\n        	\n	        	$Cats = \"\";\n	        	\n	        	foreach($CategorysArray as $Cat)\n	        	{\n	        		$CatObj = new UserCategory($Cat);\n	        		$Cats = \", \" . $CatObj->getid();\n	        	}\n        	\n        	}\n        	\n        	return substr($Cats,1);\n        }\n        \n        function getnumreplies(){\n        	$RQ = new ReadQuery(\"SELECT COUNT(*) FROM Messages WHERE ParentIDLNK = \" . $this->getid() . \" AND Deleted = 0;\");\n        	\n        	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);\n        	\n        	return $row[0];\n        }\n\n        \n        //Connection Constructor\n        function __construct($ID)\n        {\n            if($ID > 0){\n                //Load Using ID\n                $RQ = new ReadQuery(\"SELECT * FROM Messages WHERE IDLNK = \" . $ID . \";\");\n                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);\n                $this->c_ID = $ID;\n                $this->c_Title = $row[\"Title\"];\n                $this->c_Message = $row[\"Message\"];\n                $this->c_ParentID = $row[\"ParentIDLNK\"];\n                $this->c_DateAdded = new DateClass(\"\",$row[\"DateAdded\"],\"\",\"\",\"\");\n                $this->c_TimeAdded = $row[\"TimeAdded\"];\n                $this->c_PostedBy = new Users($row[\"PostedByIDLNK\"]);\n                $this->c_Deleted = $row[\"Deleted\"];\n            }else{\n                //Create New\n                $this->setdeleted(false);\n            }\n        }\n        \n        function savenew()\n        {\n        	$DA = $this->getdateadded();\n        	$PB = $this->getpostedby();\n        	$WQ = new WriteQuery(\"INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('\" . $this->gettitle() .  \"', '\" . $this->getmessage() . \"',\" . $this->getparentid() . \",'\" . $DA->getdatabasedate() . \"','\" . $this->gettimeadded() . \"',\" . $PB->getid() . \", 0)\");\n        	//echo($WQ->getquery());\n        	//echo($WQ->getquery());\n            $this->c_ID -> insert_id;\n\n\n        }\n        \n        function save()\n        {\n        	$DA = $this->getdateadded();\n        	$PB = $this->getpostedby();\n        	//echo($this->gettitle());\n            $WQ = new WriteQuery(\"UPDATE Messages SET Title = '\" . $this->gettitle() . \"', Message = '\" . $this->getmessage() . \"', ParentIDLNK = \" . $this->getparentid() . \", DateAdded = '\" . $DA->getdatabasedate() . \"', TimeAdded = '\" . $this->gettimeadded() . \"', PostedByIDLNK = \" . $PB->getid() . \", Deleted = \" . $this->getdeleted() . \" WHERE IDLNK = \" . $this->getid() . \";\");\n			//echo($WQ->getquery());\n        }\n        \n        static private function generatemessage($MessageID, $Header, $Email)\n        {\n        	$Mess = new Messages($MessageID);\n        	\n        	if($Header){\n        	\n        		$Message .= \"<h2>\" . $Mess->gettitle() . \"</h2>\";\n        	\n        		$Message .= \"<p>This message has been posted to the following categories \" . $Mess->getcategorysbydesc() . \"</p>\";\n        	\n        	}\n        	\n        	$Message .= \"<table class=\\\"messagetable\\\">\";\n	    		$Message .= \"<tr >\";\n	    			$Message .= \"<td colspan=3>\" . nl2br($Mess->getmessage()) . \"</td>\";\n	    		$Message .= \"</tr>\";\n	    		$Message .= \"<tr>\";\n	    			$Message .= \"<td class=\\\"header\\\">Posted by:</td><td class=\\\"headerinfo\\\">\" . $Mess->getpostedby()->getfullname() . \" \" . $Mess->getdateadded()->getnormaldate() . \" \" . $Mess->gettimeadded() . \"</td>\";\n	    			\n	    			$User = new Users($_SESSION[\"userid\"]);\n	    			\n	    			//echo($Email)\n	    			\n	    			if($Email == true){\n	    				$Message .= \"<td>&nbsp;</td>\";\n	    			} else {\n		    			if(($Mess->getpostedby()->getid() == $_SESSION[\"userid\"] && !$Header) || ($User->getuserlevel() > 1)){\n		    				$Message .= \"<td class=\\\"deletebtn\\\"><a alt = \\\"Delete\\\" onclick=\\\"confirmdialog('Delete Reply posted on \" . $Mess->getdateadded()->getnormaldate() . \"', '?mid=\". $Mess->getid() .\"&amp;aid=10');\\\"><span class=\\\"glyphicon glyphicon-trash\\\"></span></a></td>\";\n		    			} else {\n		    				$Message .= \"<td>&nbsp;</td>\";\n		    			}\n	    			}\n	    		$Message .= \"</tr>\";\n	    	$Message .= \"</table>\";\n	    	\n	    	$Message .= \"<hr class=\\\"minibreak\\\"/>\";\n        			\n        	return $Message;\n        }\n        \n        static private function generatemessagethread($StartID,$Email){\n        \n         \n        	$Message =Messages::generatemessage($StartID,true,$Email);\n        	\n        	$RQ = new ReadQuery(\"SELECT IDLNK FROM Messages WHERE ParentIDLNK = \" . $StartID . \" AND Deleted = 0 ORDER BY DateAdded, TimeAdded\");\n        	\n        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n        		//$Categorys .= \",\" . $row[\"CategoryIDLNK\"];\n        		$Message .= Messages::generatemessage($row[\"IDLNK\"],false,$Email);\n        	}\n      	\n        	return $Message;\n        				\n        	//print(\"<p>Return to the <a href=\\\"messages.php\\\">Messages List</a></p>\");\n\n        }\n        \n        static public function showmessage($MessageID)\n        {\n        	print(Messages::generatemessagethread($MessageID,false));\n        	\n        	//Form for Reply goes here.\n        	$MessageField = array(\"Reply:\",\"TextArea\",\"message\",85,7,$Message);\n        	$ThreadField = array(\"ThreadID:\",\"Hidden\",\"thredid\",0,0,$MessageID);\n        	\n        	$ReplyError = array(\"replyerror\",\"Please enter a Reply.\");\n        	\n        	$Errors = array($ReplyError); \n        	\n        	Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n\n        	$Fields = array($MessageField,$ThreadField);\n        	\n        	$Button = \"Add Reply\";\n        				\n        	Forms::generateform(\"messageform\",\"messages.php?mid=-1\", \"return checkreplyform(this)\",false,$Fields,$Button);\n\n        \n        	//print(Messages::generatemessagethread($MessageID));\n        	\n        	print(\"<p>Return to <a href=\\\"messages.php\\\">Messages Index</a></p>\");\n        }\n        \n        static public function listall()\n        {\n     		//Normal     		\n     		print(\"<h2>Messages</h2>\");\n				\n			print(\"<p>The list below shows all messages you have been sent. If you were the author of the message you can edit and delete the message.</p>\");\n			\n			print(\"<p><a href='messages.php?mid=-1'><span class=\\\"glyphicon glyphicon-envelope\\\"></span> Add New Message</a></p>\");\n			\n			\n			//echo($RQ->getquery());\n			\n			$Col1 = array(\"Message\",\"noticetitle\",1);\n			$Col11 = array(\"Replies\",\"replies\",1);\n			$Col2 = array(\"Date Added\",\"documents\",1);\n			$Col3 = array(\"Posted By\",\"postedby\",1);\n			$Col4 = array(\"\",\"operations\", 1);\n            $Cols = array($Col1,$Col11,$Col2,$Col3,$Col4);\n            $Rows = array();\n            $RowCounter = 0;\n            \n            $RQ0 = new ReadQuery(\"SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = \" . $_SESSION[\"userid\"] . \" AND Deleted = 0;\");\n\n            //echo(\"SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = \" . $_SESSION[\"userid\"] . \" AND Deleted = 0;\");\n			\n\n			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){\n				$Categorys .= \",\" . $row[\"CategoryIDLNK\"];\n			}\n			\n			$RQ1 = new ReadQuery(\"SELECT MessageIDLNK FROM MessagesCategorys WHERE CategoryIDLNK IN (\" . substr($Categorys,1) . \")\");\n			\n			if($RQ1->getnumberofresults() != 0){\n			\n			\n				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){\n					$Messages .= \",\" . $row[\"MessageIDLNK\"];\n				}\n				\n				$RQ = new ReadQuery(\"SELECT IDLNK FROM Messages WHERE IDLNK IN (\" . substr($Messages,1) . \") AND Deleted = 0 ORDER BY DateAdded DESC\");\n            \n				while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n					$Message = new Messages($row[\"IDLNK\"]);\n					$DA = $Message->getdateadded();\n					$Row1 = array(\"<span class=\\\"title\\\"><a href=\\\"?mid=\" . $Message->getid() . \"\\\">\" . $Message->gettitle() . \"</a></span>\",\" \");\n					$Row11 = array($Message->getnumreplies(),\"\");\n					$Row2 = array($DA->getnormaldate(),\"\");	\n					$Row3 = array($Message->getpostedby()->getfullname(),\" \");\n					\n					if($Message->getpostedby()->getid() == 	 $_SESSION[\"userid\"]){\n						$Row4 = array(\"<a alt = \\\"Delete\\\" onclick=\\\"confirmdialog('Delete Message \" . $Message->gettitle() . \"', '?mid=\". $Message->getid() .\"&amp;aid=10');\\\"><span class=\\\"glyphicon glyphicon-trash\\\"></span></a>\",\"button\");\n					} else {\n						$Row4 = array(\"\",\" \");\n					}\n							\n					$Rows[$RowCounter] = array($Row1,$Row11,$Row2,$Row3,$Row4);\n	                $RowCounter ++;\n					\n				}\n			\n			}\n			\n			Tables::generateadmintable(\"messagestable\",$Cols,$Rows);\n        \n        }\n\n        \n        static public function listadmin()\n        {\n     		//Normal\n     		print(\"<h2>Messages</h2>\");\n				\n			print(\"<p>The list below shows all messages.</p>\");\n			\n			print(\"<p><a alt = \\\" Add New Message\\\"href='messages.php?mid=-1'><span class=\\\"glyphicon glyphicon-envelope\\\"></span>Add New Message</a></p>\");\n							\n			$RQ = new ReadQuery(\"SELECT IDLNK FROM Messages WHERE Deleted = 0 ORDER BY DateAdded\");\n			\n			//echo($RQ->getquery());\n			\n			$Col1 = array(\"Message\",\"noticetitle\",1);\n			$Col2 = array(\"Date Added\",\"documents\",1);\n			$Col3 = array(\"Posted By\",\"postedby\",1);\n            $Col4 = array(\"\",\"operations\", 1);\n            $Cols = array($Col1,$Col2,$Col3,$Col4);\n            $Rows = array();\n            $RowCounter = 0;\n			\n			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n				$Message = new Messages($row[\"IDLNK\"]);\n				$DA = $Message->getdateadded();\n				$Row1 = array(\"<span class=\\\"title\\\"><a href=\\\"?mid=\" . $Message->getid() . \"\\\">\" . $Message->getmessage() . \"</a></span>\",\" \");\n				$Row2 = array($DA->getnormaldate(),\" \");	\n				$Row3 = array($Message->getpostedby()->getfullname(),\" \");				\n				//$Row6 = array(\"<a href=?lid=-\". $Lab->getid() .\"><img src=\\\"Images/building_delete.png\\\" alt=\\\"Delete Lab\\\"/></a>\",\"button\");\n				$Row4 = array(\"<a alt = \\\"Delete Message\\\" onclick=\\\"confirmdialog('Delete Message \" . $Message->gettitle() . \"', '?mid=\". $Message->getid() .\"&amp;aid=10');\\\"><span class=\\\"glyphicon glyphicon-trash\\\"></span></a>\",\"button\");\n				\n				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4);\n\n                $RowCounter ++;\n				\n				//print(\"<li><a href=\\\"index.php?did=\" . $Document->getid() . \"\\\">\" . $Document->gettitle() . \"</a></li>\");\n			}\n			\n			Tables::generateadmintable(\"adminmessagestable\",$Cols,$Rows);        \n        }\n             \n    	static public function addedit($MID)\n	    {\n			$Title = $_POST[\"title\"];\n			$Message = $_POST[\"message\"];\n			$HiddenTID = $_POST[\"thredid\"];\n			\n			$Submit = $_POST[\"submit\"];\n					\n			//Get Number of Categorys\n			$NofC = UserCategory::gettotal();\n			\n			//$UserCategorys = new array();\n			\n			if(($HiddenTID != 0)){\n\n				//Add message to thread\n				\n				$Thread = new Messages($HiddenTID);\n				\n				$NewMessage = new Messages(0);\n				\n				$User = new Users($_SESSION[\"userid\"]);	\n				\n				$NewMessage->settitle($Thread->gettitle());\n				$NewMessage->setmessage($Message);\n				$NewMessage->setdateadded(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n				$NewMessage->settimeadded(Date(\"H:i:s\"));\n				$NewMessage->setpostedby($User);\n				$NewMessage->setparentid($HiddenTID);\n				$NewMessage->savenew();\n				\n				Messages::sendemail($NewMessage->getid());\n									\n				print(\"<p>The reply has been added to the topic and sent to the chosen user groups successfully.</p>\");\n				\n				print(\"<p>Return to <a href='messages.php'>Messages Admin</a>.</p>\");		\n			\n			} else {\n			\n				for($c=1;$c<=$NofC;$c++)\n				{\n					if(isset($_POST[\"messagecategory\" . $c])){\n						//$UserCategory .= \",\" . $_POST[\"usercategory\" . $c];\n						$MessageCategorys[$c-1] = $_POST[\"messagecategory\" . $c];\n					}\n				}\n				\n				\n				\n				\n				\n				//$Group = \n				\n				$TitleError = array(\"titleerror\",\"Please enter a Title.\");\n				$MessageError = array(\"messageerror\",\"Please enter a Message.\");\n				$CategoryError = array(\"categoryerror\",\"please select at least one category.\");\n		         \n		        //Add\n	            print(\"<h2>Add New Message</h2>\");\n	\n	            if($Submit){\n	                //Add\n	                 \n					$NewMessage = new Messages(0);\n					\n					$User = new Users($_SESSION[\"userid\"]);	\n					\n					$NewMessage->settitle($Title);\n					$NewMessage->setmessage($Message);\n					$NewMessage->setdateadded(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n					$NewMessage->settimeadded(Date(\"H:i:s\"));\n					$NewMessage->setparentid(0);\n					$NewMessage->setpostedby($User);\n					$NewMessage->savenew();\n					\n					foreach($MessageCategorys as $MC)\n					{\n						$WQ = new WriteQuery(\"INSERT INTO MessagesCategorys (MessageIDLNK, CategoryIDLNK, Deleted) VALUES (\" . $NewMessage->getid() . \", \" . $MC . \",0);\");\n						\n						//echo($WQ->getquery());\n					}\n					\n					Messages::sendemail($NewMessage->getid());\n										\n					print(\"<p>The new message has been added to the system and sent to the chossen user groups succesfully.</p>\");\n					\n					print(\"<p>Return to <a href='messages.php'>Messages Admin</a>.</p>\");				\n									\n				} else {\n	                //Form\n	                print(\"<p>To Add a New Message complete the form below. Once you have completed it click the Send Message Button and the Message will be sent to the chosen user groups.</p>\");\n	                \n	                $Errors = array($TitleError,$MessageError,$CategoryError);\n	    			\n	    			Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n	    			\n	                Messages::form($Title,$Message,$MessageCategory,$MID);\n	             }\n             \n             }\n        	\n	     }\n	     \n    	static public function form($Title,$Messagee,$MessagesCategory,$MID)\n        {\n        	$MessageCategoryArray = UserCategory::generatearraybyuser($_SESSION[\"userid\"]);\n        \n          	$TitleField = array(\"Title:\",\"Text\",\"title\",65,0,$Title,\"Enter a message title\");\n        	$MessageField = array(\"Message:\",\"TextArea\",\"message\",85,7,$Message,\"Enter a message\");\n        	$CategoryField = array(\"Category:\",\"CheckboxArray\",\"messagecategory\",0,0,$MessagesCategory,\"\",$MessageCategoryArray);\n        	\n			$Fields = array($TitleField,$MessageField,$CategoryField);\n\n           	$Button = \"Send Message\";\n			\n			Forms::generateform(\"messageform\",\"messages.php?mid=\" . $MID, \"return checkmessageform(this,2)\",false,$Fields,$Button);\n			\n			print(\"<p>Return to the <a href=\\\"messages.php\\\">Messages List</a></p>\");\n           \n        }\n        \n        static public function sendemail($MessageID)\n        {\n        	$Message = new Messages($MessageID);\n        	$Title = \"\";\n        	\n        	if($Message->getparentid() == 0){\n        	\n        		$Title = SITENAME . \" - New Message - \" . $Message->gettitle();\n        	\n        		$msg = \"<p>A new message has been added to the \" . SITENAME . \" messages board titled - \" . $Message->gettitle() . \" . The message details are below, you can also view the <a href='\" . URL . \"\\messages.php?mid=\" . $MessageID .\"'>message online</a>.</p>\";\n        \n        		$msg .= Messages::generatemessagethread($MessageID,true);\n        	\n        	} else {\n        	\n        		$Parent = new Messages($Message->getparentid());\n        	\n        		$Title = SITENAME . \" - New Reply - \" . $Parent->gettitle();\n        	\n        		$msg = \"<p>A new reply has been added to the \" . SITENAME . \" messages board titled - \" . $Parent->gettitle() . \" . The message details are below, you can also view the <a href='\" . URL . \"\\messages.php?mid=\" . $MessageID .\"'>message online</a>.</p>\";\n        	\n        		$msg .= Messages::generatemessagethread($Parent->getid(),true);\n        	\n        	}\n        	\n        	$msg .= \"<p>To make a reply, visit the  <a href='\" . URL . \"\\messages.php?mid=\" . $MessageID . \"'>web version of this message</a>.</p>\";\n        	\n        	//echo(Users::allemailsbycategory($Notice->getcategorysbyid()));\n					\n			Emails::sendemail(Users::allemails($Message->getcategorys()),$Title,$msg);\n        }\n        \n		static public function deletemessage($MID){\n        	$Message = new Messages($MID);\n        	\n        	$Message->setdeleted(1);\n          	\n        	$Message->save();\n        } \n        \n        static public function lastmessages(){\n        	$RQ0 = new ReadQuery(\"SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = \" . $_SESSION[\"userid\"] . \" AND Deleted = 0;\");\n			\n			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){\n				$Categorys .= \",\" . $row[\"CategoryIDLNK\"];\n			}\n			\n			$RQ1 = new ReadQuery(\"SELECT MessageIDLNK FROM MessagesCategorys WHERE CategoryIDLNK IN (\" . substr($Categorys,1) . \")\");\n			\n			if($RQ1->getnumberofresults() != 0){\n						\n				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){\n					$Messages .= \",\" . $row[\"MessageIDLNK\"];\n				}\n				\n				$RQ = new ReadQuery(\"SELECT IDLNK FROM Messages WHERE IDLNK IN (\" . substr($Messages,1) . \") AND Deleted = 0 ORDER BY DateAdded DESC LIMIT 0,5\");\n        	\n	        	print(\"<ul>\");\n	        	\n	        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n	        		$Message = new Messages($row[\"IDLNK\"]);\n	        		\n	        		print(\"<li><a href=\\\"messages.php?mid=\" .$Message->getid() . \"\\\">\" . $Message->gettitle() . \"</a></li>\");\n	        	}\n	        	\n	        	print(\"</ul>\");\n        	\n        	} else {\n        	\n        		print(\"<p>No Messages to show.</p>\");\n        	\n        	}\n        }    \n                       \n    }\n\n?>",
-			"file": "Classes/messageclass.php",
-			"file_size": 20136,
-			"file_write_time": 130474119520000000,
+			"file": "Classes/pagesclass.php",
 			"settings":
 			{
-				"buffer_size": 20181,
+				"buffer_size": 12615,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "",
+			"file": "Classes/messageclass.php",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Unix",
-				"name": "Xdebug Context",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix",
-				"name": "Xdebug Watch",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix",
-				"name": "Xdebug Stack",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix",
-				"name": "Xdebug Breakpoint",
-				"read_only": true,
-				"scratch": true
+				"buffer_size": 20181,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -99,6 +64,13 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/trusts.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/positionsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/positions.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/directory.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/messageclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/tableclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/templateclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/connectionclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/portal.sublime-project",
 		"/Users/jason/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
@@ -141,8 +113,38 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Classes/messageclass.php",
+					"file": "Classes/pagesclass.php",
 					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12615,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4472,
+								4472
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2342.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Classes/messageclass.php",
+					"semi_transient": true,
 					"settings":
 					{
 						"buffer_size": 20181,
@@ -152,8 +154,8 @@
 						"selection":
 						[
 							[
-								16832,
-								16832
+								0,
+								20181
 							]
 						],
 						"settings":
@@ -163,136 +165,22 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7299.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -336,7 +224,7 @@
 		"rows":
 		[
 			0.0,
-			0.7,
+			0.925373134328,
 			1.0
 		]
 	},
