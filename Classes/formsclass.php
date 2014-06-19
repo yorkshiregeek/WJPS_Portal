@@ -139,7 +139,7 @@
                 print("<dd id=\"" . $Name . "Field\"><input type=\"file\" name=\"" . $Name . "\" id=\"" . $Name . "\" size=\"" . $Cols . "\" onchange=\"" . $Action ."\"/></dd>");
             } elseif($Type == "Select") {
                 //Select
-                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . " checkbox\"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
+                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . " \"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
                     foreach($Options as $Option)
                     {
                         if($Option[0] == $Value){
