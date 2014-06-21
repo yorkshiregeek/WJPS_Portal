@@ -96,7 +96,7 @@
         	
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Position = new Positions($row["PositionIDLNK"]);
-        		$Row1 = array($Position->getposition()," ");
+        		$Row1 = array($Position->getposition()," ","data-id='" . $Position->getid() . "'");
         		if($RowCounter == 0){
         			$Row2 = array(" "," ");
         		} else {

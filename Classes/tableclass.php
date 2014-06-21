@@ -8,6 +8,8 @@
         //Field Array
         
         //[Description, Type, Name, Cols, Rows, Value]
+
+        //Rows = Value, Class
         
         static public function generateadmintable($ID,$Cols,$Rows)
         {
@@ -21,13 +23,14 @@
                 print("</tr>\n");
                 foreach($Rows as $Row)
                 {
-                    print("<tr>\n");
+                    print("<tr " . $Row[0][2] . ">\n");
                     foreach($Row as $Item)
                     {
                         if($Item[1])
                         {
                             $Class = " class = \"" . $Item[1] . "\" ";
                         }
+
                         print("<td" .  $Class . ">" . $Item[0] . "</td>\n");
                     }
                     print("</tr>\n");
