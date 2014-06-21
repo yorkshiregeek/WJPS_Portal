@@ -34,6 +34,7 @@
     		    <meta name="revised" content="<? print(METAREVISED); ?>"/>
     		    
     		    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+                <link rel="stylesheet" type="text/css" href="css/jquery-sortable.css"/>
                 <link rel="stylesheet" type="text/css" href="css/styles.css"/>
     		    <script type="text/javascript" src="Script/Script.js"></script>
                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

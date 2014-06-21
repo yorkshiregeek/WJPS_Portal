@@ -7,20 +7,21 @@ $('.sorted_table').sortable({
   itemSelector: 'tr',
   placeholder: '<tr class="placeholder"/>',
 
-  onDrop: function (item, container, _super) {
-
-
+  onDrop: function ($item, container, _super) {
+ 
+$item.removeClass("dragged").removeAttr("style")
+      $("body").removeClass("dragging")
     var obj = jQuery('.sorted_table tr').map(function(){
                 return  jQuery (this).attr("data-id");
             }).get();
           console.log(obj)
            
             $.ajax({
-                url: "ajax_action.php",
+                url: "Ajax-php/positionupdate.php?Update=" + obj,
                 type: "post",
-                data: dataToSend,
+                data: {info:obj},
+                //dataType: "json",
                 cache: false,
-                dataType: "json",
                 success: function () {}
             });
             //_super(item, container);

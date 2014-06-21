@@ -89,7 +89,7 @@
         	//echo($RQ->getquery());
         	
         	$Col1 = array("Position","sectionname",1);
-        	$Col2 = array("","operations",4);
+        	$Col2 = array("","operations",2);
             $Cols = array($Col1,$Col2);
             $Rows = array();
             $RowCounter = 0;
@@ -97,22 +97,12 @@
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Position = new Positions($row["PositionIDLNK"]);
         		$Row1 = array($Position->getposition()," ","data-id='" . $Position->getid() . "'");
-        		if($RowCounter == 0){
-        			$Row2 = array(" "," ");
-        		} else {
-        			$Row2 = array("<a href=\"?pid=" . $Position->getid() . "&amp;dir=up\"><img src=\"Images/arrow_up.png\" alt=\"Move Up\"></a>" ," ");
-        		}
         		
-        		if($RowCounter == $RQ->getnumberofresults() - 1){
-        			$Row3 = array(" "," ");
-        		} else {
-        			$Row3 = array("<a href=\"?pid=" . $Position->getid() . "&amp;dir=down\"><img src=\"Images/arrow_down.png\" alt=\"Move Down\"></a>" ," ");
-        		}
         		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><img src=\"Images/user_edit.png\" alt=\"Edit Position\"/></a>","button");
         		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><img src=\"Images/user_delete.png\" alt=\"Delete User\"/></a>","button");
         		//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
         		
-        		$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
+        		$Rows[$RowCounter] = array($Row1,$Row4,$Row5);
                 $RowCounter ++;
         	}
         	
