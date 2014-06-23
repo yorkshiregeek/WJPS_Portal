@@ -214,7 +214,7 @@ label{
 
 #content ul li{
 	color: #000000;
-	list-style-image: url(../Images/Arrow.gif);
+	/*list-style-image: url(../Images/Arrow.gif);*/
 }
 
 #content ul li.col2{

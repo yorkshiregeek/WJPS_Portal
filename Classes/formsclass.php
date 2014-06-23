@@ -14,9 +14,9 @@
         	if($ShowDefault)
         	{
         		//Show By Default
-        		print("<div id=\"errorsshow\">");
+        		print("<div id='errorsshow'>");
         	} else {
-        		print("<div id=\"errors\">");
+        		print("<div id='errors' class='alert alert-danger'>");
         	}
         	
             	print("<p class=\"title\">$ErrorTitle</p>");
