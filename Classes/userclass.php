@@ -420,8 +420,8 @@
             $SurnameField = array("Surname:","Text","surname",30,0,$Surname);
             $EmailField = array("Email Address:","Text","email",30,0,$Email);
             $HospitalField = array("Hospital:","Text","hospital",30,0,$Hospital);
-            $UserLevelField = array("User Level:","Select","userlevel",0,0,$UserLevel,$UserLevelArray);
-            $UserCategoryField = array("User Category:","CheckboxArray","usercategory",0,0,$UserCategory,$UserCategoryArray);
+            $UserLevelField = array("User Level:","Select","userlevel",0,0,$UserLevel,'',$UserLevelArray);
+            $UserCategoryField = array("User Category:","CheckboxArray","usercategory",0,0,$UserCategory,'',$UserCategoryArray);
             
 			$UserIDField = array("","Hidden","id",0,0,$UserID);
 			
@@ -621,7 +621,7 @@
         static private function loginform()
         {	
         	$UsernameField = array("Username:","Text","username",30,0,'','Enter your username.');
-        	$PasswordField = array("Password:","Password","password",30,0);
+        	$PasswordField = array("Password:","Password","password",30,0,'','Enter your password.');
         	
         	$Fields = array($UsernameField,$PasswordField);
         	
