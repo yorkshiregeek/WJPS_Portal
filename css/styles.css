@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+body{
+	text-align:centre;
+	border:0;
+	padding:0;
+	margin:0;
+	font-family:Arial, Helvetica;
+}
+
+
+h1{
+	border:0;
+	padding:0;
+	margin:0 0 10px 0;
+	font-size:22px;
+	color:#000000;
+}
+
+h2{
+	border:0;
+	padding: 8px 0 8px 0;
+	margin:0;
+	font-size: 1.3em;
+	color:#08ae42;
+}
+=======
+>>>>>>> WJP-Branch
 
 h2, h3{
 	
@@ -82,6 +109,8 @@ img.right{
 #content dl dt{
 	color:#08ae42;
 	font-weight: bold;
+	padding: 10px 0 11px 0px;
+	font-size: 1.2em;
 }
 
 #content dl dd ul{

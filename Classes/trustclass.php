@@ -81,7 +81,7 @@
      		
      		print("<p>The list below shows all the trusts in the system.</p>");
      		
-     		print("<p><a href='directory.php?tid=-1'><span class=\"glyphicon glyphicon-plus\"></span>Add New Trust</a></p>");
+     		print("<p><a href='directory.php?tid=-1'><span class=\"glyphicon glyphicon-plus\"></span> Add New Trust</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Trusts WHERE Deleted = 0 ORDER BY Trust");
 			
