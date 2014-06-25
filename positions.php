@@ -7,24 +7,35 @@
 	
 	$Scripts[0] = "Script/DirectoryScript.js";
 	
-	
+	Templates::PageHeader("Directory",$Scripts);
 
-	
+	if(Users::logincheck(3) > 0){
+ 		Menu::generateadminmenu("directory"); 
+ 	} else {
+ 		Menu::generatemenu("login");
+ 	}
  	
 ?>
 	
 	    		
+	<div id="content">
 	
+		<hr/>
 	
-
-	
-	
+		<h1>Directory Admin</h1>
 		
 		
 		
 		<? 
 		
-		
+			print("<ul class=\"nav nav-tabs\">");
+				
+				print("<li><a href=\"directory.php\">Manage Trusts</a></li>");
+				print("<li class=\"active\"><a href=\"positions.php\">Manage Positions</a></li>");
+				print("<li ><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
+				
+			print("</ul>");
+			
 			print("<div class=\"directory\">");
 		
 			if(Users::login(3) || Users::logincheck(3)){
@@ -55,6 +66,15 @@
 			print("</div>");
 		
 		?>
-		
+			<script type="text/javascript" src="js/jquery-sortable.js"></script>
+			<script type="text/javascript" src="js/jquery-draggable.js"></script>
+			
 
+	</div>
 	
+<?
+
+	Templates::PageFooter();
+
+?>
+			

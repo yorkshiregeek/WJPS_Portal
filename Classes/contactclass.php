@@ -354,7 +354,7 @@
         	
         		print("<input type=\"text\" size=\"80\" name=\"searchterm\" value=\"" . $Term . "\"/>");
         		
-        		print("<input style=\"position:relative;left:20px;\"type=\"submit\" name=\"submit\" value=\"Search\"/>");
+        		print("<input class = \"btn btn-default\" style=\"position:relative;left:20px;\"type=\"submit\" name=\"submit\" value=\"Search\"/>");
         	
         	print("</form>");
         }

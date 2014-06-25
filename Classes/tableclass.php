@@ -11,7 +11,8 @@
         
         static public function generateadmintable($ID,$Cols,$Rows)
         {
-            print("<table class=\"admintable table table-hover\" id=\"" . $ID . "\">\n");
+            print("<table class=\"table table-hover sorted_table\" id=\"" . $ID . "\">\n");
+            print("<tbody>");
                 print("<tr>\n");
                 foreach($Cols as $Col)
                 {
@@ -31,7 +32,23 @@
                     }
                     print("</tr>\n");
                 }
+                print("</tbody>\n");
             print("</table>\n");
+        }
+
+        static public function generateadminsorttable($ID, $Cols, $Rows)
+        {
+            ?>
+<ul id="sortable">
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+</ul>
+        <?
         }
         
         static public function generateemailtable($ID,$Rows)
