@@ -80,9 +80,9 @@
         {
     		//Normal
     		
-    		print("<p>The list below shows all the positions in the system.</p>");
+    		print("<p>The list below shows all the positions in the system. To reorder the positions simply drag and drop a row to the desired position.</p>");
     		
-    		print("<p><a href='positions.php?pid=-1'><img src=\"Images/user_add.png\" alt=\"Add New Position\"/>Add New Position</a></p>");
+    		print("<p><a href='positions.php?pid=-1'><span class=\"glyphicon glyphicon-plus\" alt= \"Add New Position\" ></span> Add New Position</a></p>");
         		
         	$RQ = new ReadQuery("SELECT PositionIDLNK FROM Positions WHERE Deleted = 0 ORDER BY DisplayOrder");
         	
@@ -97,19 +97,9 @@
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Position = new Positions($row["PositionIDLNK"]);
         		$Row1 = array($Position->getposition()," ");
-        		if($RowCounter == 0){
-        			$Row2 = array(" "," ");
-        		} else {
-        			$Row2 = array("<a href=\"?pid=" . $Position->getid() . "&amp;dir=up\"><img src=\"Images/arrow_up.png\" alt=\"Move Up\"></a>" ," ");
-        		}
         		
-        		if($RowCounter == $RQ->getnumberofresults() - 1){
-        			$Row3 = array(" "," ");
-        		} else {
-        			$Row3 = array("<a href=\"?pid=" . $Position->getid() . "&amp;dir=down\"><img src=\"Images/arrow_down.png\" alt=\"Move Down\"></a>" ," ");
-        		}
-        		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><img src=\"Images/user_edit.png\" alt=\"Edit Position\"/></a>","button");
-        		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><img src=\"Images/user_delete.png\" alt=\"Delete User\"/></a>","button");
+        		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt= \"Edit Position\" ></span></a>","button");
+        		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt= \"Delete User\" ></span></a>","button");
         		//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
         		
         		$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);

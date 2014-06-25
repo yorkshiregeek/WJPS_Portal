@@ -82,7 +82,7 @@
         		$Counter ++;
         	}
         	
-        	print_r($CatArray);
+        	//print_r($CatArray);
         	
         	return $CatArray;
         }
