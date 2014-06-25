@@ -4,6 +4,7 @@
 
 	
 	define("SITENAME", "Association of Teaching Hospital Pharmacists");
+	define("SITENAMESUB", "NHS Trusts");
 	define("SHORTNAME" , "ATHP");
 
 	define("COPYRIGHT", "&copy; ATHP 2014");

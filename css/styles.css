@@ -1,43 +1,8 @@
-body{
-	text-align:centre;
-	border:0;
-	padding:0;
-	margin:0;
-	font-family:Arial, Helvetica;
-}
 
-h1{
-	border:0;
-	padding:0;
-	margin:0;
-	font-size:22px;
-	color:#000000;
-}
-
-h2{
-	border:0;
-	padding:0;
-	margin:0;
-	font-size:14px;
+h2, h3{
+	
 	color:#08ae42;
-}
-
-h3{
-	border:0;
-	padding:0;
-	margin:0;
-	font-size:12px;
-	color:#08ae42;
-}
-
-
-p{
-	border:0;
-	padding:5px 0px 5px 0px;
-	margin:0;
-	color:#000000;
-	font-size:12px;
-	line-height:14px;
+	
 }
 
 p.error{
@@ -52,14 +17,6 @@ hr{
 
 hr.minibreak{
 	height: 1px;
-}
-
-
-ul{
-	color:#000000;
-	font-size:12px;
-	line-height:14px;
-	font-family:verdana;
 }
 
 a{
@@ -85,27 +42,6 @@ img.right{
 	padding: 5px 10px 5px 10px;
 }
 
-input{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
-select{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
-textarea{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
 #page{
 	border:0;
 	padding:0;
@@ -116,58 +52,28 @@ textarea{
 	text-align:left;
 }
 
-#header{
-	padding:0px;
-	margin:10px 0px 0px 0px;
-	position:relative;
-	height:77px;
-	width: 900px;
-	background: url(../Images/ATHP.gif) no-repeat 0% 10%;
+#header
+{
+	height:130px;
+}
+
+#header h2{
+	position: relative;
+	top:-20px;
 }
 
 #header #logo{
 	height:77px;
 	position: relative;
-	left: 800px;
+	float:right;
+	width:100px;
+	top:-100px;
 	background: url(../Images/PharmacyCross.gif) no-repeat 0% 10%;
 }
+ #menu ul{
+ 	padding-top: 30px;
+ }
 
-#menu{
-	float:left;
-	border:0;
-	padding:0 0 0 10px;
-	margin:0;
-	width:212px;
-}
-
-#menu ul li{
-	color: #000000;
-	list-style-image: url(../Images/Arrow.gif);
-}
-
-#menu ul li a{
-	color:  #000000;
-	text-decoration: none;
-}
-
-#menu ul li.selected a{
-	font-weight: bold;
-	color: #08ae42;
-}
-
-#menu ul li a:hover{
-	color:#08ae42;
-}
-
-#content{
-	position:relative;
-	border:0;
-	padding:0 15px 15px 15px;
-	margin:0;
-	width:645px;
-	height:auto;
-	float:left;
-}
 
 #content dl{
 	font-size: 12px;
@@ -178,18 +84,10 @@ textarea{
 	font-weight: bold;
 }
 
-label{
-	color:#08ae42;
-	font-weight: bold;
-}
-
 #content dl dd ul{
 	padding: 0 0 0 15px;
 }
 
-#content dl dd ul li{
-	list-style-image: url(../Images/Arrow.gif);
-}
 
 #content dl dd dl dt{
 	color: #000000;
@@ -213,7 +111,7 @@ label{
 
 #content ul li{
 	color: #000000;
-	list-style-image: url(../Images/Arrow.gif);
+	/*list-style-image: url(../Images/Arrow.gif);*/
 }
 
 #content ul li.col2{
@@ -232,52 +130,6 @@ label{
 	padding-bottom: 12px;
 }
 
-
-#content form{
-	padding: 10px;
-}
-
-#content form.adminform{
-	padding-left: 20px;
-	width: 200px;
-}
-
-#content form.adminform dl dd{
-	position: relative;
-	top: -20px;
-	left: 60px;
-}
-
-#content form#changepasswordform dl dd{
-	position: relative;
-	top: -20px;
-	left: 120px;
-}
-
-#content form.adminform #submit{
-	position: relative;
-	left: 250px;
-}
-
-#content form#labsform #submit{
-	position: relative;
-	left: 450px;
-}
-
-#content form#groupsform #submit{
-	position: relative;
-	left: 450px;
-}
-
-#content form#sectionsform #submit{
-	position:  relative;
-	left:  450px;
-}
-
-#content form#documentsform #submit{
-	position:  relative;
-	left:  450px;
-}
 
 #content table.admintable th{
 	background: #08ae42;
@@ -377,17 +229,11 @@ label{
 	padding-left: 10px;
 }
 
-#footer{
-	clear:both;
-	width:900px;
-	position:relative;
+#footer{	
 	height:40px;
 	color:#999999;
 	font-size:8px;
-}
-
-#footer hr{
-	background: #999999;
+	border-top: 1px solid #eee;
 }
 
 
@@ -465,7 +311,10 @@ div.padcontent{
 }
 
 p.wjps{
-	padding: 20px 0px 0px 825px;
+	position: relative;
+	top:10px;
+	float:right;
+	clear:both;
 }
 
 #selectnoticecategoryTitle{
@@ -562,4 +411,84 @@ table.messagetable tr td.deletebtn{
 
 
 
+
+/* Style changes for draggable table rows/
+ol.nav li, ol.nav li a {
+  cursor: pointer; }
+/* line 66, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+ol.nav .divider-vertical {
+  cursor: default; }
+/* line 69, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+ol.nav li.dragged {
+  background-color: #2c2c2c; }
+/* line 71, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+ol.nav li.placeholder {
+  position: relative; }
+  /* line 73, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+  ol.nav li.placeholder:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: red;
+    top: -6px;
+    margin-left: -5px;
+    border-bottom: none; }
+/* line 84, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+ol.nav ol.dropdown-menu li.placeholder:before {
+  border: 5px solid transparent;
+  border-left-color: red;
+  margin-top: -5px;
+  margin-left: none;
+  top: 0;
+  left: 10px;
+  border-right: none; }
+
+/* line 94, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_table tr {
+  cursor: pointer; }
+/* line 96, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_table tr.placeholder {
+  display: block;
+  background: red;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none; }
+  /* line 103, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+  .sorted_table tr.placeholder:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-left-color: red;
+    margin-top: -5px;
+    left: -5px;
+    border-right: none; }
+
+/* line 114, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_head th {
+  cursor: pointer; }
+/* line 116, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+.sorted_head th.placeholder {
+  display: block;
+  background: red;
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0; }
+  /* line 124, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */
+  .sorted_head th.placeholder:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: red;
+    top: -6px;
+    margin-left: -5px;
+    border-bottom: none; }
 

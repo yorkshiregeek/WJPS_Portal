@@ -3,73 +3,38 @@
 	session_start();
 
 	include_once("Classes/classes.php");
-	include_once("Classes/trustclass.php");
-	include_once("Classes/siteclass.php");
+	include_once("Classes/directoryclass.php")
 	include_once("Classes/positionsclass.php");
-	include_once("Classes/contactclass.php");
 	
 	$Scripts[0] = "Script/DirectoryScript.js";
-	$Scripts[1] = "js/jquery-draggable.js";  	
-	
 
 	
-	Templates::PageHeader("Directory",$Scripts);
 
-	if(Users::logincheck(1) > 0){
+	<div class='col-md-10' id='content'>
 		
+	$TID = $_GET["tid"];
+	$STID = $_GET["stid"]; 
+	$SID = $_GET["sid"];
+	$CTID = $_GET["ctid"];
+	$CID = $_GET["cid"];  				
+	$AID = $_GET["aid"];
+	$MID = $_GET["mid"];
+		
+	//AID
+	//EDIT = 5
+	//DELETE = 10
+	
+	if(Users::login(1) || Users::logincheck(1)){
+		//DocumentAdmin	
 		$UID = Users::logincheck(1);
 		
 		$User = new Users($UID);
 		
 		if($User->getuserlevel() >= 2){
-			Menu::generateadminmenu("directory");
-		} else {
-			Menu::generateusermenu("directory");
-		}
-	 	} else {
- 		Menu::generatemenu("login");
- 	}
- 	
-?>
-    		
-    		    		
-<div class='col-md-10' id='content'>
-
-	<hr/>
-	
-	<? 
-	
-		$TID = $_GET["tid"];
-		$STID = $_GET["stid"]; 
-		$SID = $_GET["sid"];
-		$CTID = $_GET["ctid"];
-		$CID = $_GET["cid"];  				
-		$AID = $_GET["aid"];
-		$MID = $_GET["mid"];
-		
-		//AID
-		//EDIT = 5
-		//DELETE = 10
-	
-		if(Users::login(1) || Users::logincheck(1)){
-			//DocumentAdmin	
-			$UID = Users::logincheck(1);
-		
-			$User = new Users($UID);
-		
-			if($User->getuserlevel() >= 2){
 			
-				Print("<h1>Directory Admin</h1>");
+			Print("<h1>Directory Admin</h1>");
 			
 				if($TID){
-				
-					print("<ul class=\"nav nav-tabs\">");
-						
-						print("<li class=\"active\"><a href=\"directory.php\">Manage Trusts</a></li>");
-						print("<li><a href=\"positions.php\">Manage Positions</a></li>");
-						print("<li ><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
-						
-					print("</ul>");
 					
 					print("<div class=\"directory\">");
 				
@@ -87,17 +52,17 @@
 					}
 					
 					$Trust = new Trusts($lTID);
-
-					print("<ul class=\"nav nav-tabs\">");
+					
+					print("<ul class=\"tabs\">");
 						if($MID==0){
 							print("<li><a href=\"directory.php\">Manage Trusts</a></li>");
-							print("<li class=\"active\"><a href=\"?mid=0&amp;stid=" . $lTID . "\">Manage Sites</a></li>");
+							print("<li class=\"selected\"><a href=\"?mid=0&amp;stid=" . $lTID . "\">Manage Sites</a></li>");
 							print("<li><a href=\"?mid=1&amp;ctid=" . $lTID . "\">Manage Contacts</a></li>");
 							print("<li><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 						} else if($MID==1){
 							print("<li><a href=\"directory.php\">Manage Trusts</a></li>");
 							print("<li><a href=\"?mid=0&amp;stid=" . $lTID . "\">Manage Sites</a></li>");
-							print("<li class=\"active\"><a href=\"?mid=1&amp;ctid=" . $lTID . "\">Manage Contacts</a></li>");
+							print("<li class=\"selected\"><a href=\"?mid=1&amp;ctid=" . $lTID . "\">Manage Contacts</a></li>");
 							print("<li><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 						}
 					print("</ul>");
@@ -139,11 +104,11 @@
 				
 					if($AID == 1){
 						//Search
-						print("<ul class=\"nav nav-tabs\">");
+						print("<ul class=\"tabs\">");
 							
 							print("<li><a href=\"directory.php\">Manage Trusts</a></li>");
 							print("<li><a href=\"positions.php\">Manage Positions</a></li>");
-							print("<li class=\"active\"><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
+							print("<li class=\"selected\"><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 							
 						print("</ul>");
 						
@@ -154,11 +119,10 @@
 						print("</div>");
 						
 					} else {
-						//Trusts
-
-						print("<ul class=\"nav nav-tabs\">");
+						//Trsuts
+						print("<ul class=\"tabs\">");
 							
-								print("<li class=\"active\"><a href=\"directory.php\">Manage Trusts</a></li>");
+								print("<li class=\"selected\"><a href=\"directory.php\">Manage Trusts</a></li>");
 								print("<li><a href=\"positions.php\">Manage Positions</a></li>");
 								print("<li ><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 							
@@ -188,16 +152,16 @@
 					
 					$Trust = new Trusts($TID);
 					
-					print("<ul class=\"nav nav-tabs\">");
+					print("<ul class=\"tabs\">");
 						if($MID==0){
 							print("<li><a href=\"directory.php\">View Trusts</a></li>");
-							print("<li class=\"active\"><a href=\"?mid=0&amp;tid=" . $TID . "\">View Sites</a></li>");
+							print("<li class=\"selected\"><a href=\"?mid=0&amp;tid=" . $TID . "\">View Sites</a></li>");
 							print("<li><a href=\"?mid=1&amp;tid=" . $TID . "\">View Contacts</a></li>");
 							print("<li><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 						} else if($MID==1){
 							print("<li><a href=\"directory.php\">View Trusts</a></li>");
 							print("<li><a href=\"?mid=0&amp;tid=" . $TID . "\">View Sites</a></li>");
-							print("<li class=\"active\"><a href=\"?mid=1&amp;tid=" . $TID . "\">View Contacts</a></li>");
+							print("<li class=\"selected\"><a href=\"?mid=1&amp;tid=" . $TID . "\">View Contacts</a></li>");
 							print("<li><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 						}
 					print("</ul>");
@@ -228,10 +192,10 @@
 				
 					if($AID == 1){
 						//Search
-						print("<ul class=\"nav nav-tabs\">");
+						print("<ul class=\"tabs\">");
 							
 							print("<li><a href=\"directory.php\">View Trusts</a></li>");
-							print("<li class=\"active\"><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
+							print("<li class=\"selected\"><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 							
 						print("</ul>");
 						
@@ -239,9 +203,9 @@
 						
 					} else {
 						//Trsuts
-						print("<ul class=\"nav nav-tabs\">");
+						print("<ul class=\"tabs\">");
 							
-								print("<li class=\"active\"><a href=\"directory.php\">View Trusts</a></li>");
+								print("<li class=\"selected\"><a href=\"directory.php\">View Trusts</a></li>");
 								print("<li ><a href=\"directory.php?aid=1\">Search Contacts</a></li>");
 							
 						print("</ul>");
@@ -253,15 +217,12 @@
 				}
 			
 			}
+			
+			
+	
+	print("</div>");
 		
-		} 
-		  			
-	?>
-<script type="text/javascript" src="js/jquery-draggable.js"></script>
-</div>
-    	
-<?
-
-	Templates::PageFooter();
-
 ?>
+		
+
+	

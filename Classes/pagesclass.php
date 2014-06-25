@@ -1,16 +1,16 @@
 <?php
 
-    class Messages
+    class Pages
     {
     
         //Class Varibles
         var $c_ID;
         var $c_Title;
-        var $c_Message;
+        var $c_Content;
         var $c_ParentID;
-        var $c_DateAdded;
-        var $c_TimeAdded;
-        var $c_PostedBy;
+        var $c_Updated;
+        var $c_UpdatedBy;
+        var $c_URL;
         var $c_Deleted;
         
         function getid()
@@ -28,14 +28,14 @@
             return $this->c_Title;
         }
         
-        function setmessage($Val)
+        function setcontent($Val)
         {
-        	$this->c_Message = $Val;
+        	$this->c_Content = $Val;
         }
         
-        function getmessage()
+        function getcontent()
         {
-        	return $this->c_Message;
+        	return $this->c_Content;
         }
         
         function setparentid($Val)
@@ -48,34 +48,34 @@
         	return $this->c_ParentID;
         }
         
-        function setdateadded($Val)
+        function setupdated($Val)
         {
-            $this->c_DateAdded = $Val;
+            $this->c_Updated = $Val;
         }
         
-        function getdateadded()
+        function getupdated()
         {
-            return $this->c_DateAdded;
+            return $this->c_Updated;
         }
         
-        function settimeadded($Val)
+		function setupdatedby($Val)
         {
-        	$this->c_TimeAdded = $Val;
+            $this->c_UpdatedBy = $Val;
         }
         
-        function gettimeadded()
+        function getupdatedby()
         {
-        	return $this->c_TimeAdded;
+            return $this->c_UpdatedBy;
         }
 
-		function setpostedby($Val)
+        function seturl($Val)
         {
-            $this->c_PostedBy = $Val;
+            $this->c_URL = $Val;
         }
         
-        function getpostedby()
+        function geturl()
         {
-            return $this->c_PostedBy;
+            return $this->c_URL;
         }
                
         function setdeleted($Val)
@@ -88,89 +88,20 @@
             return $this->c_Deleted;
         }
         
-        function getcategorys()
-        {
-        	$RQ = new ReadQuery("SELECT CategoryIDLNK FROM MessagesCategorys WHERE MessageIDLNK = " . $this->getid() . " AND Deleted = 0;");
-        	
-        	//echo($RQ->getquery());
-        
-        	$Counter = 0;
-        	
-        	//$Cats = new array;
-        	
-        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
-        		
-                $CatArray[$Counter] = $row["CategoryIDLNK"];
-        		
-        		$Counter ++;
-        	}
-        	
-        	//print_r($CatArray);
-        	
-        	return $CatArray;
-        }
-        
-        function getcategorysbydesc()
-        {
-        	$CategorysArray = $this->getcategorys();
-        	
-        	if($CategorysArray != ""){
-        	
-	        	$Cats = "";
-	        	
-	        	foreach($CategorysArray as $Cat)
-	        	{
-	        		$CatObj = new UserCategory($Cat);
-	        		$Cats .= ", " . $CatObj->gettitle();
-	        	}
-        	
-        	}
-        	
-        	return substr($Cats,1);
-        }
-        
-        function getcategorysbyid()
-        {
-        	$CategorysArray = $this->getcategorys();
-        	
-        	if($CategorysArray != ""){
-        	
-	        	$Cats = "";
-	        	
-	        	foreach($CategorysArray as $Cat)
-	        	{
-	        		$CatObj = new UserCategory($Cat);
-	        		$Cats = ", " . $CatObj->getid();
-	        	}
-        	
-        	}
-        	
-        	return substr($Cats,1);
-        }
-        
-        function getnumreplies(){
-        	$RQ = new ReadQuery("SELECT COUNT(*) FROM Messages WHERE ParentIDLNK = " . $this->getid() . " AND Deleted = 0;");
-        	
-        	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
-        	
-        	return $row[0];
-        }
-
-        
         //Connection Constructor
         function __construct($ID)
         {
             if($ID > 0){
                 //Load Using ID
-                $RQ = new ReadQuery("SELECT * FROM Messages WHERE IDLNK = " . $ID . ";");
+                $RQ = new ReadQuery("SELECT * FROM Pages WHERE IDLNK = " . $ID . ";");
                 $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
-                $this->c_Message = $row["Message"];
+                $this->c_Message = $row["Content"];
                 $this->c_ParentID = $row["ParentIDLNK"];
-                $this->c_DateAdded = new DateClass("",$row["DateAdded"],"","","");
-                $this->c_TimeAdded = $row["TimeAdded"];
-                $this->c_PostedBy = new Users($row["PostedByIDLNK"]);
+                $this->c_Updated = new DateClass("",$row["Updated"],"","","");
+                $this->c_UpdatedBy = new Users($row["UpdatedByIDLNK"]);
+                $this->c_URL = $row["URL"];
                 $this->c_Deleted = $row["Deleted"];
             }else{
                 //Create New
@@ -180,192 +111,51 @@
         
         function savenew()
         {
-        	$DA = $this->getdateadded();
-        	$PB = $this->getpostedby();
-        	$WQ = new WriteQuery("INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . $this->getmessage() . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "','" . $this->gettimeadded() . "'," . $PB->getid() . ", 0)");
-        	//echo($WQ->getquery());
-        	//echo($WQ->getquery());
+        	$DA = $this->getupdated();
+        	$UB= $this->getupdateby();
+        	$WQ = new WriteQuery("INSERT INTO Pages (Title, Content, ParentIDLNK, Updated, UpdatedByIDLNK, URL, Deleted) VALUES ('" . $this->gettitle() .  "', '" . $this->getcontent() . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "'," . $UB->getid() . ",'" . $this->geturl() . "' 0)");
             $this->c_ID -> insert_id;
-
-
         }
         
         function save()
         {
         	$DA = $this->getdateadded();
-        	$PB = $this->getpostedby();
-        	//echo($this->gettitle());
-            $WQ = new WriteQuery("UPDATE Messages SET Title = '" . $this->gettitle() . "', Message = '" . $this->getmessage() . "', ParentIDLNK = " . $this->getparentid() . ", DateAdded = '" . $DA->getdatabasedate() . "', TimeAdded = '" . $this->gettimeadded() . "', PostedByIDLNK = " . $PB->getid() . ", Deleted = " . $this->getdeleted() . " WHERE IDLNK = " . $this->getid() . ";");
-			//echo($WQ->getquery());
+        	$UB = $this->getpostedby();
+            $WQ = new WriteQuery("UPDATE Pages SET Title = '" . $this->gettitle() . "', Content = '" . $this->getmessage() . "', ParentIDLNK = " . $this->getparentid() . ", Updated = '" . $DA->getdatabasedate() . "', UpdatedByIDLNK = " . $UB->getid() . ", URL = '" . $this->geturl() . "', Deleted = " . $this->getdeleted() . " WHERE IDLNK = " . $this->getid() . ";");
+			
         }
         
-        static private function generatemessage($MessageID, $Header, $Email)
+        static public function showpage($PageID)
         {
-        	$Mess = new Messages($MessageID);
-        	
-        	if($Header){
-        	
-        		$Message .= "<h2>" . $Mess->gettitle() . "</h2>";
-        	
-        		$Message .= "<p>This message has been posted to the following categories " . $Mess->getcategorysbydesc() . "</p>";
-        	
-        	}
-        	
-        	$Message .= "<table class=\"messagetable\">";
-	    		$Message .= "<tr >";
-	    			$Message .= "<td colspan=3>" . nl2br($Mess->getmessage()) . "</td>";
-	    		$Message .= "</tr>";
-	    		$Message .= "<tr>";
-	    			$Message .= "<td class=\"header\">Posted by:</td><td class=\"headerinfo\">" . $Mess->getpostedby()->getfullname() . " " . $Mess->getdateadded()->getnormaldate() . " " . $Mess->gettimeadded() . "</td>";
-	    			
-	    			$User = new Users($_SESSION["userid"]);
-	    			
-	    			//echo($Email)
-	    			
-	    			if($Email == true){
-	    				$Message .= "<td>&nbsp;</td>";
-	    			} else {
-		    			if(($Mess->getpostedby()->getid() == $_SESSION["userid"] && !$Header) || ($User->getuserlevel() > 1)){
-		    				$Message .= "<td class=\"deletebtn\"><a alt = \"Delete\" onclick=\"confirmdialog('Delete Reply posted on " . $Mess->getdateadded()->getnormaldate() . "', '?mid=". $Mess->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a></td>";
-		    			} else {
-		    				$Message .= "<td>&nbsp;</td>";
-		    			}
-	    			}
-	    		$Message .= "</tr>";
-	    	$Message .= "</table>";
-	    	
-	    	$Message .= "<hr class=\"minibreak\"/>";
-        			
-        	return $Message;
-        }
-        
-        static private function generatemessagethread($StartID,$Email){
-        
-         
-        	$Message =Messages::generatemessage($StartID,true,$Email);
-        	
-        	$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE ParentIDLNK = " . $StartID . " AND Deleted = 0 ORDER BY DateAdded, TimeAdded");
-        	
-        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
-        		//$Categorys .= "," . $row["CategoryIDLNK"];
-        		$Message .= Messages::generatemessage($row["IDLNK"],false,$Email);
-        	}
-      	
-        	return $Message;
-        				
-        	//print("<p>Return to the <a href=\"messages.php\">Messages List</a></p>");
+        	$Page = new Page($ID);
 
+            print("<h1>" . $Page->gettitle() . "</h1>");
+
+            print($Page->getcontent());
         }
         
-        static public function showmessage($MessageID)
+        static public function pagesmenu()
         {
-        	print(Messages::generatemessagethread($MessageID,false));
-        	
-        	//Form for Reply goes here.
-        	$MessageField = array("Reply:","TextArea","message",85,7,$Message);
-        	$ThreadField = array("ThreadID:","Hidden","thredid",0,0,$MessageID);
-        	
-        	$ReplyError = array("replyerror","Please enter a Reply.");
-        	
-        	$Errors = array($ReplyError); 
-        	
-        	Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
-
-        	$Fields = array($MessageField,$ThreadField);
-        	
-        	$Button = "Add Reply";
-        				
-        	Forms::generateform("messageform","messages.php?mid=-1", "return checkreplyform(this)",false,$Fields,$Button);
-
-        
-        	//print(Messages::generatemessagethread($MessageID));
-        	
-        	print("<p>Return to <a href=\"messages.php\">Messages Index</a></p>");
-        }
-        
-        static public function listall()
-        {
-     		//Normal     		
-     		print("<h2>Messages</h2>");
-				
-			print("<p>The list below shows all messages you have been sent. If you were the author of the message you can edit and delete the message.</p>");
-			
-			print("<p><a href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span> Add New Message</a></p>");
-			
-			
-			//echo($RQ->getquery());
-			
-			$Col1 = array("Message","noticetitle",1);
-			$Col11 = array("Replies","replies",1);
-			$Col2 = array("Date Added","documents",1);
-			$Col3 = array("Posted By","postedby",1);
-			$Col4 = array("","operations", 1);
-            $Cols = array($Col1,$Col11,$Col2,$Col3,$Col4);
-            $Rows = array();
-            $RowCounter = 0;
-            
-            $RQ0 = new ReadQuery("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
-
-            //echo("SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . " AND Deleted = 0;");
-			
-
-			while($row = $RQ0->getresults()->fetch_array(MYSQLI_BOTH)){
-				$Categorys .= "," . $row["CategoryIDLNK"];
-			}
-			
-			$RQ1 = new ReadQuery("SELECT MessageIDLNK FROM MessagesCategorys WHERE CategoryIDLNK IN (" . substr($Categorys,1) . ")");
-			
-			if($RQ1->getnumberofresults() != 0){
-			
-			
-				while($row = $RQ1->getresults()->fetch_array(MYSQLI_BOTH)){
-					$Messages .= "," . $row["MessageIDLNK"];
-				}
-				
-				$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE IDLNK IN (" . substr($Messages,1) . ") AND Deleted = 0 ORDER BY DateAdded DESC");
-            
-				while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
-					$Message = new Messages($row["IDLNK"]);
-					$DA = $Message->getdateadded();
-					$Row1 = array("<span class=\"title\"><a href=\"?mid=" . $Message->getid() . "\">" . $Message->gettitle() . "</a></span>"," ");
-					$Row11 = array($Message->getnumreplies(),"");
-					$Row2 = array($DA->getnormaldate(),"");	
-					$Row3 = array($Message->getpostedby()->getfullname()," ");
-					
-					if($Message->getpostedby()->getid() == 	 $_SESSION["userid"]){
-						$Row4 = array("<a alt = \"Delete\" onclick=\"confirmdialog('Delete Message " . $Message->gettitle() . "', '?mid=". $Message->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a>","button");
-					} else {
-						$Row4 = array(""," ");
-					}
-							
-					$Rows[$RowCounter] = array($Row1,$Row11,$Row2,$Row3,$Row4);
-	                $RowCounter ++;
-					
-				}
-			
-			}
-			
-			Tables::generateadmintable("messagestable",$Cols,$Rows);
-        
+     		//This will display the page menu
         }
 
         
         static public function listadmin()
         {
      		//Normal
-     		print("<h2>Messages</h2>");
+     		print("<h2>Pages</h2>");
 				
-			print("<p>The list below shows all messages.</p>");
+			print("<p>The list below shows all pages.</p>");
 			
-			print("<p><a alt = \" Add New Message\"href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span>Add New Message</a></p>");
+			print("<p><a alt = \" Add New Page\"href='pages.php?pid=-1'><span class=\"glyphicon glyphicon-envelope\"></span>Add New Page</a></p>");
 							
-			$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE Deleted = 0 ORDER BY DateAdded");
+			$RQ = new ReadQuery("SELECT IDLNK FROM Pages HERE Deleted = 0 ORDER BY ParentIDLNK");
 			
 			//echo($RQ->getquery());
 			
-			$Col1 = array("Message","noticetitle",1);
-			$Col2 = array("Date Added","documents",1);
-			$Col3 = array("Posted By","postedby",1);
+			$Col1 = array("Page","pagetitle",1);
+			$Col2 = array("Date Updated","pageupdated",1);
+			$Col3 = array("Updated by","updatedby",1);
             $Col4 = array("","operations", 1);
             $Cols = array($Col1,$Col2,$Col3,$Col4);
             $Rows = array();

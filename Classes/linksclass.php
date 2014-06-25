@@ -112,9 +112,6 @@
         static public function showall()
         {
 
-
-        	print("<h2>Links</h2>");
-        
         	print("<p>Some useful links to other websites are given below. Please let us know (using the contact form) if you experience problems with any of these, or if there are any other links you would like including on this site.</p>");
 
         	$RQ = new ReadQuery("SELECT IDLNK FROM Links WHERE Deleted = 0 ORDER BY Title");

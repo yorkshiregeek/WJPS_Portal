@@ -415,13 +415,13 @@
         	
         	$UserCategoryArray = UserCategory::generatearray();
         	
-        	$UsernameField = array("Username:","Text","username",30,0,$Username,"","",!$Add);
-            $FirstnameField = array("Firstname:","Text","firstname",30,0,$Firstname);
-            $SurnameField = array("Surname:","Text","surname",30,0,$Surname);
-            $EmailField = array("Email Address:","Text","email",30,0,$Email);
-            $HospitalField = array("Hospital:","Text","hospital",30,0,$Hospital);
-            $UserLevelField = array("User Level:","Select","userlevel",0,0,$UserLevel,$UserLevelArray);
-            $UserCategoryField = array("User Category:","CheckboxArray","usercategory",0,0,$UserCategory,$UserCategoryArray);
+        	$UsernameField = array("Username","Text","username",30,0,$Username,"","",!$Add);
+            $FirstnameField = array("Firstname","Text","firstname",30,0,$Firstname);
+            $SurnameField = array("Surname","Text","surname",30,0,$Surname);
+            $EmailField = array("Email","Text","email",30,0,$Email);
+            $HospitalField = array("Hospital","Text","hospital",30,0,$Hospital);
+            $UserLevelField = array("User Level","Select","userlevel",0,0,$UserLevel,'',$UserLevelArray);
+            $UserCategoryField = array("User Category","CheckboxArray","usercategory",0,0,$UserCategory,'',$UserCategoryArray);
             
 			$UserIDField = array("","Hidden","id",0,0,$UserID);
 			
@@ -551,7 +551,7 @@
         			return true;
         		} else {
         			//Wrong Combination
-        			print("<h2>Login</h2>");
+        			
         			echo("<p>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         			    			
         			$Errors = array($LoginError,$UsernameError,$PasswordError);
@@ -562,7 +562,7 @@
         			return false;
         		}
         	} else {
-        		print("<h2>Login</h2>");
+        		
         		echo("<p>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         	
         		$Errors = array($UsernameError,$PasswordError);
@@ -620,8 +620,8 @@
         
         static private function loginform()
         {	
-        	$UsernameField = array("Username:","Text","username",30,0,'','Enter your username.');
-        	$PasswordField = array("Password:","Password","password",30,0);
+        	$UsernameField = array("Username","Text","username",30,0,'','Enter your username.');
+        	$PasswordField = array("Password","Password","password",30,0,'','Enter your password.');
         	
         	$Fields = array($UsernameField,$PasswordField);
         	
@@ -631,7 +631,7 @@
         	
         	Forms::generateform("LoginForm",$Page,"return checkloginform(this)",false,$Fields,$Button,$Errors);
         	
-        	print("<p><a href=\"forgottenpassword.php\">Forgotten Password</a></p>");
+        	print("<h4><a href=\"forgottenpassword.php\">Forgotten Password</a></h4>");
         	
         	print("<p>If you require access to this site please contact <a href=\"mailton:" . DEFAULTEMAIL . "\">" . DEFAULTEMAIL . "</a> requesting access.</p>");
         }
@@ -682,9 +682,9 @@
         }
         
         static private function changepasswordform(){
-        	$OldPasswordField = array("Current Password:","Password","old",30,0);
-        	$NewPasswordField = array("New Password:","Password","password",30,0);
-        	$NewPassword2Field = array("Repeat New Password:","Password","password2",30,0);
+        	$OldPasswordField = array("Current Password","Password","old",30,0);
+        	$NewPasswordField = array("New Password","Password","password",30,0);
+        	$NewPassword2Field = array("Repeat New Password","Password","password2",30,0);
         	
         	$Fields = array($OldPasswordField,$NewPasswordField,$NewPassword2Field);
         	
