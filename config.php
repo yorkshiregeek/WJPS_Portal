@@ -4,6 +4,7 @@
 
 	
 	define("SITENAME", "Association of Teaching Hospital Pharmacists");
+	define("SITENAMESUB", "NHS Trusts");
 	define("SHORTNAME" , "ATHP");
 
 	define("COPYRIGHT", "&copy; ATHP 2014");
@@ -23,7 +24,7 @@
 	define("METAREVISED","WJPS 10/10/10");
 
 	define("DBSERVER","localhost");
-	define("DBNAME","portal");
+	define("DBNAME","ATHP");
 	define("DBUSER","root");
 	define("DBPASS","root");
 

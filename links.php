@@ -11,31 +11,12 @@
 	    	
 	$Admin = $_GET["man"];
 
-	if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			if($Admin){
-				Menu::generateadminmenu("linksm");
-			} else {
-				Menu::generateadminmenu("links");
-			}
-		} else {
-			Menu::generateusermenu("links");
-		}
-	 	} else {
- 		Menu::generatemenu("links");
- 	}
+	
  	
 ?>
     		
-	<div id="content">
+	<div class='col-md-10' id='content'>
 	
-		<hr/>
-    			
 		<?
 		
 			$LID = $_GET["lid"];
@@ -54,8 +35,7 @@
 				
 				if($User->getuserlevel() >= 2){
 					
-						print("<h1>Links Admin</h1>");
-						//print("<h2>Links</h2>");
+						print("<h2 class='page-header'>Links Admin</h2>");
 						
 						if($LID){
 							if($AID){
@@ -86,7 +66,7 @@
 					
 				} else {
 					//Show All
-					print("<h1>" . SITENAME . " Links</h1>");
+					print("<h2 class='page-header'>Links</h1>");
 					
 					
 					Links::showall();
@@ -94,7 +74,7 @@
 		
 			} else {
 				//Show All
-					print("<h1>" . SITENAME . " Links</h1>");
+					print("<h2 class='page-header'>Links</h1>");
 					
 					
 					Links::showall();
@@ -104,6 +84,25 @@
 	</div>
 
 <?
+
+if(Users::logincheck(1) > 0){
+		
+		$UID = Users::logincheck(1);
+		
+		$User = new Users($UID);
+		
+		if($User->getuserlevel() >= 2){
+			if($Admin){
+				Menu::generateadminmenu("linksm");
+			} else {
+				Menu::generateadminmenu("links");
+			}
+		} else {
+			Menu::generateusermenu("links");
+		}
+	 	} else {
+ 		Menu::generatemenu("links");
+ 	}
 
 	Templates::PageFooter();
 

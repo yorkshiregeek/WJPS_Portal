@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 	text-align:centre;
 	border:0;
@@ -22,23 +23,13 @@ h2{
 	font-size: 1.3em;
 	color:#08ae42;
 }
+=======
+>>>>>>> FETCH_HEAD
 
-h3{
-	border:0;
-	padding:0;
-	margin:0;
-	font-size:12px;
+h2, h3{
+	
 	color:#08ae42;
-}
-
-
-p{
-	border:0;
-	padding:5px 0px 5px 0px;
-	margin:0;
-	color:#000000;
-	font-size:12px;
-	line-height:14px;
+	
 }
 
 p.error{
@@ -53,14 +44,6 @@ hr{
 
 hr.minibreak{
 	height: 1px;
-}
-
-
-ul{
-	color:#000000;
-	font-size:12px;
-	line-height:14px;
-	font-family:verdana;
 }
 
 a{
@@ -86,27 +69,6 @@ img.right{
 	padding: 5px 10px 5px 10px;
 }
 
-input{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
-select{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
-textarea{
-	font-size:12px;
-	line-height:14px;
-	color:#000000;
-	font-family:Arial, Helvetica;
-}
-
 #page{
 	border:0;
 	padding:0;
@@ -117,58 +79,28 @@ textarea{
 	text-align:left;
 }
 
-#header{
-	padding:0px;
-	margin:10px 0px 0px 0px;
-	position:relative;
-	height:77px;
-	width: 900px;
-	background: url(../Images/ATHP.gif) no-repeat 0% 10%;
+#header
+{
+	height:130px;
+}
+
+#header h2{
+	position: relative;
+	top:-20px;
 }
 
 #header #logo{
 	height:77px;
 	position: relative;
-	left: 800px;
+	float:right;
+	width:100px;
+	top:-100px;
 	background: url(../Images/PharmacyCross.gif) no-repeat 0% 10%;
 }
+ #menu ul{
+ 	padding-top: 30px;
+ }
 
-#menu{
-	float:left;
-	border:0;
-	padding:0 0 0 10px;
-	margin:0;
-	width:212px;
-}
-
-#menu ul li{
-	color: #000000;
-	list-style-image: url(../Images/Arrow.gif);
-}
-
-#menu ul li a{
-	color:  #000000;
-	text-decoration: none;
-}
-
-#menu ul li.selected a{
-	font-weight: bold;
-	color: #08ae42;
-}
-
-#menu ul li a:hover{
-	color:#08ae42;
-}
-
-#content{
-	position:relative;
-	border:0;
-	padding:0 15px 15px 15px;
-	margin:0;
-	width:645px;
-	height:auto;
-	float:left;
-}
 
 #content dl{
 	font-size: 12px;
@@ -181,18 +113,10 @@ textarea{
 	font-size: 1.2em;
 }
 
-label{
-	color:#08ae42;
-	font-weight: bold;
-}
-
 #content dl dd ul{
 	padding: 0 0 0 15px;
 }
 
-#content dl dd ul li{
-	list-style-image: url(../Images/Arrow.gif);
-}
 
 #content dl dd dl dt{
 	color: #000000;
@@ -216,7 +140,7 @@ label{
 
 #content ul li{
 	color: #000000;
-	list-style-image: url(../Images/Arrow.gif);
+	/*list-style-image: url(../Images/Arrow.gif);*/
 }
 
 #content ul li.col2{
@@ -235,52 +159,6 @@ label{
 	padding-bottom: 12px;
 }
 
-
-#content form{
-	padding: 10px;
-}
-
-#content form.adminform{
-	padding-left: 20px;
-	width: 200px;
-}
-
-#content form.adminform dl dd{
-	position: relative;
-	top: -20px;
-	left: 60px;
-}
-
-#content form#changepasswordform dl dd{
-	position: relative;
-	top: -20px;
-	left: 120px;
-}
-
-#content form.adminform #submit{
-	position: relative;
-	left: 250px;
-}
-
-#content form#labsform #submit{
-	position: relative;
-	left: 450px;
-}
-
-#content form#groupsform #submit{
-	position: relative;
-	left: 450px;
-}
-
-#content form#sectionsform #submit{
-	position:  relative;
-	left:  450px;
-}
-
-#content form#documentsform #submit{
-	position:  relative;
-	left:  450px;
-}
 
 #content table.admintable th{
 	background: #08ae42;
@@ -380,17 +258,11 @@ label{
 	padding-left: 10px;
 }
 
-#footer{
-	clear:both;
-	width:900px;
-	position:relative;
+#footer{	
 	height:40px;
 	color:#999999;
 	font-size:8px;
-}
-
-#footer hr{
-	background: #999999;
+	border-top: 1px solid #eee;
 }
 
 
@@ -468,7 +340,10 @@ div.padcontent{
 }
 
 p.wjps{
-	padding: 20px 0px 0px 825px;
+	position: relative;
+	top:10px;
+	float:right;
+	clear:both;
 }
 
 #selectnoticecategoryTitle{
