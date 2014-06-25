@@ -9,18 +9,19 @@ $('.sorted_table').sortable({
 
   onDrop: function ($item, container, _super) {
  
-$item.removeClass("dragged").removeAttr("style")
+      $item.removeClass("dragged").removeAttr("style")
       $("body").removeClass("dragging")
+
+
     var obj = jQuery('.sorted_table tr').map(function(){
                 return  jQuery (this).attr("data-id");
             }).get();
           console.log(obj)
            
             $.ajax({
-                url: "Ajax-php/positionupdate.php?Update=" + obj,
+                url: "Ajax-php/positionupdate.php",
                 type: "post",
                 data: {info:obj},
-                //dataType: "json",
                 cache: false,
                 success: function () {}
             });

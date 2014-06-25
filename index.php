@@ -12,7 +12,7 @@
 	Templates::PageHeader("Welcome",$Scripts);    		
 ?>
    
-	<div class='col-md-10' id='content'>
+	<div class='col-md-12' id='content'>
 	
 		<h2 class='page-header'>Welcome</h2>
 		
@@ -45,9 +45,7 @@
 		Menu::generateadminmenu("home");
 	} else if(Users::logincheck(1) > 0){
 		Menu::generateusermenu("home");
-	 	} else {
- 		Menu::generatemenu("home");
- 	} 
+	 	} 
 	
 	Templates::PageFooter();
 	

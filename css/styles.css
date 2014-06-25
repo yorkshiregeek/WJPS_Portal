@@ -233,10 +233,7 @@ img.right{
 	height:40px;
 	color:#999999;
 	font-size:8px;
-}
-
-#footer hr{
-	background: #999999;
+	border-top: 1px solid #eee;
 }
 
 
