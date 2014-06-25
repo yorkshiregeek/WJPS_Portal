@@ -1,35 +1,27 @@
+
 <? 
 
-	session_start();
+	if (session_status() == 0) {
+		session_start();
+	}
+	
 	include_once("Classes/classes.php"); 
 
 	//ini_set('error_reporting',E_ALL);
 	
-	Templates::PageHeader("Welcome",$Scripts);
-
-	if(Users::logincheck(3) > 0){
-		Menu::generateadminmenu("home");
-	} else if(Users::logincheck(1) > 0){
-		Menu::generateusermenu("home");
-	 	} else {
- 		Menu::generatemenu("home");
- 	} 
-    		
+	Templates::PageHeader("Welcome",$Scripts);    		
 ?>
    
-	<div id="content">
+	<div class='col-md-10' id='content'>
 	
-		<hr/>
-	
-		<h1>Association of Teaching Hospital Pharmacists</h1>
-		<h2>Welcome</h2>
+		<h2 class='page-header'>Welcome</h2>
 		
-		<p>The Association of Teaching Hospital Pharmacists website is designed to give members a place to access group documents, events and contact information. To access this information you must first <a href="welcome.php">login</a>.</p>
+		<p class='lead'>The Association of Teaching Hospital Pharmacists website is designed to give members a place to access group documents, events and contact information. To access this information you must first <a href="welcome.php">login</a>.</p>
 		
-		<h2>Association Objectives</h2>
+		<h2 class='page-header'>Association Objectives</h2>
 		
 		<p>The Association of Teaching Hospital Pharmacists objectives:</p>
-		
+
 		<ul>
 		
 			<li>To influence the development of government, NHS, professional leadership and professional regulatory policy.</li>
@@ -48,6 +40,14 @@
 	</div>
 	
 	<?
+
+	if(Users::logincheck(3) > 0){
+		Menu::generateadminmenu("home");
+	} else if(Users::logincheck(1) > 0){
+		Menu::generateusermenu("home");
+	 	} else {
+ 		Menu::generatemenu("home");
+ 	} 
 	
 	Templates::PageFooter();
 	

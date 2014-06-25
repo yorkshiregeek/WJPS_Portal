@@ -39,7 +39,7 @@
             if($OnSubmit){$OnSubmit = " onsubmit='" . $OnSubmit . "'";}
             if($Enc){$Enc = " enctype='multipart/form-data'";}
             
-            print("<form class='form-horizontal' placeholder = '" . $EntryText ."' class='form-group' role='form' name='" . $FormName . "' id='" . $FormName . "' method='post' action='" . $Action . "'" . $OnSubmit . $Enc . ">");
+            print("<form class='form-horizontal' class='form-group' role='form' name='" . $FormName . "' id='" . $FormName . "' method='post' action='" . $Action . "'" . $OnSubmit . $Enc . ">");
                 //print("<dl>");
                     foreach($Fields as $Field)
                     {
@@ -47,7 +47,7 @@
                         {
                              print("<div class='form-group'>");
                                 print("<label for='" . $Field[2] . "' class='col-sm-2 control-label'>" . $Field[0] .  "</label>");
-                                    print("<div class='col-sm-10'>");
+                                    print("<div class='col-sm-8'>");
                         }
                                         forms::generatefield($Field);
 
@@ -58,8 +58,12 @@
                     }
                 //print("</dl>");
                 if($Button){
-                    print("<input type='submit' class='btn btn-default' id='submit' name='submit' value='" . $Button . "'/>");
-                }                 
+                    print("<div class='form-group '>");
+                        print("<div class='col-sm-offset-2 col-sm-8'>");
+                        print("<input type='submit' class='btn btn-default' id='submit' name='submit' value='" . $Button . "'/>");
+                        print("</div>");
+                    print("</div>");
+                }               
             print("</form>");
         }
         
@@ -79,8 +83,9 @@
                     if($Button[2]){
                         $Class= " class='" . $Button[2] . "'";
                     }
+                    print("<div class='form-group'>");
                     print("<input class='form-control' type='submit' id='submit' name='submit' value='" . $Button . "'/>");
-                }
+                }   print("</div>");
             print("</form>");
         }
         

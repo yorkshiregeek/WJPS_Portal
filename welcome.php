@@ -13,19 +13,12 @@
     		
 	$UID = Users::logincheck(0);
 
-	if($UID > 0){    				
-		$User = new Users($UID);
-		$User->getusermenu("welcome"); 
- 	} else {
- 		Menu::generatemenu("login");
- 	}
+	
  	
 ?>    		
-		<div id="content">
-		
-			<hr/>
-    		
-    			<h1>Restricted Area</h1>
+		<div class='col-md-10' id='content'>
+
+    			<h2 class='page-header'>Restricted Area</h2>
 		
 			<?
 			if(Users::login(0)){
@@ -62,6 +55,13 @@
 			
  		</div>
 <?
+
+if($UID > 0){    				
+		$User = new Users($UID);
+		$User->getusermenu("welcome"); 
+ 	} else {
+ 		Menu::generatemenu("login");
+ 	}
 
 	Templates::PageFooter();
 

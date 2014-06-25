@@ -10,7 +10,7 @@
 
 	
 
-	print("<div class=\"directory\">");
+	<div class='col-md-10' id='content'>
 		
 	$TID = $_GET["tid"];
 	$STID = $_GET["stid"]; 
