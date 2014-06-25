@@ -14,6 +14,7 @@
         var $c_Userlevel;
         var $c_UserCategory;
         var $c_Deleted;
+        var $salt ;
         
         function getid()
         {
@@ -30,6 +31,17 @@
             return $this->c_Username;
         }
         
+
+        function setsalt()
+        {
+            $this->salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
+        }
+        
+        function getsalt()
+        {
+            return $this->salt;
+        }
+
         function setpassword($Val)
         {
             $this->c_Password = $Val;
@@ -186,10 +198,22 @@
         function savenew()
         {
         	$UC = $this->getusercategory();
-        	
+            $salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
+            $salt .= $this->getpassword();
+            //echo 'salt - '.$salt;
+            //make password variable equal to salt plus the password the user was given.
+            $password = $salt;
+            //encrypt the password
+            $password = md5($password);
+
+
+
+            //echo 'password encrypted - '. $password; 
         	//Crypt Password
         	//$WQ = new WriteQuery("INSERT INTO Users (Username, Password, Firstname, Surname, Email, Hospital, UserLevel, Deleted) VALUES ('" . $this->getusername() ."','" . Crypt($this->getpassword(),'$1$rasmusle$') . "','" . $this->getfirstname(). "','" . $this->getsurname() . "','" . $this->getemail() . "','" . $this->gethospital() . "'," . $this->getuserlevel() . ",0)");
-        	$WQ = new WriteQuery("INSERT INTO Users (Username, Password, Firstname, Surname, Email, Hospital, UserLevel, Deleted) VALUES ('" . $this->getusername() ."','" . $this->getpassword() . "','" . $this->getfirstname(). "','" . $this->getsurname() . "','" . $this->getemail() . "','" . $this->gethospital() . "'," . $this->getuserlevel() . ",0)");
+        	
+
+            $WQ = new WriteQuery("INSERT INTO Users (Username, Password, Firstname, Surname, Email, Hospital, UserLevel, Deleted) VALUES ('" . $this->getusername() ."','" . $password . "','" . $this->getfirstname(). "','" . $this->getsurname() . "','" . $this->getemail() . "','" . $this->gethospital() . "'," . $this->getuserlevel() . ",0)");
         	
         	//echo($WQ->getquery());
             //$this->setid(mysql_insert_id);
@@ -546,8 +570,11 @@
         		if($LoginStatus > 0){
         			$User = new Users($LoginStatus);
         			$_SESSION["username"] = $User->getusername();
+
         			$_SESSION["password"] = $User->getpassword();
-        			$_SESSION["userid"] = $LoginStatus;
+                    echo "sessionvalue - ". $User->getpassword();
+        			
+                    $_SESSION["userid"] = $LoginStatus;
         			return true;
         		} else {
         			//Wrong Combination
@@ -580,16 +607,28 @@
         	if($_SESSION["username"] && $_SESSION["password"]){
         		$Username = $_SESSION["username"];
         		$Password = $_SESSION["password"];
+            
+
         		$UID = $_SESSION["userid"];	
         		$Submit = true;
         	} else {
         		$Username = $_POST["username"];
-        		//$Password = Crypt($_POST["password"],'$1$rasmusle$');
-        		$Password = $_POST["password"];
+        		//echo $Username;
+                //$Password = Crypt($_POST["password"],'$1$rasmusle$');
+        		//echo $Password;
+                $Password = $_POST["password"];
+
+                $salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
+                $salt .= $Password;
+
+                $Password = $salt;
+                //encrypt the password
+                 $Password = md5($Password);
         	}	
         
         	//Check Username and Password
         	$RQ = new ReadQuery("SELECT IDLNK FROM Users Where Username = '" . $Username . "' AND Password = '" . $Password . "' AND Deleted = 0;");
+
         	
         	//echo($RQ->getquery());
         	
@@ -599,6 +638,7 @@
                 //Updated by JNH to new MYSQLI_ASSOC           
                  
                 $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
+
         		
         		$User = new Users($row["IDLNK"]);
         		
