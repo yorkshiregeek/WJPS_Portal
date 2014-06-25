@@ -28,4 +28,6 @@
 	define("DBUSER","root");
 	define("DBPASS","root");
 
+	define("SALT","sj*&3gs&3hksllas@@*!sbck29HSD")
+
 ?>

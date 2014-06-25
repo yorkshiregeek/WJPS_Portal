@@ -45,6 +45,7 @@
                     {
                         if($Type != "Hidden")
                         {
+
                              print("<div class='form-group'>");
                                 print("<label for='" . $Field[2] . "' class='col-sm-2 control-label'>" . $Field[0] .  "</label>");
                                     print("<div class='col-sm-8'>");
@@ -54,6 +55,7 @@
                         if($Type != "Hidden"){
                                     print("</div>");
                                 print("</div>");
+
                         }
                     }
                 //print("</dl>");
@@ -150,7 +152,9 @@
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='file' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' onchange='" . $Action ."'/>");
             } elseif($Type == "Select") {
                 //Select
+
                 print("<select class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "'>");
+
                     foreach($Options as $Option)
                     {
                         if($Option[0] == $Value){
