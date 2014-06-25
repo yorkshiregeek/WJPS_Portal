@@ -183,7 +183,7 @@
 			"file": "Classes/formsclass.php",
 			"settings":
 			{
-				"buffer_size": 14707,
+				"buffer_size": 14389,
 				"line_ending": "Unix"
 			}
 		},
@@ -191,7 +191,7 @@
 			"file": "Classes/userclass.php",
 			"settings":
 			{
-				"buffer_size": 31707,
+				"buffer_size": 30988,
 				"line_ending": "Unix"
 			}
 		},
@@ -204,10 +204,21 @@
 			}
 		},
 		{
+			"contents": "h2, h3{\n	\n	color:#08ae42;\n	\n}\n\np.error{\n	color: #ff0000;\n}\n\nhr{\n	height: 4px;\n	border: 0px;\n	background: #08ae42;\n}\n\nhr.minibreak{\n	height: 1px;\n}\n\na{\n	color:#08ae42;\n	text-decoration: none;\n}\n\na:hover{\n	text-decoration: none;\n}\n\nimg{\n	border:0;\n}\n\nimg.left{\n	float:left;\n	padding: 5px 10px 5px 10px;\n}\n\nimg.right{\n	float:right;\n	padding: 5px 10px 5px 10px;\n}\n\n#page{\n	border:0;\n	padding:0;\n	margin:0;\n	width:900px;\n	margin:auto;\n	top: 10px;;\n	text-align:left;\n}\n\n#header\n{\n	height:130px;\n}\n\n#header h2{\n	position: relative;\n	top:-20px;\n}\n\n#header #logo{\n	height:77px;\n	position: relative;\n	float:right;\n	width:100px;\n	top:-100px;\n	background: url(../Images/PharmacyCross.gif) no-repeat 0% 10%;\n}\n #menu ul{\n 	padding-top: 30px;\n }\n\n\n#content dl{\n	font-size: 12px;\n}\n\n#content dl dt{\n	color:#08ae42;\n	font-weight: bold;\n	padding: 10px 0 11px 0px;\n	font-size: 1.2em;\n}\n\n#content dl dd ul{\n	padding: 0 0 0 15px;\n}\n\n\n#content dl dd dl dt{\n	color: #000000;\n}\n\n#content dl dd dl dd{\n	padding: 5px 0 10px 0;\n}\n\n#content dl.contacts dt{\n	color:#08ae42;\n	font-weight: normal;\n}\n\n#content dl.contacts dd{\n	padding: 0 0 0 25px;\n	position: relative;\n	top: -10px;\n	line-height: 3px;\n}\n\n#content ul li{\n	color: #000000;\n	/*list-style-image: url(../Images/Arrow.gif);*/\n}\n\n#content ul li.col2{\n	color: #000000;\n	list-style-image: url(../Images/Arrow.gif);\n	position:relative;\n	top: -14px;\n	left: 280px;\n}\n\n#content dl.manulist{\n	padding:5px 10px 5px 40px ;\n}\n\n#content dl.manulist dd{\n	padding-bottom: 12px;\n}\n\n\n#content table.admintable th{\n	background: #08ae42;\n	padding: 5px;\n	color: #ffffff;\n	text-align: center;\n}\n\n#content table.admintable th.username{\n	width: 110px;\n}\n\n#content table.admintable th.fullname{\n	width: 110px;\n}\n\n#content table.admintable th.hospital{\n	width: 200px;\n}\n\n#content table.admintable th.userlevel{\n	width: 90px;\n}\n\n#content table.admintable th.groupname{\n	width: 400px;\n}\n\n#content table.admintable th.sectionname{\n	width: 470px;\n}\n\n#content table.admintable th.noticetitle{\n	width: 425px;\n}\n\n#content table.admintable th.postedby{\n	width: 100px;\n}\n\n#content table.admintable th.sections{\n	width: 70px;\n}\n\n#content table.admintable td.sections{\n	width: 70px;\n	text-align: center;\n	vertical-align: middle;\n}\n\n#content table.admintable th.documents{\n	width: 70px;\n}\n\n#content table.admintable td.documents{\n	width: 70px;\n	text-align: center;\n	vertical-align: middle;\n}\n\n#content table.admintable th.trustname{\n	width:340px;\n}\n\n#content table.admintable td.middle{\n	text-align: center;\n}\n\n\n\n#content table.admintable th.sitename{\n	width:340px;\n}\n\n#content table.admintable th.contactname{\n	width:150px;\n}\n\n#content table.admintable th.position{\n	width:200px;\n}\n\n#content table.admintable th.phone{\n	width:100px\n}\n\n\n\n\n\n#content table.admintable td span.title{\n\n	font-weight: bold;\n}\n\n#content table.admintable td span.content{\n	padding-left: 10px;\n}\n\n#footer{	\n	height:40px;\n	color:#999999;\n	font-size:8px;\n	border-top: 1px solid #eee;\n}\n\n\n#footer ul{\n	border:0;\n	padding:0;\n	margin:0;\n	list-style-type: none;\n	float:left;\n	text-align:right;\n}\n\n#footer ul li{\n	border:0;\n	padding:0 2px 0 2px;\n	margin:0;\n	display: inline;\n	color:#999999;\n}\n\n#footer ul li a{\n	font-size: 10px;\n}\n\n\n#footer p.copyright{\n	top:0px;\n	right:0px;\n	position:relative;\n	float:right;\n	font-size: 10px;\n	color:#999999;\n}\n\n#errors{\n	width: 645px;\n	border: #ff0000 solid 1px;\n	padding: 5px;\n	color: #ff0000;\n	display: none;\n}\n\n#errors p.title{\n	font-weight: bold;\n	color: #ff0000;\n}\n\n#errors ul li{\n	color: #ff0000;\n}\n\n#errorsshow{\n	width: 645px;\n	border: #ff0000 solid 1px;\n	padding: 5px;\n	color: #ff0000;\n}\n\n#errorsshow p.title{\n	font-weight: bold;\n	color: #ff0000;\n}\n\n#errorsshow ul li{\n	color: #ff0000;\n	display: none;\n}\n\n#errorsshow ul li#defaulterror{\n	display: list-item;\n}\n\ndiv.padcontent{\n	padding-left: 20px;\n}\n\np.wjps{\n	position: relative;\n	top:10px;\n	float:right;\n	clear:both;\n}\n\n#selectnoticecategoryTitle{\n	display: none;\n}\n\n#selectnoticecategoryField{\n	display: none;\n}\n\ndt.yeardivider{\n	font-size: 15px;\n}\n\ndt.monthdivider{\n	font-size: 13px;\n}\n\ndd#event{\n	padding: 50px;\n}\n\nul.tabs{\n	border-bottom: 1px solid #08ae42;\n	padding: 5px 5px 0px 5px;\n	margin: 0px;\n	float: left;\n}\n\nul.tabs li{\n	display: inline-block;\n	float: left;\n	background:#ffffff;\n	color: #08ae42;\n	padding: 5px;\n	width: 120px;\n	border: 1px solid #08ae42;\n	border-bottom: 0px;\n	margin-right: 5px;\n	box-sizing: initial;\n}\n\nul.tabs li a{\n	color: #08ae42;\n	font-weight: bold;\n}\n\nul.tabs li.selected{\n	background: #08ae42;\n}\n\nul.tabs li.selected a{\n	color: #ffffff;\n	font-weight: bold;\n}\n\ndiv.directory{\n	position: relative;\n	top: 5px;\n	clear: both;\n}\n\ndl.contactdetails{\n	padding: 5px 5px 5px 20px\n}\n\ndl.contactdetails dd{\n	position:relative;\n	top:-14px;\n	left:40px;\n}\n\ntable.messagetable{\n	padding: 10px;\n	font-size: 12px;\n	width: 680px;\n}\n\ntable.messagetable tr td.header{\n	font-weight: bold;\n	width: 100px;\n	height: 30px;\n	vertical-align: bottom;\n}\n\ntable.messagetable tr td.headerinfo{\n	vertical-align: bottom;\n}\n\ntable.messagetable tr td.deletebtn{\n	width: 50px;\n	align: right;\n}\n\n\n\n\n/* Style changes for draggable table rows/\nol.nav li, ol.nav li a {\n  cursor: pointer; }\n/* line 66, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\nol.nav .divider-vertical {\n  cursor: default; }\n/* line 69, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\nol.nav li.dragged {\n  background-color: #2c2c2c; }\n/* line 71, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\nol.nav li.placeholder {\n  position: relative; }\n  /* line 73, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n  ol.nav li.placeholder:before {\n    content: \"\";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border: 5px solid transparent;\n    border-top-color: red;\n    top: -6px;\n    margin-left: -5px;\n    border-bottom: none; }\n/* line 84, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\nol.nav ol.dropdown-menu li.placeholder:before {\n  border: 5px solid transparent;\n  border-left-color: red;\n  margin-top: -5px;\n  margin-left: none;\n  top: 0;\n  left: 10px;\n  border-right: none; }\n\n/* line 94, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n.sorted_table tr {\n  cursor: pointer; }\n/* line 96, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n.sorted_table tr.placeholder {\n  display: block;\n  background: red;\n  position: relative;\n  margin: 0;\n  padding: 0;\n  border: none; }\n  /* line 103, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n  .sorted_table tr.placeholder:before {\n    content: \"\";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border: 5px solid transparent;\n    border-left-color: red;\n    margin-top: -5px;\n    left: -5px;\n    border-right: none; }\n\n/* line 114, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n.sorted_head th {\n  cursor: pointer; }\n/* line 116, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n.sorted_head th.placeholder {\n  display: block;\n  background: red;\n  position: relative;\n  width: 0;\n  height: 0;\n  margin: 0;\n  padding: 0; }\n  /* line 124, /Users/jonasvonandrian/jquery-sortable/source/css/application.css.sass */\n  .sorted_head th.placeholder:before {\n    content: \"\";\n    position: absolute;\n    width: 0;\n    height: 0;\n    border: 5px solid transparent;\n    border-top-color: red;\n    top: -6px;\n    margin-left: -5px;\n    border-bottom: none; }\n\n",
 			"file": "css/styles.css",
+			"file_size": 7809,
+			"file_write_time": 130481748460000000,
 			"settings":
 			{
-				"buffer_size": 7809,
+				"buffer_size": 7504,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/positionsclass.php",
+			"settings":
+			{
+				"buffer_size": 10039,
 				"line_ending": "Unix"
 			}
 		},
@@ -318,7 +329,7 @@
 	"groups":
 	[
 		{
-			"selected": 22,
+			"selected": 23,
 			"sheets":
 			[
 				{
@@ -344,11 +355,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 1503.0,
+						"translation.x": 16.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -377,7 +388,7 @@
 						"translation.y": 174.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
@@ -406,7 +417,7 @@
 						"translation.y": 232.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
@@ -435,7 +446,7 @@
 						"translation.y": 621.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -465,7 +476,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -494,7 +505,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -523,7 +534,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
@@ -549,10 +560,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 181.0,
+						"translation.y": 183.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -574,13 +585,15 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 441.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -609,7 +622,7 @@
 						"translation.y": 221.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -638,7 +651,7 @@
 						"translation.y": 41.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -667,7 +680,7 @@
 						"translation.y": 89.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
@@ -696,7 +709,7 @@
 						"translation.y": 4.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -723,10 +736,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 12.0,
-						"translation.y": 1618.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -755,7 +768,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
@@ -784,7 +797,7 @@
 						"translation.y": 273.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
@@ -811,10 +824,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 32.0,
-						"translation.y": 4.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -843,7 +856,7 @@
 						"translation.y": 221.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
@@ -869,10 +882,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 1.0,
-						"translation.y": 266.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
@@ -901,7 +914,7 @@
 						"translation.y": 329.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
@@ -910,45 +923,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14707,
+						"buffer_size": 14389,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2310,
-								2310
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 144.0,
-						"translation.y": 641.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "Classes/userclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 31707,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								22436,
-								22436
+								7740,
+								7740
 							]
 						],
 						"settings":
@@ -958,10 +941,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3819.0,
+						"translation.y": 3786.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "Classes/userclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 30988,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15487,
+								15487
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 184.0,
+						"translation.y": 6405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -991,7 +1004,7 @@
 						"translation.y": 264.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1000,15 +1013,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7809,
+						"buffer_size": 7504,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2904,
-								2904
+								132,
+								132
 							]
 						],
 						"settings":
@@ -1017,14 +1030,42 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4413.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 24,
+					"file": "Classes/positionsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3486,
+								3486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 1.0,
+						"translation.y": 4461.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
 					"file": "css/bootstrap.css",
 					"semi_transient": false,
 					"settings":
@@ -1050,11 +1091,11 @@
 						"translation.y": 53113.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 26,
 					"file": "config.php",
 					"semi_transient": false,
 					"settings":
@@ -1079,11 +1120,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 27,
 					"file": "Classes/pagesclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1109,7 +1150,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 27,
 					"type": "text"
 				}
 			]
