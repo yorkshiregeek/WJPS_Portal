@@ -45,13 +45,7 @@
                     {
                         if($Type != "Hidden")
                         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            print("<dt class=\"\" id=\"" . $Field[2] . "Title\">" . $Field[0] . "</dt>");
-=======
-=======
 
->>>>>>> FETCH_HEAD
                              print("<div class='form-group'>");
                                 print("<label for='" . $Field[2] . "' class='col-sm-2 control-label'>" . $Field[0] .  "</label>");
                                     print("<div class='col-sm-8'>");
@@ -61,11 +55,7 @@
                         if($Type != "Hidden"){
                                     print("</div>");
                                 print("</div>");
-<<<<<<< HEAD
->>>>>>> FETCH_HEAD
-=======
 
->>>>>>> FETCH_HEAD
                         }
                     }
                 //print("</dl>");
@@ -162,17 +152,8 @@
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='file' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' onchange='" . $Action ."'/>");
             } elseif($Type == "Select") {
                 //Select
-<<<<<<< HEAD
-<<<<<<< HEAD
-                print("<dd id=\"" . $Name . "Field\" class= \"" . $Class . " \"><select name=\"" . $Name . "\" id=\"" . $Name . "\">");
-=======
-                print("<select class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "'>");
->>>>>>> FETCH_HEAD
-=======
-
                 print("<select class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "'>");
 
->>>>>>> FETCH_HEAD
                     foreach($Options as $Option)
                     {
                         if($Option[0] == $Value){
