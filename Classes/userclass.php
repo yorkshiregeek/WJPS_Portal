@@ -438,6 +438,7 @@
         	$UserLevelArray = array(array(3,"Global Admin"),array(2,"Document Admin"),array(1,"User"));
         	
         	$UserCategoryArray = UserCategory::generatearray();
+<<<<<<< HEAD
         	
 <<<<<<< HEAD
         	$UsernameField = array("Username:","Text","username",30,0,$Username,"Enter username","","",!$Add);
@@ -449,12 +450,22 @@
             $UserCategoryField = array("User Category:","CheckboxArray","usercategory",0,0,$UserCategory,"",$UserCategoryArray);
 =======
         	$UsernameField = array("Username","Text","username",30,0,$Username,"","",!$Add);
+=======
+
+        	$UsernameField = array("Username","Text","username",30,0,$Username,"",!$Add);
+>>>>>>> FETCH_HEAD
             $FirstnameField = array("Firstname","Text","firstname",30,0,$Firstname);
             $SurnameField = array("Surname","Text","surname",30,0,$Surname);
             $EmailField = array("Email","Text","email",30,0,$Email);
             $HospitalField = array("Hospital","Text","hospital",30,0,$Hospital);
+<<<<<<< HEAD
             $UserLevelField = array("User Level","Select","userlevel",0,0,$UserLevel,'',$UserLevelArray);
             $UserCategoryField = array("User Category","CheckboxArray","usercategory",0,0,$UserCategory,'',$UserCategoryArray);
+>>>>>>> FETCH_HEAD
+=======
+            $UserLevelField = array("User Level","Select","userlevel",0,0,$UserLevel,"",$UserLevelArray);
+            $UserCategoryField = array("User Category","CheckboxArray","usercategory",0,0,$UserCategory,"",$UserCategoryArray);
+
 >>>>>>> FETCH_HEAD
             
 			$UserIDField = array("","Hidden","id",0,0,$UserID);
