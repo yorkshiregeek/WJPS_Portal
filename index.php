@@ -15,6 +15,9 @@
 	<div class='col-md-12' id='content'>
 	
 		<h2 class='page-header'>Welcome</h2>
+		<?
+	Users::encryptpass()
+?>	
 		
 		<p class='lead'>The Association of Teaching Hospital Pharmacists website is designed to give members a place to access group documents, events and contact information. To access this information you must first <a href="welcome.php">login</a>.</p>
 		
@@ -38,7 +41,7 @@
 		
 		</ul>
 	</div>
-	
+
 	<?
 
 	if(Users::logincheck(3) > 0){

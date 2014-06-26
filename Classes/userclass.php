@@ -14,7 +14,7 @@
         var $c_Userlevel;
         var $c_UserCategory;
         var $c_Deleted;
-        var $salt ;
+        var $salt;
         
         function getid()
         {
@@ -29,17 +29,6 @@
         function getusername()
         {
             return $this->c_Username;
-        }
-        
-
-        function setsalt()
-        {
-            $this->salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
-        }
-        
-        function getsalt()
-        {
-            return $this->salt;
         }
 
         function setpassword($Val)
@@ -574,7 +563,7 @@
         			$_SESSION["username"] = $User->getusername();
 
         			$_SESSION["password"] = $User->getpassword();
-                    echo "sessionvalue - ". $User->getpassword();
+                   // echo "sessionvalue - ". $User->getpassword();
         			
                     $_SESSION["userid"] = $LoginStatus;
         			return true;
@@ -620,7 +609,7 @@
         		//echo $Password;
                 $Password = $_POST["password"];
 
-                $salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
+                $salt = SALT;
                 $salt .= $Password;
 
                 $Password = $salt;
@@ -682,7 +671,28 @@
         static public function changepassword(){
         	$Submit = $_POST["submit"];
         	$OldPassword = $_POST["old"];
+
+            //Sprinkle some salt and encrypt for old password entered
+            $salt = SALT ;
+            //Append old password entered onto salt
+            $salt .= $OldPassword;
+            //Update OldPassword variable to combined salt and password
+            $OldPassword = $salt;
+            //Encrypt Oldpassword for checking against current held password
+            $OldPassword = md5($OldPassword);
+
+
+
         	$NewPassword = $_POST["password"];
+            //Sprinkle some salt and encrypt for new password entered
+            $salt = SALT;
+            //append new password to salt variable
+            $salt .= $NewPassword;
+            //Update NewPassword to comboned salt plus password
+            $NewPassword = $salt;
+            //Encrypt combined password 
+            $NewPassword = md5($NewPassword);
+
         	
         	$OldError = array("oldpassworderror","Please enter your current password.");
         	$NewError = array("newpassworderror","Please enter your new password.");
@@ -756,6 +766,21 @@
         	print("<p>The Users password has been succesfully reset and sent to them via email.</p>");
         	
         	print("<p><a href=\"users.php\">Return to User Admin</a></p>");
+
+            //Now that the user has been told the current password lets grab the plain text passsword and salt and encrypt
+            // and add to database    
+
+            $salt = SALT;
+
+            $NewPassword = $User->getpassword();
+
+            $salt .= $NewPassword;
+
+            $NewPassword = md5($salt);
+
+            $User->setpassword($NewPassword);
+
+
         }
         
         static public function forgottenpassword(){
@@ -856,8 +881,73 @@
   			return $password;
         	
         }
+         static public function encryptpass()
+        {
+            //Admin Function to update plain text passwords to new Salted Encrypted Version. Only run once.
+            
+            print("<h2>User List Encrypt Password Function</h2>");
+                
+            print("<p>The list below shows all the system users with the new secure encrypted password update.</p>");
+            
+           
+                
+            $RQ = new ReadQuery("SELECT * FROM Users ORDER BY Surname, Firstname");
+            
+           // Setyo Column heading variables for table construction
+
+            $Col1 = array("Firstname","username",1);
+            $Col2 = array("Surname","fullname",1);
+           
+            $Col3 = array("Salted Password","salt",1);
+           
+            $Cols = array($Col1,$Col2,$Col3,$Col4);
+            $Rows = array();
+            $RowCounter = 0;
+            
+    
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                
+                //Sets variables for each effective <td> for table constuction class
+                $Row1 = array($row['Firstname']," ");
+                $Row2 = array($row['Surname']);
+
+                $Password =  $row['Password'];
+                // Grabs salt string from config 
+                $salt = SALT;
+                //Appends current password to salt
+                $salt .= $Password;
+                //Updates Password to combined salt and password
+                $Password = $salt;
+                //encrypt the password
+                 $Password = md5($Password);
+                 //Updates row3 to new salted encrupted password
+
+                 $Row3 = array($Password);
+                // Write Query Updates the Database with newly encrypted password.    
+                $WQ = new WriteQuery("UPDATE Users SET Password = '".$Password . "' WHERE IDLNK =".$row['IDLNK']);
+               
+
+                //merges the table data into an array for all data
+                  $Rows[$RowCounter] = array($Row1,$Row2,$Row3);
+                //Iterates through each row to grab next line.
+                $RowCounter ++;
+
+
+
+
+
+
+            }
+           //Use table class to generate table from while loop
+
+            Tables::generateadmintable("adminusertable",$Cols,$Rows);
+           
+        
+        }
         
         
     }
 
 ?>
+
