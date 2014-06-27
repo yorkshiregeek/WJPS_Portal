@@ -32,7 +32,7 @@
 	//include_once("contactclass.php");
 
 
-	James has added this line.
+	
 
     
 ?>
