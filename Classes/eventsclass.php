@@ -128,7 +128,7 @@
         {
      		//Normal
      		
-     		print("<p>The list below shows all the events in the system.</p>");
+     		print("<p class='lead'>The list below shows all the events in the system.</p>");
      		
      		print("<p><a href='events.php?eid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add Event\"></span> Add New Event</a></p>");
 				
@@ -168,9 +168,9 @@
         	
         	if(!isset($EID)){
         	
-        		print("<h2>Events List</h2>");
+        		//print("<h2>Events List</h2>");
         	
-        		print("<p>Listed below are up and coming events.</p>");
+        		print("<p class='lead'>Listed below are up and coming events.</p>");
         	
 	        	$RQ = new ReadQuery("SELECT IDLNK FROM Events WHERE Deleted = 0 ORDER BY EventDate, EventTime DESC, Title");
 	        	
@@ -306,7 +306,7 @@
 	         
 	        if($EID > 0){
 	            //Edit
-	            print("<h2>Edit Event</h2>");
+	            //print("<h2>Edit Event</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -324,13 +324,13 @@
 					
 					Events::generatenotice($SendNotice,$NewEvent,$NoticeCategorys,0);
 					
-					print("<p>The event has been succesfully edited.</p>");
+					print("<p class='lead'>The event has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='events.php'>Events Admin</a>.</p>");
 											       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Event complete the form below. Once you have completed it click the Edit Event button.</p>");
+	                print("<p class='lead'>To Edit the Event complete the form below. Once you have completed it click the Edit Event button.</p>");
 	                
 	                $Errors = array($TitleError,$DetailsError,$LocationError,$EventDateError,$EventTimeError,$DurationError,$EventDateFormatError,$EventTimeFormatError);
         			
@@ -342,7 +342,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Event</h2>");
+	            //print("<h2>Add New Event</h2>");
 
 	            if($Submit){
 	                //Add
@@ -360,13 +360,13 @@
 					
 					Events::generatenotice($SendNotice,$NewEvent,$NoticeCategorys,0);							
 				
-					print("<p>The new event has been added to the system succesfully.</p>");
+					print("<p class='lead'>The new event has been added to the system succesfully.</p>");
 				
 					print("<p>Return to <a href='events.php'>Events Admin</a>.</p>");
 			
 				} else {
 	                //Form
-	                print("<p>To Add a New Event complete the form below. Once you have completed it click the Add Event button.</p>");
+	                print("<p class='lead'>To Add a New Event complete the form below. Once you have completed it click the Add Event button.</p>");
 	                
 	                $Errors = array($TitleError,$DetailsError,$LocationError,$EventDateError,$EventTimeError,$DurationError,$EventDateFormatError,$EventTimeFormatError);
         			
@@ -424,14 +424,14 @@
         {
         	$NoticeCategoryArray = UserCategory::generatearray();
         
-        	$TitleField = array("Event Title:","Text","title",65,0,$Title,"","",!$Add);
-        	$DetailsField = array("Details:","TextArea","details",63,10,$Details);
-        	$LocationField = array("Location:","Text","location",65,0,$Location);
-        	$EventDateField = array("Event Date:","Text","eventdate",10,0,$EventDate);
-        	$EventTimeField = array("Event Time:","Text","eventtime",10,0,$EventTime);
-        	$DurationField = array("Duration:","Text","duration",10,0,$Duration);
+        	$TitleField = array("Event Title:","Text","title",65,0,$Title,"Enter the  Event Title.","",!$Add);
+        	$DetailsField = array("Details:","TextArea","details",63,10,$Details,"Enter Event Details.");
+        	$LocationField = array("Location:","Text","location",65,0,$Location,"Enter the Event Location.");
+        	$EventDateField = array("Event Date:","Text","eventdate",10,0,$EventDate,"Enter the Event Date (DD/MM/YYYY).");
+        	$EventTimeField = array("Event Time:","Text","eventtime",10,0,$EventTime,"Enter the Event Time (HH:MM)");
+        	$DurationField = array("Duration:","Text","duration",10,0,$Duration,"Enter the Event Duration");
         	$SendNoticeField = array("Send Notice:","Checkbox","sendnotice",0,0,0,1,"shownoticecategorys(this)");
-        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"",$NoticeCategoryArray);
+        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"","",$NoticeCategoryArray);
         	
         	
         	$Fields = array($TitleField,$DetailsField,$LocationField,$EventDateField,$EventTimeField,$DurationField,$SendNoticeField,$NoticeCategoryField);

@@ -128,6 +128,25 @@
         	
         	return substr($Cats,1);
         }
+
+        function getcategoryslbl()
+        {
+            $CategorysArray = $this->getcategorys();
+            
+            if($CategorysArray != ""){
+            
+                $Cats = "";
+                
+                foreach($CategorysArray as $Cat)
+                {
+                    $CatObj = new UserCategory($Cat);
+                    $Cats .= "<span class='label label-default'>" . $CatObj->gettitle().  "</span> ";                   
+                }
+            
+            }
+
+            return $Cats;
+        }
         
         function getcategorysbyid()
         {
@@ -203,45 +222,39 @@
         {
         	$Mess = new Messages($MessageID);
         	
-        	if($Header){
+        	if($Header)
+            {
+        		print("<div class='panel-heading'><h3 class='panel-title'>" . $Mess->gettitle() . "</h3><h5>" . $Mess->getcategoryslbl() .  "</h5></div>");
+
+                //print("<div class='panel-body'>");
+
+                print("<table class='table'>");
+
+                
+            }
+
+            $User = new Users($_SESSION["userid"]);
+    
+            if(($Mess->getpostedby()->getid() == $_SESSION["userid"] && !$Header) || ($User->getuserlevel() > 1)){
+                $Message .= "<a alt = \"Delete\" onclick=\"confirmdialog('Delete Reply posted on " . $Mess->getdateadded()->getnormaldate() . "', '?mid=". $Mess->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
+            } else {
+                $Message .= "";
+            }
+
+            print("<tr><td><span>" . nl2br($Mess->getmessage()) . "</span><h5><span class='label label-default'>Posted by <strong>" .$Mess->getpostedby()->getfullname(). "</strong> on <strong>" . $Mess->getdateadded()->getnormaldate() . " " . $Mess->gettimeadded() ."</strong>.</span> " . $Message . "</h5></td></tr>");
         	
-        		$Message .= "<h2>" . $Mess->gettitle() . "</h2>";
         	
-        		$Message .= "<p>This message has been posted to the following categories " . $Mess->getcategorysbydesc() . "</p>";
-        	
-        	}
-        	
-        	$Message .= "<table class=\"messagetable\">";
-	    		$Message .= "<tr >";
-	    			$Message .= "<td colspan=3>" . nl2br($Mess->getmessage()) . "</td>";
-	    		$Message .= "</tr>";
-	    		$Message .= "<tr>";
-	    			$Message .= "<td class=\"header\">Posted by:</td><td class=\"headerinfo\">" . $Mess->getpostedby()->getfullname() . " " . $Mess->getdateadded()->getnormaldate() . " " . $Mess->gettimeadded() . "</td>";
-	    			
-	    			$User = new Users($_SESSION["userid"]);
-	    			
-	    			//echo($Email)
-	    			
-	    			if($Email == true){
-	    				$Message .= "<td>&nbsp;</td>";
-	    			} else {
-		    			if(($Mess->getpostedby()->getid() == $_SESSION["userid"] && !$Header) || ($User->getuserlevel() > 1)){
-		    				$Message .= "<td class=\"deletebtn\"><a alt = \"Delete\" onclick=\"confirmdialog('Delete Reply posted on " . $Mess->getdateadded()->getnormaldate() . "', '?mid=". $Mess->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\"></span></a></td>";
-		    			} else {
-		    				$Message .= "<td>&nbsp;</td>";
-		    			}
-	    			}
-	    		$Message .= "</tr>";
-	    	$Message .= "</table>";
 	    	
-	    	$Message .= "<hr class=\"minibreak\"/>";
-        			
-        	return $Message;
+	    		
+	    	//print("</table>");
+	    	
         }
         
         static private function generatemessagethread($StartID,$Email){
         
          
+            print("<div class='panel panel-default'>");
+
         	$Message =Messages::generatemessage($StartID,true,$Email);
         	
         	$RQ = new ReadQuery("SELECT IDLNK FROM Messages WHERE ParentIDLNK = " . $StartID . " AND Deleted = 0 ORDER BY DateAdded, TimeAdded");
@@ -250,8 +263,10 @@
         		//$Categorys .= "," . $row["CategoryIDLNK"];
         		$Message .= Messages::generatemessage($row["IDLNK"],false,$Email);
         	}
+
+            
       	
-        	return $Message;
+        	//return $Message;
         				
         	//print("<p>Return to the <a href=\"messages.php\">Messages List</a></p>");
 
@@ -259,7 +274,7 @@
         
         static public function showmessage($MessageID)
         {
-        	print(Messages::generatemessagethread($MessageID,false));
+        	Messages::generatemessagethread($MessageID,false);
         	
         	//Form for Reply goes here.
         	$MessageField = array("Reply:","TextArea","message",85,7,$Message);
@@ -274,21 +289,29 @@
         	$Fields = array($MessageField,$ThreadField);
         	
         	$Button = "Add Reply";
+
+            print("<tr><td>");
         				
         	Forms::generateform("messageform","messages.php?mid=-1", "return checkreplyform(this)",false,$Fields,$Button);
+
+            print("<tr><td>");
 
         
         	//print(Messages::generatemessagethread($MessageID));
         	
         	print("<p>Return to <a href=\"messages.php\">Messages Index</a></p>");
+
+            print("</table>");
+
+            print("</div>");
         }
         
         static public function listall()
         {
      		//Normal     		
-     		print("<h2>Messages</h2>");
+     		//print("<h2>Messages</h2>");
 				
-			print("<p>The list below shows all messages you have been sent. If you were the author of the message you can edit and delete the message.</p>");
+			print("<p class='lead'>The list below shows all messages you have been sent. If you were the author of the message you can edit and delete the message.</p>");
 			
 			print("<p><a href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span> Add New Message</a></p>");
 			
@@ -353,9 +376,9 @@
         static public function listadmin()
         {
      		//Normal
-     		print("<h2>Messages</h2>");
+     		//print("<h2>Messages</h2>");
 				
-			print("<p>The list below shows all messages.</p>");
+			print("<p class='lead'>The list below shows all messages.</p>");
 			
 			print("<p><a alt = \" Add New Message\"href='messages.php?mid=-1'><span class=\"glyphicon glyphicon-envelope\"></span>Add New Message</a></p>");
 							
@@ -423,7 +446,7 @@
 				
 				Messages::sendemail($NewMessage->getid());
 									
-				print("<p>The reply has been added to the topic and sent to the chosen user groups successfully.</p>");
+				print("<p class='lead'>The reply has been added to the topic and sent to the chosen user groups successfully.</p>");
 				
 				print("<p>Return to <a href='messages.php'>Messages Admin</a>.</p>");		
 			
@@ -448,7 +471,7 @@
 				$CategoryError = array("categoryerror","please select at least one category.");
 		         
 		        //Add
-	            print("<h2>Add New Message</h2>");
+	            //rint("<h2>Add New Message</h2>");
 	
 	            if($Submit){
 	                //Add
@@ -474,13 +497,13 @@
 					
 					Messages::sendemail($NewMessage->getid());
 										
-					print("<p>The new message has been added to the system and sent to the chossen user groups succesfully.</p>");
+					print("<p class='lead'>The new message has been added to the system and sent to the chossen user groups succesfully.</p>");
 					
 					print("<p>Return to <a href='messages.php'>Messages Admin</a>.</p>");				
 									
 				} else {
 	                //Form
-	                print("<p>To Add a New Message complete the form below. Once you have completed it click the Send Message Button and the Message will be sent to the chosen user groups.</p>");
+	                print("<p class='lead'>To Add a New Message complete the form below. Once you have completed it click the Send Message Button and the Message will be sent to the chosen user groups.</p>");
 	                
 	                $Errors = array($TitleError,$MessageError,$CategoryError);
 	    			

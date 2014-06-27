@@ -32,7 +32,7 @@
 		
 		if($User->getuserlevel() >= 2){
 			
-			Print("<h1>Directory Admin</h1>");
+			Print("<h2 class='page-header'>Directory Admin</h2>");
 			
 				if($TID){
 					

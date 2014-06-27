@@ -20,194 +20,10 @@
 	"buffers":
 	[
 		{
-			"file": "Classes/templateclass.php",
-			"settings":
-			{
-				"buffer_size": 4949,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "messages.php",
-			"settings":
-			{
-				"buffer_size": 1252,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "notices.php",
-			"settings":
-			{
-				"buffer_size": 1466,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "positions.php",
-			"settings":
-			{
-				"buffer_size": 1455,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/jquery-draggable.js",
-			"settings":
-			{
-				"buffer_size": 766,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Ajax-php/positionupdate.php",
-			"settings":
-			{
-				"buffer_size": 298,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "trusts.php",
-			"settings":
-			{
-				"buffer_size": 5630,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "users.php",
-			"settings":
-			{
-				"buffer_size": 809,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "welcome.php",
-			"settings":
-			{
-				"buffer_size": 1341,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.php",
-			"settings":
-			{
-				"buffer_size": 2276,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/classes.php",
-			"settings":
-			{
-				"buffer_size": 960,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "linkm.php",
-			"settings":
-			{
-				"buffer_size": 785,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "links.php",
-			"settings":
-			{
-				"buffer_size": 1672,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/linksclass.php",
-			"settings":
-			{
-				"buffer_size": 8410,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "logout.php",
-			"settings":
-			{
-				"buffer_size": 341,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "changepassword.php",
-			"settings":
-			{
-				"buffer_size": 633,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/menuclass.php",
-			"settings":
-			{
-				"buffer_size": 4710,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "directory.php",
-			"settings":
-			{
-				"buffer_size": 6576,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "documents.php",
-			"settings":
-			{
-				"buffer_size": 2877,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "events.php",
-			"settings":
-			{
-				"buffer_size": 1338,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/formsclass.php",
-			"settings":
-			{
-				"buffer_size": 14961,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/userclass.php",
-			"settings":
-			{
-				"buffer_size": 32110,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "config.php",
 			"settings":
 			{
-				"buffer_size": 830,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Classes/pagesclass.php",
-			"settings":
-			{
-				"buffer_size": 12615,
+				"buffer_size": 825,
 				"line_ending": "Unix"
 			}
 		}
@@ -248,13 +64,36 @@
 	},
 	"file_history":
 	[
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/pagesclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/config.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/userclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/styles.css",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/formsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/events.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/documents.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/directory.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/menuclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/changepassword.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/logout.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/linksclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/links.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/linkm.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/templateclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/messages.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/notices.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/positions.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery-draggable.js",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Ajax-php/positionupdate.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/trusts.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/users.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/welcome.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/index.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/classes.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/bootstrap.css",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/positionsclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/tableclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/styles.css",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/forgottenpassword.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/menuclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/logout.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/style.css",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/messageclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/connectionclass.php",
@@ -297,669 +136,24 @@
 	"groups":
 	[
 		{
-			"selected": 22,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Classes/templateclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3679,
-								3679
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 16.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "messages.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								528,
-								528
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 174.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "notices.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1466,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								525,
-								525
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 232.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "positions.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1455,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								375,
-								375
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 621.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/jquery-draggable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 766,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								560,
-								560
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Ajax-php/positionupdate.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 298,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "trusts.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5630,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								238,
-								238
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "users.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 809,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								396,
-								402
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 183.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "welcome.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								642,
-								642
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 441.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2276,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2242,
-								2242
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 221.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "Classes/classes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 960,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								388,
-								388
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 41.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "linkm.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 785,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								390,
-								390
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 89.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "links.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								280,
-								280
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "Classes/linksclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8410,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3542,
-								3542
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 12.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "logout.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 341,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								204,
-								204
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "changepassword.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 633,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								397,
-								397
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 273.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "Classes/menuclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4710,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								449,
-								471
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 32.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "directory.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6576,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								711,
-								711
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 221.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "documents.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2877,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								736,
-								736
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 1.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "events.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1338,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								675,
-								675
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 329.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "Classes/formsclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14961,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7740,
-								7740
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3786.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "Classes/userclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 32110,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15487,
-								15487
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 184.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
 					"file": "config.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 830,
+						"buffer_size": 825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								115,
-								115
+								190,
+								190
 							]
 						],
 						"settings":
@@ -973,47 +167,7 @@
 					},
 					"stack_index": 0,
 					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "Classes/pagesclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12615,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5771,
-								5771
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 13.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -1034,25 +188,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
-			],
-			[
-				2,
-				0,
-				3,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.825479930192,
-			0.912739965096,
 			1.0
 		],
 		"rows":
@@ -1102,6 +242,15 @@
 	},
 	"settings":
 	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
 		"xdebug":
 		{
 			"restore_index":

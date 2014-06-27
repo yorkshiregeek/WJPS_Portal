@@ -137,10 +137,11 @@
         static public function listall()
         {
      		//Normal
-     		
-     		print("<h2><a href=\"documents.php\">Groups</a></h2>");
+            print("<ol class='breadcrumb'>");
+                print("<li class='active'>Groups</li>");
+            print("</ol>");
 				
-			print("<p>The list below shows all document groups.");
+			print("<p class='lead'>The list below shows all document groups.");
 						
 			$RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 ORDER BY GroupName");
 			
@@ -174,9 +175,11 @@
         {
      		//Normal
      		
-     		print("<h2><a href=\"documents.php\">Groups</a></h2>");
+     		 print("<ol class='breadcrumb'>");
+                print("<li class='active'>Groups</li>");
+            print("</ol>");
 				
-			print("<p>The list below shows all document groups. From this page you can add, edit or delete groups.</p>");
+			print("<p class='lead'>The list below shows all document groups. From this page you can add, edit or delete groups.</p>");
 			
 			print("<p><a href='documents.php?gid=-1'><span class=\"glyphicon glyphicon-plus\"></span> Add New Group</a></p>");
 				
@@ -225,7 +228,7 @@
 	         
 	        if($GID > 0){
 	            //Edit
-	            print("<h2>Edit Group</h2>");
+	            //print("<h2>Edit Group</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -237,12 +240,12 @@
 					
 					$NewGroup->save();
 					
-					print("<p>The group has been succesfully edited.</p>");
+					print("<p class='lead'>The group has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='documents.php'>Groups Admin</a>.</p>");	       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Group complete the form below. Once you have completed it click the Edit Group button.</p>");
+	                print("<p class='lead'>To Edit the Group complete the form below. Once you have completed it click the Edit Group button.</p>");
 	                
 	                $Errors = array($DefaulError,$GroupNameError);
         			
@@ -254,7 +257,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Group</h2>");
+	            //print("<h2>Add New Group</h2>");
 
 	            if($Submit){
 	                //Add
@@ -270,12 +273,12 @@
 											
 						//mkdir($NewGroup->geturl());
 										
-						print("<p>The new group has been added to the system succesfully.</p>");
+						print("<p class='lead'>The new group has been added to the system succesfully.</p>");
 					
 						print("<p>Return to <a href='documents.php'>Groups Admin</a>.</p>");
 	                } else {
 	                	//Group Exists
-	                	print("<p>To Add a New Group complete the form below. Once you have completed it click the Add Group button.</p>");
+	                	print("<p class='lead'>To Add a New Group complete the form below. Once you have completed it click the Add Group button.</p>");
 	                
 	                	$Errors = array($DefaultError,$GroupNameError);
         			
@@ -285,7 +288,7 @@
 	                }
 				} else {
 	                //Form
-	                print("<p>To Add a New Group complete the form below. Once you have completed it click the Add Group button.</p>");
+	                print("<p class='lead'>To Add a New Group complete the form below. Once you have completed it click the Add Group button.</p>");
 	                
 	                $Errors = array($GroupNameError);
         			
@@ -298,8 +301,8 @@
 	     
     	static public function form($Group,$Description,$GID,$Add)
         {
-        	$GroupField = array("Group Name:","Text","group",65,0,$Group);
-        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description);
+        	$GroupField = array("Group Name:","Text","group",65,0,$Group,"Enter a group name.");
+        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a group description.");
         
 			$Fields = array($GroupField,$DescriptionField);
 

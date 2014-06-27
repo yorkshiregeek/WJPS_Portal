@@ -1,9 +1,51 @@
 <?php
 
+    session_start();
+
     class Templates
     {
     
-    	static function PageHeader($PageTitle,$ExtraScripts){
+        static function MetaHeader($PageTitle,$ExtraScripts)
+        {
+        
+        ?>
+            <head>
+                <title> <? print(SITENAME . " :: " . $PageTitle); ?> </title>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <meta name="description" content="<? print(METADESC); ?>"/>
+                <meta name="keywords" content="<? print(METAKEYWORDS); ?>"/>
+                <meta name="revised" content="<? print(METAREVISED); ?>"/>
+                
+                <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+                <link rel="stylesheet" type="text/css" href="css/jquery-sortable.css"/>
+                <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+                <script type="text/javascript" src="Script/Script.js"></script>
+                 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+               <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="js/bootstrap.min.js"></script>
+               
+              
+                
+                <?
+                
+                    if($ExtraScripts != ""){
+                
+                    foreach($ExtraScripts as $Script){
+                    
+                        print("<script type=\"text/javascript\" src=\"" . $Script . "\"></script>\n");
+                    
+                    }
+                    
+                    }
+                
+                ?>
+            </head>
+        <?
+            
+        }
+
+    	static function PageHeader($PageTitle,$ExtraScripts,$Page,$AccessLevelRequired){
     	
     	?>
     		<!DOCTYPE html>
@@ -13,50 +55,37 @@
     		       	
     	    <body>
 
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
+                <header>
+
+                     <?
+
+                        if($Page == "logout"){
+                            Menu::generatemenu("login");
+                        } else {
+
+                            $UID = Users::logincheck($AccessLevelRequired);
+
+                            if($UID > 0){                   
+                                $User = new Users($UID);
+                                $User->getusermenu($Page); 
+                            } else {
+                                Menu::generatemenu("login");
+                            }
+
+                        }
+
+                    ?>
+
+    	           <div class="container" id='header'>
+                        <div id="logo"></div>
+                        <h1><? print(SITENAME); ?></h1>
+                        <h2><? print(SITENAMESUB); ?></h2>
+                        
                     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Welcome</a></li>
-        <li><a href="#">Links</a></li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-    	 
-    	     	<div class="container">
- 
-                    <div class="row">
-                        <div id="header" class="col-md-12 ">
-                            <h1><? print(SITENAME); ?></h1>
-                            <h2><? print(SITENAMESUB); ?></h2>
-                            <div id="logo"></div>
-                        </div>
-  
-                    </div>
+                </header>
                
-            
+                <div class="container">
 
                     <div class="row">
 
@@ -64,50 +93,12 @@
     	<?
     	}
     	
-    	static function MetaHeader($PageTitle,$ExtraScripts)
-    	{
     	
-    	?>
-    		<head>
-    		    <title> <? print(SITENAME . " :: " . $PageTitle); ?> </title>
-    		    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    		    <meta name="description" content="<? print(METADESC); ?>"/>
-    		    <meta name="keywords" content="<? print(METAKEYWORDS); ?>"/>
-    		    <meta name="revised" content="<? print(METAREVISED); ?>"/>
-    		    
-    		    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-                <link rel="stylesheet" type="text/css" href="css/jquery-sortable.css"/>
-                <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-    		    <script type="text/javascript" src="Script/Script.js"></script>
-                 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-               <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
-                <!-- Include all compiled plugins (below), or include individual files as needed -->
-                <script src="js/bootstrap.min.js"></script>
-               
-              
-    		    
-    		    <?
-    		    
-    		    	if($ExtraScripts != ""){
-    		    
-    		    	foreach($ExtraScripts as $Script){
-    		    	
-    		    		print("<script type=\"text/javascript\" src=\"" . $Script . "\"></script>\n");
-    		    	
-    		    	}
-    		    	
-    		    	}
-    		    
-    		    ?>
-    		</head>
-    	<?
-    		
-    	}
     	
     	static function PageFooter(){
     	?>
-            </div>
-                </div>
+            </div><!-- End Row-->
+                </div><!--End Container-->
 
                 <footer>
         		<div class="container" id="footer">

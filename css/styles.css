@@ -8,16 +8,6 @@ p.error{
 	color: #ff0000;
 }
 
-hr{
-	height: 4px;
-	border: 0px;
-	background: #08ae42;
-}
-
-hr.minibreak{
-	height: 1px;
-}
-
 a{
 	color:#08ae42;
 	text-decoration: none;
@@ -51,9 +41,8 @@ img.right{
 	text-align:left;
 }
 
-#header
-{
-	height:130px;
+#header{
+	
 }
 
 #header h2{
@@ -66,7 +55,6 @@ img.right{
 	position: relative;
 	float:right;
 	width:100px;
-	top:-100px;
 	background: url(../Images/PharmacyCross.gif) no-repeat 0% 10%;
 }
  #menu ul{
@@ -270,7 +258,6 @@ img.right{
 }
 
 #errors{
-	width: 645px;
 	border: #ff0000 solid 1px;
 	padding: 5px;
 	color: #ff0000;

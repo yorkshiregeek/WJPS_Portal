@@ -10,37 +10,12 @@
 	$Scripts[0] = "Script/EventsScript.js";
 	
 	
-	Templates::PageHeader("Events",$Scripts);
-
-	$Admin = $_GET["man"];
-
-	if(Users::logincheck(1) > 0){
-	
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			if($Admin){
-				Menu::generateadminmenu("eventsm"); 
-			} else {
-				Menu::generateadminmenu("events");
-			}
-		} else {
-			Menu::generateusermenu("events");
-		}
- 	} else {
- 		Menu::generatemenu("login");
- 	}
+	Templates::PageHeader("Events",$Scripts,"eventsm",1);
     		 	
 ?>    		
     		    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
-	
-		
-		
+	<div class='col-md-12' id='content'>
+
 		<? 
 		
 			if(Users::login(1) || Users::logincheck(1)){
@@ -54,7 +29,7 @@
 			
 				if($User->getuserlevel() >= 2){
 				
-					print("<h1>Events Admin</h1>");
+					print("<h2 class='page-header'>Events Admin</h2>");
 				
     				if($EID && !$AID){
     					Events::addedit($EID);
@@ -69,7 +44,7 @@
 					
 				} else {
 				
-					print("<h1>Events</h1>");
+					print("<h2 class='page-header'>Events</h2>");
 				
 					Events::showall();
 				

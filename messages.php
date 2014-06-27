@@ -7,28 +7,11 @@
 	
 	$Scripts[0] = "Script/MessageScript.js";
 	
-	Templates::PageHeader("Messages",$Scripts);
-	
-	if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			Menu::generateadminmenu("messages");
-		} else {
-			Menu::generateusermenu("messages");
-		}
-	 	} else {
- 		Menu::generatemenu("login");
- 	}
+	Templates::PageHeader("Messages",$Scripts,"messages",1);
  	
 ?>
     		    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
+	<div class='col-md-12' id='content'>
 		
 		<? 
 		
@@ -46,7 +29,7 @@
 			
 				$User = new Users($UID);
 	
-				Print("<h1>Messages</h1>");
+				Print("<h2 class='page-header'>Messages</h2>");
 				
 				if($MID){
 					if($AID){

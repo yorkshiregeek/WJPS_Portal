@@ -118,9 +118,9 @@
      		
      		$Trust = new Trusts($TID);
      		
-     		print("<p>The list below shows all the contacts that are part of " . $Trust->gettrust() . ".</p>");
+     		print("<p class='lead'>The list below shows all the contacts that are part of <strong>" . $Trust->gettrust() . "</strong>.</p>");
      		
-     		print("<p><a href='directory.php?mid=1&amp;cid=-1&amp;ctid=" . $TID . "'><img src=\"Images/building_add.png\" alt=\"Add New Contact\"/>Add New Contact</a></p>");
+     		print("<p><a href='directory.php?mid=1&amp;cid=-1&amp;ctid=" . $TID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Contact</a></p>");
 				
 			$RQ = new ReadQuery("SELECT ContactIDLNK, DisplayOrder FROM Contacts,Positions WHERE TrustIDLNK = " . $TID . " AND Contacts.PositionIDLNK = Positions.PositionIDLNK AND Contacts.Deleted = 0 ORDER BY DisplayOrder");
 			
@@ -135,17 +135,17 @@
             $Rows = array();
             $RowCounter = 0;
 			
-			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
+			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Contact = new Contacts($row[0]);
 				$Position = $Contact->getposition();
 				
-				//echo($Position);
+				//echo("Hello " . $Position);
 				$Row1 = array($Contact->getname()," ");
 				$Row2 = array($Position->getposition()," ");
 				$Row3 = array("<a href=\"mailto:" . $Contact->getemail() . "\">" . $Contact->getemail() . "</a>", " ");
 				$Row4 = array($Contact->gettelephone()," ");
-				$Row5 = array("<a href=\"?mid=1&amp;cid=". $Contact->getid() ."&amp;ctid=" . $TID . "\"><img src=\"Images/user_edit.png\" alt=\"Edit Contact\"/></a>","button");
-				$Row6 = array("<a onclick=\"confirmdialog('Delete Contact " . $Contact->getname() . "', '?mid=1&amp;cid=". $Contact->getid() ."&amp;ctid=" . $TID . "&amp;aid=10');\"><img src=\"Images/user_delete.png\" alt=\"Delete User\"/></a>","button");
+				$Row5 = array("<a href=\"?mid=1&amp;cid=". $Contact->getid() ."&amp;ctid=" . $TID . "\"><span class=\"glyphicon glyphicon-pencil\" alt =\"Edit\" ></a>","button");
+				$Row6 = array("<a onclick=\"confirmdialog('Delete Contact " . $Contact->getname() . "', '?mid=1&amp;cid=". $Contact->getid() ."&amp;ctid=" . $TID . "&amp;aid=10');\"><span alt =\"Delete\" class=\"glyphicon glyphicon-trash\"></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5,$Row6);
                 $RowCounter ++;
@@ -159,7 +159,7 @@
         {
     		$Trust = new Trusts($TID);
     		
-    		print("<p>The list below shows all the contacts that are part of " . $Trust->gettrust() . ".</p>");
+    		print("<p class='lead'>The list below shows all the contacts that are part of <strong>" . $Trust->gettrust() . "</strong>.</p>");
     		
     		$RQ = new ReadQuery("SELECT ContactIDLNK, DisplayOrder FROM Contacts,Positions WHERE TrustIDLNK = " . $TID .  " AND Contacts.PositionIDLNK = Positions.PositionIDLNK AND Contacts.Deleted = 0 ORDER BY DisplayOrder");
     	
@@ -193,11 +193,9 @@
        	static public function outputcontact($CID){
        		$Contact = new Contacts($CID);
        		
-       		print("<h2>" . $Contact->getname() . " - Contact Details</h2>");
-       		
-       		
-       		
-       		print("<dl class=\"contactdetails\">");
+       		print("<p class='lead'>" . $Contact->getname() ."</p>");
+
+       		print("< class=\"contactdetails\">");
        		
        			print("<dt>Trust:</dt><dd><a href=\"?tid=" . $Contact->gettrust()->getid() . "\">" . $Contact->gettrust()->gettrust() . "</a></dd>");
        			print("<dt>Position:</dt><dd>" . $Contact->getposition()->getposition() . "</dd>");
@@ -224,7 +222,7 @@
 					
 	        if($CID > 0){
 	            //Edit
-	            print("<h2>Edit Site</h2>");
+	            //print("<h2>Edit Site</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -239,13 +237,13 @@
 													
 					$NewContact->save();			
 										
-					print("<p>The Contact has been succesfully edited.</p>");
+					print("<p class='lead'>The Contact has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='directory.php?mid=1&amp;ctid=" . $CTID . "'>Directory Admin</a>.</p>");	
 								       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Contact complete the form below. Once you have completed it click the Edit Contact button.</p>");
+	                print("<p class='lead'>To Edit the Contact complete the form below. Once you have completed it click the Edit Contact button.</p>");
 	                
 	                $Errors = array($NameError,$EmailError,$EmailFormatError,$TelephoneError);
         			
@@ -261,7 +259,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Contact</h2>");
+	            //print("<h2>Add New Contact</h2>");
 
 	            if($Submit){
 	                //Add
@@ -276,13 +274,13 @@
 	                								
 	                $NewContact->savenew();				
 	                					
-	                print("<p>The Contact has been succesfully added.</p>");
+	                print("<p class='lead'>The Contact has been succesfully added.</p>");
 	                
 	                print("<p>Return to <a href='directory.php?mid=1&amp;ctid=" . $CTID . "'>Directory Admin</a>.</p>");			
 				} else {
 	                //Form
 	                
-	                print("<p>To Add a new Contact complete the form below. Once you have completed it click the Save Contact button.</p>");
+	                print("<p class='lead'>To Add a new Contact complete the form below. Once you have completed it click the Save Contact button.</p>");
 	                   
 	                $Errors = array($NameError,$EmailError,$EmailFormatError,$TelephoneError);
 	                
@@ -300,10 +298,10 @@
         	$Positions = Positions::generatearray();
         
         	$TrustField = array("Trust:","Static","trustname",0,0,$Trust->gettrust());
-        	$PositionField = array("Position:","Select","position",0,0,$Position,$Positions);
-        	$NameField = array("Name:","Text","name",65,0,$Name);
-        	$EmailField = array("Email:","Text","email",65,0,$Email);
-        	$TelephoneField = array("Telephone:","Text","telephone",65,0,$Telephone);
+        	$PositionField = array("Position:","Select","position",0,0,$Position,"",$Positions);
+        	$NameField = array("Name:","Text","name",65,0,$Name,"Enter the Contacts Name.");
+        	$EmailField = array("Email:","Text","email",65,0,$Email,"Enter the Contacts Email address.");
+        	$TelephoneField = array("Telephone:","Text","telephone",65,0,$Telephone,"Enter the Contacts Email.");
         	        
         	$Fields = array($TrustField,$PositionField,$NameField,$EmailField,$TelephoneField);
             
@@ -332,7 +330,7 @@
         	
         	if($Term){
         		//Perform Search and Results
-        		print("<p>To search the directory, enter the name, or part name of the person you are looking for, into the search box below.</p>");
+        		print("<p class='lead'>To search the directory, enter the name, or part name of the person you are looking for, into the search box below.</p>");
         		Contacts::searchbox($Term);
         		Contacts::results($Term);
         	} else {
@@ -340,7 +338,7 @@
         		if($CID){
         			Contacts::outputcontact($CID);
         		} else {
-        			print("<p>To search the directory, enter the name, or part name of the person you are looking for, into the search box below.</p>");
+        			print("<p class='lead'>To search the directory, enter the name, or part name of the person you are looking for, into the search box below.</p>");
         		
         			Contacts::searchbox(" ");
         		}
@@ -350,13 +348,21 @@
         
         static private function searchbox($Term)
         {
-        	print("<form id=\"searchform\" action=\"directory.php?aid=1\" method=\"post\">");
+
+        	print("<form class=\"form-inline\" id=\"searchform\" action=\"directory.php?aid=1\" method=\"post\" role=\"form\">");
+
+                print("<div class='form-group'>");
         	
-        		print("<input type=\"text\" size=\"80\" name=\"searchterm\" value=\"" . $Term . "\"/>");
+                        print("<label class='sr-only' for='exampleInputEmail2'>Search</label>");
+        		          print("<input placeholder='Enter a name to searh for.' type=\"text\" size=\"80\" name=\"searchterm\" value=\"" . $Term . "\"/>");
         		
-        		print("<input class = \"btn btn-default\" style=\"position:relative;left:20px;\"type=\"submit\" name=\"submit\" value=\"Search\"/>");
+        		print("<input class = \"btn btn-default\" style=\"position:relative;left:20px;\" type=\"submit\" name=\"submit\" value=\"Search\"/>");
         	
+                print("</div>");
+
         	print("</form>");
+
+            print("<p></p>");
         }
         
         static private function results($Term)
@@ -380,8 +386,8 @@
         			
         			//echo($Position);
         			$Row1 = array("<a href=\"?aid=1&amp;cid=". $Contact->getid() . "\">" . $Contact->getname() . "</a>"," ");
-        			$Row3 = array($Contact->gettrust()," ");
-        			$Row2 = array($Position," ");
+        			$Row3 = array($Contact->gettrust()->gettrust()," ");
+        			$Row2 = array($Position->getposition()," ");
         			
         			
         			$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);

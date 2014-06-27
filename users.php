@@ -6,21 +6,19 @@
 	
 	$Scripts[0] = "Script/UserFormScript.js";
 	
-	Templates::PageHeader("User Admin", $Scripts);
+	Templates::PageHeader("User Admin", $Scripts,"users",3);
 	    	
-	if(Users::logincheck(3) > 0){
+	/*if(Users::logincheck(3) > 0){
  		Menu::generateadminmenu("users"); 
  	} else {
  		Menu::generatemenu("login");
- 	}
+ 	}*/
  	
 ?>
     		    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
-	
-		<h1>User Admin</h1>
+	<div class='col-md-12' id='content'>
+
+		<h2 class='page-header'>User Admin</h2>
 		
 		<? 
 		

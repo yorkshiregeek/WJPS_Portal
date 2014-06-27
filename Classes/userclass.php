@@ -228,18 +228,20 @@
         
         function getusermenu($Page)
         {
+            //echo($this->c_UserLevel);
+
         	 switch ($this->c_UserLevel) {
 			    case 1:
 			    	//User Menu
-			        Menu::generateusermenu($Page);
+			        Menu::generateusermenu($Page,$this->c_ID);
 			        break;
 			    case 2:
 			    	//Document Admim Menu
-			    	Menu::generateusermenu($Page);
+			    	Menu::generateusermenu($Page,$this->c_ID);
 			    	break;
 			   	case 3:
 			   		//Global Admin Menu
-			   		Menu::generateadminmenu($Page);
+			   		Menu::generateadminmenu($Page,$this->c_ID);
 			   		break;
 			}
         }
@@ -247,10 +249,8 @@
         static public function listall()
         {
      		//Normal
-     		
-     		print("<h2>User List</h2>");
-				
-			print("<p>The list below shows all the system users. From this page you can add, edit or delete users.</p>");
+     			
+			print("<p class='lead'>The list below shows all the system users. From this page you can add, edit or delete users.</p>");
 			
 			print("<p><a href='users.php?uid=-1'><span class =\"glyphicon glyphicon-plus\" alt=\"Add New User\"/></span> Add New User</a></p>");
 				
@@ -322,7 +322,7 @@
 	         
 	        if($UID > 0){
 	            //Edit
-	            print("<h2>Edit User</h2>");
+	            //print("<h2>Edit User</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -352,12 +352,12 @@
 						//echo($WQ->getquery());
 					}
 					
-	                print("<p>The users details have been succesfully edited.</p>");
+	                print("<p class='lead'>The users details have been succesfully edited.</p>");
 	                
 	                print("<p>Return to <a href=\"users.php\">Users Admin</a></p>");
 	             } else {
 	                //Form
-	                print("<p>To Edit the User complete the form below. Once you have completed it click the Edit User button.</p><p><b>N.B.</b> The Username cannot be changed.</p>");
+	                print("<p class='lead'>To Edit the User complete the form below. Once you have completed it click the Edit User button.</p><p><b>N.B.</b> The Username cannot be changed.</p>");
 	                
 	                $Errors = array($UsernameError,$EmailError,$AddressError);
         			
@@ -369,7 +369,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New User</h2>");
+	            //print("<h2>Add New User</h2>");
 
 	            if($Submit){
 	                //Add
@@ -403,12 +403,12 @@
 					
 						Emails::sendemail($Email,SITENAME . " Website Account",$msg);
 					
-	               		 print("<p>You have succesfully added a new user. The users login details have been emailed to the users email address.</p>");
+	               		 print("<p class='lead'>You have succesfully added a new user. The users login details have been emailed to the users email address.</p>");
 	               		 
 	               		 print("<p>Return to <a href=\"users.php\">Users Admin</a></p>"); 
 					
 					} else {
-						print("<p>To Add a New User complete the form below. Once you have completed it click the Add User button.</p><p><b>N.B.</b> The Username must be unique.</p>");
+						print("<p class='lead'>To Add a New User complete the form below. Once you have completed it click the Add User button.</p><p><b>N.B.</b> The Username must be unique.</p>");
 				
 						//if(!$UsernameNotReg)
 						//	print("<p class=\"error\">A user with this username aready exists.</p>");
@@ -422,7 +422,7 @@
 					}
 				} else {
 	                //Form
-	                print("<p>To Add a New User complete the form below. Once you have completed it click the Add User button.</p><p><b>N.B.</b> The Username must be unique.</p>");
+	                print("<p class='lead'>To Add a New User complete the form below. Once you have completed it click the Add User button.</p><p><b>N.B.</b> The Username must be unique.</p>");
 	                
 	                $Errors = array($UsernameError,$EmailError,$AddressError);
         			
@@ -440,11 +440,11 @@
         	$UserCategoryArray = UserCategory::generatearray();
 
 
-        	$UsernameField = array("Username","Text","username",30,0,$Username,"",!$Add);
-            $FirstnameField = array("Firstname","Text","firstname",30,0,$Firstname);
-            $SurnameField = array("Surname","Text","surname",30,0,$Surname);
-            $EmailField = array("Email","Text","email",30,0,$Email);
-            $HospitalField = array("Hospital","Text","hospital",30,0,$Hospital);
+        	$UsernameField = array("Username","Text","username",30,0,$Username,"Enter username. N.B. This must be unique.","",!$Add);
+            $FirstnameField = array("Firstname","Text","firstname",30,0,$Firstname,"Enter firstname");
+            $SurnameField = array("Surname","Text","surname",30,0,$Surname,"Enter surname");
+            $EmailField = array("Email","Text","email",30,0,$Email,"Enter email address");
+            $HospitalField = array("Hospital","Text","hospital",30,0,$Hospital,"Enter associated hospital");
 
             $UserLevelField = array("User Level","Select","userlevel",0,0,$UserLevel,"",$UserLevelArray);
             $UserCategoryField = array("User Category","CheckboxArray","usercategory",0,0,$UserCategory,"",$UserCategoryArray);
@@ -558,7 +558,7 @@
         	$Submit = $_POST["submit"];
         	$Username = $_POST["username"];
         	$Password = $_POST["password"];
-        	
+
         	$LoginError = array("defaulterror","Your username and password do not match.");
         	$UsernameError = array("usernameerror","Please enter a username");
         	$PasswordError = array("passworderror","Please enter a password");
@@ -574,14 +574,14 @@
         			$_SESSION["username"] = $User->getusername();
 
         			$_SESSION["password"] = $User->getpassword();
-                    echo "sessionvalue - ". $User->getpassword();
+                    //echo "sessionvalue - ". $User->getpassword();
         			
                     $_SESSION["userid"] = $LoginStatus;
         			return true;
         		} else {
         			//Wrong Combination
         			
-        			echo("<p>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
+        			echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         			    			
         			$Errors = array($LoginError,$UsernameError,$PasswordError);
         			
@@ -592,7 +592,7 @@
         		}
         	} else {
         		
-        		echo("<p>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
+        		echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         	
         		$Errors = array($UsernameError,$PasswordError);
         		
@@ -609,15 +609,10 @@
         	if($_SESSION["username"] && $_SESSION["password"]){
         		$Username = $_SESSION["username"];
         		$Password = $_SESSION["password"];
-            
-
         		$UID = $_SESSION["userid"];	
         		$Submit = true;
         	} else {
         		$Username = $_POST["username"];
-        		//echo $Username;
-                //$Password = Crypt($_POST["password"],'$1$rasmusle$');
-        		//echo $Password;
                 $Password = $_POST["password"];
 
                 $salt = 'sj*&3gs&3hksllas@@*!sbck29HSD';
@@ -631,9 +626,6 @@
         	//Check Username and Password
         	$RQ = new ReadQuery("SELECT IDLNK FROM Users Where Username = '" . $Username . "' AND Password = '" . $Password . "' AND Deleted = 0;");
 
-        	
-        	//echo($RQ->getquery());
-        	
         	if($RQ->getnumberofresults() > 0)
         	{
         	
@@ -641,23 +633,16 @@
                  
                 $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
 
-        		
         		$User = new Users($row["IDLNK"]);
         		
         		if($User->getuserlevel() >= $UserLevel){
+    			     //Login	
+    			     return $row["IDLNK"];
+    		    }
+            } 
         	
-    			//Login	
-    			return $row["IDLNK"];
-    			
-    			} else {
-    				//Not an accessible page
-    				return 0;
-    			}
-   
-        	} else {
         		//Not Found
         		return 0;
-        	}
         }
         
         static private function loginform()
@@ -737,7 +722,7 @@
         }
         
         static public function resetpassword($UID){
-        	print("<h2>Reset Password</h2>");
+        	print("<h2 class='page-header'>Reset Password</h2>");
         	
         	$User = new Users($UID);
         	
@@ -759,7 +744,7 @@
         }
         
         static public function forgottenpassword(){
-        	print("<h2>Forgotten Password</h2>");
+        	print("<h2 class='page-header'>Forgotten Password</h2>");
         
         	$Submit = $_POST["submit"];
         	$Email = $_POST["email"];
@@ -778,10 +763,10 @@
 					
 					Emails::sendemail($Email,SITENAME . " Account",$msg);
         			
-        			echo("<p>You login details have been sent to your email address. Please check your email now, althought it may take upto 5 minutes for the details to come through.</p><p>Return to the <a href=\"welcome.php\">login page</a>.</p>");
+        			echo("<p class='lead'>You login details have been sent to your email address. Please check your email now, althought it may take upto 5 minutes for the details to come through.</p><p>Return to the <a href=\"welcome.php\">login page</a>.</p>");
         		} else {
         			//Not Registered
-        			echo("<p>If you have forgotten your password or username then please enter your email address below and your user details will be sent to your email address.</p>");
+        			echo("<p class='lead'>If you have forgotten your password or username then please enter your email address below and your user details will be sent to your email address.</p>");
         			
         			$Errors = array($DefaultError,$EmailError,$AddressErrors);
         			
@@ -813,9 +798,7 @@
         
         static public function logout(){
         	session_destroy();
-        	print("<h2>Logged Out</h2>");
-    		print("<p>You are now logged out</p>");
-    		print("<p><a href=\"index.php\">Click here</a> to return to the homepage.</p>");
+        	
         }
         
         static public function deleteuser($UID){

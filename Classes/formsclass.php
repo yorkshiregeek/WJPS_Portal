@@ -43,7 +43,7 @@
                 //print("<dl>");
                     foreach($Fields as $Field)
                     {
-                        if($Type != "Hidden")
+                        if($Field[1] != "Hidden")
                         {
 
                              print("<div class='form-group'>");
@@ -52,7 +52,7 @@
                         }
                                         forms::generatefield($Field);
 
-                        if($Type != "Hidden"){
+                        if($Field[1] != "Hidden"){
                                     print("</div>");
                                 print("</div>");
 
@@ -62,7 +62,8 @@
                 if($Button){
                     print("<div class='form-group '>");
                         print("<div class='col-sm-offset-2 col-sm-8'>");
-                        print("<input type='submit' class='btn btn-default' id='submit' name='submit' value='" . $Button . "'/>");
+                        print("<input type='submit' class='btn btn-default' id='submit' name='submit' value='" . $Button . "'/>&nbsp;");
+                        print("<a href='?'><input type='button' class='btn btn-default' id='cancel' name='cancel' value='Cancel'/></a>");
                         print("</div>");
                     print("</div>");
                 }               
@@ -143,7 +144,7 @@
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='hidden' name='" . $Name . "' id='" . $Name . "' value='" . $Value . "'\>");
             } elseif($Type == "TextArea") {
                 //Text Area
-                print("<textarea class='form-control' placeholder ='Enter Message Here' name='" . $Name . "' id='" . $Name . "' cols='" . $Cols . "' rows='" . $Rows . "'" . $ReadOnly . ">" . $Value . "</textarea>");
+                print("<textarea class='form-control' placeholder ='" . $EntryText . "' name='" . $Name . "' id='" . $Name . "' cols='" . $Cols . "' rows='" . $Rows . "'" . $ReadOnly . ">" . $Value . "</textarea>");
             } elseif($Type == "File") {
                 //File Input
                 print("<input type='file' class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "'/>");
