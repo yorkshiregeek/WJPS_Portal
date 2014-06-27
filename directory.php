@@ -13,30 +13,13 @@
 	
 
 	
-	Templates::PageHeader("Directory",$Scripts);
-
-	if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			Menu::generateadminmenu("directory");
-		} else {
-			Menu::generateusermenu("directory");
-		}
-	 	} else {
- 		Menu::generatemenu("login");
- 	}
+	Templates::PageHeader("Directory",$Scripts,"directory",1);
  	
 ?>
     		
     		    		
-<div class='col-md-10' id='content'>
+<div class='col-md-12' id='content'>
 
-	<hr/>
-	
 	<? 
 	
 		$TID = $_GET["tid"];
@@ -59,7 +42,7 @@
 		
 			if($User->getuserlevel() >= 2){
 			
-				Print("<h1>Directory Admin</h1>");
+				Print("<h2 class='page-header'>Directory Admin</h2>");
 			
 				if($TID){
 				
@@ -172,7 +155,7 @@
 				}    						
 			} else {
 				
-				Print("<h1>Directory</h1>");
+				Print("<h2 class='page-header'>Directory</h2>");
 				
 				if($TID || $SID || $CID){
 					//Show Sites and Contacts

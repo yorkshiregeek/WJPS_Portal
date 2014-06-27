@@ -109,10 +109,13 @@
      		//Normal
      		
      		$Group = new Groups($GID);
-     		
-     		print("<h2><a href=\"documents.php\">Groups</a> > <a href=\"documents.php?gid=" . $GID . "\">" . $Group->getgroup() . "</a></h2>");
-				
-			print("<p>The list below shows all " . $Group->getgroup() . " groups.</p>");
+
+            print("<ol class='breadcrumb'>");
+                print("<li><a href=\"documents.php\">Groups</a></li>");
+                print("<li class='active'>" . $Group->getgroup() . "</li>");
+            print("</ol>");
+     			
+			print("<p class='lead'>The list below shows all <strong>" . $Group->getgroup() . "</strong> group sections.</p>");
 							
 			$RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $GID . " AND Deleted = 0 ORDER BY Section");
 			
@@ -145,9 +148,12 @@
      		
      		$Group = new Groups($GID);
      		
-     		print("<h2><a href=\"documents.php\">Groups</a> > <a href=\"documents.php?gid=" . $GID . "\">" . $Group->getgroup() . "</a></h2>");
-				
-			print("<p>The list below shows all " . $Group->getgroup() . " groups. From this page you can add, edit or delete sections.</p>");
+     		 print("<ol class='breadcrumb'>");
+                print("<li><a href=\"documents.php\">Groups</a></li>");
+                print("<li class='active'>" . $Group->getgroup() . "</li>");
+            print("</ol>");
+
+			print("<p class='lead'>The list below shows all <strong>" . $Group->getgroup() . "</strong> group sections. From this page you can add, edit or delete sections.</p>");
 			
 			print("<p><a href='documents.php?sid=-1&amp;sgid=" . $GID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Section</a></p>");
 				
@@ -201,7 +207,7 @@
 	         
 	        if($SID > 0){
 	            //Edit
-	            print("<h2>Edit Section</h2>");
+	            //print("<h2>Edit Section</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -214,12 +220,12 @@
 					
 					$NewSection->save();
 					
-					print("<p>The section has been succesfully edited.</p>");
+					print("<p class='lead'>The section has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='documents.php?gid=$GroupID'>Sections Admin</a>.</p>");	       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Section complete the form below. Once you have completed it click the Edit Section button.</p>");
+	                print("<p class='lead'>To Edit the Section complete the form below. Once you have completed it click the Edit Section button.</p>");
 	                
 	                $Errors = array($DefaulError,$SectionNameError);
         			
@@ -231,7 +237,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Section</h2>");
+	            //print("<h2>Add New Section</h2>");
 
 	            if($Submit){
 	                //Add
@@ -249,14 +255,14 @@
 					
 						//mkdir($NewSection->geturl());
 										
-						print("<p>The new section has been added to the system succesfully.</p>");
+						print("<p class='lead'>The new section has been added to the system succesfully.</p>");
 					
 						print("<p>Return to <a href='documents.php?gid=$GroupID'>Sections Admin</a>.</p>");
 
 					} else {
 						//Group Exits
 						
-						print("<p>To Add a New Section complete the form below. Once you have completed it click the Add Section button.</p>");
+						print("<p class='lead'>To Add a New Section complete the form below. Once you have completed it click the Add Section button.</p>");
 							                
 	                	$Errors = array($DefaultError,$GroupNameError);
         			
@@ -268,7 +274,7 @@
 									
 				} else {
 	                //Form
-	                print("<p>To Add a New Section complete the form below. Once you have completed it click the Add Section button.</p>");
+	                print("<p class='lead'>To Add a New Section complete the form below. Once you have completed it click the Add Section button.</p>");
 	                
 	                $Errors = array($SectionNameError);
         			
@@ -282,8 +288,8 @@
     	static public function form($GroupID,$Section,$Description,$SID,$Add)
         {
         	$GroupIDField = array("Group ID:","Hidden","gid",65,0,$GroupID,"","");
-        	$SectionField = array("Section:","Text","section",65,0,$Section,"","");
-        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description);
+        	$SectionField = array("Section:","Text","section",65,0,$Section,"Enter a Section name.","");
+        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a Section descritpion.");
         
 			$Fields = array($SectionField,$DescriptionField,$GroupIDField);
 

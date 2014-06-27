@@ -148,10 +148,15 @@
      		//Normal
      		
      		$Section = new Sections($SID);
-     		
-     		print("<h2><a href=\"documents.php\">Groups</a> > <a href=\"documents.php?gid=" . $Section->getgroup()->getid() . "\">" . $Section->getgroup()->getgroup() . "</a> > <a href=\"documents.php?sid=" . $SID . "\">" . $Section->getsection() . "</a></h2>");
+
+
+     		print("<ol class='breadcrumb'>");
+     			print("<li><a href=\"documents.php\">Groups</a></li>");
+     			print("<li> <a href=\"documents.php?gid=" . $Section->getgroup()->getid() . "\">" . $Section->getgroup()->getgroup() . "</a></li>");
+     			print("<li class='active'>" . $Section->getsection() . "</li>");
+     		print("</ol>");
 				
-			print("<p>The list below shows all the documents in " . $Section->getsection() . ".");
+			print("<p class='lead'>The list below shows all the documents in <strong>" . $Section->getsection() . "</strong> section.");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE SectionIDLNK = " . $Section->getid() . " AND Deleted = 0 ORDER BY Filename");
 			
@@ -185,10 +190,14 @@
      		//Normal
      		
      		$Section = new Sections($SID);
-     		
-     		print("<h2><a href=\"documents.php\">Groups</a> > <a href=\"documents.php?gid=" . $Section->getgroup()->getid() . "\">" . $Section->getgroup()->getgroup() . "</a> > <a href=\"documents.php?sid=" . $SID . "\">" . $Section->getsection() . "</a></h2>");
-				
-			print("<p>The list below shows all the documents in " . $Section->getsection() . ".");
+
+     		print("<ol class='breadcrumb'>");
+     			print("<li><a href=\"documents.php\">Groups</a></li>");
+     			print("<li> <a href=\"documents.php?gid=" . $Section->getgroup()->getid() . "\">" . $Section->getgroup()->getgroup() . "</a></li>");
+     			print("<li class='active'>" . $Section->getsection() . "</li>");
+     		print("</ol>");
+     			
+			print("<p class='lead'>The list below shows all the documents in <strong>" . $Section->getsection() . "</strong> section.");
 						
 			print("<p><a href='documents.php?did=-1&amp;dsid=" . $SID . "'><span class=\"glyphicon glyphicon-plus\" alt= \"Add New Document\" ></span>Add New Document</a></p>");
 				
@@ -209,7 +218,7 @@
 				$Section = $Document->getsection();
 				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
 				$Row2 = array($Document->getdatemodified()->getnormaldate()," ");
-				$Row3 = array(Documents::display_filesize($Document->getfilesize())," ");
+				$Row3 = array($Document->display_filesize($Document->getfilesize())," ");
 				$Row4 = array("<a  href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");		
 				$Row5 = array("<a  onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Folder\"></span></a>","button");
 				
@@ -259,7 +268,7 @@
 	         
 	        if($DID > 0){
 	            //Edit
-	            print("<h2>Edit Document</h2>");
+	            //print("<h2>Edit Document</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -306,7 +315,7 @@
        					}else{
        					
        						//File Doesnt Exist
-							print("<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
+							print("<p class='lead'>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
 	                
 	               			$Errors = array($DocumentNameError);
         			
@@ -323,13 +332,13 @@
 
 					}
 					
-					print("<p>The doucment has been edited succesfully.</p>");
+					print("<p class='lead'>The doucment has been edited succesfully.</p>");
 					
 					print("<p>Return to <a href='documents.php?sid=$SectionID'>Document Admin</a>.</p>");
 					       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Document complete the form below. Once you have completed it click the Edit Document button.</p>");
+	                print("<p class='lead'>To Edit the Document complete the form below. Once you have completed it click the Edit Document button.</p>");
 	                
 	                $Errors = array($DocumentNameError);
         			
@@ -341,7 +350,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Document</h2>");
+	            //print("<h2>Add New Document</h2>");
 
 	            if($Submit){
 	                //Add
@@ -381,12 +390,12 @@
 						
 						//move_uploaded_file($tmp_name, $name);
 										
-						print("<p>The new section has been added to the system succesfully.</p>");
+						print("<p class='lead'>The new section has been added to the system succesfully.</p>");
 					
 						print("<p>Return to <a href='documents.php?sid=$SectionID'>Sections Admin</a>.</p>");
 					} else {
 						//File Doesnt Exist
-						print("<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
+						print("<p class='lead'>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
 	                
 	               		$Errors = array($DefaultErrors,$DocumentNameError,$DocumentError,$NoticeCategoryError);
         			
@@ -397,7 +406,7 @@
 				
 				} else {
 	                //Form
-	                print("<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
+	                print("<p class='lead'>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>");
 	                
 	                $Errors = array($DocumentNameError,$DocumentError,$NoticeCategoryError);
         			
@@ -452,11 +461,11 @@
         	$NoticeCategoryArray = UserCategory::generatearray();
         
         	$SectionIDField = array("Section ID:","Hidden","sid",65,0,$SectionID,"","");
-        	$FilenameField = array("Filename:","Text","filename",65,0,$Filename,"","");
-        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description);
+        	$FilenameField = array("Filename:","Text","filename",65,0,$Filename,"Enter a file name.","","");
+        	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a file description.");
         	$FileField = array("File:","DynamicFile","file",43,0,"","","getuploadname()");
-        	$SendNoticeField = array("Send Notice:","Checkbox","sendnotice",0,0,0,1,"shownoticecategorys(this)");
-        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"",$NoticeCategoryArray);
+        	$SendNoticeField = array("Send Notice:","Checkbox","sendnotice",0,0,"",0,1,"shownoticecategorys(this)");
+        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"","",$NoticeCategoryArray);
         
 			$Fields = array($FileField,$FilenameField,$DescriptionField,$SendNoticeField,$NoticeCategoryField,$SectionIDField);
 

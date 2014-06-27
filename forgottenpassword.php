@@ -6,16 +6,10 @@
 	
 	$Scripts[0] = "Script/UserFormScript.js";
 	
-	Templates::PageHeader("Forgotten Password",$Scripts);
+	Templates::PageHeader("Forgotten Password",$Scripts,"login",0);
 
-	Menu::generatemenu("login");
-    		 	
 ?>    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
-		
-			<h1>Restricted Area</h1>
+	<div class='col-md-12' id='content'>
 	
 		<?
 			Users::forgottenpassword();

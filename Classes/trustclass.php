@@ -79,7 +79,7 @@
         {
      		//Normal
      		
-     		print("<p>The list below shows all the trusts in the system.</p>");
+     		print("<p class='lead'>The list below shows all the trusts in the system.</p>");
      		
      		print("<p><a href='directory.php?tid=-1'><span class=\"glyphicon glyphicon-plus\"></span> Add New Trust</a></p>");
 				
@@ -117,7 +117,7 @@
         	
         	//Normal
         		
-    		print("<p>The list below shows all the trusts in the system.</p>");
+    		print("<p class='lead'>The list below shows all the trusts in the system.</p>");
         		
         	$RQ = new ReadQuery("SELECT IDLNK FROM Trusts WHERE Deleted = 0 ORDER BY Trust");
         	
@@ -155,8 +155,7 @@
 			
 	        if($TID > 0){
 	            //Edit
-	            print("<h2>Edit Trust</h2>");
-
+	            
 	        	if($Submit){
 	                //Edit
 	                 
@@ -167,11 +166,11 @@
 														
 						$NewTrust->save();			
 											
-						print("<p>The Trust has been succesfully edited.</p>");
+						print("<p class='lead'>The Trust has been succesfully edited.</p>");
 						
 						print("<p>Return to <a href='directory.php'>Directory Admin</a>.</p>");
 					} else {
-						print("<p>To Edit the Trust complete the form below. Once you have completed it click the Edit Trust button.</p>");
+						print("<p class='lead'>To Edit the Trust complete the form below. Once you have completed it click the Edit Trust button.</p>");
 	                
 		                $Errors = array($DefaultError,$TrustError);
 	        			
@@ -183,7 +182,7 @@
 					}				       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Trust complete the form below. Once you have completed it click the Edit Trust button.</p>");
+	                print("<p class='lead'>To Edit the Trust complete the form below. Once you have completed it click the Edit Trust button.</p>");
 	                
 	                $Errors = array($TrustError);
         			
@@ -195,7 +194,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Trust</h2>");
+	            //print("<h2>Add New Trust</h2>");
 	            
 	            //printr($_POST);
 	            
@@ -212,12 +211,12 @@
 															
 						$NewTrust->savenew();	
 						
-						print("<p>The new Trust has been added to the system succesfully.</p>");
+						print("<p class='lead'>The new Trust has been added to the system succesfully.</p>");
 					
 						print("<p>Return to <a href='directory.php'>Directory Admin</a>.</p>");
 					
 					} else {
-						print("<p>To Add a New Trust complete the form below. Once you have completed it click the Add Trust button.</p>");
+						print("<p class='lead'>To Add a New Trust complete the form below. Once you have completed it click the Add Trust button.</p>");
 	                
 	                	$Errors = array($DefaultError,$TrustError);
         			
@@ -228,7 +227,7 @@
 			
 				} else {
 	                //Form
-	                print("<p>To Add a New Trust complete the form below. Once you have completed it click the Add Trust button.</p>");
+	                print("<p class='lead'>To Add a New Trust complete the form below. Once you have completed it click the Add Trust button.</p>");
 	                
 	                $Errors = array($TrustError);
         			
@@ -241,7 +240,7 @@
 	     
     	static public function form($Trust,$TID,$Add)
         {
-        	$TrustField = array("Trust name:","Text","trust",65,0,$Trust,"","",!$Add);
+        	$TrustField = array("Trust name:","Text","trust",65,0,$Trust,"Enter a Trust Name.","",!$Add);
         
         	$Fields = array($TrustField);
             

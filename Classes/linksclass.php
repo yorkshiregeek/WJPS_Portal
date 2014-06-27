@@ -78,7 +78,7 @@
         {
      		//Normal
      		
-     		print("<p>The list below shows all the links in the system.</p>");
+     		print("<p class='lead'>The list below shows all the links in the system.</p>");
      		
      		print("<p><a href='linkm.php?lid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add New Link\"></span> Add New Link</a></p>");
 				
@@ -112,11 +112,11 @@
         static public function showall()
         {
 
-        	print("<p>Some useful links to other websites are given below. Please let us know (using the contact form) if you experience problems with any of these, or if there are any other links you would like including on this site.</p>");
+        	print("<p class='lead'>Some useful links to other websites are given below. Please let us know (using the contact form) if you experience problems with any of these, or if there are any other links you would like including on this site.</p>");
 
         	$RQ = new ReadQuery("SELECT IDLNK FROM Links WHERE Deleted = 0 ORDER BY Title");
         	
-        	print("<ul>");
+        	print("<ul class='list-group'>");
         	
         	$Col = 1;
         	
@@ -124,7 +124,7 @@
         	
         		$Link = new Links($row["IDLNK"]);
    
-        		print("<li><a href=\"" . $Link->geturl() . "\" target=\"_blank\">" . $Link->gettitle() . "</a></li>");
+        		print("<li class='list-group-item'><a href=\"" . $Link->geturl() . "\" target=\"_blank\">" . $Link->gettitle() . "</a></li>");
 				
         	}
         	
@@ -146,7 +146,7 @@
 	         
 	        if($LID > 0){
 	            //Edit
-	            print("<h2>Edit Link</h2>");
+	            //print("<h2>Edit Link</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -160,12 +160,12 @@
 					
 						$NewLink->save();
 					
-						print("<p>The link has been succesfully edited.</p>");
+						print("<p class='lead'>The link has been succesfully edited.</p>");
 					
 						print("<p>Return to <a href='linkm.php'>Links Admin</a>.</p>");
 					
 					} else {
-						print("<p>To Edit the Link complete the form below. Once you have completed it click the Add Link button.</p>");
+						print("<p class='lead'>To Edit the Link complete the form below. Once you have completed it click the Add Link button.</p>");
 	                
 	                	$Errors = array($TitleError,$URLError);
         			
@@ -176,7 +176,7 @@
 						       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Link complete the form below. Once you have completed it click the Edit Link button.</p>");
+	                print("<p class='lead'>To Edit the Link complete the form below. Once you have completed it click the Edit Link button.</p>");
 	                
 	                $Errors = array($DefaultError,$TitleError,$URLError);
         			
@@ -188,7 +188,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Link</h2>");
+	            //print("<h2>Add New Link</h2>");
 
 	            if($Submit){
 	                //Add
@@ -202,13 +202,13 @@
 					
 						$NewLink->savenew();								
 					
-						print("<p>The new link has been added to the system succesfully.</p>");
+						print("<p class='lead'>The new link has been added to the system succesfully.</p>");
 					
 						print("<p>Return to <a href='linkm.php'>Links Admin</a>.</p>");
 					
 					} else {
 					
-						print("<p>To Add a New Link complete the form below. Once you have completed it click the Add Link button.</p>");
+						print("<p class='lead'>To Add a New Link complete the form below. Once you have completed it click the Add Link button.</p>");
 	                
 	                	$Errors = array($DefaultError,$TitleError,$URLError);
         			
@@ -220,7 +220,7 @@
 				
 				} else {
 	                //Form
-	                print("<p>To Add a New Link complete the form below. Once you have completed it click the Add Link button.</p>");
+	                print("<p class='lead'>To Add a New Link complete the form below. Once you have completed it click the Add Link button.</p>");
 	                
 	                $Errors = array($TitleError,$URLError);
         			
@@ -233,8 +233,8 @@
 	     
     	static public function form($Title,$URL,$LID,$Add)
         {
-        	$TitleField = array("Link Title:","Text","title",65,0,$Title,"","",!$Add);
-        	$URLField = array("URL:","Text","url",50,0,$URL);
+        	$TitleField = array("Link Title:","Text","title",65,0,$Title,"Enter a Link title.","",!$Add);
+        	$URLField = array("URL:","Text","url",50,0,$URL,"Enter a Link url.");
         	
         	$Fields = array($TitleField,$URLField);
 

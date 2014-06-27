@@ -7,7 +7,7 @@
  	
  	$Scripts[0] = "Script/LinksScript.js";
  	
- 	Templates::PageHeader("Links",$Scripts);
+ 	Templates::PageHeader("Links",$Scripts,"links",0);
 	    	
 	$Admin = $_GET["man"];
 
@@ -15,7 +15,7 @@
  	
 ?>
     		
-	<div class='col-md-10' id='content'>
+	<div class='col-md-12' id='content'>
 	
 		<?
 		
@@ -85,24 +85,7 @@
 
 <?
 
-if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			if($Admin){
-				Menu::generateadminmenu("linksm");
-			} else {
-				Menu::generateadminmenu("links");
-			}
-		} else {
-			Menu::generateusermenu("links");
-		}
-	 	} else {
- 		Menu::generatemenu("links");
- 	}
+
 
 	Templates::PageFooter();
 

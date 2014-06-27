@@ -14,29 +14,12 @@
 	
 	$Scripts[0] = "Script/DocumentsScript.js";
 	
-	Templates::PageHeader("Documents",$Scripts);
-    	
-	if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			Menu::generateadminmenu("documents");
-		} else {
-			Menu::generateusermenu("documents");
-		}
-	 	} else {
- 		Menu::generatemenu("login");
- 	}
+	Templates::PageHeader("Documents",$Scripts,"documents",2);
     		 	
 ?>
     			    		
-	<div class='.col-xs-12 .col-md-8' id="content">
+	<div class='col-md-12' id="content">
 	
-		<hr/>
-		
 		<? 
 		
 			$GID = $_GET["gid"];
@@ -59,7 +42,7 @@
 			
 				if($User->getuserlevel() >= 2){
 				
-					Print("<h1>Document Admin</h1>");
+					Print("<h2 class='page-header'>Document Admin</h2>");
 				
 					if($GID){
 						//Group Related Activity
@@ -126,7 +109,7 @@
 					
 				} else {
 					
-					Print("<h1>Documents</h1>");
+					Print("<h2 class='page-header'>Documents</h2>");
 					
 					if($GID){
 						Sections::listall($GID);

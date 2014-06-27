@@ -1,15 +1,9 @@
-
 <? 
-
-	if (session_status() == 0) {
-		session_start();
-	}
+	session_start();
 	
 	include_once("Classes/classes.php"); 
-
-	//ini_set('error_reporting',E_ALL);
 	
-	Templates::PageHeader("Welcome",$Scripts);    		
+	Templates::PageHeader("Welcome",$Scripts,"home",0);    		
 ?>
    
 	<div class='col-md-12' id='content'>
@@ -20,20 +14,20 @@
 		
 		<h2 class='page-header'>Association Objectives</h2>
 		
-		<p>The Association of Teaching Hospital Pharmacists objectives:</p>
+		<p class='lead'>The Association of Teaching Hospital Pharmacists objectives:</p>
 
-		<ul>
+		<ul class="list-group">
 		
-			<li>To influence the development of government, NHS, professional leadership and professional regulatory policy.</li>
-			<li>Where agreed, to respond to consultations on behalf of member organisations which represent a significant proportion of hospital pharmacy.</li>
-			<li>To provide a network for joint learning and for the exchange and dissemination of information.</li>
-			<li>To encourage links between pharmacists with special interests which could lead to research projects or new developments in hospital pharmacy practice.</li>
-			<li>To provide a peer support network for newly appointed teaching hospital chief pharmacists to give them a supportive forum to aid their personal development.</li>
-			<li>To promote international contacts with similar institutions and between pharmacists with similar teaching hospital responsibilities and interests.</li>
-			<li>To share knowledge and expertise in pharmaceutical work arising from academic and specialist units.</li>
-			<li>To provide a peer support network for teaching hospital chief pharmacists to enable shared problem solving.</li>
-			<li>To provide a biannual opportunity to visit a range of teaching hospitals to support local development plans and facilitate bench marking.</li>
-			<li>To provide a biannual opportunity to visit a range of teaching hospitals to support local development plans and facilitate bench marking.</li>
+			<li class="list-group-item">To influence the development of government, NHS, professional leadership and professional regulatory policy.</li>
+			<li class="list-group-item">Where agreed, to respond to consultations on behalf of member organisations which represent a significant proportion of hospital pharmacy.</li>
+			<li class="list-group-item">To provide a network for joint learning and for the exchange and dissemination of information.</li>
+			<li class="list-group-item">To encourage links between pharmacists with special interests which could lead to research projects or new developments in hospital pharmacy practice.</li>
+			<li class="list-group-item">To provide a peer support network for newly appointed teaching hospital chief pharmacists to give them a supportive forum to aid their personal development.</li>
+			<li class="list-group-item">To promote international contacts with similar institutions and between pharmacists with similar teaching hospital responsibilities and interests.</li>
+			<li class="list-group-item">To share knowledge and expertise in pharmaceutical work arising from academic and specialist units.</li>
+			<li class="list-group-item">To provide a peer support network for teaching hospital chief pharmacists to enable shared problem solving.</li>
+			<li class="list-group-item">To provide a biannual opportunity to visit a range of teaching hospitals to support local development plans and facilitate bench marking.</li>
+			<li class="list-group-item">To provide a biannual opportunity to visit a range of teaching hospitals to support local development plans and facilitate bench marking.</li>
 		
 		
 		</ul>
@@ -41,12 +35,6 @@
 	
 	<?
 
-	if(Users::logincheck(3) > 0){
-		Menu::generateadminmenu("home");
-	} else if(Users::logincheck(1) > 0){
-		Menu::generateusermenu("home");
-	 	} 
-	
 	Templates::PageFooter();
 	
 	?>

@@ -8,55 +8,44 @@
             if($Page == "links"){ $Links = " class='active'"; }
             if($Page == "login"){ $Login = " class='active'";} 
             if($Page == "manu"){ $Manu = " class='active'"; }
-            
-           	print("<div class='col-md-2' id='menu'>");
-    		
-    			print("<ul class = 'nav nav-pills nav-stacked'>");
-    				print("<li " . $Home . "><a href='index.php'>Welcome</a></li>");
-    				print("<li " . $Links . "><a href='links.php'>Links</a></li>");
-    				print("<li " . $Login . "><a href='welcome.php'>Login</a></li>");
-    			print("</ul>");
-    		
-    		print("</div>");
+
+            ?>
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                      </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li <?echo($Home);?>><a href="index.php">Home</a></li>
+                        <li <?echo($Links);?>><a href="links.php">Links</a></li>
+                      </ul>
+              
+                      <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" role="search" action="welcome.php" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username" id="username" name="username">
+                                <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-default" name="submit" id="submit" value="Login">Login</button>
+                        </form>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <?
         }
         
         static public function generateusermenu($Page)
-        {
-        	if($Page == "welcome"){ $Welcome = " class='selected'"; }
-            if($Page == "logout"){ $Login = " class='selected'";} 
-            if($Page == "changepassword"){ $Change = " class='selected'";} 
-            if($Page == "notices") {$Notices = " class='selected'";}
-            if($Page == "documents") {$Docs = " class='selected'";}
-            if($Page == "directory") {$Dir = " class='selected'";}
-            if($Page == "events") { $Events = " class='selected'";}
-            if($Page == "home"){ $Home = " class='selected'"; }
-            if($Page == "links"){ $Links = " class='selected'"; }
-            if($Page == "login"){ $Login = " class='selected'";} 
-            if($Page == "manu"){ $Manu = " class='selected'"; }
-            
-           	print("<div class='col-md-2' id='menu'>");
-
-    			print("<ul class = 'nav nav-pills nav-stacked'>");
-    				print("<li " . $Home . "><a href='index.php'>Welcome</a></li>");
-    				print("<li " . $Links . "><a href='links.php'>Links</a></li>");
-    				print("<li " . $Logout . "><a href='logout.php'>Logout</a></li>");
-    				print("<li " . $Change . "><a href='changepassword.php'>Change Password</a></li>");
-    			print("</ul>");
-    			
-    			print("<h2>User Menu1</h2>");
-    			
-    			print("<ul class = 'nav nav-pills nav-stacked'>");
-    				print("<li " . $Docs . "><a href='documents.php'>Documents</a></li>");
-    				print("<li " . $Dir . "><a href='directory.php'>Directory</a></li>");
-    				print("<li " . $Notices . "><a href='notices.php'>Notices</a></li>");
-    				print("<li " . $Events . "><a href='events.php'>Events</a></li>");
-    			print("</ul>");
-    		
-    		print("</div>");
-        
-        }
-        
-        static public function generateadminmenu($Page)
         {
         	if($Page == "home"){ $Welcome = " class='selected'"; }
             if($Page == "logout"){ $Login = " class='selected'";}
@@ -69,29 +58,122 @@
             if($Page == "eventsm") {$EventsM = " class='selected'";}
             if($Page == "manu"){ $Manu = " class='selected'"; }
             if($Page == "manum"){ $ManuM = " class='selected'"; }
-            
-           	print("<div class='col-md-2' id='menu'>");
-    		
-    			print("<ul class = 'nav nav-stacked'>");
-    				print("<li " . $Welcome . "><a href='welcome.php'>Welcome</a></li>");
-    				print("<li " . $Links . "><a href='links.php'>Links</a></li>");
-    				print("<li " . $Logout . "><a href='logout.php'>Logout</a></li>");
-    				print("<li " . $Change . "><a href='changepassword.php'>Change Password</a></li>");
-                    print("<li><a href='#'>Admin</a>");
-                        print("<ul class = 'nav nav-stacked'>");
-                            print("<li " . $Users . "><a href='users.php'>User Admin</a></li>");
-                            print("<li " . $Docs . "><a href='documents.php'>Documents</a></li>");
-                            print("<li " . $Dir . "><a href='directory.php'>Directory</a></li>");
-                            print("<li " . $LinkM . "><a href='links.php?man=1'>Link Admin</a></li>");
-                            print("<li " . $Notices . "><a href='notices.php'>Notices</a></li>");
-                            
-                            print("<li " . $EventsM . "><a href='events.php?man=1'>Events</a></li>");
-                        print("</ul>");
-                    print("</li>");
-    			print("</ul>");
-   
-    		print("</div>");
 
+            if(ISSET($_SESSION["userid"])){
+                $UID = $_SESSION["userid"];
+            }
+
+            ?>
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                      </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li <?echo($Home);?>><a href="index.php">Home</a></li>
+                        <li <?echo($Links);?>><a href="links.php">Links</a></li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure Area<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="logout.php">Documents</a></li>
+                                <li><a href="logout.php">Directory</a></li>
+                                <li><a href="logout.php">Link Admin</a></li>
+                                <li><a href="logout.php">Notices</a></li>
+                                <li><a href="logout.php">Events</a></li>
+                            </ul>
+                        </li>
+                      </ul>
+              
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <? $User = new Users($UID); print($User->getusername()); ?> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="welcome.php">Welcome Page</a></li>
+                                <li><a href="changepassword.php">Change Password</a></li>
+                                <li><a href="logout.php">Log Out</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <?
+        
+        }
+        
+        static public function generateadminmenu($Page,$UID = 0)
+        {
+        	if($Page == "home"){ $Welcome = " class='selected'"; }
+            if($Page == "logout"){ $Login = " class='selected'";}
+            if($Page == "changepassword"){ $Change = " class='selected'";}  
+            if($Page == "users"){ $Users = " class='selected'";}
+            if($Page == "linkm"){$LinkM = " class='selected'";}
+            if($Page == "notices") {$Notices = " class='selected'";}
+            if($Page == "documents") {$Docs = " class='selected'";}
+            if($Page == "directory") {$Dir = " class='selected'";}
+            if($Page == "eventsm") {$EventsM = " class='selected'";}
+            if($Page == "manu"){ $Manu = " class='selected'"; }
+            if($Page == "manum"){ $ManuM = " class='selected'"; }
+
+            if(ISSET($_SESSION["userid"])){
+                $UID = $_SESSION["userid"];
+            }
+
+            ?>
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                      </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li <?echo($Home);?>><a href="index.php">Home</a></li>
+                        <li <?echo($Links);?>><a href="links.php">Links</a></li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Secure Area<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="users.php">User Admin</a></li>
+                                <li><a href="documents.php">Documents</a></li>
+                                <li><a href="directory.php">Directory</a></li>
+                                <li><a href="messages.php">Messages</a></li>
+                                <li><a href="linkm.php">Link Admin</a></li>
+                                <li><a href="notices.php">Notices</a></li>
+                                <li><a href="events.php">Events</a></li>
+                            </ul>
+                        </li>
+                      </ul>
+              
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <? $User = new Users($UID); print($User->getusername()); ?> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="welcome.php">Welcome Page</a></li>
+                                <li><a href="changepassword.php">Change Password</a></li>
+                                <li><a href="logout.php">Log Out</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <?
         }
         
        

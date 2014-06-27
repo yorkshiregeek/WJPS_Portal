@@ -6,29 +6,16 @@
 	
 	$Scripts[0] = "Script/UserFormScript.js";
 	
-	Templates::PageHeader("Change Password",$Scripts);
-
-	if(Users::logincheck(0) > 0){
-		$UID = $_SESSION["userid"];
-		
-		$User = new Users($UID);
-		$User->getusermenu("changepassword"); 
- 	} else {
- 		Menu::generatemenu("login");
- 	}
+	Templates::PageHeader("Change Password",$Scripts,"changepassword",0);
     		 	
 ?>    		
-		<div class='col-md-10' id='content'>
-		
-			<hr/>
-		
-			<h1>Restricted Area</h1>
+		<div class='col-md-12' id='content'>
 		
 			<?
 			if(Users::login(0)){
 			?>
     			
-    			<h2>Change Password</h2>
+    			<h2 class='page-header'>Change Password</h2>
     			
 			<?
 			

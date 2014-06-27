@@ -7,22 +7,14 @@
 	
 	$Scripts[0] = "Script/LinksScript.js";
 	
-	Templates::PageHeader("Link Management",$Scripts);
-    	
-	if(Users::logincheck(3) > 0){
- 		Menu::generateadminmenu("linkm"); 
- 	} else {
- 		Menu::generatemenu("login");
- 	}
-    		 	
+	Templates::PageHeader("Link Management",$Scripts,"linkm",3);
+
 ?>
     		
     		    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
-	
-		<h1>Links Admin</h1>
+	<div class='col-md-12' id='content'>
+
+		<h2 class='page-header'>Links Admin</h2>
 		
 		<? 
 		
