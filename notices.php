@@ -6,8 +6,15 @@
 	include_once("Classes/noticesclass.php");
 	
 	$Scripts[0] = "Script/NoticesScript.js";
+	$Scripts[1] = "js/nicEdit.js";  
+
+	?>
+
 	
+
+	<?
 	Templates::PageHeader("Notices",$Scripts);
+
 	
 	if(Users::logincheck(1) > 0){
 		
@@ -25,11 +32,14 @@
  	}
  	
 ?>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
     		    		
 	<div class='col-md-10' id='content'>
 	
 		<hr/>
-		
+
 		<? 
 		
 			$NID = $_GET["nid"];
@@ -85,7 +95,8 @@
 				}
 			
 			} 
-			    			
+			  
+				
 		?>
 		
 	</div>

@@ -6,6 +6,7 @@
 	include_once("Classes/messageclass.php");
 	
 	$Scripts[0] = "Script/MessageScript.js";
+	$Scripts[1] = "js/nicEdit.js";  
 	
 	Templates::PageHeader("Messages",$Scripts);
 	
@@ -25,7 +26,9 @@
  	}
  	
 ?>
-    		    		
+    <script type="text/javascript">
+		bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+	</script>    		
 	<div class='col-md-10' id='content'>
 	
 		<hr/>

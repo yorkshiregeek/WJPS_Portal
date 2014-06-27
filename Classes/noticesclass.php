@@ -359,7 +359,8 @@
         
           	$TitleField = array("Title:","Text","title",65,0,$Title);
         	$NoticeField = array("Notice:","TextArea","notice",63,7,$Notice);
-        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","noticecategory",0,0,$NoticeCategory,$NoticeCategoryArray);
+        	$NoticeCategoryField = array("Notice Category:","CheckboxArray","noticecategory",0,0,$NoticeCategory,"",$NoticeCategoryArray);
+          
         	
 			$Fields = array($TitleField,$NoticeField,$NoticeCategoryField);
 

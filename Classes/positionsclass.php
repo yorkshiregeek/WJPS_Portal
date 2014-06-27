@@ -96,26 +96,15 @@
         	
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
         		$Position = new Positions($row["PositionIDLNK"]);
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
         		$Row1 = array($Position->getposition()," ");
         		
         		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt= \"Edit Position\" ></span></a>","button");
         		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt= \"Delete User\" ></span></a>","button");
-=======
-=======
 
->>>>>>> FETCH_HEAD
-        		$Row1 = array($Position->getposition()," ","data-id='" . $Position->getid() . "'");
-        		
-        		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><img src=\"Images/user_edit.png\" alt=\"Edit Position\"/></a>","button");
-        		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><img src=\"Images/user_delete.png\" alt=\"Delete User\"/></a>","button");
-<<<<<<< HEAD
->>>>>>> FETCH_HEAD
-=======
 
->>>>>>> FETCH_HEAD
-        		//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
+
         		
         		$Rows[$RowCounter] = array($Row1,$Row4,$Row5);
                 $RowCounter ++;

@@ -3,7 +3,9 @@ h2, h3{
 	color:#08ae42;
 	
 }
-
+.nicEdit-panelContain {
+	width:625px;
+}
 p.error{
 	color: #ff0000;
 }

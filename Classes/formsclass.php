@@ -47,8 +47,9 @@
                         {
 
                              print("<div class='form-group'>");
-                                print("<label for='" . $Field[2] . "' class='col-sm-2 control-label'>" . $Field[0] .  "</label>");
+                               
                                     print("<div class='col-sm-8'>");
+                                     print("<label for='" . $Field[2] . "' class='control-label'>" . $Field[0] .  "</label>");
                         }
                                         forms::generatefield($Field);
 
@@ -117,7 +118,7 @@
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "'" . $ReadOnly . "/>");
             } elseif($Type == "DynamicText") {
                 //Dynamic Text Box
-                print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "' onchange='" . $Action . "'/><span id='" . $Name . "Image'></span>");
+                print("<textarea class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "' onchange='" . $Action . "'><span id='" . $Name . "Image'></span></textarea>");
             } elseif($Type == "DatePicker"){
                 //Date Picker
                 $dp = new datepicker();
@@ -134,7 +135,7 @@
                     $ControlName = $dp->show($Name);
                 }
                 //print("<dd id='" . $Name . "Field'><input type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/><input type='button' value='...' onclick='" . $ControlName . "'></dd>");
-                print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/> <input class='calendarbutton' type='image' src='../Images/Pres/Calendar.gif' onclick='" . $ControlName . "' height='16'/>");
+                print("<input class='form-control 1' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/> <input class='calendarbutton' type='image' src='../Images/Pres/Calendar.gif' onclick='" . $ControlName . "' height='16'/>");
             } elseif($Type == "Password") {
                 //Password Text Box
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='password' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "'/>");            
