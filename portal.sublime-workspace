@@ -4,27 +4,440 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
+				"Messag",
+				"Message"
+			],
+			[
+				"M",
+				"MYSQLI_ASSOC"
+			],
+			[
+				"Gro",
+				"Group"
+			],
+			[
+				"c_Us",
+				"c_Userlevel"
+			],
+			[
 				"page",
 				"PageHeader"
+=======
+				"trust",
+				"truststable"
+>>>>>>> Jason-Branch
 			],
 			[
-				"session_de",
-				"session_destroy"
+				"form",
+				"form-control"
 			],
 			[
-				"lis",
-				"list-style-type"
+				"tex",
+				"textarea"
+			],
+			[
+				"form-",
+				"form-group"
+			],
+			[
+				"non",
+				"none"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"fetch",
+				"mysqli_fetch"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+<<<<<<< HEAD
+			"file": "Classes/menuclass.php",
+			"settings":
+			{
+				"buffer_size": 9479,
+=======
+			"file": "portal.sublime-project",
+			"settings":
+			{
+				"buffer_size": 219,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/connectionclass.php",
+			"settings":
+			{
+				"buffer_size": 990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/userclass.php",
+			"settings":
+			{
+				"buffer_size": 32588,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "notices.php",
+			"settings":
+			{
+				"buffer_size": 1466,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "events.php",
+			"settings":
+			{
+				"buffer_size": 1338,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "documents.php",
+			"settings":
+			{
+				"buffer_size": 2877,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "changepassword.php",
+			"settings":
+			{
+				"buffer_size": 633,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "config.php",
 			"settings":
 			{
-				"buffer_size": 825,
+				"buffer_size": 833,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/contactclass.php",
+			"settings":
+			{
+				"buffer_size": 15218,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/positionsclass.php",
+			"settings":
+			{
+				"buffer_size": 10622,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/sectionsclass.php",
+			"settings":
+			{
+				"buffer_size": 11573,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/siteclass.php",
+			"settings":
+			{
+				"buffer_size": 13708,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/trustclass.php",
+			"settings":
+			{
+				"buffer_size": 9088,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "directory.php",
+			"settings":
+			{
+				"buffer_size": 6576,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/jquery-draggable.js",
+			"settings":
+			{
+				"buffer_size": 766,
+				"line_ending": "Unix",
+				"name": "$(document).ready(function() {"
+			}
+		},
+		{
+			"file": "js/jquery-draggable.js",
+			"settings":
+			{
+				"buffer_size": 766,
+				"line_ending": "Unix",
+				"name": "$(document).ready(function() {"
+			}
+		},
+		{
+			"file": "positions.php",
+			"settings":
+			{
+				"buffer_size": 1455,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/jquery-sortable.js",
+			"settings":
+			{
+				"buffer_size": 22642,
+				"line_ending": "Unix",
+				"name": "/* ==============================================="
+			}
+		},
+		{
+			"file": "Classes/usercategorysclass.php",
+			"settings":
+			{
+				"buffer_size": 3304,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/groupsclass.php",
+			"settings":
+			{
+				"buffer_size": 11788,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/documentsclass.php",
+			"settings":
+			{
+				"buffer_size": 19228,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "welcome.php",
+			"settings":
+			{
+				"buffer_size": 1341,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php \n	\n    class Menu\n    {\n        static public function generatemenu($Page)\n        {\n            if($Page == \"home\"){ $Home = \" class=\\\"selected\\\"\"; }\n            if($Page == \"links\"){ $Links = \" class=\\\"selected\\\"\"; }\n            if($Page == \"login\"){ $Login = \" class=\\\"selected\\\"\";} \n            if($Page == \"manu\"){ $Manu = \" class=\\\"selected\\\"\"; }\n            \n           	print(\"<div id=\\\"menu\\\">\");\n    		\n    			print(\"<hr/>\");\n    			print(\"<h2>Menu</h2>\");\n    			\n    			print(\"<ul class = \\\"nav nav-pills nav-stacked\\\">\");\n    				print(\"<li \" . $Home . \"><a href=\\\"index.php\\\">Welcome</a></li>\");\n    				print(\"<li \" . $Links . \"><a href=\\\"links.php\\\">Links</a></li>\");\n    				print(\"<li \" . $Login . \"><a href=\\\"welcome.php\\\">Login</a></li>\");\n    			print(\"</ul>\");\n    		\n    		print(\"</div>\");\n        }\n        \n        static public function generateusermenu($Page)\n        {\n        	if($Page == \"welcome\"){ $Welcome = \" class=\\\"selected\\\"\"; }\n            if($Page == \"logout\"){ $Login = \" class=\\\"selected\\\"\";} \n            if($Page == \"changepassword\"){ $Change = \" class=\\\"selected\\\"\";} \n            if($Page == \"notices\") {$Notices = \" class=\\\"selected\\\"\";}\n            if($Page == \"documents\") {$Docs = \" class=\\\"selected\\\"\";}\n            if($Page == \"directory\") {$Dir = \" class=\\\"selected\\\"\";}\n            if($Page == \"events\") { $Events = \" class=\\\"selected\\\"\";}\n            if($Page == \"home\"){ $Home = \" class=\\\"selected\\\"\"; }\n            if($Page == \"links\"){ $Links = \" class=\\\"selected\\\"\"; }\n            if($Page == \"login\"){ $Login = \" class=\\\"selected\\\"\";} \n            if($Page == \"manu\"){ $Manu = \" class=\\\"selected\\\"\"; }\n            if($Page == \"messages\"){ $Messages = \" class=\\\"selected\\\"\"; }\n            \n           	print(\"<div id=\\\"menu\\\">\");\n           	\n           		print(\"<hr/>\");\n    			print(\"<h2>Menu</h2>\");\n    			\n    			print(\"<ul class = \\\"nav nav-pills nav-stacked\\\">\");\n    				print(\"<li \" . $Home . \"><a href=\\\"index.php\\\">Welcome</a></li>\");\n    				print(\"<li \" . $Links . \"><a href=\\\"links.php\\\">Links</a></li>\");\n    				print(\"<li \" . $Logout . \"><a href=\\\"logout.php\\\">Logout</a></li>\");\n    				print(\"<li \" . $Change . \"><a href=\\\"changepassword.php\\\">Change Password</a></li>\");\n    			print(\"</ul>\");\n    			\n    			print(\"<h2>User Menu</h2>\");\n    			\n    			print(\"<ul class = \\\"nav nav-pills nav-stacked\\\">\");\n    				print(\"<li \" . $Docs . \"><a href=\\\"documents.php\\\">Documents</a></li>\");\n    				print(\"<li \" . $Dir . \"><a href=\\\"directory.php\\\">Directory</a></li>\");\n    				print(\"<li \" . $Messages . \"><a href=\\\"messages.php\\\">Messages</a></li>\");\n    				print(\"<li \" . $Notices . \"><a href=\\\"notices.php\\\">Notices</a></li>\");\n    				print(\"<li \" . $Events . \"><a href=\\\"events.php\\\">Events</a></li>\");\n    			print(\"</ul>\");\n    		\n    		print(\"</div>\");\n        \n        }\n        \n        static public function generateadminmenu($Page)\n        {\n        	if($Page == \"home\"){ $Welcome = \" class=\\\"selected\\\"\"; }\n            if($Page == \"logout\"){ $Login = \" class=\\\"selected\\\"\";}\n            if($Page == \"changepassword\"){ $Change = \" class=\\\"selected\\\"\";}  \n            if($Page == \"users\"){ $Users = \" class=\\\"selected\\\"\";}\n            if($Page == \"linksm\"){$LinkM = \" class=\\\"selected\\\"\";}\n            if($Page == \"notices\") {$Notices = \" class=\\\"selected\\\"\";}\n            if($Page == \"documents\") {$Docs = \" class=\\\"selected\\\"\";}\n            if($Page == \"directory\") {$Dir = \" class=\\\"selected\\\"\";}\n            if($Page == \"eventsm\") {$EventsM = \" class=\\\"selected\\\"\";}\n            if($Page == \"manu\"){ $Manu = \" class=\\\"selected\\\"\"; }\n            if($Page == \"manum\"){ $ManuM = \" class=\\\"selected\\\"\"; }\n            if($Page == \"messages\"){ $Messages = \" class=\\\"selected\\\"\"; }\n            \n           	print(\"<div id=\\\"menu\\\">\");\n    		\n   				print(\"<hr/>\");\n    			print(\"<h2>Menu</h2>\");\n    			\n    			print(\"<ul class = \\\"nav nav-pills nav-stacked\\\">\");\n    				print(\"<li \" . $Welcome . \"><a href=\\\"welcome.php\\\">Welcome</a></li>\");\n    				print(\"<li \" . $Links . \"><a href=\\\"links.php\\\">Links</a></li>\");\n    				print(\"<li \" . $Logout . \"><a href=\\\"logout.php\\\">Logout</a></li>\");\n    				print(\"<li \" . $Change . \"><a href=\\\"changepassword.php\\\">Change Password</a></li>\");\n    			print(\"</ul>\");\n    			\n    			print(\"<h2>Admin</h2>\");\n    			\n    			print(\"<ul class = \\\"nav nav-pills nav-stacked\\\">\");\n    				print(\"<li \" . $Users . \"><a href=\\\"users.php\\\">User Admin</a></li>\");\n    				print(\"<li \" . $Docs . \"><a href=\\\"documents.php\\\">Documents</a></li>\");\n    				print(\"<li \" . $Dir . \"><a href=\\\"directory.php\\\">Directory</a></li>\");\n    				print(\"<li \" . $Messages . \"><a href=\\\"messages.php\\\">Messages</a></li>\");\n    				print(\"<li \" . $LinkM . \"><a href=\\\"links.php?man=1\\\">Link Admin</a></li>\");\n    				print(\"<li \" . $Notices . \"><a href=\\\"notices.php\\\">Notices</a></li>\");\n    				\n    				print(\"<li \" . $EventsM . \"><a href=\\\"events.php?man=1\\\">Events</a></li>\");\n    			print(\"</ul>\");\n    			\n    			\n    		\n    		print(\"</div>\");\n\n        }\n        \n       \n               \n    }\n\n?>\n",
+			"file": "menuclass.php",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 5116,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/menuclass.php",
+			"settings":
+			{
+				"buffer_size": 4710,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/readqueryclass.php",
+			"settings":
+			{
+				"buffer_size": 1898,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/formsclass.php",
+			"settings":
+			{
+				"buffer_size": 14388,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/classes.php",
+			"settings":
+			{
+				"buffer_size": 964,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/documentsclass.php.old",
+			"settings":
+			{
+				"buffer_size": 18862,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/tableclass.php",
+			"settings":
+			{
+				"buffer_size": 2826,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/templateclass.php",
+			"settings":
+			{
+				"buffer_size": 5230,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 2334,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/styles.css",
+			"settings":
+			{
+				"buffer_size": 7504,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n@import url(\"bootstrap.css\");\n\n\nbody{\n	text-align:centre;\n	border:0;\n	padding:0;\n	margin:0;\n	font-family:Arial, Helvetica;\n}\n\nh1{\n	border:0;\n	padding:0;\n	margin:0;\n	font-size:22px;\n	color:#000000;\n}\n\nh2{\n	border:0;\n	padding:0;\n	margin:0;\n	font-size:14px;\n	color:#08ae42;\n}\n\nh3{\n	border:0;\n	padding:0;\n	margin:0;\n	font-size:12px;\n	color:#08ae42;\n}\n\n\np{\n	border:0;\n	padding:5px 0px 5px 0px;\n	margin:0;\n	color:#000000;\n	font-size:12px;\n	line-height:14px;\n}\n\np.error{\n	color: #ff0000;\n}\n\nhr{\n	height: 4px;\n	border: 0px;\n	background: #08ae42;\n}\n\nhr.minibreak{\n	height: 1px;\n}\n\n\nul{\n	color:#000000;\n	font-size:12px;\n	line-height:14px;\n	font-family:verdana;\n}\n\na{\n	color:#08ae42;\n	text-decoration: none;\n}\n\nimg{\n	border:0;\n}\n\nimg.left{\n	float:left;\n	padding: 5px 10px 5px 10px;\n}\n\nimg.right{\n	float:right;\n	padding: 5px 10px 5px 10px;\n}\n\ninput{\n	font-size:12px;\n	line-height:14px;\n	color:#000000;\n	font-family:Arial, Helvetica;\n}\n\nselect{\n	font-size:12px;\n	line-height:14px;\n	color:#000000;\n	font-family:Arial, Helvetica;\n}\n\ntextarea{\n	font-size:12px;\n	line-height:14px;\n	color:#000000;\n	font-family:Arial, Helvetica;\n}\n\n#page{\n	border:0;\n	padding:0;\n	margin:0;\n	width:900px;\n	margin:auto;\n	top: 10px;;\n	text-align:left;\n}\n\n#header{\n	padding:0px;\n	margin:10px 0px 0px 0px;\n	position:relative;\n	height:77px;\n	width: 900px;\n	background: url(Images/ATHP.gif) no-repeat 0% 10%;\n}\n\n#header #logo{\n	height:77px;\n	position: relative;\n	left: 800px;\n	background: url(Images/PharmacyCross.gif) no-repeat 0% 10%;\n}\n\n#menu{\n	float:left;\n	border:0;\n	padding:0 0 0 10px;\n	margin:0;\n	width:212px;\n}\n\n#menu ul li{\n	color: #000000;\n	list-style-image: url(Images/Arrow.gif);\n}\n\n#menu ul li a{\n	color:  #000000;\n	text-decoration: none;\n}\n\n#menu ul li.selected a{\n	font-weight: bold;\n	color: #08ae42;\n}\n\n#menu ul li a:hover{\n	color:#08ae42;\n}\n\n#content{\n	position:relative;\n	border:0;\n	padding:0 15px 15px 15px;\n	margin:0;\n	width:645px;\n	height:auto;\n	float:left;\n}\n\n#content dl{\n	font-size: 12px;\n}\n\n#content dl dt, label{\n	color:#08ae42;\n	font-weight: bold;\n}\n\n#content dl dd ul{\n	padding: 0 0 0 15px;\n}\n\n#content dl dd ul li{\n	list-style-image: url(Images/Arrow.gif);\n}\n\n#content dl dd dl dt{\n	color: #000000;\n}\n\n#content dl dd dl dd{\n	padding: 5px 0 10px 0;\n}\n\n#content dl.contacts dt{\n	color:#08ae42;\n	font-weight: normal;\n}\n\n#content dl.contacts dd{\n	padding: 0 0 0 25px;\n	position: relative;\n	top: -10px;\n	line-height: 3px;\n}\n\n#content ul li{\n	color: #000000;\n	list-style-image: url(Images/Arrow.gif);\n}\n\n#content ul li.col2{\n	color: #000000;\n	list-style-image: url(Images/Arrow.gif);\n	position:relative;\n	top: -14px;\n	left: 280px;\n}\n\n#content dl.manulist{\n	padding:5px 10px 5px 40px ;\n}\n\n#content dl.manulist dd{\n	padding-bottom: 12px;\n}\n\n\n#content form{\n	padding: 10px;\n}\n\n#content form.adminform{\n	padding-left: 20px;\n	width: 200px;\n}\n\n#content form.adminform dl dd{\n	position: relative;\n	top: -20px;\n	left: 60px;\n}\n\n#content form#changepasswordform dl dd{\n	position: relative;\n	top: -20px;\n	left: 120px;\n}\n\n#content form.adminform #submit{\n	position: relative;\n	left: 250px;\n}\n\n#content form#labsform #submit{\n	position: relative;\n	left: 450px;\n}\n\n#content form#groupsform #submit{\n	position: relative;\n	left: 450px;\n}\n\n#content form#sectionsform #submit{\n	position:  relative;\n	left:  450px;\n}\n\n#content form#documentsform #submit{\n	position:  relative;\n	left:  450px;\n}\n\n\n#content table.admintable{\n	padding: 5px;\n	font-size: 12px;\n}\n\n#content table.admintable th{\n	background: #08ae42;\n	padding: 5px;\n	color: #ffffff;\n}\n\n#content table.admintable th.username{\n	width: 110px;\n}\n\n#content table.admintable th.fullname{\n	width: 110px;\n}\n\n#content table.admintable th.hospital{\n	width: 200px;\n}\n\n#content table.admintable th.userlevel{\n	width: 90px;\n}\n\n#content table.admintable th.groupname{\n	width: 400px;\n}\n\n#content table.admintable th.sectionname{\n	width: 470px;\n}\n\n#content table.admintable th.noticetitle{\n	width: 425px;\n}\n\n#content table.admintable th.postedby{\n	width: 100px;\n}\n\n#content table.admintable th.sections{\n	width: 70px;\n}\n\n#content table.admintable td.sections{\n	width: 70px;\n	text-align: center;\n	vertical-align: middle;\n}\n\n#content table.admintable th.documents{\n	width: 70px;\n}\n\n#content table.admintable td.documents{\n	width: 70px;\n	text-align: center;\n	vertical-align: middle;\n}\n\n#content table.admintable th.trustname{\n	width:340px;\n}\n\n#content table.admintable td.middle{\n	text-align: center;\n}\n\n\n\n#content table.admintable th.sitename{\n	width:340px;\n}\n\n#content table.admintable th.contactname{\n	width:150px;\n}\n\n#content table.admintable th.position{\n	width:200px;\n}\n\n#content table.admintable th.phone{\n	width:100px\n}\n\n\n#content table.admintable td{\n	padding: 2px;\n}\n\n\n#content table.admintable td span.title{\n	background: url(Images/Arrow.gif) no-repeat 0% 3px;\n	padding-left: 10px;\n	font-weight: bold;\n}\n\n#content table.admintable td span.content{\n	padding-left: 10px;\n}\n\n#footer{\n	clear:both;\n	width:900px;\n	position:relative;\n	height:40px;\n	color:#999999;\n	font-size:8px;\n}\n\n#footer hr{\n	background: #999999;\n}\n\n\n#footer ul{\n	border:0;\n	padding:0;\n	margin:0;\n	list-style-type: none;\n	float:left;\n	text-align:right;\n}\n\n#footer ul li{\n	border:0;\n	padding:0 2px 0 2px;\n	margin:0;\n	display: inline;\n	color:#999999;\n}\n\n#footer ul li a{\n	font-size: 10px;\n}\n\n\n#footer p.copyright{\n	top:0px;\n	right:0px;\n	position:relative;\n	float:right;\n	font-size: 10px;\n	color:#999999;\n}\n\n#errors{\n	width: 645px;\n	border: #ff0000 solid 1px;\n	padding: 5px;\n	color: #ff0000;\n	display: none;\n}\n\n#errors p.title{\n	font-weight: bold;\n	color: #ff0000;\n}\n\n#errors ul li{\n	color: #ff0000;\n}\n\n#errorsshow{\n	width: 645px;\n	border: #ff0000 solid 1px;\n	padding: 5px;\n	color: #ff0000;\n}\n\n#errorsshow p.title{\n	font-weight: bold;\n	color: #ff0000;\n}\n\n#errorsshow ul li{\n	color: #ff0000;\n	display: none;\n}\n\n#errorsshow ul li#defaulterror{\n	display: list-item;\n}\n\ndiv.padcontent{\n	padding-left: 20px;\n}\n\np.wjps{\n	padding: 20px 0px 0px 825px;\n}\n\n#selectnoticecategoryTitle{\n	display: none;\n}\n\n#selectnoticecategoryField{\n	display: none;\n}\n\ndt.yeardivider{\n	font-size: 15px;\n}\n\ndt.monthdivider{\n	font-size: 13px;\n}\n\ndd#event{\n	padding: 50px;\n}\n\nul.tabs{\n	border-bottom: 1px solid #08ae42;\n	padding: 5px 5px 0px 5px;\n	margin: 0px;\n	float: left;\n}\n\nul.tabs li{\n	display: inline-block;\n	float: left;\n	background:#ffffff;\n	color: #08ae42;\n	padding: 5px;\n	width: 120px;\n	border: 1px solid #08ae42;\n	border-bottom: 0px;\n	margin-right: 5px;\n}\n\nul.tabs li a{\n	color: #08ae42;\n	font-weight: bold;\n}\n\nul.tabs li.selected{\n	background: #08ae42;\n}\n\nul.tabs li.selected a{\n	color: #ffffff;\n	font-weight: bold;\n}\n\ndiv.directory{\n	position: relative;\n	top: 5px;\n	clear: both;\n}\n\ndl.contactdetails{\n	padding: 5px 5px 5px 20px\n}\n\ndl.contactdetails dd{\n	position:relative;\n	top:-14px;\n	left:40px;\n}\n\ntable.messagetable{\n	padding: 10px;\n	font-size: 12px;\n	width: 680px;\n}\n\ntable.messagetable tr td.header{\n	font-weight: bold;\n	width: 100px;\n	height: 30px;\n	vertical-align: bottom;\n}\n\ntable.messagetable tr td.headerinfo{\n	vertical-align: bottom;\n}\n\ntable.messagetable tr td.deletebtn{\n	width: 50px;\n	align: right;\n}\n\n\n\n\n",
+			"file": "styles.css",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 7078,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/messageclass.php",
+			"settings":
+			{
+				"buffer_size": 20181,
+>>>>>>> Jason-Branch
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "messages.php",
+<<<<<<< HEAD
+			"settings":
+			{
+				"buffer_size": 999,
+=======
+			"settings":
+			{
+				"buffer_size": 1252,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\n\n    class Events\n    {\n    \n        //Class Varibles\n        var $c_ID;\n        var $c_Title;\n        var $c_Details;\n        var $c_Location;\n        var $c_EventDate;\n        var $c_EventTime;\n        var $c_Duration;\n        var $c_Deleted;\n        \n        function getid()\n        {\n            return $this->c_ID;\n        }\n        \n        function settitle($Val)\n        {\n            $this->c_Title = $Val;\n        }\n        \n        function gettitle()\n        {\n            return $this->c_Title;\n        }\n        \n 		function setdetails($Val)\n        {\n            $this->c_Details = $Val;\n        }\n        \n        function getdetails()\n        {\n            return $this->c_Details;\n        }\n        \n        function setlocation($Val)\n        {\n            $this->c_Location = $Val;\n        }\n        \n        function getlocation()\n        {\n            return $this->c_Location;\n        }\n        \n        function seteventdate($Val)\n        {\n            $this->c_EventDate = $Val;\n        }\n        \n        function geteventdate()\n        {\n            return $this->c_EventDate;\n        }\n        \n        function seteventtime($Val)\n        {\n            $this->c_EventTime = $Val;\n        }\n        \n        function geteventtime()\n        {\n            return $this->c_EventTime;\n        }\n        \n        function setduration($Val)\n        {\n            $this->c_Duration = $Val;\n        }\n        \n        function getduration()\n        {\n            return $this->c_Duration;\n        }\n               \n        function setdeleted($Val)\n        {\n            $this->c_Deleted = $Val;\n        }\n        \n        function getdeleted()\n        {\n            return $this->c_Deleted;\n        }\n                \n        //Connection Constructor\n        function __construct($ID)\n        {\n            if($ID > 0){\n                //Load Using ID\n                $RQ = new ReadQuery(\"SELECT * FROM Events WHERE IDLNK = \" . $ID . \";\");\n                $row = mysql_fetch_array($RQ->getresults());\n                $this->c_ID = $ID;\n                $this->c_Title = $row[\"Title\"];\n                $this->c_Details = $row[\"Details\"];\n                $this->c_Location = $row[\"Location\"];\n                $this->c_EventDate = new DateClass(\"\",$row[\"EventDate\"],\"\",\"\",\"\");\n                $this->c_EventTime = $row[\"EventTime\"];\n                $this->c_Duration = $row[\"Duration\"];\n                $this->c_Deleted = $row[\"Deleted\"];\n            }else{\n                //Create New\n                $this->setdeleted(false);\n            }\n        }\n        \n        function savenew()\n        {\n        	$ED = $this->geteventdate();\n        	$WQ = new WriteQuery(\"INSERT INTO Events (Title, Details, Location, EventDate, EventTime, Duration, Deleted) VALUES ('\" . $this->gettitle() . \"', '\" . $this->getdetails() . \"', '\" . $this->getlocation() . \"','\" . $ED->getdatabasedate() . \"','\" . $this->geteventtime() . \"','\" . $this->getduration() . \"', 0)\");\n        	//echo($WQ->getquery());\n            $this->c_ID = mysql_insert_id();\n        }\n        \n        function save()\n        {\n        	$ED = $this->geteventdate();\n        	$WQ = new WriteQuery(\"UPDATE Events SET Title = '\" . $this->gettitle() . \"', Details = '\" . $this->getdetails() . \"', Location = '\" . $this->getlocation() . \"', EventDate = '\" . $ED->getdatabasedate() . \"', EventTime = '\" . $this->geteventtime() . \"', Duration = '\" . $this->getduration() . \"', Deleted = \" . $this->getdeleted() . \" WHERE IDLNK = \" . $this->getid() . \";\");\n			//echo($WQ->getquery());\n        }\n        \n        static public function listall()\n        {\n     		//Normal\n     		\n     		print(\"<p>The list below shows all the events in the system.</p>\");\n     		\n     		print(\"<p><a href='events.php?eid=-1'><img src=\\\"Images/calendar_add.png\\\" alt=\\\"Add Event\\\"/>Add New Event</a></p>\");\n				\n			$RQ = new ReadQuery(\"SELECT IDLNK FROM Events WHERE Deleted = 0 ORDER BY EventDate DESC, EventTime, Title\");\n			\n			//echo($RQ->getquery());\n			\n			$Col1 = array(\"Title\",\"sectionname\",1);\n			$Col2 = array(\"Location\",\"documents\",1);\n			$Col3 = array(\"Date Time\",\"datetime\",1);\n			$Col4 = array(\"\",\"operations\",2);\n            $Cols = array($Col1,$Col2,$Col3,$Col4);\n            $Rows = array();\n            $RowCounter = 0;\n			\n			while($row = RQ->getresults()->fetch_array(MYSQLI_ASSOC)){\n				$Event = new Events($row[\"IDLNK\"]);\n				$Row1 = array($Event->gettitle(),\" \");\n				$Row2 = array($Event->getlocation(),\" \");\n				$Row3 = array($Event->geteventdate()->getnormaldate() . \" \" . $Event->geteventtime(),\" \");\n				$Row4 = array(\"<a href=\\\"?eid=\". $Event->getid() .\"\\\"><img src=\\\"Images/calendar_edit.png\\\" alt=\\\"Edit Event\\\"/></a>\",\"button\");\n				$Row5 = array(\"<a onclick=\\\"confirmdialog('Delete Event \" . $Event->gettitle() . \"', '?eid=\". $Event->getid() .\"&amp;aid=10');\\\"><img src=\\\"Images/calendar_delete.png\\\" alt=\\\"Delete Event\\\"/></a>\",\"button\");\n				//$Row4 = array(\"<a href=\\\"?lid=\". $Link->getid() .\"&amp;aid=10\\\"><img src=\\\"Images/link_delete.png\\\" alt=\\\"Delete Link\\\"/></a>\",\"button\");\n				\n				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);\n                $RowCounter ++;\n			}\n			\n			Tables::generateadmintable(\"eventstable\",$Cols,$Rows);\n        \n        }\n                \n        static public function showall()\n        {\n        \n        	$EID = $_GET[\"leid\"];\n        	\n        	if(!isset($EID)){\n        	\n        		print(\"<h2>Events List</h2>\");\n        	\n        		print(\"<p>Listed below are up and coming events.</p>\");\n        	\n	        	$RQ = new ReadQuery(\"SELECT IDLNK FROM Events WHERE Deleted = 0 ORDER BY EventDate, EventTime DESC, Title\");\n	        	\n	        	$Year = \"\";\n	        	$Month = \"\";\n	        	\n	        	print(\"<dl>\");\n	        	\n	        	while($row = RQ->getresults()->fetch_array(MYSQLI_ASSOC))\n	        	{\n	        		$Event = new Events($row[\"IDLNK\"]);\n	        		\n	        		$EYear = $Event->geteventdate()->getyear();\n	        		\n	        		$EMonth = $Event->geteventdate()->getmonth();\n	        		\n	        		if($EYear == $Year){\n	        			//Same Year\n	        			\n	        			if($Month == $EMonth)\n	        			{\n	        				//Same Month\n	        				print(\"<dt><a href=\\\"?leid=\" . $Event->getid() . \"\\\">\" . $Event->gettitle() . \"</a> (\" . $Event->geteventdate()->getnormaldate() . \")</dt>\\r\\n\");\n	        			\n	        				print(\"<dd>\" . $Event->getdetails() . \"</dd>\\r\\n\");\n	        				\n	        			} else {\n	        				//New Month\n	        				if($Month != \"\"){\n	        					print(\"</dl></dd></dl>\\r\\n\");\n	        				}\n	        				\n	        				print(\"<dl><dt class=\\\"monthdivider\\\">\" . $Event->geteventdate()->getmonthstring() . \"</dt><dd><dl>\\r\\n\");\n	 \n	        				print(\"<dt><a href=\\\"?leid=\" . $Event->getid() . \"\\\">\" . $Event->gettitle() . \"</a> (\" . $Event->geteventdate()->getnormaldate() . \")</dt>\\r\\n\");\n	        			\n	        				print(\"<dd class=\\\"event\\\">\" . $Event->getdetails() . \"</dd>\\r\\n\");\n	        				\n	        				$Month = $EMonth;\n	        			}\n	        			\n	        		} else {\n	        			//New Year\n	        			if($Year != \"\"){\n	        				print(\"</dl></dd></dl>\\r\\n\");\n	        			}\n	        		\n	    				print(\"<dt class=\\\"yeardivider\\\">\" . $EYear . \" Events</dt>\\r\\n\");\n	    				print(\"<dd><dl><dt class=\\\"monthdivider\\\">\" . $Event->geteventdate()->getmonthstring() . \"</dt><dd><dl>\\r\\n\");\n	        				\n	        			print(\"<dt><a href=\\\"?leid=\" . $Event->getid() . \"\\\">\" . $Event->gettitle() . \"</a> (\" . $Event->geteventdate()->getnormaldate() . \")</dt>\\r\\n\");\n	        			\n	        			print(\"<dd class=\\\"event\\\">\" . $Event->getdetails() . \"</dd>\\r\\n\");\n	        			\n	        			$Year = $EYear;\n	        			\n	        			$Month = $EMonth;\n	        		}\n	        	}\n	        	\n	        	print(\"</dl>\");\n        	\n        	} else {\n        	\n        		$Event = new Events($EID);\n        	\n        		print(\"<h2>\" . $Event->gettitle() . \"</h2>\");\n        		\n        		print(\"<dl>\");\n        		\n	        		print(\"<dt>Event:</dt>\");\n	        		\n	        		print(\"<dd>\" . $Event->gettitle() . \"</dd>\");\n	        		\n	        		print(\"<dt>Details:</dt>\");\n	        		\n	        		print(\"<dd>\" . $Event->getdetails() . \"</dd>\");\n	        		\n	        		print(\"<dt>Location:</dt>\");\n	        		\n	        		print(\"<dd>\" . $Event->getlocation() . \"</dd>\");\n	        		\n	        		print(\"<dt>Date &amp; Time:</dt>\");\n	        		\n	        		print(\"<dd>\" . $Event->geteventdate()->getnormaldate() . \" - \" . $Event->geteventtime() . \"</dd>\");\n	        		\n	        		print(\"<dt>Duration</dt>\");\n	        		\n	        		print(\"<dd>\" . $Event->getduration() . \"</dd>\");\n        		\n        		print(\"</dl>\");\n        		\n        		print(\"<p><a href=\\\"events.php\\\">Return to Events List</a></p>\");\n        	\n        	}\n        	\n        }\n        \n        static public function addedit($EID)\n	    {\n			$Title = $_POST[\"title\"];\n			$Details = $_POST[\"details\"];\n			$Location = $_POST[\"location\"];\n			$EventDate = $_POST[\"eventdate\"];\n			$EventTime = $_POST[\"eventtime\"];\n			$Duration = $_POST[\"duration\"];\n			$SendNotice = $_POST[\"sendnotice\"];\n			\n			//Get Number of Categorys\n			$NofC = UserCategory::gettotal();\n			\n			//$UserCategorys = new array();\n			\n			for($c=1;$c<=$NofC;$c++)\n			{\n				if(isset($_POST[\"selectnoticecategory\" . $c])){\n					//$UserCategory .= \",\" . $_POST[\"usercategory\" . $c];\n					$NoticeCategorys[$c-1] = $_POST[\"selectnoticecategory\" . $c];\n				}\n			}\n		\n			$Submit = $_POST[\"submit\"];\n			\n			$TitleError = array(\"titleerror\",\"Please enter an Event Title\");\n			$DetailsError = array(\"descriptionerror\",\"Please enter the Event Details\");\n			$LocationError = array(\"locationerror\",\"Please enter the Event Location\");\n			$EventDateError = array(\"eventdateerror\",\"Please enter an Event Date\");\n			$EventTimeError = array(\"eventtimeerror\",\"Please enter an Event Time\");\n			$DurationError = array(\"eventdurationerror\",\"Please enter an Event Duration\");\n			\n			$EventDateFormatError = array(\"eventdateformaterror\",\"You must enter the date in the format dd/mm/yyyy\");\n			$EventTimeFormatError = array(\"eventtimeformaterror\",\"You must enter the time in the format hh:mm\");\n			\n			$EventCategoryError = array(\"eventcategoryerror\",\"Please select at least one Notice Category.\");\n	         \n	        if($EID > 0){\n	            //Edit\n	            print(\"<h2>Edit Event</h2>\");\n\n	        	if($Submit){\n	                //Edit\n	                 \n					$NewEvent = new Events($EID);\n					\n					$NewEvent->settitle($Title);\n					$NewEvent->setdetails($Details);\n					$NewEvent->setlocation($Location);\n					$NewEvent->seteventdate(new DateClass(\"\",$EventDate,\"\",\"\",\"\"));\n					$NewEvent->seteventtime($EventTime);\n					$NewEvent->setduration($Duration);\n									\n					$NewEvent->save();			\n					\n					Events::generatenotice($SendNotice,$NewEvent,$NoticeCategorys,0);\n					\n					print(\"<p>The event has been succesfully edited.</p>\");\n					\n					print(\"<p>Return to <a href='events.php'>Events Admin</a>.</p>\");\n											       \n			     } else {\n	                //Form\n	                print(\"<p>To Edit the Event complete the form below. Once you have completed it click the Edit Event button.</p>\");\n	                \n	                $Errors = array($TitleError,$DetailsError,$LocationError,$EventDateError,$EventTimeError,$DurationError,$EventDateFormatError,$EventTimeFormatError);\n        			\n        			Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n	                \n	                $Event = new Events($EID);\n	                	             	\n	                Events::form($Event->gettitle(),$Event->getdetails(),$Event->getlocation(),$Event->geteventdate()->getnormaldate(),$Event->geteventtime(),$Event->getduration(),$EID,false);\n	             }\n        	 } else {\n        	 //Add\n	            print(\"<h2>Add New Event</h2>\");\n\n	            if($Submit){\n	                //Add\n	                 \n					$NewEvent = new Events(0);\n					\n					$NewEvent->settitle($Title);\n					$NewEvent->setdetails($Details);\n					$NewEvent->setlocation($Location);\n					$NewEvent->seteventdate(new DateClass(\"\",$EventDate,\"\",\"\",\"\"));\n					$NewEvent->seteventtime($EventTime);\n					$NewEvent->setduration($Duration);\n									\n					$NewEvent->savenew();	\n					\n					Events::generatenotice($SendNotice,$NewEvent,$NoticeCategorys,0);							\n				\n					print(\"<p>The new event has been added to the system succesfully.</p>\");\n				\n					print(\"<p>Return to <a href='events.php'>Events Admin</a>.</p>\");\n			\n				} else {\n	                //Form\n	                print(\"<p>To Add a New Event complete the form below. Once you have completed it click the Add Event button.</p>\");\n	                \n	                $Errors = array($TitleError,$DetailsError,$LocationError,$EventDateError,$EventTimeError,$DurationError,$EventDateFormatError,$EventTimeFormatError,$EventCategoryError);\n        			\n        			Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n        			\n	                Events::form($Title,$Details,$Location,$EventDate,$EventTime,$Duration,$EID,true);\n	             }\n        	 }\n	     }\n	     \n	     static private function generatenotice($SendNotice,$Event,$NoticeCategorys,$Add){\n	    	if($SendNotice == 1){\n	    	\n		    	$NewNotice = new Notices(0);\n		    	\n		    	$User = new Users($_SESSION[\"userid\"]);\n		    	\n		    	if ($Add){\n		    		$AddEditStr = \"added to\";\n		    	} else {\n		    		$AddEditStr = \"edited on\";\n		    	}\n									\n				$Notice .= \"<p>A new event has been \" . $AddEditStr . \" the \" . SHORTNAME . \" website. Details are shown below.</p>\";\n				\n				$Notice .= \"<dl>\";\n				$Notice .= \"<dt>Event:</dt><dd>\" . $Event->gettitle() . \"</dd>\";\n				$Notice .= \"<dt>Details:</dt><dd>\" . $Event->getdetails() . \"</dd>\";\n				$Notice .= \"<dt>Location:</dt><dd>\" . $Event->getlocation() . \"</dd>\";\n				$Notice .= \"<dt>Date &amp; Time:</dt><dd>\" . $Event->geteventdate()->getnormaldate() . \" \" . $Event->geteventtime() . \"</dd>\";\n				$Notice .= \"<dt>Duration:</dt><dd>\" . $Event->getduration() . \"</dd>\";\n				$Notice .= \"</dl>\";\n				\n				$Notice .= \"<p>You can view this event in the \" . SHORTNAME . \" <a href=\\\"\" . URL . \"/events.php\\\">website calender</a>.</p>\";\n	\n				$NewNotice->settitle(\"Event \" . $Event->gettitle() . \" added to \" . SHORTNAME . \" website.\");\n				$NewNotice->setnotice($Notice);\n				$NewNotice->setdateadded(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n				$NewNotice->setpostedby($User);\n				$NewNotice->savenew();\n				\n				foreach($NoticeCategorys as $NC)\n				{\n					$WQ = new WriteQuery(\"INSERT INTO NoticesCategorys (NoticeIDLNK, CategoryIDLNK, Deleted) VALUES (\" . $NewNotice->getid() . \", \" . $NC . \",0);\");\n					\n					//echo($WQ->getquery());\n				}\n				\n				Notices::sendemail($NewNotice->getid());\n			}\n	    }\n\n	     \n    	static public function form($Title,$Details,$Location,$EventDate,$EventTime,$Duration,$EID,$Add)\n        {\n        	$NoticeCategoryArray = UserCategory::generatearray();\n        \n        	$TitleField = array(\"Event Title:\",\"Text\",\"title\",65,0,$Title,\"\",\"\",!$Add);\n        	$DetailsField = array(\"Details:\",\"TextArea\",\"details\",63,10,$Details);\n        	$LocationField = array(\"Location:\",\"Text\",\"location\",65,0,$Location);\n        	$EventDateField = array(\"Event Date:\",\"Text\",\"eventdate\",10,0,$EventDate);\n        	$EventTimeField = array(\"Event Time:\",\"Text\",\"eventtime\",10,0,$EventTime);\n        	$DurationField = array(\"Duration:\",\"Text\",\"duration\",10,0,$Duration);\n        	$SendNoticeField = array(\"Send Notice:\",\"Checkbox\",\"sendnotice\",0,0,0,1,\"shownoticecategorys(this)\");\n        	$NoticeCategoryField = array(\"Notice Category:\",\"CheckboxArray\",\"selectnoticecategory\",0,0,\"\",$NoticeCategoryArray);\n        	\n        	\n        	$Fields = array($TitleField,$DetailsField,$LocationField,$EventDateField,$EventTimeField,$DurationField,$SendNoticeField,$NoticeCategoryField);\n\n            \n			if($EID == -1){\n				$Button = \"Add Event\";\n            	Forms::generateform(\"eventsform\",\"events.php?eid=$EID\",\"return checkeventsform(this,2)\",false,$Fields,$Button);\n			} else {\n				$Button = \"Edit Event\";\n				Forms::generateform(\"eventsform\",\"events.php?eid=$EID\",\"return checkeventsform(this,2)\",false,$Fields,$Button);\n			}\n           \n        }\n        \n		static public function deleteevent($EID){\n        	$Event = new Events($EID);\n        	\n        	$Event->setdeleted(1);\n        	\n        	$Event->save();\n        }     \n\n       \n    }\n\n?>",
+			"file": "eventsclass.php",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 16451,
+>>>>>>> Jason-Branch
+				"line_ending": "Unix"
+			}
+		},
+		{
+<<<<<<< HEAD
+			"file": "Classes/messageclass.php",
+			"settings":
+			{
+				"buffer_size": 20695,
+=======
+			"file": "Classes/eventsclass.php",
+			"settings":
+			{
+				"buffer_size": 16362,
+>>>>>>> Jason-Branch
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/linksclass.php",
+			"settings":
+			{
+<<<<<<< HEAD
+				"buffer_size": 30860,
+=======
+				"buffer_size": 8410,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/noticesclass.php",
+			"settings":
+			{
+				"buffer_size": 13858,
+>>>>>>> Jason-Branch
+				"line_ending": "Unix"
+			}
+		},
+		{
+<<<<<<< HEAD
+			"file": "directory.php",
+			"settings":
+			{
+				"buffer_size": 6344,
+=======
+			"settings":
+			{
+				"buffer_size": 0,
+>>>>>>> Jason-Branch
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Stack",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Breakpoint",
+				"read_only": true,
+				"scratch": true
 			}
 		}
 	],
@@ -64,40 +477,56 @@
 	},
 	"file_history":
 	[
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/pagesclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/config.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/userclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/styles.css",
+<<<<<<< HEAD
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/eventsclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/formsclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/events.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/documents.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/directory.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/menuclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/changepassword.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/logout.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/linksclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/links.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/linkm.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/templateclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/messages.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/notices.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/styles.css",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/noticesclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/directory.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/trusts.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/forgottenpassword.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/documents.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/linksclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/linkm.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/positions.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/positionsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/contactclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/siteclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/trustclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/documentsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/sectionsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/groupsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/users.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/changepassword.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/userclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/welcome.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/links.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/logout.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/classes.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/templateclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/index.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/config.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/pagesclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/messages.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery-draggable.js",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Ajax-php/positionupdate.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/trusts.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/users.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/welcome.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/index.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/classes.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/bootstrap.css",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/positionsclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/tableclass.php",
-		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/forgottenpassword.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/menuclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/style.css",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/messageclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/connectionclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/portal.sublime-project",
+=======
+		"/Users/jason/Downloads/nicEdit-93b522b5e6e2331d12d3b36ee0e100df/nicEdit.js",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery-ui.js",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery.dataTables.js",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/config.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/writequeryclass.php",
+>>>>>>> Jason-Branch
 		"/Users/jason/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
 	],
 	"find":
@@ -116,8 +545,61 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
+			"add new",
+			"User List",
+			"Users List",
+			"User List",
+			"login",
+			"loginchec",
 			"login(",
 			"\\\""
+=======
+			"Update",
+			"write",
+			"salt",
+			"logincheck",
+			"loginstatus",
+			"User",
+			"Add",
+			"AA",
+			"checkbox",
+			"button",
+			"Search",
+			"User Level",
+			">\n",
+			"body",
+			"Image",
+			"Add",
+			"Image",
+			"trusts",
+			"ul",
+			"Image",
+			"Edit",
+			"Image",
+			"Alt",
+			"Add New Group",
+			"Image",
+			"Images",
+			"group",
+			"group_add",
+			"Add New Group",
+			"glyphicon",
+			"glyph",
+			"messagecategory",
+			"checkbox",
+			"glyphicon",
+			"messageField",
+			"messagefield",
+			"ASSOC",
+			"MYSQLI_BOTH",
+			"latest",
+			"Images",
+			"ASSOC",
+			"array",
+			"$row",
+			"array"
+>>>>>>> Jason-Branch
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -125,35 +607,135 @@
 		"regex": false,
 		"replace_history":
 		[
-			"'"
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
+<<<<<<< HEAD
+			"selected": 4,
+=======
+			"selected": 30,
+>>>>>>> Jason-Branch
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "config.php",
+<<<<<<< HEAD
+					"file": "Classes/menuclass.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 825,
+						"buffer_size": 9479,
+=======
+					"file": "portal.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								190,
-								190
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 41,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Classes/connectionclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								737,
+								737
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Classes/userclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32588,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32120,
+								32120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 12.0,
+						"translation.y": 12536.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "notices.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1466,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -165,7 +747,1215 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "events.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								300,
+								328
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "documents.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								433
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "changepassword.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 633,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 833,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								829,
+								829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Classes/contactclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15218,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13547,
+								13547
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Classes/positionsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3428,
+								3428
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 314.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Classes/sectionsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5948,
+								5953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 105.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 37,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Classes/siteclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3818,
+								3818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Classes/trustclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9088,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2349,
+								2349
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1003.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 26,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "directory.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6576,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6406,
+								6406
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "js/jquery-draggable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 766,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								766,
+								766
+							]
+						],
+						"settings":
+						{
+							"auto_name": "$(document).ready(function() {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 31,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "js/jquery-draggable.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 766,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"auto_name": "$(document).ready(function() {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 33,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "positions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1455,
+>>>>>>> Jason-Branch
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								8304,
+								8304
+=======
+								1388,
+								1388
+>>>>>>> Jason-Branch
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+<<<<<<< HEAD
+						"translation.x": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+=======
+						"translation.x": 0.0,
+						"translation.y": 537.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 30,
+>>>>>>> Jason-Branch
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "js/jquery-sortable.js",
+					"semi_transient": false,
+					"settings":
+					{
+<<<<<<< HEAD
+						"buffer_size": 999,
+=======
+						"buffer_size": 22642,
+>>>>>>> Jason-Branch
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								547,
+								547
+=======
+								4052,
+								4052
+>>>>>>> Jason-Branch
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/* ===============================================",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+<<<<<<< HEAD
+						"translation.y": 193.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Classes/messageclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20695,
+=======
+						"translation.y": 2342.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 32,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "Classes/usercategorysclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3031,
+								3031
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 29,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "Classes/groupsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11788,
+>>>>>>> Jason-Branch
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								6284,
+								6284
+=======
+								5826,
+								5826
+>>>>>>> Jason-Branch
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+<<<<<<< HEAD
+						},
+						"translation.x": 402.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Classes/userclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 30860,
+=======
+						},
+						"translation.x": 0.0,
+						"translation.y": 303.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "Classes/documentsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								556,
+								556
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7024.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "welcome.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1341,
+>>>>>>> Jason-Branch
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								28515,
+								28515
+=======
+								369,
+								369
+>>>>>>> Jason-Branch
+							]
+						],
+						"settings":
+						{
+<<<<<<< HEAD
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+=======
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+>>>>>>> Jason-Branch
+						},
+						"translation.x": 3.0,
+						"translation.y": 11131.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "directory.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 6344,
+=======
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "menuclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5116,
+>>>>>>> Jason-Branch
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+<<<<<<< HEAD
+								328,
+								385
+=======
+								4407,
+								4407
+>>>>>>> Jason-Branch
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1142.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
 					"stack_index": 0,
+=======
+					"stack_index": 38,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "Classes/menuclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4710,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2240,
+								2240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 34,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "Classes/readqueryclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1668,
+								1668
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 627.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "Classes/formsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7123,
+								7123
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 562.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "Classes/classes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "Classes/documentsclass.php.old",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3464.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 36,
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "Classes/tableclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1168,
+								1168
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"file": "Classes/templateclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1997,
+								1997
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 6.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								305,
+								305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 31,
+					"file": "css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7504,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 32,
+					"file": "styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1991,
+								1991
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2402.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 39,
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "Classes/messageclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16789,
+								16797
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 34,
+					"file": "messages.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								907
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 335.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 27,
+					"type": "text"
+				},
+				{
+					"buffer": 35,
+					"file": "eventsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5829,
+								5829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 36,
+					"file": "Classes/eventsclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4947,
+								4947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6166.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 35,
+					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "Classes/linksclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2191,
+								2191
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3387.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 38,
+					"file": "Classes/noticesclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13858,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1755,
+								1755
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 822.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 28,
+					"type": "text"
+				},
+				{
+					"buffer": 39,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 40,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 41,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 40,
+>>>>>>> Jason-Branch
 					"type": "text"
 				}
 			]
@@ -173,11 +1963,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 0.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -213,7 +2003,7 @@
 	"project": "portal.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 0.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -253,6 +2043,7 @@
 		],
 		"xdebug":
 		{
+			"hide_conflict": false,
 			"restore_index":
 			{
 				"102":
@@ -294,7 +2085,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 300.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

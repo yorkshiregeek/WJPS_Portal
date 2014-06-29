@@ -54,7 +54,6 @@
     		<? Templates::MetaHeader($PageTitle,$ExtraScripts); ?>
     		       	
     	    <body>
-
                 <header>
 
                      <?
@@ -80,7 +79,7 @@
                         <div id="logo"></div>
                         <h1><? print(SITENAME); ?></h1>
                         <h2><? print(SITENAMESUB); ?></h2>
-                        
+
                     </div>
 
                 </header>
