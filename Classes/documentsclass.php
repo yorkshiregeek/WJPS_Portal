@@ -133,7 +133,8 @@
         	$DM = $this->getdatemodified();
         	$WQ = new WriteQuery("INSERT INTO Documents (SectionIDLNK, Filename, Description, DateModified, Filesize, FileType, Deleted) VALUES (" . $this->getsection()->getid() . ", '" . $this->getfilename() ."', '" . $this->getdescription() . "','" . $DM->getdatabasedate() . "'," . $this->getfilesize() . ",'" . $this->getfiletype() . "', 0)");
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+         
+             $this->c_ID -> insert_id;
         }
         
         function save()
@@ -220,7 +221,10 @@
 			Tables::generateadmintable("admindocumenttable",$Cols,$Rows);
         
         }
-             
+
+
+
+
     	static public function addedit($DID,$DSID)
 	    {
 			$Filename = $_POST["filename"];
@@ -450,7 +454,6 @@
     	static public function form($SectionID,$Filename,$Description,$DID,$Add)
         {
         	$NoticeCategoryArray = UserCategory::generatearray();
-        
         	$SectionIDField = array("Section ID:","Hidden","sid",65,0,$SectionID,"","");
         	$FilenameField = array("Filename:","Text","filename",65,0,$Filename,"","");
         	$DescriptionField = array("Description:","TextArea","description",63,7,$Description);
