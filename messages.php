@@ -6,12 +6,15 @@
 	include_once("Classes/messageclass.php");
 	
 	$Scripts[0] = "Script/MessageScript.js";
+	$Scripts[1] = "js/nicEdit.js";  
 	
 	Templates::PageHeader("Messages",$Scripts,"messages",1);
  	
 ?>
+
     		    		
 	<div class='col-md-12' id='content'>
+
 		
 		<? 
 		

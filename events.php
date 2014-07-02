@@ -8,11 +8,16 @@
 	include_once("Classes/noticesclass.php");
 	
 	$Scripts[0] = "Script/EventsScript.js";
+	$Scripts[1] = "js/nicEdit.js";  
 	
 	
 	Templates::PageHeader("Events",$Scripts,"eventsm",1);
     		 	
 ?>    		
+	<!--This is needed to add the toolbar into any element that is defined as textarea -->
+	<script type="text/javascript">
+		bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+	</script>
     		    		
 	<div class='col-md-12' id='content'>
 

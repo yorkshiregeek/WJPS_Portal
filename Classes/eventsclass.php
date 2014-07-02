@@ -114,7 +114,9 @@
         	$ED = $this->geteventdate();
         	$WQ = new WriteQuery("INSERT INTO Events (Title, Details, Location, EventDate, EventTime, Duration, Deleted) VALUES ('" . $this->gettitle() . "', '" . $this->getdetails() . "', '" . $this->getlocation() . "','" . $ED->getdatabasedate() . "','" . $this->geteventtime() . "','" . $this->getduration() . "', 0)");
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+          
+            $this->c_ID -> insert_id;
+     
         }
         
         function save()
@@ -432,6 +434,7 @@
         	$DurationField = array("Duration:","Text","duration",10,0,$Duration,"Enter the Event Duration");
         	$SendNoticeField = array("Send Notice:","Checkbox","sendnotice",0,0,0,1,"shownoticecategorys(this)");
         	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"","",$NoticeCategoryArray);
+
         	
         	
         	$Fields = array($TitleField,$DetailsField,$LocationField,$EventDateField,$EventTimeField,$DurationField,$SendNoticeField,$NoticeCategoryField);
