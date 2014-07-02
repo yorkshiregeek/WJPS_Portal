@@ -30,9 +30,3 @@
 	//include_once("siteclass.php");
 	//include_once("positionsclass.php");
 	//include_once("contactclass.php");
-
-
-	
-
-    
-?>

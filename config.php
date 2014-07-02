@@ -1,13 +1,10 @@
 <?php
 
-	
+	define("SITENAME", "WJP Software Limited");
+	define("SITENAMESUB", "Portal");
+	define("SHORTNAME" , "WJPSPortal");
 
-	
-	define("SITENAME", "Association of Teaching Hospital Pharmacists");
-	define("SITENAMESUB", "NHS Trusts");
-	define("SHORTNAME" , "ATHP");
-
-	define("COPYRIGHT", "&copy; ATHP 2014");
+	define("COPYRIGHT", "&copy; WJPS 2014");
 	
 	define("NOREPLYEMAIL", "noreply@athp.org.uk");
 	define("DEFAULTEMAIL", "admin@athp.org.uk");

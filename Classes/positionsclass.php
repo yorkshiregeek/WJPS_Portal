@@ -80,7 +80,7 @@
         {
     		//Normal
     		
-    		print("<p>The list below shows all the positions in the system. To reorder the positions simply drag and drop a row to the desired position.</p>");
+    		print("<p class='lead'>The list below shows all the positions in the system. To reorder the positions simply drag and drop a row to the desired position.</p>");
     		
     		print("<p><a href='positions.php?pid=-1'><span class=\"glyphicon glyphicon-plus\" alt= \"Add New Position\" ></span> Add New Position</a></p>");
         		
@@ -98,12 +98,12 @@
         		$Position = new Positions($row["PositionIDLNK"]);
 
 
-        		$Row1 = array($Position->getposition()," ");
+        		$Row1 = array($Position->getposition()," ","data-id='" . $Position->getid() . "'");
         		
-        		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt= \"Edit Position\" ></span></a>","button");
-        		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt= \"Delete User\" ></span></a>","button");
+        		$Row4 = array("<a href=\"?pid=". $Position->getid() ."\"><span class=\"glyphicon glyphicon-pencil\" alt =\"Edit\" ></span></a>","button");
+        		$Row5 = array("<a onclick=\"confirmdialog('Delete Position " . $Position->getposition() . "', '?pid=". $Position->getid() ."&amp;aid=10');\"><span alt =\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>","button");
 
-
+        		//$Row4 = array("<a href=\"?lid=". $Link->getid() ."&amp;aid=10\"><img src=\"Images/link_delete.png\" alt=\"Delete Link\"/></a>","button");
 
         		
         		$Rows[$RowCounter] = array($Row1,$Row4,$Row5);
@@ -126,7 +126,7 @@
 
 	        if($PID > 0){
 	            //Edit
-	            print("<h2>Edit Position</h2>");
+	            //print("<h2>Edit Position</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -137,14 +137,14 @@
 					
 					$NewPosition->save();
 					
-					print("<p>The position has been succesfully edited.</p>");
+					print("<p class='lead'>The position has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='positions.php'>Positions Admin</a>.</p>");
 					
 					
 			     } else {
 	                //Form
-	                print("<p>To Edit the Position complete the form below. Once you have completed it click the Edit Position button.</p>");
+	                print("<p class='lead'>To Edit the Position complete the form below. Once you have completed it click the Edit Position button.</p>");
 	                
 	                $Errors = array($PositionError);
         			
@@ -156,7 +156,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Position</h2>");
+	            //print("<h2>Add New Position</h2>");
 
 	            if($Submit){
 	                //Add
@@ -173,13 +173,13 @@
 					
 					$NewPosition->savenew();								
 					
-					print("<p>The new position has been added to the system succesfully.</p>");
+					print("<p class='lead'>The new position has been added to the system succesfully.</p>");
 					
 					print("<p>Return to <a href='positions.php'>Positions Admin</a>.</p>");
 				
 				} else {
 	                //Form
-	                print("<p>To Add a New Position complete the form below. Once you have completed it click the Add Position button.</p>");
+	                print("<p class='lead'>To Add a New Position complete the form below. Once you have completed it click the Add Position button.</p>");
 	                
 	                $Errors = array($PositionError);
         			
@@ -192,7 +192,7 @@
 	     
     	static public function form($Position,$PID,$Add)
         {
-        	$PositionField = array("Position:","Text","position",65,0,$Position);
+        	$PositionField = array("Position:","Text","position",65,0,$Position,"Enter a Position title.");
         	
         	$Fields = array($PositionField);
 
@@ -270,7 +270,7 @@
 			
 			while($row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC)){
 				//echo($row[1]);NOTT
-				$ReturnArray[$Counter] = array($row[0],$row[1]);
+				$ReturnArray[$Counter] = array($row['PositionIDLNK'],$row['Position']);
 				$Counter ++;
 			}
 			

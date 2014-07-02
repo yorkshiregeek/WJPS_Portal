@@ -7,22 +7,14 @@
 	
 	$Scripts[0] = "Script/DirectoryScript.js";
 	
-	Templates::PageHeader("Directory",$Scripts);
+	Templates::PageHeader("Directory",$Scripts,"directory",3);
 
-	if(Users::logincheck(3) > 0){
- 		Menu::generateadminmenu("directory"); 
- 	} else {
- 		Menu::generatemenu("login");
- 	}
- 	
 ?>
 	
 	    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
-	
-		<h1>Directory Admin</h1>
+	<div class='col-md-12' id='content'>
+
+		<h2 class='page-header'>Directory Admin</h2>
 		
 		
 		

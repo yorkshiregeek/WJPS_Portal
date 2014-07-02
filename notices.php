@@ -12,33 +12,17 @@
 
 	
 
-	<?
-	Templates::PageHeader("Notices",$Scripts);
+	Templates::PageHeader("Notices",$Scripts,"notices",1);
 
-	
-	if(Users::logincheck(1) > 0){
-		
-		$UID = Users::logincheck(1);
-		
-		$User = new Users($UID);
-		
-		if($User->getuserlevel() >= 2){
-			Menu::generateadminmenu("notices");
-		} else {
-			Menu::generateusermenu("notices");
-		}
-	 	} else {
- 		Menu::generatemenu("login");
- 	}
  	
 ?>
 <script type="text/javascript">
 	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>
     		    		
-	<div class='col-md-10' id='content'>
-	
-		<hr/>
+
+	<div class='col-md-12' id='content'>
+
 
 		<? 
 		
@@ -58,7 +42,7 @@
 			
 				if($User->getuserlevel() >= 2){
 				
-					Print("<h1>Notices Admin</h1>");
+					Print("<h2 class='page-header'>Notices Admin</h2>");
 				
 					if($NID){
 						if($AID){
@@ -84,7 +68,7 @@
 					} 						
 				} else {
 					
-					Print("<h1>Notices</h1>");
+					Print("<h2> class='page-header'>Notices</h2>");
 					
 					if($NID){
 						Notices::shownotice($NID);

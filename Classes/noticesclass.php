@@ -169,19 +169,33 @@
         static private function generatenotice($NoticeID)
         {
         	$Notice = new Notices($NoticeID);
+
+            print("<div class='panel panel-default'>");
+
+                print("<div class='panel-heading'>");
+                    print("<h3 class='panel-title'>" . $Notice->gettitle() . "</h3>");
+                print("</div>");
+                print("<div class='panel-body'>");
+                    print($Notice->getnotice());
+                print("</div>");
+                print("<div class='panel-footer'>");
+                    print("<strong>Posted:</strong> " . $Notice->getdateadded()->getnormaldate() . " <strong>by</strong> " . $Notice->getpostedby()->getfullname() . "");
+                print("</div>");
         	
-        	$Message .= "<h2>" . $Notice->gettitle() . "</h2>";
+        	//$Message .= "<h2>" . $Notice->gettitle() . "</h2>";
         
-        	$Message .= "<dl>";
-        		$Message .= "<dt>Notice:</dt>";
-        		$Message .= "<dd class=\"notice\">" . $Notice->getnotice() . "</dd>";
-        		$Message .= "<dt>Date Posted:</dt>";
+        	//$Message .= "<dl>";
+        	//	$Message .= "<dt>Notice:</dt>";
+            //		$Message .= "<dd class=\"notice\">" . $Notice->getnotice() . "</dd>";
+        	/*	$Message .= "<dt>Date Posted:</dt>";
         		$Message .= "<dd class=\"notice\">" . $Notice->getdateadded()->getnormaldate() . "</dd>";
         		$Message .= "<dt>Posted by:</dt>";
         		$Message .= "<dd class=\"notice\">" . $Notice->getpostedby()->getfullname() . "</dd>";
         		$Message .= "<dt>Notice Categorys:</dt>";
         		$Message .= "<dd class=\"notice\">" . $Notice->getcategorysbydesc() . "</dd>";
-        	$Message .= "</dl>";
+        	$Message .= "</dl>";*/
+
+            print("</div>");
         	
         	return $Message;
         }
@@ -196,9 +210,8 @@
         static public function listall()
         {
      		//Normal     		
-     		print("<h2>Notices</h2>");
-				
-			print("<p>The list below shows all notices.</p>");
+  
+			print("<p class='lead'>The list below shows all notices.</p>");
 			
 			//echo($RQ->getquery());
 			
@@ -248,9 +261,9 @@
         static public function listadmin()
         {
      		//Normal
-     		print("<h2>Notices</h2>");
+     		//print("<h2>Notices</h2>");
 				
-			print("<p>The list below shows all notices.</p>");
+			print("<p class='lead'>The list below shows all notices.</p>");
 			
 			print("<p><a href='notices.php?nid=-1'><span class=\"glyphicon glyphicon-plus\" alt = \"Add New Notice\"></span> Add New Notice</a></p>");
 							
@@ -312,7 +325,7 @@
 			$CategoryError = array("categoryerror","Please select at least one Category");
 	         
 	        //Add
-            print("<h2>Add New Notice</h2>");
+            //print("<h2>Add New Notice</h2>");
 
             if($Submit){
                 //Add
@@ -336,13 +349,13 @@
 				
 				Notices::sendemail($NewNotice->getid());
 									
-				print("<p>The new notice has been added to the system and sent to all system users succesfully.</p>");
+				print("<p class='lead'>The new notice has been added to the system and sent to all system users succesfully.</p>");
 				
 				print("<p>Return to <a href='notices.php'>Notices Admin</a>.</p>");				
 								
 			} else {
                 //Form
-                print("<p>To Add a New Notice complete the form below. Once you have completed it click the Send Notice Button and the Notice will be sent to all site users..</p>");
+                print("<p class='lead'>To Add a New Notice complete the form below. Once you have completed it click the Send Notice Button and the Notice will be sent to all site users..</p>");
                 
                 $Errors = array($TitleError,$NoticeError,$CategoryError);
     			
@@ -356,11 +369,11 @@
     	static public function form($Title,$Notice,$NoticeCategorys,$NID)
         {
         	$NoticeCategoryArray = UserCategory::generatearray();
-        
-          	$TitleField = array("Title:","Text","title",65,0,$Title);
-        	$NoticeField = array("Notice:","TextArea","notice",63,7,$Notice);
+
+          	$TitleField = array("Title:","Text","title",65,0,$Title,"Enter a Notice Title.");
+        	$NoticeField = array("Notice:","TextArea","notice",63,7,$Notice,"Enter the Notice.");
         	$NoticeCategoryField = array("Notice Category:","CheckboxArray","noticecategory",0,0,$NoticeCategory,"",$NoticeCategoryArray);
-          
+
         	
 			$Fields = array($TitleField,$NoticeField,$NoticeCategoryField);
 

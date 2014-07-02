@@ -154,9 +154,9 @@
      		
      		$Trust = new Trusts($TID);
      		
-     		print("<p>The list below shows all the sites that are part of " . $Trust->gettrust() . ".</p>");
-     		
-     		print("<p><a href='directory.php?mid=0&amp;sid=-1&amp;stid=" . $TID . "'><img src=\"Images/building_add.png\" alt=\"Add New Site\"/>Add New Site</a></p>");
+     		print("<p class='lead'>The list below shows all the sites that are part of <strong>" . $Trust->gettrust() . "</strong>.</p>");
+
+     		print("<p><a href='directory.php?mid=0&amp;sid=-1&amp;stid=" . $TID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Site</a></p>");
 				
 			$RQ = new ReadQuery("SELECT IDLNK FROM Sites WHERE TrustIDLNK = " . $Trust->getid() . " AND Deleted = 0 ORDER BY Name");
 			
@@ -175,8 +175,8 @@
 				$Row1 = array($Site->getname()," ");
 				$Row2 = array($Site->gettelephone()," ");
 				$Row3 = array($Site->getfax()," ");
-				$Row4 = array("<a href=\"?mid=0&amp;sid=". $Site->getid() ."&amp;stid=" . $TID . "\"><img src=\"Images/building_edit.png\" alt=\"Site Trust\"/></a>","button");
-				$Row5 = array("<a onclick=\"confirmdialog('Delete Site " . $Site->getname() . "', '?mid=0&amp;sid=". $Site->getid() ."&amp;stid=" . $TID . "&amp;aid=10');\"><img src=\"Images/building_delete.png\" alt=\"Delete Site\"/></a>","button");
+				$Row4 = array("<a href=\"?mid=0&amp;sid=". $Site->getid() ."&amp;stid=" . $TID . "\"><span class=\"glyphicon glyphicon-pencil\" alt =\"Edit\" ></span></a>","button");
+				$Row5 = array("<a onclick=\"confirmdialog('Delete Site " . $Site->getname() . "', '?mid=0&amp;sid=". $Site->getid() ."&amp;stid=" . $TID . "&amp;aid=10');\"><span alt =\"Delete\" class=\"glyphicon glyphicon-trash\"></span></a>","button");
 				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
                 $RowCounter ++;
@@ -190,7 +190,7 @@
         {
         	$Trust = new Trusts($TID);
         	
-        	print("<p>The list below shows all the sites that are part of " . $Trust->gettrust() . ". Click a site to see the full contact details.</p>");
+        	print("<p class='lead'>The list below shows all the sites that are part of <strong>" . $Trust->gettrust() . "</strong>. Click a site to see the full contact details.</p>");
         		        		
         	$RQ = new ReadQuery("SELECT IDLNK FROM Sites WHERE TrustIDLNK = " . $Trust->getid() . " AND Deleted = 0 ORDER BY Name");
         	
@@ -255,7 +255,7 @@
 					
 	        if($SID > 0){
 	            //Edit
-	            print("<h2>Edit Site</h2>");
+	            //print("<h2>Edit Site</h2>");
 
 	        	if($Submit){
 	                //Edit
@@ -273,13 +273,13 @@
 													
 					$NewSite->save();			
 										
-					print("<p>The Site has been succesfully edited.</p>");
+					print("<p class='lead'>The Site has been succesfully edited.</p>");
 					
 					print("<p>Return to <a href='directory.php'>Directory Admin</a>.</p>");
 								       
 			     } else {
 	                //Form
-	                print("<p>To Edit the Site complete the form below. Once you have completed it click the Edit Site button.</p>");
+	                print("<p class='lead'>To Edit the Site complete the form below. Once you have completed it click the Edit Site button.</p>");
 	                
 	                $Errors = array($SiteError,$Address1Error,$TownError,$PostcodeError,$TelephoneError);
         			
@@ -297,7 +297,7 @@
 	             }
         	 } else {
         	 //Add
-	            print("<h2>Add New Site</h2>");
+	            //print("<h2>Add New Site</h2>");
 	            
 	            //printr($_POST);
 	            
@@ -319,13 +319,13 @@
 	                								
 	                $NewSite->savenew();			
 	                					
-	                print("<p>The Site has been succesfully added to the site.</p>");
+	                print("<p class='lead'>The Site has been succesfully added to the site.</p>");
 	                
 	                print("<p>Return to <a href='directory.php'>Directory Admin</a>.</p>");			
 				} else {
 	                //Form
 	                
-	                print("<p>To Add a new Site complete the form below. Once you have completed it click the Save Site button.</p>");
+	                print("<p class='lead'>To Add a new Site complete the form below. Once you have completed it click the Save Site button.</p>");
 	                   
 	                $Errors = array($SiteError,$Address1Error,$TownError,$PostcodeError,$TelephoneError);
 	                	
@@ -342,14 +342,14 @@
         	$Trust = new Trusts($TID);
         
         	$TrustField = array("Trust:","Static","trustname",0,0,$Trust->gettrust());
-        	$SiteField = array("Site name:","Text","name",65,0,$SiteName,"","",$Add);
-        	$AddressLine1Field = array("Address:","Text","addressline1",65,0,$AddressLine1);
-        	$AddressLine2Field = array("","Text","addressline2",65,0,$AddressLine2);
+        	$SiteField = array("Site name:","Text","name",65,0,$SiteName,"Enter a Site Name.","",$Add);
+        	$AddressLine1Field = array("Address:","Text","addressline1",65,0,$AddressLine1,"Enter Address Line 1.");
+        	$AddressLine2Field = array("","Text","addressline2",65,0,$AddressLine2,"Enter Address Line 2.");
         	
-        	$TownField = array("Town:","Text","town",40,0,$Town);
-        	$PostcodeField = array("Postcode:","Text","postcode",10,0,$Postcode);
-        	$TelephoneField = array("Telephone:","Text","telephone",12,0,$Telephone);
-        	$FaxField = array("Fax:","Text","fax",12,0,$Fax);
+        	$TownField = array("Town:","Text","town",40,0,$Town,"Enter a Town.");
+        	$PostcodeField = array("Postcode:","Text","postcode",10,0,$Postcode,"Enter a Postcode.");
+        	$TelephoneField = array("Telephone:","Text","telephone",12,0,$Telephone,"Enter a Telephone Number.");
+        	$FaxField = array("Fax:","Text","fax",12,0,$Fax,"Enter a Fax Number.");
         	
         
         	$Fields = array($TrustField,$SiteField,$AddressLine1Field,$AddressLine2Field,$TownField,$PostcodeField,$TelephoneField,$FaxField);

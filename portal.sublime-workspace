@@ -4,6 +4,28 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
+<<<<<<< HEAD
+				"Messag",
+				"Message"
+			],
+			[
+				"M",
+				"MYSQLI_ASSOC"
+			],
+			[
+				"Gro",
+				"Group"
+			],
+			[
+				"c_Us",
+				"c_Userlevel"
+			],
+			[
+				"page",
+				"PageHeader"
+=======
+=======
 				"New",
 				"NewPassword"
 			],
@@ -24,8 +46,10 @@
 				"Row1"
 			],
 			[
+>>>>>>> Jason-Branch
 				"trust",
 				"truststable"
+>>>>>>> Jason-Branch
 			],
 			[
 				"form",
@@ -56,6 +80,14 @@
 	"buffers":
 	[
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"file": "Classes/menuclass.php",
+			"settings":
+			{
+				"buffer_size": 9479,
+=======
+=======
 			"file": "/Applications/MAMP/logs/php_error.log",
 			"settings":
 			{
@@ -64,6 +96,7 @@
 			}
 		},
 		{
+>>>>>>> Jason-Branch
 			"file": "portal.sublime-project",
 			"settings":
 			{
@@ -382,11 +415,17 @@
 			"settings":
 			{
 				"buffer_size": 20181,
+>>>>>>> Jason-Branch
 				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "messages.php",
+<<<<<<< HEAD
+			"settings":
+			{
+				"buffer_size": 999,
+=======
 			"settings":
 			{
 				"buffer_size": 1389,
@@ -401,14 +440,26 @@
 			"settings":
 			{
 				"buffer_size": 16451,
+>>>>>>> Jason-Branch
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
+			"file": "Classes/messageclass.php",
+			"settings":
+			{
+				"buffer_size": 20695,
+=======
 			"file": "Classes/eventsclass.php",
 			"settings":
 			{
+<<<<<<< HEAD
+				"buffer_size": 16362,
+>>>>>>> Jason-Branch
+=======
 				"buffer_size": 16382,
+>>>>>>> Jason-Branch
 				"line_ending": "Unix"
 			}
 		},
@@ -416,6 +467,9 @@
 			"file": "Classes/linksclass.php",
 			"settings":
 			{
+<<<<<<< HEAD
+				"buffer_size": 30860,
+=======
 				"buffer_size": 8410,
 				"line_ending": "Unix"
 			}
@@ -424,14 +478,26 @@
 			"file": "Classes/noticesclass.php",
 			"settings":
 			{
+<<<<<<< HEAD
+				"buffer_size": 13858,
+>>>>>>> Jason-Branch
+=======
 				"buffer_size": 13872,
+>>>>>>> Jason-Branch
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
+			"file": "directory.php",
+			"settings":
+			{
+				"buffer_size": 6344,
+=======
 			"settings":
 			{
 				"buffer_size": 0,
+>>>>>>> Jason-Branch
 				"line_ending": "Unix"
 			}
 		},
@@ -494,13 +560,64 @@
 	},
 	"file_history":
 	[
+<<<<<<< HEAD
 		"/Applications/MAMP/htdocs/survey/index.php",
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/eventsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/formsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/events.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/menuclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/notices.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/styles.css",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/noticesclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/directory.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/trusts.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/forgottenpassword.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/documents.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/linksclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/linkm.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/positions.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/positionsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/contactclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/siteclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/trustclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/documentsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/sectionsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/groupsclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/users.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/changepassword.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/userclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/welcome.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/links.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/logout.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/classes.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/templateclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/index.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/config.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/pagesclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/messages.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery-draggable.js",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Ajax-php/positionupdate.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/bootstrap.css",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/tableclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/menuclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/css/style.css",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/messageclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/connectionclass.php",
+		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/portal.sublime-project",
+=======
+=======
+>>>>>>> master
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/nicToolbar.js",
+>>>>>>> Jason-Branch
 		"/Users/jason/Downloads/nicEdit-93b522b5e6e2331d12d3b36ee0e100df/nicEdit.js",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery-ui.js",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/jquery.dataTables.js",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/config.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/writequeryclass.php",
+>>>>>>> Jason-Branch
 		"/Users/jason/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
 	],
 	"find":
@@ -519,6 +636,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"add new",
+			"User List",
+			"Users List",
+			"User List",
+			"login",
+			"loginchec",
+			"login(",
+			"\\\""
+=======
+=======
 			"File",
 			"getStyle",
 			"width",
@@ -550,6 +679,7 @@
 			"WQ",
 			"D",
 			"WQ",
+>>>>>>> Jason-Branch
 			"Update",
 			"write",
 			"salt",
@@ -594,6 +724,7 @@
 			"array",
 			"$row",
 			"array"
+>>>>>>> Jason-Branch
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -611,11 +742,32 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 24,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"selected": 4,
+=======
+			"selected": 30,
+>>>>>>> Jason-Branch
+=======
+			"selected": 15,
+>>>>>>> Jason-Branch
+>>>>>>> master
 			"sheets":
 			[
 				{
 					"buffer": 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					"file": "Classes/menuclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9479,
+=======
+=======
 					"file": "/Applications/MAMP/logs/php_error.log",
 					"semi_transient": false,
 					"settings":
@@ -644,6 +796,7 @@
 				},
 				{
 					"buffer": 1,
+>>>>>>> Jason-Branch
 					"file": "portal.sublime-project",
 					"semi_transient": false,
 					"settings":
@@ -1212,14 +1365,20 @@
 					"settings":
 					{
 						"buffer_size": 1455,
+>>>>>>> Jason-Branch
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
+								8304,
+								8304
+=======
 								1388,
 								1388
+>>>>>>> Jason-Branch
 							]
 						],
 						"settings":
@@ -1227,11 +1386,23 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
+<<<<<<< HEAD
+						"translation.x": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+=======
 						"translation.x": 0.0,
 						"translation.y": 537.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
+					"stack_index": 30,
+>>>>>>> Jason-Branch
+=======
 					"stack_index": 42,
+>>>>>>> Jason-Branch
 					"type": "text"
 				},
 				{
@@ -1240,15 +1411,24 @@
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
+						"buffer_size": 999,
+=======
 						"buffer_size": 22642,
+>>>>>>> Jason-Branch
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
+								547,
+								547
+=======
 								4052,
 								4052
+>>>>>>> Jason-Branch
 							]
 						],
 						"settings":
@@ -1259,7 +1439,26 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+						"translation.y": 193.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Classes/messageclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20695,
+=======
+						"translation.y": 2342.0,
+=======
 						"translation.y": 0.0,
+>>>>>>> Jason-Branch
 						"zoom_level": 1.0
 					},
 					"stack_index": 16,
@@ -1302,14 +1501,20 @@
 					"settings":
 					{
 						"buffer_size": 11788,
+>>>>>>> Jason-Branch
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
+								6284,
+								6284
+=======
 								5826,
 								5826
+>>>>>>> Jason-Branch
 							]
 						],
 						"settings":
@@ -1317,6 +1522,23 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+<<<<<<< HEAD
+						},
+						"translation.x": 402.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Classes/userclass.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 30860,
+=======
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1331,25 +1553,85 @@
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 19213,
+=======
+<<<<<<< HEAD
+						"buffer_size": 1341,
+>>>>>>> Jason-Branch
+=======
+						"buffer_size": 10421,
+>>>>>>> Jason-Branch
+>>>>>>> master
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								3559,
 								3559
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+								28515,
+								28515
+=======
+								369,
+								369
+>>>>>>> Jason-Branch
+=======
+								10377,
+								10377
+>>>>>>> Jason-Branch
+>>>>>>> master
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 2.0,
 						"translation.y": 5151.0,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+=======
+=======
+							"auto_name": "<!DOCTYPE html>",
+>>>>>>> Jason-Branch
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+>>>>>>> Jason-Branch
+						},
+<<<<<<< HEAD
+						"translation.x": 3.0,
+						"translation.y": 11131.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "directory.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 6344,
+=======
+					"stack_index": 3,
+=======
+						"translation.x": 0.0,
+						"translation.y": 938.0,
+>>>>>>> master
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1381,7 +1663,12 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 8,
+=======
+					"stack_index": 1,
+>>>>>>> Jason-Branch
+>>>>>>> master
 					"type": "text"
 				},
 				{
@@ -1421,14 +1708,20 @@
 					"settings":
 					{
 						"buffer_size": 5116,
+>>>>>>> Jason-Branch
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
+								328,
+								385
+=======
 								4407,
 								4407
+>>>>>>> Jason-Branch
 							]
 						],
 						"settings":
@@ -1441,7 +1734,18 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 21,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+					"stack_index": 0,
+=======
+					"stack_index": 38,
+=======
+					"stack_index": 19,
+>>>>>>> Jason-Branch
+>>>>>>> master
 					"type": "text"
 				},
 				{
@@ -2022,7 +2326,12 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
+					"stack_index": 40,
+>>>>>>> Jason-Branch
+=======
 					"stack_index": 47,
+>>>>>>> Jason-Branch
 					"type": "text"
 				}
 			]
@@ -2099,6 +2408,15 @@
 	},
 	"settings":
 	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
 		"xdebug":
 		{
 			"hide_conflict": false,
