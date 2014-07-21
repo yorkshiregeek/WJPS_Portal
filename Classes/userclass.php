@@ -565,9 +565,16 @@
         			$_SESSION["password"] = $User->getpassword();
         			
                     $_SESSION["userid"] = $LoginStatus;
+
+                    if($User->getuserlevel() == 3)
+                    {
+                        $_SESSION["isadmin"] = true;
+                    }
         			return true;
         		} else {
         			//Wrong Combination
+
+                    echo("<h2 class=page-header>Secure Login</h2>");
         			
         			echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         			    			
@@ -579,6 +586,8 @@
         			return false;
         		}
         	} else {
+
+                echo("<h2 class=page-header>Secure Login</h2>");
         		
         		echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         	
@@ -605,7 +614,6 @@
 
                 $salt = SALT;
                 $salt .= $Password;
-
                 $Password = $salt;
                 //encrypt the password
                  $Password = md5($Password);
@@ -613,6 +621,8 @@
         
         	//Check Username and Password
         	$RQ = new ReadQuery("SELECT IDLNK FROM Users Where Username = '" . $Username . "' AND Password = '" . $Password . "' AND Deleted = 0;");
+
+            //echo($RQ->getquery());
 
         	if($RQ->getnumberofresults() > 0)
         	{
@@ -926,6 +936,35 @@
             Tables::generateadmintable("adminusertable",$Cols,$Rows);
            
         
+        }
+
+        public static function generatearray()
+        {
+            $RQ = new ReadQuery("SELECT IDLNK, Firstname, Surname From Users WHERE Deleted = 0 ORDER BY Surname;");
+            
+            //echo($RQ->getquery());
+            
+            $ReturnArray = array();
+            
+            $Counter = 0;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                //echo($row[1]);
+                $ReturnArray[$Counter] = array($row[0],$row[1] . " " . $row[2]);
+                $Counter ++;
+            }
+            
+            return $ReturnArray;
+            
+        }
+
+        public static function gettotal()
+        {
+            $RQ = new ReadQuery("SELECT Count(*) FROM Users WHERE Deleted = 0;");
+            
+            $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
+            
+            return $row[0];
         }
         
         

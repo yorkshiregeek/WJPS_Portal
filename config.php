@@ -21,7 +21,7 @@
 	define("METAREVISED","WJPS 10/10/10");
 
 	define("DBSERVER","localhost");
-	define("DBNAME","portal");
+	define("DBNAME","ATHP");
 	define("DBUSER","root");
 	define("DBPASS","root");
 

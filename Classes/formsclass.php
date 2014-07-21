@@ -14,7 +14,7 @@
         	if($ShowDefault)
         	{
         		//Show By Default
-        		print("<div id='errorsshow'>");
+        		print("<div id='errorsshow' class='alert alert-danger'>");
         	} else {
         		print("<div id='errors' class='alert alert-danger'>");
         	}
@@ -151,6 +151,54 @@
             } elseif($Type == "DynamicFile") {
                 //File Input
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='file' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' onchange='" . $Action ."'/>");
+            } elseif($Type == "FileUpload") {
+
+   
+                 print("<span class='btn btn-default fileinput-button'>");
+                    print("<i class='glyphicon glyphicon-plus'></i>");
+                    print("<span>Select file</span>");
+                    print("<input id='fileupload' type='file' name='files[]'>");
+                print("</span>");
+
+                print("<br/><br/>");
+                 print("<div id='progress' class='progress'>");
+                    print("<div class='progress-bar progress-bar-success'></div>");
+                print("</div>");
+  
+                
+                    
+                print("<div id='files' class='files'></div>");
+            } else if($Type == "FileURL"){
+
+                print("<ul class='nav nav-tabs' role='tablist'>");
+                    print("<li class='active'><a href='#home' role='tab' data-toggle='tab'>File</a></li>");
+                    print("<li><a href='#profile' role='tab' data-toggle='tab'>URL</a></li>");
+                print("</ul>");
+
+                print("<div class='tab-content'>");
+                    print("<div class='tab-pane active' id='home'>");
+                        print("<p></p>");
+                        print("<span class='btn btn-default fileinput-button' style='float:left;'>");
+                            print("<i class='glyphicon glyphicon-plus'></i>");
+                            print("<span>Select file</span>");
+                            print("<input id='fileupload' type='file' name='files[]' multiple>");
+                        print("</span>");
+
+                        print("<br/><br/>");
+                         print("<div id='progress' class='progress'>");
+                            print("<div class='progress-bar progress-bar-success'></div>");
+                        print("</div>");
+
+                        print("<input class='form-control' type='hidden' name='fileurl' id='fileurl' value='" . $Value . "'\>");
+
+                    print("</div>");
+                    print("<div class='tab-pane' id='profile'>");
+                        print("<p></p>");
+                            print("<input class='form-control' placeholder = 'Enter a URL to link to.' type='text' name='fileuploadurl' id='fileuploadurl' size='60' value='" . $Value . "'" . $ReadOnly . "/>");
+                    print("</div>");
+                print("</div>");
+
+
             } elseif($Type == "Select") {
                 //Select
                 print("<select class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "'>");
@@ -188,20 +236,93 @@
                         foreach($Options as $Option)
                         {
 
-                            //New Row
-                            print("<tr>");
-                            if(Forms::checkedoption($Option[0],$Value))
+                            if($ColCounter == 1)
                             {
-                                print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                //New Row
+                                print("<tr>");
+                                 if(Forms::checkedoption($Option[0],$Value))
+                                {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                } else {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                }
+                            } elseif($ColCounter == 4) {
+                                 if(Forms::checkedoption($Option[0],$Value))
+                                {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                } else {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                }
+                                print("</tr>");
+                                $ColCounter = 0;
                             } else {
-                                print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                 if(Forms::checkedoption($Option[0],$Value))
+                                {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                } else {
+                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                }
                             }
-                            print("</tr>");
-                          
                             $ColCounter ++;
                             $CheckCounter ++;
                         }
                     print("</table>");
+            } elseif($Type == "CheckboxArrayCollapse") {
+                //Checkbox Array
+
+                    print("<div class='panel-group' id='accordion'>");
+                        print("<div class='panel panel-default'>");
+                            print("<div class='panel-heading'>");
+                                print("<p class='panel-title' style='font-size:11px;'>");
+                                    print("<a data-toggle='collapse' data-parent='#accordion' href='#collapseOne'>Click to view " . substr($Description,0,strlen($Description)-1) . "</a>");
+                                print("</p>");
+                            print("</div>");
+                            print("<div id='collapseOne' class='panel-collapse collapse'>");
+                                print("<div class='panel-body'>");
+      
+                                    print("<table id='" . $Name  . "Table' class='table'>");
+                                        $ColCounter = 1;
+                                        $CheckCounter = 1;
+                                        foreach($Options as $Option)
+                                        {
+
+                                            if($ColCounter == 1)
+                                            {
+                                                //New Row
+                                                print("<tr>");
+                                                 if(Forms::checkedoption($Option[0],$Value))
+                                                {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                                } else {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                                }
+                                            } elseif($ColCounter == 4) {
+                                                 if(Forms::checkedoption($Option[0],$Value))
+                                                {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                                } else {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                                }
+                                                print("</tr>");
+                                                $ColCounter = 0;
+                                            } else {
+                                                 if(Forms::checkedoption($Option[0],$Value))
+                                                {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                                } else {
+                                                    print("<td>" . $Option[1] . ":</td><td><input class='checkbox' type='checkbox' name='" . $Name . $CheckCounter . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
+                                                }
+                                            }
+                                            $ColCounter ++;
+                                            $CheckCounter ++;
+                                        }
+                                    print("</table>");
+
+                                print("</div>");
+                            print("</div>");
+                        print("</div>");
+                    print("</div>");
+
                 
             } elseif($Type == "OptionsArray") {
                 //Options Array
@@ -216,7 +337,7 @@
                                 print("<tr>");
                                 if(Forms::checkedoption($Option[0],$Value))
                                 {
-                                    print("<td>" . $Option[1] . ":</td><td><input type='radio' name='" . $Name  . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
+                                    print("<td>" . $Option[1] . ":</td><td style='border: 1px solid '><input type='radio' name='" . $Name  . "' value ='" . $Option[0] . "' checked='checked'" . $Disabled . "/></td>");
                                 } else {
                                     print("<td>" . $Option[1] . ":</td><td><input type='radio' name='" . $Name . "' value ='" . $Option[0] . "'" . $Disabled . "/></td>");
                                 }
@@ -266,6 +387,13 @@
                         print($Option[1] . "<input type='radio' name='" . $Name . "' value='" . $Option[0] . "'/>");
                     }
                 }
+            } else if($Type == "Tag"){
+                print("<div class='bs-example'>");
+                    print("<input class='form-control' name='". $Name . "' size='" . $Cols . "' id='" . $Name . "' type='text' value='" . $Value . "' data-role='tagsinput' placeholder='" .$PlaceHolder . "' />");
+                print("</div>");
+
+                //print("<input class='form-control' placeholder='" . $EntryText . "' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "'" . $ReadOnly . " data-role='tagsinput' />");
+
             }
 
             print($closing);
