@@ -18,12 +18,17 @@
                 
                 <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
                 <link rel="stylesheet" type="text/css" href="css/jquery-sortable.css"/>
+                <link rel="stylesheet" type="text/css" href="css/jquery.fileupload.css">
+                <link rel="stylesheet"  type="text/css" href="css/bootstrap-tagsinput.css">
+
                 <link rel="stylesheet" type="text/css" href="css/styles.css"/>
                 <script type="text/javascript" src="Script/Script.js"></script>
                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
                <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="js/bootstrap.min.js"></script>
+
+                <script src="js/typeahead.js"></script>
                
               
                 

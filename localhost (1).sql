@@ -2,22 +2,16 @@
 -- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jun 04, 2014 at 07:21 PM
--- Server version: 5.1.68-community
--- PHP Version: 5.4.23
+-- Host: localhost:8889
+-- Generation Time: Jul 21, 2014 at 09:12 AM
+-- Server version: 5.5.34
+-- PHP Version: 5.5.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Database: `ATHP_Live`
+-- Database: `ATHP`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +20,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `contacts`
 --
 
-CREATE TABLE IF NOT EXISTS `contacts` (
+CREATE TABLE `contacts` (
   `ContactIDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `TrustIDLNK` int(11) NOT NULL,
   `PositionIDLNK` int(11) NOT NULL,
@@ -101,7 +95,7 @@ INSERT INTO `contacts` (`ContactIDLNK`, `TrustIDLNK`, `PositionIDLNK`, `Name`, `
 -- Table structure for table `documents`
 --
 
-CREATE TABLE IF NOT EXISTS `documents` (
+CREATE TABLE `documents` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `SectionIDLNK` int(11) NOT NULL,
   `Filename` varchar(255) NOT NULL,
@@ -112,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `documents` (
   `FileType` varchar(50) NOT NULL,
   `Deleted` int(1) NOT NULL,
   PRIMARY KEY (`IDLNK`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=135 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=154 ;
 
 --
 -- Dumping data for table `documents`
@@ -168,7 +162,7 @@ INSERT INTO `documents` (`IDLNK`, `SectionIDLNK`, `Filename`, `URL`, `Descriptio
 (56, 12, '2011-06-30 : Presentations.pdf', '', 'NHS Commissioning - Quality & Leadership / Do Pharmacists make a difference? The EM contributions audit / Lean in Clinical Pharmacy â€“ the Leicester experience / Optimising medicines use at RDH / National standards for medicines management / Internal trading principles / New Community Pharmacy Contract / Modernising Pharmacy Manufacturing\r\n\r\nBenchmarking for quality and performance\r\n\r\nSeamless medicines management - the Nottingham experience', '2011/07/18', 2061557, 'application/pdf', 0),
 (57, 13, 'Comparison Template.doc', '', '', '2011/07/18', 81408, 'application/msword', 1),
 (58, 14, 'Annual Report - Sheffield Medicines Management & Therapeutics Committee.pdf', '', '', '2011/07/27', 33471, 'application/pdf', 0),
-(59, 14, 'Five year plan - Royal Brompton.pdf', '', '', '2011/07/27', 17623, 'application/pdf', 0),
+(59, 14, 'Five year plan - Royal Brompton.pdf', '', 'This is a plan.', '2011/07/27', 17623, 'application/pdf', 0),
 (60, 15, 'Sheffield - Prescribing and medicines management strategy 2011 .pdf', '', '', '2011/07/19', 37634, 'application/pdf', 0),
 (61, 15, 'Medicine Safety Committee report.pdf', '', '', '2011/07/19', 76098, 'application/pdf', 0),
 (62, 14, 'Annual report 2010 - Heart of England.pdf', '', '', '2011/07/27', 226183, 'application/pdf', 0),
@@ -243,7 +237,75 @@ INSERT INTO `documents` (`IDLNK`, `SectionIDLNK`, `Filename`, `URL`, `Descriptio
 (131, 24, 'S:\\kayl\\ATHP\\Nov 13 conference\\Speaker presentations\\PDFs\\RS - ATHP presentation Nov 2013 comp.pdf', '', '', '2013/12/05', 951814, 'application/pdf', 0),
 (132, 24, 'November 2013 Conference Speaker Presentation', '', '', '2013/12/05', 1572325, 'application/vnd.openxmlformats-officedocument.pres', 0),
 (133, 24, 'November  2013 Conference Speaker Presentation - Specialised Medicines & Commissioning (Malcolm Quaile)', '', '', '2013/12/05', 4517888, 'application/vnd.ms-powerpoint', 0),
-(134, 24, 'S:\\kayl\\ATHP\\Nov 13 conference\\Speaker presentations\\WS Experiences of RFL outsourced dispensary services.pptx', '', '', '2013/12/05', 91818, 'application/vnd.openxmlformats-officedocument.pres', 0);
+(134, 24, 'S:\\kayl\\ATHP\\Nov 13 conference\\Speaker presentations\\WS Experiences of RFL outsourced dispensary services.pptx', '', '', '2013/12/05', 91818, 'application/vnd.openxmlformats-officedocument.pres', 0),
+(135, 14, 'WJPS', '', 'Test', '2014/06/29', 0, '', 1),
+(136, 14, 'Test', 'http://www.wjps.co.uk', 'Test', '2014/06/29', 0, 'url', 1),
+(137, 14, 'Rebecca Unique ID (6).pdf', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Rebecca%20Unique%20ID%20%286%29.pdf', 'Rebecca', '2014/06/29', 0, 'upload', 1),
+(138, 14, 'Rebecca Unique ID (8).pdf', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Rebecca%20Unique%20ID%20%288%29.pdf', 'This', '2014/07/03', 0, 'upload', 1),
+(139, 14, 'QCNW Portal Presentation 2014 (8).pptx', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/QCNW%20Portal%20Presentation%202014%20%288%29.pptx', 'This', '2014/07/03', 0, 'upload', 1),
+(140, 14, 'sdsclogont (2).png', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/sdsclogont%20%282%29.png', 'Logo', '2014/07/03', 0, 'upload', 1),
+(141, 14, 'Vago.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Vago.jpg', 'Test', '2014/07/03', 0, 'upload', 1),
+(142, 14, 'berrimans page 5.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/berrimans%20page%205.jpg', '', '2014/07/03', 0, 'upload', 1),
+(143, 14, 'Nics page 2.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Nics%20page%202.jpg', '', '2014/07/03', 0, 'upload', 1),
+(144, 14, 'the important bit !.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/the%20important%20bit%20%21.jpg', '', '2014/07/03', 0, 'upload', 1),
+(145, 14, 'Nics statement page 1.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Nics%20statement%20page%201.jpg', '', '2014/07/03', 0, 'upload', 1),
+(146, 14, 'berrimans response.jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/berrimans%20response.jpg', '', '2014/07/03', 0, 'upload', 1),
+(147, 14, 'berrimans page 5 (1).jpg', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/berrimans%20page%205%20%281%29.jpg', '', '2014/07/03', 0, 'upload', 1),
+(148, 14, 'QCNW Portal Presentation 2014 (9).pptx', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/QCNW%20Portal%20Presentation%202014%20%289%29.pptx', '', '2014/07/03', 0, 'upload', 1),
+(149, 14, 'QCNW Portal Presentation 2014 (10).pptx', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/QCNW%20Portal%20Presentation%202014%20%2810%29.pptx', '', '2014/07/03', 0, 'upload', 1),
+(150, 14, 'QCNW Portal Presentation 2014 (11).pptx', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/QCNW%20Portal%20Presentation%202014%20%2811%29.pptx', '', '2014/07/03', 0, 'upload', 1),
+(151, 14, 'New Name', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/sdsclogont%20%283%29.png', '', '2014/07/03', 0, 'upload', 0),
+(152, 14, 'Invite1 (6).ai', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Invite1%20%286%29.ai', '', '2014/07/06', 0, 'upload', 0),
+(153, 2, 'Rebecca Unique ID (9).pdf', 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/files/Rebecca%20Unique%20ID%20%289%29.pdf', '', '2014/07/14', 0, 'upload', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documenttags`
+--
+
+CREATE TABLE `documenttags` (
+  `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
+  `DocumentIDLNK` int(11) NOT NULL,
+  `TagIDLNK` int(11) NOT NULL,
+  PRIMARY KEY (`IDLNK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Dumping data for table `documenttags`
+--
+
+INSERT INTO `documenttags` (`IDLNK`, `DocumentIDLNK`, `TagIDLNK`) VALUES
+(7, 151, 15),
+(8, 151, 16),
+(18, 152, 3),
+(19, 152, 3),
+(20, 153, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentusercategorys`
+--
+
+CREATE TABLE `documentusercategorys` (
+  `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
+  `DocumentIDLNK` int(11) NOT NULL,
+  `UserCategoryIDLNK` int(11) NOT NULL,
+  PRIMARY KEY (`IDLNK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `documentusercategorys`
+--
+
+INSERT INTO `documentusercategorys` (`IDLNK`, `DocumentIDLNK`, `UserCategoryIDLNK`) VALUES
+(8, 152, 2),
+(9, 152, 1),
+(10, 152, 8),
+(11, 152, 9),
+(12, 153, 2),
+(13, 153, 1);
 
 -- --------------------------------------------------------
 
@@ -251,7 +313,7 @@ INSERT INTO `documents` (`IDLNK`, `SectionIDLNK`, `Filename`, `URL`, `Descriptio
 -- Table structure for table `events`
 --
 
-CREATE TABLE IF NOT EXISTS `events` (
+CREATE TABLE `events` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `Details` text NOT NULL,
@@ -278,7 +340,7 @@ INSERT INTO `events` (`IDLNK`, `Title`, `Details`, `Location`, `EventDate`, `Eve
 -- Table structure for table `groups`
 --
 
-CREATE TABLE IF NOT EXISTS `groups` (
+CREATE TABLE `groups` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `GroupName` varchar(255) NOT NULL,
   `Description` text NOT NULL,
@@ -304,10 +366,39 @@ INSERT INTO `groups` (`IDLNK`, `GroupName`, `Description`, `Deleted`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `groupusercategorys`
+--
+
+CREATE TABLE `groupusercategorys` (
+  `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
+  `GroupIDLNK` int(11) NOT NULL,
+  `UserCategoryIDLNK` int(11) NOT NULL,
+  PRIMARY KEY (`IDLNK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `groupusercategorys`
+--
+
+INSERT INTO `groupusercategorys` (`IDLNK`, `GroupIDLNK`, `UserCategoryIDLNK`) VALUES
+(7, 4, 2),
+(8, 4, 1),
+(9, 4, 8),
+(10, 4, 9),
+(11, 3, 2),
+(12, 3, 1),
+(13, 3, 8),
+(14, 3, 9),
+(17, 2, 2),
+(18, 2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `links`
 --
 
-CREATE TABLE IF NOT EXISTS `links` (
+CREATE TABLE `links` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `URL` varchar(255) NOT NULL,
@@ -330,7 +421,7 @@ INSERT INTO `links` (`IDLNK`, `Title`, `URL`, `Deleted`) VALUES
 -- Table structure for table `messages`
 --
 
-CREATE TABLE IF NOT EXISTS `messages` (
+CREATE TABLE `messages` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `Message` text NOT NULL,
@@ -340,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `PostedByIDLNK` int(11) NOT NULL,
   `Deleted` varchar(1) NOT NULL,
   PRIMARY KEY (`IDLNK`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=73 ;
 
 --
 -- Dumping data for table `messages`
@@ -364,7 +455,7 @@ INSERT INTO `messages` (`IDLNK`, `Title`, `Message`, `ParentIDLNK`, `DateAdded`,
 (15, 'Associate Member', 'This is my bew post.', 5, '2011/08/30', '', 1, '0'),
 (16, 'Test', 'This is my second post', 4, '2011/08/30', '', 1, '1'),
 (17, 'Test', 'This is another', 4, '2011/08/30', '', 1, '1'),
-(18, 'This is a member message', 'This is great I can do some cool things.', 0, '2011/08/30', '', 2, '0'),
+(18, 'This is a member message', 'This is great I can do some cool things.', 0, '2011/08/30', '', 2, '1'),
 (19, 'This is a member message', 'I am now adding a reply', 18, '2011/08/30', '', 2, '0'),
 (20, 'This is a member message', 'This is another.', 18, '2011/08/30', '', 2, '0'),
 (21, 'This is a member message', 'Greta.', 18, '2011/08/30', '', 1, '0'),
@@ -400,10 +491,10 @@ INSERT INTO `messages` (`IDLNK`, `Title`, `Message`, `ParentIDLNK`, `DateAdded`,
 (51, 'IV Flush with 0.9% Sodium Chloride compliance with leagl and professional standards of administration of medicines', '\r\nWithin NHS Greater Glasgow and Clyde we have had protracted discussions over some time about the governance arrangements in place for the administration of "IV flush" solutions to patients after IV cannula insertion or during IV medicine administration. Sodium Chloride (and glucose, if used) are classified as POMs in these instances, and therefore should only be administered to patients in accordance with certain specification (e.g. written direction of a Doctor, PGD, PSD etc, as stated in the NMC Medicines Management standards).  A potential solution is to utilise the pre filled flush devices that are categorised as medical devices (CE marked), not medicines - but within our organisation the increased cost of this would be significant.  Nursing, pharmacy, and governance leads have acknowledged that the current situation, whereby flush solution are administered routinely across the organisation but are not prescribed or recorded, is a governance problem as it contravenes our own Safe and Secure Handling of Medicines policy and NMC guidance.  Whilst the risk of serious incident with a flush administration has been assessed as low, the implications for the individual and organisation if an incident occurred could be very serious.  We have explored various options but have yet to find a viable, practical solution that will allow patients to receive flush solution sin a timely manner, where administration would not  generate a significant recording  , but still satisfy legal and governance requirements.  Has anyone considered this and found a solution?\r\n', 0, '2012/03/29', '14:22:49', 35, '0'),
 (52, 'IV Flush with 0.9% Sodium Chloride compliance with leagl and professional standards of administration of medicines', 'Hi Norman\r\n\r\nWe have considered the "risks" and included the following in our Medicines Management policy\r\n"Intravenous 0.9% Sodium Chloride flushes for the purpose of: cannula insertion; between and after IV drug or fluid administration; maintenance of patency of cannulae or CVADs do NOT require a prescription when given by a registered practitioner. NB within a community setting it remains best practice to obtain a valid prescription."\r\nOur view is that this is the most pragmatic and lowest risk option\r\nAndrew\r\n\r\nAndrew Davies\r\nNorth Bristol\r\n29th March 2012', 51, '2012/03/29', '15:03:19', 8, '0'),
 (53, 'IV Flush with 0.9% Sodium Chloride compliance with leagl and professional standards of administration of medicines', 'Apologies for delay responding. We moved to BD ''posiflush'' devices last year (small overall cost to organisation), but very well received and no issues have been raised regards inappropriate use e.g. reconstitution of medicines. These are not prescribed but administered by staff under a core PGD.\r\n\r\nTom Gray\r\nDerby Hospitals\r\n 26 April 2012\r\n', 51, '2012/04/26', '12:24:14', 45, '0'),
-(54, 'A few ATHP messages to read', 'Greetings; a few issues to flag up:\r\n\r\n1.	Benchmarking\r\nAvid readers of Clinical Pharmacist will have seen (June 2012 page 153) a conversation around benchmarking of medicines reconciliation following on from Clare Howardâ€™s presentation at the NICE conference.  This picked up the work we discussed in York and document how ATHP will be piggybacking onto Clareâ€™s South Central benchmarking process (or to be more accurate, and to quote: â€˜a national programme of data collection around medicines reconciliation is about to start with the help of ATHP and SC SHAâ€™).  This is still being teed up and I am awaiting further instructions from Clareâ€™s team.  Iâ€™m just flagging it up now for those who missed the York meeting; it would be good if we can all start as a pack and avoid delays.  Further info to follow.\r\n  \r\n2.	NHS Commissioning Board\r\nI took part in a meeting of the NHS CB and the world of Pharmacy re â€˜developing agreements with professional partners for clinical advice and leadershipâ€™.  Part of Keith Ridgeâ€™s role is based in the NHS CB and the RPS needs to take on an important co-ordinating function in enabling the provision of advice.  The RPS has formal partner organisations eg UKCPA, UKMI etc but ATHP is not in this group. I believe we should have a less formal memorandum of understanding with the RPS so that our advice can be fed in where appropriate.  They would not be representing us but co-ordinating the provision of advice.  I will follow this up with the RPS who are keen to engage, so shout if this will cause you to lose any sleep.  \r\n\r\n3.	Modernising Pharmacy Careers â€“ stakeholder event\r\nThe MPC review of post-registration career development of pharmacists and pharmacy technicians has invited an ATHP representative to one of two stakeholder events (Friday 13th July in London or Monday 16th July in Manchester).  I unfortunately have commitments on both dates and will not be able to attend.  Is anyone keen and able to attend, engage and feed back?  Please email me at Stephen.Brown@uhbristol.nhs.uk and I will forward the details.\r\n\r\n4.	November meeting\r\nThanks to Tania for forwarding the proposed dates for the November meeting in the West Midlands; please respond as requested so we can firm up the dates and have someting to look forward to now the week of summer has finished.\r\n\r\nThanks\r\nSteve \r\n', 0, '2012/06/06', '19:06:08', 39, '0'),
+(54, 'A few ATHP messages to read', 'Greetings; a few issues to flag up:\r\n\r\n1.  Benchmarking\r\nAvid readers of Clinical Pharmacist will have seen (June 2012 page 153) a conversation around benchmarking of medicines reconciliation following on from Clare Howardâ€™s presentation at the NICE conference.  This picked up the work we discussed in York and document how ATHP will be piggybacking onto Clareâ€™s South Central benchmarking process (or to be more accurate, and to quote: â€˜a national programme of data collection around medicines reconciliation is about to start with the help of ATHP and SC SHAâ€™).  This is still being teed up and I am awaiting further instructions from Clareâ€™s team.  Iâ€™m just flagging it up now for those who missed the York meeting; it would be good if we can all start as a pack and avoid delays.  Further info to follow.\r\n  \r\n2.  NHS Commissioning Board\r\nI took part in a meeting of the NHS CB and the world of Pharmacy re â€˜developing agreements with professional partners for clinical advice and leadershipâ€™.  Part of Keith Ridgeâ€™s role is based in the NHS CB and the RPS needs to take on an important co-ordinating function in enabling the provision of advice.  The RPS has formal partner organisations eg UKCPA, UKMI etc but ATHP is not in this group. I believe we should have a less formal memorandum of understanding with the RPS so that our advice can be fed in where appropriate.  They would not be representing us but co-ordinating the provision of advice.  I will follow this up with the RPS who are keen to engage, so shout if this will cause you to lose any sleep.  \r\n\r\n3. Modernising Pharmacy Careers â€“ stakeholder event\r\nThe MPC review of post-registration career development of pharmacists and pharmacy technicians has invited an ATHP representative to one of two stakeholder events (Friday 13th July in London or Monday 16th July in Manchester).  I unfortunately have commitments on both dates and will not be able to attend.  Is anyone keen and able to attend, engage and feed back?  Please email me at Stephen.Brown@uhbristol.nhs.uk and I will forward the details.\r\n\r\n4. November meeting\r\nThanks to Tania for forwarding the proposed dates for the November meeting in the West Midlands; please respond as requested so we can firm up the dates and have someting to look forward to now the week of summer has finished.\r\n\r\nThanks\r\nSteve \r\n', 0, '2012/06/06', '19:06:08', 39, '0'),
 (55, 'ATHP June 2012', 'Greetings \r\n\r\nUpdate on a few issues:\r\n\r\n1. NHS Commissioning Board\r\n\r\nFollowing my last email there was resounding approval to work more closely with the RPS and recognise their important co-ordinating function in enabling the provision of advice to the NHS CB; I have a telephone appointment scheduled with Catherine Duggan to follow this up.\r\n(The RPS are also interested in publishing the â€˜Mixing of Medicinesâ€™ guidance that I circulated so I will be following that up with CD as well) \r\n\r\n2. RPS Standards\r\n\r\nThe RPS have requested that an ATHP representative joins the steering group on the next phase of work to support implementation of the Hospital Standards. The core remit of the steering group will be to help scope and develop the implementation programme and provide input into key decisions. \r\nI had a search for an eminent member who would be well placed for contributing to this steering group, having been engaged with the advisory group but not leading up one of the development sites; Tony West fitted the bill and has agreed to do this, so thanks Tony.  \r\n(Can we also note our thanks to Liz Kay for her role on the steering group for the publication of the standards as that was a job well done)  \r\n \r\n3. Modernising Pharmacy Careers stakeholder event\r\n(see my last email) Malcolm Partridge has volunteered to represent ATHP at the above event, so thanks Malcolm\r\n\r\n4. Benchmarking update\r\n\r\nTo recap, ATHP will be piggybacking onto Clare Howards South Central benchmarking process, so further instructions for those who have not yet engaged are below; the input is managed by Craig Robb from NHS Couth Central so he is your main contact point:\r\n\r\nEach trust that has submitted data so far has either sent an e-mail indicating the number of charts and the number of meds rec completed; or a copy of their own internal patient safety circular which contains this information.  \r\nThe audits are based on taking a sample of patients, or their charts, on one day of the week each month (a different day each month) and counting how many of the sample have had medicines reconciliation completed to stage 1 (the point where any discrepancies between the medicines prescribed on admission and those the patient was taking prior to admission have been highlighted by a member of the pharmacy staff) within 24 hours of admission (as defined below â€“ for simplicity 24 hours has come to mean the end of the day following the day of admission).  \r\nThe meds reconciliation info is usually gathered from at least two independent sources â€“ the patient, the patientâ€™s relatives, friends or carers, the patients GP, the medicines brought in by the patient and/or a specific medicines history database. \r\nAny investigation or discussion between the pharmacist and the doctor about whether a discrepancy is intentional or not is downstream of this audit point.  \r\nThe size of the sample is entirely up to you but the key is to ensure that it is representative of your trust.  Having said that, we would always exclude outpatients and paediatrics, as the NICE guidelines are about inpatients >16 yrs of age.  Some trusts exclude mental health patients and obstetrics too.\r\nCraig Robb\r\nProject Support Officer\r\nNHS South of England\r\nTel: 01635 275 568\r\nCraig.Robb@southcentral.nhs.uk\r\n\r\n5. And finally\r\nThe RPS have received a request regarding pharmacy input into the work of updating the British Society of Rheumatology guidelines for the monitoring of disease modifying drugs http://www.rheumatology.org.uk/includes/documents/cm_docs/2009/d/diseasemodifying_antirheumatic_drug_dmard_therapy.pdf .\r\nThis is being co-ordinated through the Royal Free Hospital.  If you have anyone with expertise in this area who would like to be involved please let me know and I can provide contact details.\r\n\r\n\r\nI think thatâ€™s it for now, thanks\r\nSteve\r\n(Stephen.Brown@uhbristol.nhs.uk)\r\n\r\n \r\n', 0, '2012/06/27', '17:59:53', 39, '0'),
 (56, 'ATHP: Reducing medicines waste', 'Greetings from Sunny Sheffield!\r\n\r\nRe: Action Plan of the Steering Group on Improving the Use of Medicines (for better outcomes and reduced waste)\r\n"3.7 Every Trust should complete a snapshot (one week) audit of medicines returned to the pharmacy"\r\n\r\nDoes anyone have an audit tool/spreadsheet/recording form that they''d be willing to share please?\r\n\r\nAlso, do you have a summary of results that we could benchmark against? Even without analysing the returns contents and despite the marvellous work we''re already doing (dispensing for discharge, reuse of PODS etc) we know we know we''ve still got a major problem on our hands (circa 6 tonnes per annum!)\r\n\r\nThanks\r\n\r\nDamian Child\r\nChief Pharmacist\r\nSheffield Teaching Hospitals NHS Foundation Trust\r\ndamian.child@sth.nhs.uk\r\nTel 0114 271 4164 (Northern General Hospital)\r\nTel 0114 271 2658 (Royal Hallamshire Hospital)\r\n\r\n', 0, '2013/07/12', '13:25:13', 14, '0'),
-(57, 'Leeds, rebalancing etc', 'Dear Colleagues\r\n\r\nCan I thank Liz again for organising the Leeds meeting last week as it was an excellent, enjoyable and challenging meeting with a lot of valuable content.  (Also thanks to Lyndal for the practical arrangements). The slides should be up on the website soon, both for those who attended and those who couldnâ€™t make it.\r\n\r\nThe next meeting is scheduled for Belfast in the Spring so (assuming thatâ€™s still ok) we will be in touch with Mike to get some provisional dates in the diary.  Some advanced requests were the discussion of outsourcing / insourcing and the application of Define.\r\n\r\nThanks to David Campbell who volunteered as the next ATHP chair so I am now passing the chairmanship in his direction!\r\n\r\nAnd thanks to Pippa for her work this year, plus a reminder for any aspiring volunteers that she is keen to pass her role on.\r\n\r\nA few things:\r\n1.	Business from Leeds\r\nWe do need to keep track of a number of issues from last weekâ€™s meeting, however, as we were encouraged by Keith (and in some of the other sessions) to develop a number of position papers as below:\r\n-	The spread of antimicrobial management to primary care to combat resistance\r\n-	Medicines optimisation and vulnerable patients\r\n-	The teaching hospital perspective on â€˜shaping Pharmacy for the futureâ€™\r\n-	Consultant Pharmacists â€“ where next?\r\nPlease pull together local information and examples to populate a template shortly.\r\n\r\nThere were a couple of other issues that I raised, one being the awareness of which trusts are in the AUKUH and the benchmarking data being provided (some about the Pharmacy service!).  Have a look on the following links to see if you are in this.\r\nhttp://www.aukuh.org.uk/index.php/members/member-organisations\r\n\r\nThey do have some useful narrative that we can borrow as well eg the role of the University Hospital\r\nhttp://www.aukuh.org.uk/index.php/documents\r\nand benchmarking data about our staffing and skillmix.\r\n\r\n\r\n2.	Rebalancing legislation and regulation\r\n\r\nToday I have been representing ATHP at the Partners Forum for â€˜Rebalancing Medicines Legislation and Pharmacy Regulationâ€™. \r\n\r\nJust to recap, the five key areas of the work programme are as below:\r\n\r\na.	Dispensing Errors: Review the pertinent criminal offences in relation to regulated pharmacy professions, operating from regulated pharmacy premises.  The threat of criminal sanction is widely believed to hinder the reporting of errors and therefore the learning from such errors.  There is evidence that reporting and learning from errors supports patient safety. \r\nb.	Responsible Pharmacist: Government policy is to avoid, where possible, detailed legislation to regulate professional activity.  The responsible pharmacist regulations have been subject to an evaluation, commissioned by RPS and PFPSNI in 2011, and more recently, have been examined as part of the Red Tape Challenge for Medicines.  The board is asked to examine the scope for reducing the level of detail within the Regulations and whether some of the enabling powers to make regulations remain necessary. \r\nc.	Pharmacy Superintendent: The board is asked to examine the legislative and regulatory framework in terms of the effectiveness of components of the system, which support patient safety, not only in relation to the responsible pharmacist, but also the role of superintendent in order to provide greater clarity of role, accountability and competence. \r\nd.	Hospital Pharmacy: The board will also consider regulatory arrangements for hospital pharmacies. These could underpin high quality hospital pharmacy services and enable the removal of the criminal sanction for dispensing errors for pharmacy professionals in hospitals.  Provision of medicines to patients in hospital does not, for the most part require registration of pharmacy premises, although all hospital pharmacy professionals are subject to professional regulation in the normal way. \r\ne.	Pharmacy Supervision: Building on the foundations above, the Board is asked to develop proposals on supervision. These should identify and review the medicines legislation which is considered to restrict the full use of the skills of registered pharmacists and registered pharmacy technicians or impede the deployment of modern technologies or put unnecessary obstacles in the way of new models of pharmacy service.\r\nâ€ƒ\r\n\r\nThe partners forum brings Ken Jarrold to the lecturn with Jeannette Howe presenting the Programme Boardâ€™s recommendations, and the Board listening to the engagement.  The ToR are attached for info.\r\nThe â€˜dispensing errorsâ€™ partners forum was a couple of months ago and you should have received my feedback in a previous email.\r\nTodayâ€™s forum was about superintendent pharmacists and responsible pharmacists (and they also squeezed in Pharmacy owners).  I don''t think i can attach my notes from the ATHP website so i''ll respond to this with a separate email with the attachments of my notes and the briefing paper that was circulated, so if you are interested have a read of the briefing paper first in order to make some sense of my notes.  Am happy to answer any questions.\r\n\r\nSteve\r\n', 0, '2013/12/02', '19:25:55', 39, '0'),
+(57, 'Leeds, rebalancing etc', 'Dear Colleagues\r\n\r\nCan I thank Liz again for organising the Leeds meeting last week as it was an excellent, enjoyable and challenging meeting with a lot of valuable content.  (Also thanks to Lyndal for the practical arrangements). The slides should be up on the website soon, both for those who attended and those who couldnâ€™t make it.\r\n\r\nThe next meeting is scheduled for Belfast in the Spring so (assuming thatâ€™s still ok) we will be in touch with Mike to get some provisional dates in the diary.  Some advanced requests were the discussion of outsourcing / insourcing and the application of Define.\r\n\r\nThanks to David Campbell who volunteered as the next ATHP chair so I am now passing the chairmanship in his direction!\r\n\r\nAnd thanks to Pippa for her work this year, plus a reminder for any aspiring volunteers that she is keen to pass her role on.\r\n\r\nA few things:\r\n1. Business from Leeds\r\nWe do need to keep track of a number of issues from last weekâ€™s meeting, however, as we were encouraged by Keith (and in some of the other sessions) to develop a number of position papers as below:\r\n- The spread of antimicrobial management to primary care to combat resistance\r\n-  Medicines optimisation and vulnerable patients\r\n- The teaching hospital perspective on â€˜shaping Pharmacy for the futureâ€™\r\n- Consultant Pharmacists â€“ where next?\r\nPlease pull together local information and examples to populate a template shortly.\r\n\r\nThere were a couple of other issues that I raised, one being the awareness of which trusts are in the AUKUH and the benchmarking data being provided (some about the Pharmacy service!).  Have a look on the following links to see if you are in this.\r\nhttp://www.aukuh.org.uk/index.php/members/member-organisations\r\n\r\nThey do have some useful narrative that we can borrow as well eg the role of the University Hospital\r\nhttp://www.aukuh.org.uk/index.php/documents\r\nand benchmarking data about our staffing and skillmix.\r\n\r\n\r\n2. Rebalancing legislation and regulation\r\n\r\nToday I have been representing ATHP at the Partners Forum for â€˜Rebalancing Medicines Legislation and Pharmacy Regulationâ€™. \r\n\r\nJust to recap, the five key areas of the work programme are as below:\r\n\r\na.  Dispensing Errors: Review the pertinent criminal offences in relation to regulated pharmacy professions, operating from regulated pharmacy premises.  The threat of criminal sanction is widely believed to hinder the reporting of errors and therefore the learning from such errors.  There is evidence that reporting and learning from errors supports patient safety. \r\nb.  Responsible Pharmacist: Government policy is to avoid, where possible, detailed legislation to regulate professional activity.  The responsible pharmacist regulations have been subject to an evaluation, commissioned by RPS and PFPSNI in 2011, and more recently, have been examined as part of the Red Tape Challenge for Medicines.  The board is asked to examine the scope for reducing the level of detail within the Regulations and whether some of the enabling powers to make regulations remain necessary. \r\nc. Pharmacy Superintendent: The board is asked to examine the legislative and regulatory framework in terms of the effectiveness of components of the system, which support patient safety, not only in relation to the responsible pharmacist, but also the role of superintendent in order to provide greater clarity of role, accountability and competence. \r\nd. Hospital Pharmacy: The board will also consider regulatory arrangements for hospital pharmacies. These could underpin high quality hospital pharmacy services and enable the removal of the criminal sanction for dispensing errors for pharmacy professionals in hospitals.  Provision of medicines to patients in hospital does not, for the most part require registration of pharmacy premises, although all hospital pharmacy professionals are subject to professional regulation in the normal way. \r\ne. Pharmacy Supervision: Building on the foundations above, the Board is asked to develop proposals on supervision. These should identify and review the medicines legislation which is considered to restrict the full use of the skills of registered pharmacists and registered pharmacy technicians or impede the deployment of modern technologies or put unnecessary obstacles in the way of new models of pharmacy service.\r\nâ€ƒ\r\n\r\nThe partners forum brings Ken Jarrold to the lecturn with Jeannette Howe presenting the Programme Boardâ€™s recommendations, and the Board listening to the engagement.  The ToR are attached for info.\r\nThe â€˜dispensing errorsâ€™ partners forum was a couple of months ago and you should have received my feedback in a previous email.\r\nTodayâ€™s forum was about superintendent pharmacists and responsible pharmacists (and they also squeezed in Pharmacy owners).  I don''t think i can attach my notes from the ATHP website so i''ll respond to this with a separate email with the attachments of my notes and the briefing paper that was circulated, so if you are interested have a read of the briefing paper first in order to make some sense of my notes.  Am happy to answer any questions.\r\n\r\nSteve\r\n', 0, '2013/12/02', '19:25:55', 39, '0'),
 (58, 'Test ', 'Dear all \r\nHave a good new year \r\nJust testing the messaging service ont he website!\r\nPippa', 0, '2013/12/31', '09:01:27', 4, '0'),
 (59, 'Test 2', 'This is a test.', 0, '2014/01/01', '17:27:10', 1, '1'),
 (60, 'Test 2', 'This is another test.', 0, '2014/01/01', '17:29:06', 1, '1'),
@@ -415,8 +506,10 @@ INSERT INTO `messages` (`IDLNK`, `Title`, `Message`, `ParentIDLNK`, `DateAdded`,
 (66, 'Test 2', 'Test', 0, '2014/01/01', '17:39:41', 1, '1'),
 (67, 'Test 2', 'This is another test.', 0, '2014/01/01', '17:40:32', 1, '1'),
 (68, 'Test 2', 'This is a test.', 0, '2014/01/01', '17:42:18', 1, '1'),
-(69, 'Test Message', 'This is a test message to all users to check that an update to the email system is working as required. There is no need to respond to this email.', 0, '2014/01/01', '17:45:38', 1, '0'),
-(70, 'In-tariff drug savings', 'Dear all\r\n\r\nI have an in-tariff drugs savings target of Â£200k (in year) for 2014/15, which is about 1% of our in-tariff spend. Included within that are price reductions through contract changes and any schemes to make savings by reducing/changing prescribing of in-tariff drugs.\r\n\r\nMy DoF wants to know how this target compares to other Trusts. Please could you let me know what agreements you have in your organisations.\r\n\r\nMany thanks\r\nSue\r\n\r\nSue Ladds\r\nChief Pharmacist\r\nUniversity Hospital Southampton NHS Foundation Trust\r\n\r\n023 8120 4458\r\nsue.ladds@uhs.nhs.uk\r\n', 0, '2014/03/31', '16:23:59', 70, '0');
+(69, 'Test Message', 'This is a test message to all users to check that an update to the email system is working as required. There is no need to respond to this email.', 0, '2014/01/01', '17:45:38', 1, '1'),
+(70, 'In-tariff drug savings', 'Dear all\r\n\r\nI have an in-tariff drugs savings target of Â£200k (in year) for 2014/15, which is about 1% of our in-tariff spend. Included within that are price reductions through contract changes and any schemes to make savings by reducing/changing prescribing of in-tariff drugs.\r\n\r\nMy DoF wants to know how this target compares to other Trusts. Please could you let me know what agreements you have in your organisations.\r\n\r\nMany thanks\r\nSue\r\n\r\nSue Ladds\r\nChief Pharmacist\r\nUniversity Hospital Southampton NHS Foundation Trust\r\n\r\n023 8120 4458\r\nsue.ladds@uhs.nhs.uk\r\n', 0, '2014/03/31', '16:23:59', 70, '0'),
+(71, 'Test', 'This is a test', 0, '2014/07/06', '18:47:23', 1, '0'),
+(72, 'Test', 'This is a test', 0, '2014/07/06', '18:47:42', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -424,7 +517,7 @@ INSERT INTO `messages` (`IDLNK`, `Title`, `Message`, `ParentIDLNK`, `DateAdded`,
 -- Table structure for table `messagescategorys`
 --
 
-CREATE TABLE IF NOT EXISTS `messagescategorys` (
+CREATE TABLE `messagescategorys` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `MessageIDLNK` int(11) NOT NULL,
   `CategoryIDLNK` int(11) NOT NULL,
@@ -486,7 +579,7 @@ INSERT INTO `messagescategorys` (`IDLNK`, `MessageIDLNK`, `CategoryIDLNK`, `Dele
 -- Table structure for table `notices`
 --
 
-CREATE TABLE IF NOT EXISTS `notices` (
+CREATE TABLE `notices` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `Notice` text NOT NULL,
@@ -501,7 +594,7 @@ CREATE TABLE IF NOT EXISTS `notices` (
 --
 
 INSERT INTO `notices` (`IDLNK`, `Title`, `Notice`, `DateAdded`, `PostedByIDLNK`, `Deleted`) VALUES
-(1, 'Test Notice', 'Test Notice', '2010/10/16', 1, '1'),
+(1, 'Test Notice', 'Test Notice', '2010/10/16', 1, '0'),
 (2, 'Event Test Event added to ATHP website.', '<p>A new event has been edited on the ATHP website. Details are shown below.</p><dl><dt>Event:</dt><dd>Test Event</dd><dt>Details:</dt><dd>Details</dd><dt>Location:</dt><dd>Location</dd><dt>Date &amp; Time:</dt><dd>15/05/2010 15:00</dd><dt>Duration:</dt><dd>2 Hours</dd></dl><p>You can view this event in the ATHP <a href="http://www.athp.org.uk/events.php">website calender</a>.</p>', '2010/10/16', 1, '1'),
 (3, 'Document Comparison - Developing Pharmacy Careers.doc added to ATHP website.', '<p>A new document has been added to the ATHP website. Details are shown below.</p><dl><dt>Filename</dt><dd><a href="http://www.athp.org.uk/downloads.php?did=64">Comparison - Developing Pharmacy Careers.doc</a></dd><dt>Description</dt><dd></dd></dl><p>You can download the file by clicking the filename and logging into the ATHP website.</p>', '2011/07/27', 6, '1'),
 (4, 'Document 2011-06-30 : Minutes of Meeting.doc added to ATHP website.', '<p>A new document has been added to the ATHP website. Details are shown below.</p><dl><dt>Filename</dt><dd><a href="http://www.athp.org.uk/downloads.php?did=65">2011-06-30 : Minutes of Meeting.doc</a></dd><dt>Description</dt><dd></dd></dl><p>You can download the file by clicking the filename and logging into the ATHP website.</p>', '2011/08/09', 6, '1'),
@@ -513,7 +606,7 @@ INSERT INTO `notices` (`IDLNK`, `Title`, `Notice`, `DateAdded`, `PostedByIDLNK`,
 -- Table structure for table `noticescategorys`
 --
 
-CREATE TABLE IF NOT EXISTS `noticescategorys` (
+CREATE TABLE `noticescategorys` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `NoticeIDLNK` int(11) NOT NULL,
   `CategoryIDLNK` int(11) NOT NULL,
@@ -539,10 +632,28 @@ INSERT INTO `noticescategorys` (`IDLNK`, `NoticeIDLNK`, `CategoryIDLNK`, `Delete
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `PageID` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(255) NOT NULL,
+  `URL` varchar(100) NOT NULL,
+  `Tags` varchar(255) NOT NULL,
+  `Content` text NOT NULL,
+  `ParentPageID` int(11) NOT NULL,
+  `Private` tinyint(1) NOT NULL,
+  `Deleted` tinyint(1) NOT NULL,
+  PRIMARY KEY (`PageID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `positions`
 --
 
-CREATE TABLE IF NOT EXISTS `positions` (
+CREATE TABLE `positions` (
   `PositionIDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Position` varchar(255) NOT NULL,
   `DisplayOrder` int(11) NOT NULL,
@@ -555,20 +666,20 @@ CREATE TABLE IF NOT EXISTS `positions` (
 --
 
 INSERT INTO `positions` (`PositionIDLNK`, `Position`, `DisplayOrder`, `Deleted`) VALUES
-(1, 'Test Position 1', 2, '0'),
-(2, 'Clinical Director of Pharmacy', 1, '0'),
-(3, 'Director of Pharmacy', 3, '0'),
-(4, 'Chief Pharmacist', 4, '0'),
-(5, 'Clinical Director of Pharmacy Services', 5, '0'),
-(6, 'Director', 6, '0'),
-(7, 'Director of Pharmaecutical Services', 7, '0'),
-(8, 'Head of Pharmacy', 8, '0'),
-(9, 'Director of Medicines Management', 9, '0'),
-(10, 'Director of Pharmacy & Therapy Services', 10, '0'),
-(11, 'Clinical Director - Medicines Management', 11, '0'),
-(12, 'National Clinical Director for Hospital Pharmacy', 12, '0'),
-(13, 'Lead Pharmacist Acute Services & Innovation', 13, '0'),
-(14, 'Deputy Chief Pharmacist', 14, '0'),
+(1, 'Test Position 1', 6, '0'),
+(2, 'Clinical Director of Pharmacy', 14, '0'),
+(3, 'Director of Pharmacy', 13, '0'),
+(4, 'Chief Pharmacist', 12, '0'),
+(5, 'Clinical Director of Pharmacy Services', 7, '0'),
+(6, 'Director', 11, '0'),
+(7, 'Director of Pharmaecutical Services', 10, '0'),
+(8, 'Head of Pharmacy', 9, '0'),
+(9, 'Director of Medicines Management', 8, '0'),
+(10, 'Director of Pharmacy & Therapy Services', 4, '0'),
+(11, 'Clinical Director - Medicines Management', 3, '0'),
+(12, 'National Clinical Director for Hospital Pharmacy', 1, '0'),
+(13, 'Lead Pharmacist Acute Services & Innovation', 2, '0'),
+(14, 'Deputy Chief Pharmacist', 5, '0'),
 (15, 'N/A', 15, '0');
 
 -- --------------------------------------------------------
@@ -577,7 +688,7 @@ INSERT INTO `positions` (`PositionIDLNK`, `Position`, `DisplayOrder`, `Deleted`)
 -- Table structure for table `sections`
 --
 
-CREATE TABLE IF NOT EXISTS `sections` (
+CREATE TABLE `sections` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `GroupIDLNK` int(11) NOT NULL,
   `Section` varchar(255) NOT NULL,
@@ -619,10 +730,40 @@ INSERT INTO `sections` (`IDLNK`, `GroupIDLNK`, `Section`, `Description`, `Delete
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sectionusercategorys`
+--
+
+CREATE TABLE `sectionusercategorys` (
+  `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
+  `SectionIDLNK` int(11) NOT NULL,
+  `UserCategoryIDLNK` int(11) NOT NULL,
+  PRIMARY KEY (`IDLNK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `sectionusercategorys`
+--
+
+INSERT INTO `sectionusercategorys` (`IDLNK`, `SectionIDLNK`, `UserCategoryIDLNK`) VALUES
+(1, 14, 1),
+(2, 14, 2),
+(3, 14, 1),
+(4, 14, 2),
+(5, 14, 1),
+(6, 14, 8),
+(7, 14, 9),
+(8, 2, 2),
+(9, 2, 1),
+(10, 2, 2),
+(11, 2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sites`
 --
 
-CREATE TABLE IF NOT EXISTS `sites` (
+CREATE TABLE `sites` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `TrustIDLNK` int(11) NOT NULL,
   `Name` varchar(250) NOT NULL,
@@ -696,10 +837,45 @@ INSERT INTO `sites` (`IDLNK`, `TrustIDLNK`, `Name`, `AddressLine1`, `AddressLine
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(50) NOT NULL,
+  `Deleted` bit(1) NOT NULL,
+  PRIMARY KEY (`IDLNK`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`IDLNK`, `Title`, `Deleted`) VALUES
+(1, 'yellow guide', '\0'),
+(2, 'chapter 10', '\0'),
+(3, '', '\0'),
+(4, 'qcnw ', '\0'),
+(5, 'report', '\0'),
+(6, 'yellow', '\0'),
+(7, 'guide', '\0'),
+(8, 'two', '\0'),
+(9, 'sdsc', '\0'),
+(10, 'logo', '\0'),
+(11, ' sdsc', '\0'),
+(12, ' logo', '\0'),
+(13, '  sdsc', '\0'),
+(14, '  logo', '\0'),
+(15, '   sdsc', '\0'),
+(16, '   logo', '\0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `trusts`
 --
 
-CREATE TABLE IF NOT EXISTS `trusts` (
+CREATE TABLE `trusts` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Trust` varchar(200) NOT NULL,
   `Deleted` varchar(1) NOT NULL,
@@ -767,12 +943,12 @@ INSERT INTO `trusts` (`IDLNK`, `Trust`, `Deleted`) VALUES
 -- Table structure for table `usercategorys`
 --
 
-CREATE TABLE IF NOT EXISTS `usercategorys` (
+CREATE TABLE `usercategorys` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) NOT NULL,
   `Deleted` varchar(1) NOT NULL,
   PRIMARY KEY (`IDLNK`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `usercategorys`
@@ -780,7 +956,14 @@ CREATE TABLE IF NOT EXISTS `usercategorys` (
 
 INSERT INTO `usercategorys` (`IDLNK`, `Title`, `Deleted`) VALUES
 (1, 'ATHP Member', '0'),
-(2, 'ATHP Associate', '0');
+(2, 'ATHP Associate', '0'),
+(3, 'Test Group', '1'),
+(4, 'Another group', '1'),
+(5, 'Another group 2', '1'),
+(6, 'Another group', '1'),
+(7, 'Another group 2', '1'),
+(8, 'Test Group 1', '0'),
+(9, 'Test Group 2', '0');
 
 -- --------------------------------------------------------
 
@@ -788,7 +971,7 @@ INSERT INTO `usercategorys` (`IDLNK`, `Title`, `Deleted`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(255) NOT NULL,
@@ -799,89 +982,90 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Userlevel` int(11) NOT NULL,
   `Deleted` tinyint(1) NOT NULL,
   PRIMARY KEY (`IDLNK`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`IDLNK`, `Username`, `Password`, `Firstname`, `Surname`, `Email`, `Hospital`, `Userlevel`, `Deleted`) VALUES
-(1, 'WJProctor', 'Signet364', 'James', 'Proctor', 'james.proctor@wjps.co.uk', 'None', 3, 0),
-(2, 'Test2', 'xf8zjn9r', 'James', 'Proctor', 'sales@wjps.co.uk', 'None', 1, 0),
-(3, 'LKay', 'charli2325', 'Liz', 'Kay', 'liz.kay@leedsth.nhs.uk', 'Leeds General Infirmary', 3, 0),
-(4, 'PRoberts', 'everton1', 'Phillipa', 'Roberts', 'p.roberts3@nhs.net', 'Wirral University Teaching Hospital', 3, 0),
-(5, 'MParton-Murphy', 'lauren01', 'Marsha', 'Parton-Murphy', 'MParton-Murphy@nhs.net', 'Wirral University Teaching Hospital NHS Foundation Trust', 3, 1),
-(6, 'HSmith', 'hornpipe1', 'Helen', 'Smith', 'athpadmin@virginmedia.com', 'Leeds Teaching Hospital', 3, 1),
-(7, 'AEwing', 'douglas10', 'Alison', 'Ewing', 'alison.ewing@rlbuht.nhs.uk', 'Royal Liverpool and Broadgreen University Hospitals NHS Trust', 1, 0),
-(8, 'ADavies', 'dr02ewz', 'Andrew', 'Davies', 'andrew.davies@nbt.nhs.uk', 'North Bristol NHS Trust', 1, 0),
-(9, 'AJacklin', 'vm48jwky', 'Ann', 'Jacklin', 'ann.jacklin@imperial.nhs.uk', 'Imperial College Healthcare NHS Trust', 1, 1),
-(10, 'ASlee', 'university', 'Ann', 'Slee', 'ann.slee@uhb.nhs.uk', 'University Hospital Birmingham NHS Foundation Trust', 1, 1),
-(11, 'CFarrow', 'ralph01', 'Carol', 'Farrow', 'carol.farrow@nnuh.nhs.uk', 'Norfolk and Norwich University Hospital NHS Trust', 1, 0),
-(12, 'CBarrass', '97y1rc62', 'Chris', 'Barrass', 'chris.barrass@kch.nhs.uk', 'King''s College Hospital NHS Foundation Trust', 1, 0),
-(13, 'CEvans', 'vmxp12kj', 'Chris', 'Evans', 'Chris.Evans@stgeorges.nhs.uk', 'St George''s Healthcare NHS Trust', 1, 0),
-(14, 'DChild', 'wobble', 'Damian', 'Child', 'damian.child@sth.nhs.uk', 'Sheffield Teaching Hospitals NHS Trust', 1, 0),
-(15, 'DRoberts', 'Matthew1', 'Dave', 'Roberts', 'Darrell.Baker@CardiffandVale.wales.nhs.uk', 'Cardiff & Vale University Health Board', 1, 1),
-(16, 'DCorral', 't3512vlr', 'David', 'Corral', 'David.Corral@hey.nhs.uk', 'Hull and East Yorkshire Hospital NHS Trust', 1, 0),
-(17, 'DWebb', 'amersham', 'David', 'Webb', 'david.webb@londonscg.nhs.uk', 'London Specialised Commissioning Group', 1, 0),
-(18, 'EMcCusker', '2zvg3ctd', 'Eimear', 'McCusker', 'eimear.mccusker@belfasttrust.hscni.net', 'The Royal Hospitals Belfast NHS Trust', 1, 0),
-(19, 'HHowe', 'annare12', 'Helen', 'Howe', 'helen.howe@addenbrookes.nhs.uk', 'Cambridge University Hospitals NHS Foundation Trust', 1, 0),
-(20, 'JHarchowal', 'Cantona', 'Jatinder', 'Harchowal', 'Jatinder.Harchowal@bsuh.nhs.uk', 'Brighton and Sussex University Hospitals NHS Trust ', 1, 0),
-(21, 'JDorey', 'hhhh0099', 'Jenny', 'Dorey', 'Jenny.Dorey@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 1),
-(22, 'SWilliams', 'zq7djsk1', 'Steve', 'Williams', 'steve.williams@uhsm.nhs.uk', 'University Hospital of South Manchester NHS Foundation Trust', 1, 1),
-(23, 'JVincent', 'q6rs9fgp', 'Judith', 'Vincent', 'Judith.Vincent@wales.nhs.uk', 'Abertawe Bro Morgannwg University Health Board (swansea)', 1, 1),
-(24, 'JScanlan', 'kszj1mvc', 'Justine', 'Scanlan', 'justine.scanlan@srht.nhs.uk', 'Salford Royal NHS Foundation Trust', 1, 1),
-(25, 'KRobertson', 'kptjflg7', 'Karen', 'Robertson', 'karen.robertson@chelwest.nhs.uk', 'Chelsea and Westminster Healthcare NHS Trust', 1, 0),
-(26, 'LBurrow', 'tmwz2lk8', 'Lucy', 'Burrow', 'lucyburrow@nhs.net', 'NHS Tayside', 1, 1),
-(27, 'MNorval', '21r975gb', 'Mags', 'Norval', 'mags.norval@aintree.nhs.uk', 'University Hospital Aintree NHS Trust', 1, 0),
-(28, 'MPartridge', 'atherton52', 'Malcolm', 'Partridge', 'malcolm.partridge@nuh.nhs.uk', 'Nottingham University Hospitals NHS Trust', 1, 0),
-(29, 'MEaster', 'Postpat1', 'Mark', 'Easter', 'mark.easter@uhcw.nhs.uk', 'University Hospitals', 1, 0),
-(30, 'DPitkin', 'cf79n5t4', 'David', 'Pitkin', 'david.pitkin@york.nhs.uk', 'York Hospitals NHS Foundation Trust ', 1, 0),
-(31, 'MPhillips', 'g92tnmjc', 'Martin', 'Phillips', 'Martin.Phillips1@newhamhealth.nhs.uk', 'Newham University Hospitals NHS Trust', 1, 1),
-(32, 'MStephens', 'b6r3tvq9', 'Martin', 'Stephens', 'Martin.Stephens@dh.gsi.gov.uk', 'Department of Health', 1, 1),
-(33, 'MScott', 's5rgc3v8', 'Michael', 'Scott', 'DrMichael.Scott@northerntrust.hscni.net', 'Northern Health and Social Care Trust', 1, 1),
-(34, 'NWatson', 'tallis', 'Neil', 'Watson', 'Neil.Watson2@nuth.nhs.uk', 'Newcastle upon Tyne Hospitals NHS Foundation Trust', 1, 1),
-(35, 'NLannigan', 'GlasgowR1', 'Norman', 'Lannigan', 'Norman.Lannigan@ggc.scot.nhs.uk', 'NHS Greater Glasgow and Clyde', 1, 0),
-(36, 'RGoodman', 'Spider9', 'Richard', 'Goodman', 'R.Goodman@rbht.nhs.uk', 'Royal Brompton and Harefield NHS Trust', 1, 0),
-(37, 'RHey', 'r1chard', 'Richard', 'Hey', 'Richard.Hey@cmft.nhs.uk', 'Central Manchester University Hospitals NHS Foundation Trust', 1, 0),
-(38, 'RUrquhart', 'isobel', 'Robert', 'Urquhart', 'Robert.Urquhart@uclh.nhs.uk', 'University College London Hospitals NHS Foundation Trust', 1, 0),
-(39, 'SBrown', 'mazdaSB1', 'Stephen', 'Brown', 'Stephen.Brown@ubht.nhs.uk', 'United Bristol Healthcare NHS Trust', 1, 0),
-(40, 'SSemple', 'mq92cdy7', 'Stuart', 'Semple', 'Stuart.Semple@bartsandthelondon.nhs.uk', 'Barts and The London NHS Trust', 1, 1),
-(41, 'SBassan', 'k6h8r5dm', 'Surinder', 'Bassan', 'Surinder.Bassan@suht.swest.nhs.uk', 'Southampton University Hospital NHS Trust', 1, 1),
-(42, 'SThomson', 'muffinCAT1965', 'Susan', 'Thomson', 'Susan.Thomson@uhns.nhs.uk', 'University Hospital of North Staffordshire NHS Trust', 1, 0),
-(43, 'SKhalid ', 'c5gs7jq9', 'Suzanne', 'Khalid ', 'Suzanne.Khalid@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 1, 1),
-(44, 'TCarruthers ', 'hq4rpm3y', 'Tania', 'Carruthers ', 'tania.carruthers@heartofengland.nhs.uk', 'Heart of England NHS Foundation Trust', 1, 1),
-(45, 'TGray', 'ATHP2012', 'Tom', 'Gray', 'tom.Gray@nhs.net', 'Derby Hospitals NHS Foundation Trust', 1, 1),
-(46, 'DWalker', '7bxpf4gl', 'Debra', 'Walker', 'debra.walker@alderhey.nhs.uk', 'Royal Liverpool Children''s NHS Trust', 1, 0),
-(47, 'TWest', 'g29lkzqr', 'Tony', 'West', 'Tony.West@gstt.nhs.uk', 'Guy''s and St Thomas'' NHS Foundation Trust', 1, 0),
-(48, 'WSpicer', '5ncdf9ls', 'Wendy', 'Spicer', 'Wendy.Spicer@royalfree.nhs.uk ', 'The Royal Free Hampstead NHS Trust ', 1, 0),
-(49, 'MStephens', 'b7h6cxdm', 'Martin', 'Stephens', 'martin.stephens@uhs.nhs.uk', 'Department of Health', 1, 0),
-(50, 'RFallon', 'opera1975', 'Rachael', 'Fallon', 'Rachael.Fallon@nhs.net', 'Wirral Hospitals NHS Trust', 3, 1),
-(51, 'JHough', '5brt6xqg', 'Jane', 'Hough', 'jane.hough@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 1),
-(52, 'BVadher', 'Jane01962', 'Bhulesh', 'Vadher', 'Bhulesh.Vadher@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 0),
-(53, 'TCarruthers', 'husband1', 'Tania', 'Carruthers', 'tania.carruthers@heartofengland.nhs.uk', 'Heart of England NHS Foundation Trust', 1, 0),
-(54, 'CSkitterall', 'pczmd76y', 'Charlotte', 'Skitterall', 'Charlotte.Skitterall@uhsm.nhs.uk ', 'University Hospital of South Manchester NHS Foundation Trust', 1, 0),
-(55, 'DCampbell', 'ATHP', 'David', 'Campbell', 'david.campbell@nhct.nhs.uk', 'Northumbria Healthcare NHS Foundation Trust', 1, 0),
-(56, 'JVincent', 'qv6syrwf', 'Judith', 'Vincent', 'Judith.Vincent@wales.nhs.uk', 'University Health Board', 1, 0),
-(57, 'JScanlan', '2bc3rg17', 'Justine', 'Scanlan', 'justine.scanlan@srft.nhs.uk', 'Salford Royal NHS Foundation Trust', 1, 0),
-(58, 'MScott', '2qj7lgr1', 'Michael', 'Scott', 'DrMichael.Scott@northerntrust.hscni.net', 'Antrim Hospital', 1, 0),
-(59, 'NWatson', 'tallis66', 'Neil', 'Watson', 'Neil.Watson2@nuth.nhs.uk', 'Freeman Hospital', 1, 0),
-(60, 'PMurray', 'dpqz7fvr', 'Pat', 'Murray', 'pat.murray@nhslothian.scot.nhs.uk', 'Royal Infirmary of Edinburth', 1, 1),
-(61, 'SSemple', 'h8nxvs62', 'Stuart', 'Semple', 'Stuart.Semple@bartsandthelondon.nhs.uk', 'The Royal London Hospital', 1, 0),
-(62, 'SBassan', 'fpslt5cj', 'Surrinder', 'Bassan', 'Surinder.Bassan@suht.swest.nhs.uk', 'Southampton General Hospital', 1, 1),
-(63, 'JTolan', 'grfl1t6n', 'Julia', 'Tolan', 'julia.tolan@belfasttrust.hscni.net', 'The Royal Hospitals Belfast NHS Trust', 1, 0),
-(64, 'CNewman', '10toarsenal', 'Clive', 'Newman', 'Clive.Newman1@nhs.net ', 'Derby Hospitals NHS Foundation Trust', 1, 0),
-(65, 'CJones', 'tzjx56fk', 'Catherine', 'Jones', 'catherinejones9@nhs.net', 'Arrow Park', 3, 0),
-(66, 'EMorrison', 'nwx27kmp', 'Ewan', 'Morrison', 'Ewan.Morrison@nhslothian.scot.nhs.uk', 'NHS Lothian Pharmacy Service', 1, 0),
-(67, 'DSmith', 'pep51d1e7', 'David', 'Smith', 'david.smith@bthft.nhs.uk', 'Bradford Teaching Hospitals NHS Foundation Trust', 1, 0),
-(68, 'RFitzpatrick', 'Farthings1', 'Ray', 'Fitzpatrick', 'rayfitzpatrick@nhs.net', 'The Royal Wolverhampton NHS Trust', 1, 0),
-(69, 'JMiller', 'aramats1', 'Jacqueline', 'Miller', 'JacquelineDiane.Miller@stees.nhs.uk', 'South Tees Hospitals NHS Foundation Trust', 1, 0),
-(70, 'SLadds', 'mouse1', 'Sue', 'Ladds', 'sue.ladds@uhs.nhs.uk', 'Southampton University Hospital NHS Trust', 1, 0),
-(71, 'BPattani', 'f1ksd3gz', 'Bhavisha', 'Pattani', 'bhavisha.pattani@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 3, 0),
-(72, 'CEllwood', 'j6dqy9sr', 'Claire', 'Ellwood', 'claire.ellwood@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 3, 0),
-(73, 'AMounsey', '3sdfh7l1', 'Ann', 'Mounsey', 'ann.mounsey@imperial.nhs.uk', 'Imperial College Healthcare NHS Trust', 3, 0),
-(74, 'DBaker', 'diploma', 'Darrell', 'Baker', 'darrell.baker@cardiffandvale.wales.nhs.uk', 'Cardiff and Vale University Health Board', 3, 0),
-(75, 'ISingh', 'rzxk879l', 'Inderjit', 'Singh', 'inderjit.singh@bch.nhs.uk', 'University Hospitals Birmingham NHS Foundation Trust', 3, 0),
-(76, 'DLinnard', 'Linnard681', 'Deirdre ', 'Linnard', 'deirdre.linnard@chelwest.nhs.uk', 'Chelsea and Westminster Healthcare NHS Trust', 1, 0);
+(1, 'WJProctor', 'a200cd2562afb2953c9b7e4a24fd6ebe', 'James', 'Proctor', 'james.proctor@wjps.co.uk', 'None', 3, 0),
+(2, 'Test2', 'c2e100fb35a2da51224c9501f712766b', 'James', 'Proctor', 'sales@wjps.co.uk', 'None', 1, 0),
+(3, 'LKay', '6c4247bd511f6acf74a5720fa47cc929', 'Liz', 'Kay', 'liz.kay@leedsth.nhs.uk', 'Leeds General Infirmary', 3, 0),
+(4, 'PRoberts', '2246f8df596f4a540c3a87b1e0fa5f9e', 'Phillipa', 'Roberts', 'p.roberts3@nhs.net', 'Wirral University Teaching Hospital', 3, 0),
+(5, 'MParton-Murphy', '56e9bcab7194ee95fb7ea2ac932475b3', 'Marsha', 'Parton-Murphy', 'MParton-Murphy@nhs.net', 'Wirral University Teaching Hospital NHS Foundation Trust', 3, 1),
+(6, 'HSmith', 'dd6c8037a5b85af524342ff91b83b912', 'Helen', 'Smith', 'athpadmin@virginmedia.com', 'Leeds Teaching Hospital', 3, 1),
+(7, 'AEwing', 'defbb5d5ea56182e87f4b4d21b40027e', 'Alison', 'Ewing', 'alison.ewing@rlbuht.nhs.uk', 'Royal Liverpool and Broadgreen University Hospitals NHS Trust', 1, 0),
+(8, 'ADavies', '8c123443bde8c41040a3321a13e4628b', 'Andrew', 'Davies', 'andrew.davies@nbt.nhs.uk', 'North Bristol NHS Trust', 1, 0),
+(9, 'AJacklin', 'b3cf46f81a38c766a4ebb0021b3a43ab', 'Ann', 'Jacklin', 'ann.jacklin@imperial.nhs.uk', 'Imperial College Healthcare NHS Trust', 1, 1),
+(10, 'ASlee', '4122f363ff8d7f47951ef7a1f4b89dea', 'Ann', 'Slee', 'ann.slee@uhb.nhs.uk', 'University Hospital Birmingham NHS Foundation Trust', 1, 1),
+(11, 'CFarrow', 'a7bf006e541ba1283a576609efcbe897', 'Carol', 'Farrow', 'carol.farrow@nnuh.nhs.uk', 'Norfolk and Norwich University Hospital NHS Trust', 1, 0),
+(12, 'CBarrass', '0338f4893d7fd22ed3bc415d13652562', 'Chris', 'Barrass', 'chris.barrass@kch.nhs.uk', 'King''s College Hospital NHS Foundation Trust', 1, 0),
+(13, 'CEvans', '765d57b7aaf401aa31adbd3e1018c320', 'Chris', 'Evans', 'Chris.Evans@stgeorges.nhs.uk', 'St George''s Healthcare NHS Trust', 1, 0),
+(14, 'DChild', '6787b726e249ac1ef0bd57debe353701', 'Damian', 'Child', 'damian.child@sth.nhs.uk', 'Sheffield Teaching Hospitals NHS Trust', 1, 0),
+(15, 'DRoberts', 'd41b0a8d0f7f09e2e1f6c903e4de374e', 'Dave', 'Roberts', 'Darrell.Baker@CardiffandVale.wales.nhs.uk', 'Cardiff & Vale University Health Board', 1, 1),
+(16, 'DCorral', '4a9d3a966cc06297e6a99b5cd0e6bfb5', 'David', 'Corral', 'David.Corral@hey.nhs.uk', 'Hull and East Yorkshire Hospital NHS Trust', 1, 0),
+(17, 'DWebb', 'c93656415d7f9af9ecc8457d2e03e92e', 'David', 'Webb', 'david.webb@londonscg.nhs.uk', 'London Specialised Commissioning Group', 1, 0),
+(18, 'EMcCusker', '55f95ce09e1a6949fab1425b132a5fdf', 'Eimear', 'McCusker', 'eimear.mccusker@belfasttrust.hscni.net', 'The Royal Hospitals Belfast NHS Trust', 1, 0),
+(19, 'HHowe', '9730000803ac23cbd849125312ff2cf2', 'Helen', 'Howe', 'helen.howe@addenbrookes.nhs.uk', 'Cambridge University Hospitals NHS Foundation Trust', 1, 0),
+(20, 'JHarchowal', '4c198b6c1617944540a3518add0fb841', 'Jatinder', 'Harchowal', 'Jatinder.Harchowal@bsuh.nhs.uk', 'Brighton and Sussex University Hospitals NHS Trust ', 1, 0),
+(21, 'JDorey', 'ff9f19a3d2c2165a23ede1c9e52013fc', 'Jenny', 'Dorey', 'Jenny.Dorey@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 1),
+(22, 'SWilliams', '1ebfdfbf518773ad1acfc8a06fa531cc', 'Steve', 'Williams', 'steve.williams@uhsm.nhs.uk', 'University Hospital of South Manchester NHS Foundation Trust', 1, 1),
+(23, 'JVincent', '4b20d5ae5f5c61cba26c40fcf58f7816', 'Judith', 'Vincent', 'Judith.Vincent@wales.nhs.uk', 'Abertawe Bro Morgannwg University Health Board (swansea)', 1, 1),
+(24, 'JScanlan', '414e4106dda59beef9b18aeda3279bb8', 'Justine', 'Scanlan', 'justine.scanlan@srht.nhs.uk', 'Salford Royal NHS Foundation Trust', 1, 1),
+(25, 'KRobertson', '56389a154ba29964b13aa8cb59baf256', 'Karen', 'Robertson', 'karen.robertson@chelwest.nhs.uk', 'Chelsea and Westminster Healthcare NHS Trust', 1, 0),
+(26, 'LBurrow', 'c1e7dfa7b8eee1aa663518d4fea19aac', 'Lucy', 'Burrow', 'lucyburrow@nhs.net', 'NHS Tayside', 1, 1),
+(27, 'MNorval', '289392b870e1b165423afba767a9d9b2', 'Mags', 'Norval', 'mags.norval@aintree.nhs.uk', 'University Hospital Aintree NHS Trust', 1, 0),
+(28, 'MPartridge', 'a09d1bca557b5a1edf56af2b28a64adc', 'Malcolm', 'Partridge', 'malcolm.partridge@nuh.nhs.uk', 'Nottingham University Hospitals NHS Trust', 1, 0),
+(29, 'MEaster', 'a5bdd228180bc88b168071153d5c9d99', 'Mark', 'Easter', 'mark.easter@uhcw.nhs.uk', 'University Hospitals', 1, 0),
+(30, 'DPitkin', 'e1f0f0daf98e1c7b5c0b25a4c0889a32', 'David', 'Pitkin', 'david.pitkin@york.nhs.uk', 'York Hospitals NHS Foundation Trust ', 1, 0),
+(31, 'MPhillips', 'f5cdf60dc00bb3fe27a6b614f57f6453', 'Martin', 'Phillips', 'Martin.Phillips1@newhamhealth.nhs.uk', 'Newham University Hospitals NHS Trust', 1, 1),
+(32, 'MStephens', 'b059999361b9dcf97a183b0f4b4650e1', 'Martin', 'Stephens', 'Martin.Stephens@dh.gsi.gov.uk', 'Department of Health', 1, 1),
+(33, 'MScott', '9ca98cf6cadd53b96e3c61ae48869202', 'Michael', 'Scott', 'DrMichael.Scott@northerntrust.hscni.net', 'Northern Health and Social Care Trust', 1, 1),
+(34, 'NWatson', '8b8919bed9e9f67c72fb773a7dc83bfa', 'Neil', 'Watson', 'Neil.Watson2@nuth.nhs.uk', 'Newcastle upon Tyne Hospitals NHS Foundation Trust', 1, 1),
+(35, 'NLannigan', 'f2f95d492b2f0e6b1036a8b6d3bad8dd', 'Norman', 'Lannigan', 'Norman.Lannigan@ggc.scot.nhs.uk', 'NHS Greater Glasgow and Clyde', 1, 0),
+(36, 'RGoodman', '4c8202075b39aa73f2de7c066d598b1a', 'Richard', 'Goodman', 'R.Goodman@rbht.nhs.uk', 'Royal Brompton and Harefield NHS Trust', 1, 0),
+(37, 'RHey', '5be469b7f761eef1f8eacd196e70f17d', 'Richard', 'Hey', 'Richard.Hey@cmft.nhs.uk', 'Central Manchester University Hospitals NHS Foundation Trust', 1, 0),
+(38, 'RUrquhart', '61048de81e1c2e77c9754f4343652e34', 'Robert', 'Urquhart', 'Robert.Urquhart@uclh.nhs.uk', 'University College London Hospitals NHS Foundation Trust', 1, 0),
+(39, 'SBrown', '658518812f4f41b1bfe728b4acd2d762', 'Stephen', 'Brown', 'Stephen.Brown@ubht.nhs.uk', 'United Bristol Healthcare NHS Trust', 1, 0),
+(40, 'SSemple', 'fd8e43de0b3338b211d0a5799af57f8c', 'Stuart', 'Semple', 'Stuart.Semple@bartsandthelondon.nhs.uk', 'Barts and The London NHS Trust', 1, 1),
+(41, 'SBassan', 'e4b77eaf5eabeb17eff01ac150d309ee', 'Surinder', 'Bassan', 'Surinder.Bassan@suht.swest.nhs.uk', 'Southampton University Hospital NHS Trust', 1, 1),
+(42, 'SThomson', 'feb576af70530fd764046849f0e1c918', 'Susan', 'Thomson', 'Susan.Thomson@uhns.nhs.uk', 'University Hospital of North Staffordshire NHS Trust', 1, 0),
+(43, 'SKhalid ', 'cc28410c885250ac45d8f9f43f86c739', 'Suzanne', 'Khalid ', 'Suzanne.Khalid@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 1, 1),
+(44, 'TCarruthers ', '0d1d5be72e8522c682640a50b1c0794e', 'Tania', 'Carruthers ', 'tania.carruthers@heartofengland.nhs.uk', 'Heart of England NHS Foundation Trust', 1, 1),
+(45, 'TGray', '3759cb42527a73db7d9f315e03f094bd', 'Tom', 'Gray', 'tom.Gray@nhs.net', 'Derby Hospitals NHS Foundation Trust', 1, 1),
+(46, 'DWalker', 'e3eebb7b095bb0150e5da31b8688d2be', 'Debra', 'Walker', 'debra.walker@alderhey.nhs.uk', 'Royal Liverpool Children''s NHS Trust', 1, 0),
+(47, 'TWest', 'beaa43dfe9713a240dbe34aa0f517d59', 'Tony', 'West', 'Tony.West@gstt.nhs.uk', 'Guy''s and St Thomas'' NHS Foundation Trust', 1, 0),
+(48, 'WSpicer', '2cd5befc9902ccda3c872e18f4fe4eee', 'Wendy', 'Spicer', 'Wendy.Spicer@royalfree.nhs.uk ', 'The Royal Free Hampstead NHS Trust ', 1, 0),
+(49, 'MStephens', '27e04d530acd953aaf141a3e6c0d2ad7', 'Martin', 'Stephens', 'martin.stephens@uhs.nhs.uk', 'Department of Health', 1, 0),
+(50, 'RFallon', '2d22fa8ace81b7c8cbebc0fa198a41e7', 'Rachael', 'Fallon', 'Rachael.Fallon@nhs.net', 'Wirral Hospitals NHS Trust', 3, 1),
+(51, 'JHough', 'aaa70de49b67aaeb30a1641ef99849b2', 'Jane', 'Hough', 'jane.hough@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 1),
+(52, 'BVadher', '0e03a163952ff0b380a41cbc7ee1cf0e', 'Bhulesh', 'Vadher', 'Bhulesh.Vadher@orh.nhs.uk', 'Oxford Radcliffe Hospitals NHS Trust', 1, 0),
+(53, 'TCarruthers', '8626da07747174e7be86149a2cb3fe38', 'Tania', 'Carruthers', 'tania.carruthers@heartofengland.nhs.uk', 'Heart of England NHS Foundation Trust', 1, 0),
+(54, 'CSkitterall', '36a3feb1a7d97cad5701fa858fda402f', 'Charlotte', 'Skitterall', 'Charlotte.Skitterall@uhsm.nhs.uk ', 'University Hospital of South Manchester NHS Foundation Trust', 1, 0),
+(55, 'DCampbell', 'a0822928172143fe6efec9b1e79e2e4b', 'David', 'Campbell', 'david.campbell@nhct.nhs.uk', 'Northumbria Healthcare NHS Foundation Trust', 1, 0),
+(56, 'JVincent', '968d191784bcb1719a4c55596c16fbb2', 'Judith', 'Vincent', 'Judith.Vincent@wales.nhs.uk', 'University Health Board', 1, 0),
+(57, 'JScanlan', '2fd30423b2d8e8f86e8fb974e4e02537', 'Justine', 'Scanlan', 'justine.scanlan@srft.nhs.uk', 'Salford Royal NHS Foundation Trust', 1, 0),
+(58, 'MScott', '6fb1787e137363b925b2c2770540c62e', 'Michael', 'Scott', 'DrMichael.Scott@northerntrust.hscni.net', 'Antrim Hospital', 1, 0),
+(59, 'NWatson', 'c2dc22eb18f9602d602587b7f3962ba6', 'Neil', 'Watson', 'Neil.Watson2@nuth.nhs.uk', 'Freeman Hospital', 1, 0),
+(60, 'PMurray', 'fa943e4e993b6a78837a3022ed8c651a', 'Pat', 'Murray', 'pat.murray@nhslothian.scot.nhs.uk', 'Royal Infirmary of Edinburth', 1, 1),
+(61, 'SSemple', '2a7e91c5a088cd6fc163b1ee6d1f1878', 'Stuart', 'Semple', 'Stuart.Semple@bartsandthelondon.nhs.uk', 'The Royal London Hospital', 1, 0),
+(62, 'SBassan', '3b1dab9fd57ec5082fddb50bef7e5782', 'Surrinder', 'Bassan', 'Surinder.Bassan@suht.swest.nhs.uk', 'Southampton General Hospital', 1, 1),
+(63, 'JTolan', 'bd3de74225ec3fd4fc4e1792fd72caac', 'Julia', 'Tolan', 'julia.tolan@belfasttrust.hscni.net', 'The Royal Hospitals Belfast NHS Trust', 1, 0),
+(64, 'CNewman', 'e7bb1fd5b68aeb06d5a94a4112fb14a7', 'Clive', 'Newman', 'Clive.Newman1@nhs.net ', 'Derby Hospitals NHS Foundation Trust', 1, 0),
+(65, 'CJones', '711585f0e55e5494cdd72f1e9ff1404f', 'Catherine', 'Jones', 'catherinejones9@nhs.net', 'Arrow Park', 3, 0),
+(66, 'EMorrison', 'c4f1abd8cca95add8a1a18a18d84896c', 'Ewan', 'Morrison', 'Ewan.Morrison@nhslothian.scot.nhs.uk', 'NHS Lothian Pharmacy Service', 1, 0),
+(67, 'DSmith', '9681bcf986c247167f9adbd6c1db1ead', 'David', 'Smith', 'david.smith@bthft.nhs.uk', 'Bradford Teaching Hospitals NHS Foundation Trust', 1, 0),
+(68, 'RFitzpatrick', 'ededa48a03ec9a59bee717e5e3facdc2', 'Ray', 'Fitzpatrick', 'rayfitzpatrick@nhs.net', 'The Royal Wolverhampton NHS Trust', 1, 0),
+(69, 'JMiller', '4818a3b5deba9ddd02ad7f5b9e0b038b', 'Jacqueline', 'Miller', 'JacquelineDiane.Miller@stees.nhs.uk', 'South Tees Hospitals NHS Foundation Trust', 1, 0),
+(70, 'SLadds', '007b65e3e07a8f68539f30cebacf230a', 'Sue', 'Ladds', 'sue.ladds@uhs.nhs.uk', 'Southampton University Hospital NHS Trust', 1, 0),
+(71, 'BPattani', '4fa585ef25997c9b18e20971b0250b04', 'Bhavisha', 'Pattani', 'bhavisha.pattani@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 3, 0),
+(72, 'CEllwood', '1b9c49524f2b9501b216de48dee880e6', 'Claire', 'Ellwood', 'claire.ellwood@uhl-tr.nhs.uk', 'University Hospitals of Leicester NHS Trust', 3, 0),
+(73, 'AMounsey', '2aee7346cb4a9c644b397ce296f42e56', 'Ann', 'Mounsey', 'ann.mounsey@imperial.nhs.uk', 'Imperial College Healthcare NHS Trust', 3, 0),
+(74, 'DBaker', 'e113abe9317562c89430c5344f45cc5c', 'Darrell', 'Baker', 'darrell.baker@cardiffandvale.wales.nhs.uk', 'Cardiff and Vale University Health Board', 3, 0),
+(75, 'ISingh', '146aa1391a61c0e3ad9e3739ce4f09b4', 'Inderjit', 'Singh', 'inderjit.singh@bch.nhs.uk', 'University Hospitals Birmingham NHS Foundation Trust', 3, 0),
+(76, 'DLinnard', '97cb5fd45aeb0bc894841615fba31efa', 'Deirdre ', 'Linnard', 'deirdre.linnard@chelwest.nhs.uk', 'Chelsea and Westminster Healthcare NHS Trust', 1, 0),
+(77, 'JProctor', 'a200cd2562afb2953c9b7e4a24fd6ebe', 'James', 'Proctor', 'james.proctor@wjps.co.uk', 'None', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -889,13 +1073,13 @@ INSERT INTO `users` (`IDLNK`, `Username`, `Password`, `Firstname`, `Surname`, `E
 -- Table structure for table `userscategorys`
 --
 
-CREATE TABLE IF NOT EXISTS `userscategorys` (
+CREATE TABLE `userscategorys` (
   `IDLNK` int(11) NOT NULL AUTO_INCREMENT,
   `UserIDLNK` int(11) NOT NULL,
   `CategoryIDLNK` int(11) NOT NULL,
   `Deleted` varchar(1) NOT NULL,
   PRIMARY KEY (`IDLNK`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `userscategorys`
@@ -947,8 +1131,8 @@ INSERT INTO `userscategorys` (`IDLNK`, `UserIDLNK`, `CategoryIDLNK`, `Deleted`) 
 (53, 29, 1, '0'),
 (55, 55, 1, '0'),
 (56, 49, 1, '0'),
-(57, 76, 1, '0');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(57, 76, 1, '0'),
+(63, 74, 6, '0'),
+(64, 59, 6, '0'),
+(65, 17, 6, '0'),
+(66, 74, 8, '0');

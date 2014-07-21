@@ -8,6 +8,10 @@
         var $c_Group;
         var $c_Description;
         var $c_Deleted;
+
+        var $c_AccessCategorys;
+
+
         
         function getid()
         {
@@ -43,6 +47,23 @@
         {
             return $this->c_Deleted;
         }
+
+        function getaccesscategorys()
+        {
+            $RQ = new ReadQuery("SELECT UserCategoryIDLNK FROM GroupUserCategorys WHERE GroupIDLNK = " . $this->getid() . ";");
+          
+            $Counter = 0;
+            
+            //$Cats = new array;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                $CatArray[$Counter] = $row["UserCategoryIDLNK"];
+                
+                $Counter ++;
+            }
+            
+            return $CatArray;
+        }
         
         function geturl()
         {
@@ -53,7 +74,15 @@
         
         function getsections()
         {
-        	$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Sections WHERE GroupIDLNK = " . $this->getid() . " AND Deleted = 0;");
+
+            if($_SESSION["isadmin"] == true){
+                $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Sections WHERE GroupIDLNK = " . $this->getid() . " AND Deleted = 0;");
+            } else {
+
+                $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Sections WHERE GroupIDLNK = " . $this->getid() . " AND Deleted = 0 AND IDLNK IN (SELECT SectionIDLNK FROM SectionUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . "));");
+        
+            }
+
         	
         	$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
         	
@@ -71,7 +100,15 @@
         	$Sections = substr($Sections, 2);
         	
         	if($Sections != ""){        	
-        		$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK IN (" . $Sections . ") AND Deleted = 0;");
+
+                if($_SESSION["isadmin"] == true){
+                    $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK IN (" . $Sections . ") AND Deleted = 0;");
+                } else {
+
+                    $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK IN (" . $this->getid() . ") AND Deleted = 0 AND IDLNK IN (SELECT DocumentIDLNK FROM DocumentUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . "));");
+                }
+
+        		
 	        	//echo($RQ->getquery());
 	        	$row = $RQ->getresults()->fetch_array(MYSQLI_ASSOC);
 	        	
@@ -137,14 +174,38 @@
         static public function listall()
         {
      		//Normal
-            print("<ol class='breadcrumb'>");
-                print("<li class='active'>Groups</li>");
-            print("</ol>");
-				
-			print("<p class='lead'>The list below shows all document groups.");
+            print("<div class=row>");
+
+                print("<div class='col-md-12'>");
+
+                    print("<ol class='breadcrumb'>");
+                        print("<li class='active'>Groups</li>");
+                    print("</ol>");
+
+                print("</div>");
+
+            print("</div>");
+
+            print("<div class=row>");
+
+                print("<div class='col-md-9'>");
+    				
+    		        print("<p class='lead'>The list below shows all document groups.</p>");
+
+                print("</div>");
+ 
+            Documents:: documentsearchbox($Term);
+
+            print("</div>");
+
+            print("<div class='row'>");
+
+                print("<div class='col-md-12'>");
 						
-			$RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 ORDER BY GroupName");
+			$RQ = new ReadQuery("SELECT *, COUNT * FROM Sections Where GroupIDLNK = IDLNK  FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY GroupName;");
 			
+//SELECT *, (SELECT COUNT(*) FROM Sections Where GroupIDLNK = Groups.IDLNK) FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = 1)) ORDER BY GroupName
+            
 			//echo($RQ->getquery());
 			
 			$Col1 = array("GroupName","groupname",1);
@@ -167,23 +228,55 @@
 			}
 			
 			Tables::generateadmintable("groupstable",$Cols,$Rows);
+
+            print("</div>");
+
+            print("</div>");
         
         }
 
         
         static public function listadmin()
         {
-     		//Normal
+            //Normal
+            print("<div class=row>");
+
+                print("<div class='col-md-12'>");
      		
      		 print("<ol class='breadcrumb'>");
                 print("<li class='active'>Groups</li>");
             print("</ol>");
+
+             print("</div>");
+
+            print("</div>");
+
+            print("<div class=row>");
+
+                print("<div class='col-md-9'>");
 				
 			print("<p class='lead'>The list below shows all document groups. From this page you can add, edit or delete groups.</p>");
 			
 			print("<p><a href='documents.php?gid=-1'><span class=\"glyphicon glyphicon-plus\"></span> Add New Group</a></p>");
-				
-			$RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 ORDER BY GroupName");
+			
+            print("</div>");
+ 
+            Documents:: documentsearchbox($Term);
+
+            print("</div>");
+
+            print("<div class='row'>");
+
+                print("<div class='col-md-12'>");
+
+            if($_SESSION["isadmin"] == true){
+
+			     $RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 ORDER BY GroupName");
+
+            } else {
+
+                $RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY GroupName;");
+            }
 			
 			//echo($RQ->getquery());
 			
@@ -220,6 +313,18 @@
 	    {
 			$GroupName = $_POST["group"];
 			$Description = $_POST["description"];
+
+            //Get Number of Categorys
+            $NofC = UserCategory::gettotal();
+            
+            //$UserCategorys = new array();
+            
+            for($c=1;$c<=$NofC;$c++)
+            {
+                if(isset($_POST["accesscategory" . $c])){
+                    $AccessCategorys[$c-1] = $_POST["accesscategory" . $c];
+                }
+            }
 			
 			$Submit = $_POST["submit"];
 			
@@ -239,6 +344,13 @@
 					$NewGroup->setdescription($Description);
 					
 					$NewGroup->save();
+
+                    $WQ = new WriteQuery("DELETE FROM GroupUserCategorys WHERE GroupIDLNK = " . $NewGroup->getid() . ";");
+
+                    foreach($AccessCategorys as $AC)
+                    {
+                        $WQ = new WriteQuery("INSERT INTO GroupUserCategorys (GroupIDLNK, UserCategoryIDLNK) VALUES (" . $NewGroup->getid() . ", " . $AC . ");");
+                    }
 					
 					print("<p class='lead'>The group has been succesfully edited.</p>");
 					
@@ -253,7 +365,7 @@
 	                
 	                $Group = new Groups($GID);
 	                	             	
-	                Groups::form($Group->getgroup(),$Group->getdescription(),$Group->getid(),false);
+	                Groups::form($Group->getgroup(),$Group->getdescription(),$Group->getaccesscategorys(),$Group->getid(),false);
 	             }
         	 } else {
         	 //Add
@@ -270,6 +382,11 @@
 	                if(!Groups::exists($GroupName)){
 	                	//Add Group
 						$NewGroup->savenew();
+
+                        foreach($AccessCategorys as $AC)
+                        {
+                            $WQ = new WriteQuery("INSERT INTO GroupUserCategorys (GroupIDLNK, UserCategoryIDLNK) VALUES (" . $NewGroup->getid() . ", " . $AC . ");");
+                        }
 											
 						//mkdir($NewGroup->geturl());
 										
@@ -284,7 +401,7 @@
         			
         				Forms::generateerrors("Please correct the following errors before continuing.",$Errors,true);
         			
-	                	Groups::form($GroupName,$Description,$GID,true);
+	                	Groups::form($GroupName,$Description,$AccessCategorys,$GID,true);
 	                }
 				} else {
 	                //Form
@@ -294,17 +411,23 @@
         			
         			Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
         			
-	                Groups::form($GroupName,$Description,$GID,true);
+	                Groups::form($GroupName,$Description,$AccessCategorys,$GID,true);
 	             }
         	 }
 	     }
 	     
-    	static public function form($Group,$Description,$GID,$Add)
+    	static public function form($Group,$Description,$AccessCategorys,$GID,$Add)
         {
+
+            $AccessCategoryArray = UserCategory::generatearray();
+
         	$GroupField = array("Group Name:","Text","group",65,0,$Group,"Enter a group name.");
         	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a group description.");
         
-			$Fields = array($GroupField,$DescriptionField);
+            $AccessGroups = array("Access Groups:","CheckboxArrayCollapse","accesscategory",65,0,$AccessCategorys,"",$AccessCategoryArray);
+
+
+			$Fields = array($GroupField,$DescriptionField,$AccessGroups);
 
             
 			if($GID == -1){

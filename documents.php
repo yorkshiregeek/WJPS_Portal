@@ -13,7 +13,14 @@
 	include_once("Classes/noticesclass.php");
 	
 	$Scripts[0] = "Script/DocumentsScript.js";
-	
+	$Scripts[1] = "js/vendor/jquery.ui.widget.js";
+	$Scripts[2] = "js/jquery.iframe-transport.js";
+	$Scripts[3] = "js/jquery.fileupload.js";
+	$Scripts[4] = "js/bootstrap-tagsinput-angular.js";
+	$Scripts[5] = "js/bootstrap-tagsinput.js";
+
+
+
 	Templates::PageHeader("Documents",$Scripts,"documents",2);
     		 	
 ?>
@@ -29,6 +36,8 @@
 			$DID = $_GET["did"];
 			
 			$AID = $_GET["aid"];
+
+			$Search = $_GET["search"];
 			
 			//AID
 			//EDIT = 5
@@ -44,6 +53,9 @@
 				
 					Print("<h2 class='page-header'>Document Admin</h2>");
 				
+					if($Search!=''){
+						Documents::searchadmin($Search);
+					} else {
 					if($GID){
 						//Group Related Activity
 						if($AID)
@@ -106,6 +118,8 @@
 					} else {
 						Groups::listadmin();
 					}
+
+					}
 					
 				} else {
 					
@@ -124,8 +138,40 @@
 			} 
 			    			
 		?>
+
+		
 		
 	</div>
+
+	<script>
+/*jslint unparam: true */
+/*global window, $ */
+$(function () {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/upload.php';
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                //$('<p/>').text(file.name).appendTo('#files');
+                console.log($('#filename').value);
+                $('#filename').val(file.name); // = 'here'; // = file.name;
+                $('#fileurl').val(file.url);
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+</script>
     	
 <?
 

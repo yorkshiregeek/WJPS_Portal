@@ -17,6 +17,7 @@
 	include_once("usercategorysclass.php");
 	include_once("metadataclass.php");
 	include_once("templateclass.php");
+	include_once("tagsclass.php");
 	
 	
 	//include_once("groupsclass.php");
