@@ -140,6 +140,23 @@
             return $CatArray;
         }
 
+        function gettablelink()
+        {
+
+            if($this->getfiletype() == 'upload'){
+                $Type = " <span class='glyphicon glyphicon-paperclip' data-toggle='tooltip' title='This is a file download, click the title to download it.'></span>";
+                $URL = "<a href=\"" . $this->geturl() .  "\" target='_blank'>" . $this->getfilename() . "</a>";
+
+                ///$Type = "File Upload";
+            } else {
+                $Type = " <span class='glyphicon glyphicon-link' data-toggle='tooltip' title='This is a url, click the title to view the  url.'></span>";
+                $URL = "<a href=\"" . $this->geturl() .  "\" target='_blank'>" . $this->getfilename() . "</a>";
+
+            }
+
+            return "<span class=\"title\">" . $URL . " </span> " . $Type . " <span class='badge' data-toggle='tooltip' title='This document was updated on " . $this->getdatemodified()->getnormaldate() . "'>". $this->getdatemodified()->getnormaldate() . "</span><br/><span class=\"content\">" . $this->getdescription() . "</span>"; 
+        }
+
         //Connection Constructor
         function __construct($ID)
         {
@@ -255,19 +272,10 @@
 
 				$Document = new Documents($row["IDLNK"]);
 
-				if($Document->getfiletype() == 'upload'){
-					$Type = "File Upload";
-				} else {
-					$Type = "URL";
-				}
-
 				$Section = $Document->getsection();
-				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span> <span class='label label-default'>" . $Type . "</span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
+				$Row1 = array($Document->gettablelink()," ");
 				$Row2 = array($Document->getdatemodified()->getnormaldate()," ");
 
-				
-				
-				
 				$Rows[$RowCounter] = array($Row1,$Row2,$Row3);
                 $RowCounter ++;
 			}
@@ -331,10 +339,8 @@
 			//echo($RQ->getquery());
 			
 			$Col1 = array("Document","sectionname",1);
-			$Col2 = array("Date Modified","documents",1);
-			//$Col3 = array("Type","documents",1);
-            $Col3 = array("","operations", 2);
-            $Cols = array($Col1,$Col2,$Col3);
+			$Col2 = array("","operations", 2);
+            $Cols = array($Col1,$Col2);
             $Rows = array();
             $RowCounter = 0;
 
@@ -343,20 +349,12 @@
 			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
 				$Document = new Documents($row["IDLNK"]);
 
-				if($Document->getfiletype() == 'upload'){
-					$Type = "File Upload";
-				} else {
-					$Type = "URL";
-				}
-
 				$Section = $Document->getsection();
-				$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span> <span class='label label-default'>" . $Type . "</span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
-				$Row2 = array($Document->getdatemodified()->getnormaldate()," ");
-				//$Row3 = array($Document->display_filesize($Document->getfilesize())," ");
-				$Row3 = array("<a  href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");		
-				$Row4 = array("<a  onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Folder\"></span></a>","button");
+				$Row1 = array($Document->gettablelink()," "); 
+				$Row2 = array("<a  href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");		
+				$Row3 = array("<a  onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Folder\"></span></a>","button");
 				
-				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
+				$Rows[$RowCounter] = array($Row1,$Row2,$Row3);
                 $RowCounter ++;
 			}
 			
@@ -393,9 +391,7 @@
      		print("<div class='col-md-9'>");
      			
 				print("<p class='lead'>The list below shows all documents selected using the search term <strong>" . $Term . "</strong>.");
-							
-				print("<p><a href='documents.php?did=-1&amp;dsid=" . $SID . "'><span class=\"glyphicon glyphicon-plus\" alt= \"Add New Document\" ></span>Add New Document</a></p>");
-					
+						
 			print("</div>");
 
 			Documents::	documentsearchbox($Term);
@@ -403,7 +399,6 @@
 			print("</div>");
 			print("<div class='row'>");
 			print("<div class='col-md-12'>");
-			//$RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE SectionIDLNK = " . $Section->getid() . " AND Deleted = 0 ORDER BY Filename");
 			
 			$Terms = explode(" ",$Term);
 
@@ -422,20 +417,18 @@
 				//Select where in name
 
 
-                $RQ = new ReadQuery("SELECT IDLNK AS DocID, Filename, (SELECT COUNT(*) FROM Documents WHERE IDLNK = DocID AND FileName REGEXP '$TermString') AS WordCount, (SELECT COUNT(*) FROM DocumentTags JOIN Tags on Tags.IDLNK = DocumentTags.TagIDLNK WHERE Tags.Title REGEXP '$TermString' AND DocumentTags.DocumentIDLNK = DocID) AS TagCount, (SELECT WordCount + TagCount) As TotalCount FROM Documents ORDER BY TotalCount DESC, WordCount DESC, TagCount DESC");
+                 $RQ = new ReadQuery("SELECT IDLNK AS DocID, Filename, (SELECT COUNT(*) FROM Documents WHERE IDLNK = DocID AND FileName REGEXP '$TermString') AS WordCount, (SELECT COUNT(*) FROM DocumentTags JOIN Tags on Tags.IDLNK = DocumentTags.TagIDLNK WHERE Tags.Title REGEXP '$TermString' AND DocumentTags.DocumentIDLNK = DocID) AS TagCount, (SELECT WordCount + TagCount) As TotalCount FROM Documents WHERE Deleted = 0 ORDER BY TotalCount DESC, WordCount DESC, TagCount DESC");
 
             } else {
 
-                $RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE SectionIDLNK = " . $Section->getid() . " AND Deleted = 0 AND IDLNK IN (SELECT DocumentIDLNK FROM DocumentUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY Filename;");
+                $RQ = new ReadQuery("SELECT IDLNK AS DocID, Filename, (SELECT COUNT(*) FROM Documents WHERE IDLNK = DocID AND FileName REGEXP '$TermString') AS WordCount, (SELECT COUNT(*) FROM DocumentTags JOIN Tags on Tags.IDLNK = DocumentTags.TagIDLNK WHERE Tags.Title REGEXP '$TermString' AND DocumentTags.DocumentIDLNK = DocID) AS TagCount, (SELECT WordCount + TagCount) As TotalCount FROM Documents WHERE Deleted = 0 ORDER BY TotalCount DESC, WordCount DESC, TagCount DESC");
+
             }
 
 			//echo($RQ->getquery());
 			
 			$Col1 = array("Document","sectionname",1);
-			$Col2 = array("Date Modified","documents",1);
-			//$Col3 = array("Type","documents",1);
-            $Col3 = array("","operations", 2);
-            $Cols = array($Col1,$Col2,$Col3);
+            $Cols = array($Col1);
             $Rows = array();
             $RowCounter = 0;
 
@@ -449,23 +442,13 @@
 					
 					$Document = new Documents($row["DocID"]);
 
-					if($Document->getfiletype() == 'upload'){
-						$Type = "File Upload";
-					} else {
-						$Type = "URL";
-					}
-
 					$Section = $Document->getsection();
-					$Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span> <span class='label label-default'>" . $Type . "</span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
-					$Row2 = array($Document->getdatemodified()->getnormaldate()," ");
-					//$Row3 = array($Document->display_filesize($Document->getfilesize())," ");
-					$Row3 = array("<a  href=?did=". $Document->getid() ."&amp;dsid=" . $Document->getsection()->getid() . "&amp;aid=5><span class=\"glyphicon glyphicon-pencil\" alt = \"Edit Section\"></span></a>","button");		
-					$Row4 = array("<a  onclick=\"confirmdialog('Delete Document " . $Document->getfilename() . "', '?did=" . $Document->getid() . "&amp;dsid=". $Section->getid() ."&amp;aid=10');\"><span class=\"glyphicon glyphicon-trash\" alt = \"Delete Folder\"></span></a>","button");
+
+					$Row1 = array($Document->gettablelink()," ");
 					
-					$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);
+					$Rows[$RowCounter] = array($Row1);
 	                $RowCounter ++;
 
-	                # code...
 				}
 			}
 			
@@ -573,13 +556,17 @@ print("</div>");
 							$Document->save();
 
 							$WQ = new WriteQuery("DELETE FROM DocumentUserCategorys WHERE DocumentIDLNK = " . $Document->getid() . ";");
-							echo($WQ->getquery());
+							//echo($WQ->getquery());
 
-		                    foreach($AccessCategorys as $AC)
-		                    {
-		                        $WQ = new WriteQuery("INSERT INTO DocumentUserCategorys (DocumentIDLNK, UserCategoryIDLNK) VALUES (" . $Document->getid() . ", " . $AC . ");");
-		                    	echo($WQ->getquery());
-		                    }
+                            if($AccessCategorys != ""){
+
+    		                    foreach($AccessCategorys as $AC)
+    		                    {
+    		                        $WQ = new WriteQuery("INSERT INTO DocumentUserCategorys (DocumentIDLNK, UserCategoryIDLNK) VALUES (" . $Document->getid() . ", " . $AC . ");");
+    		                    	echo($WQ->getquery());
+    		                    }
+
+                            }
 						
 						//Documents::generatenotice($SendNotice,$Document,$NoticeCategorys,0);
 
@@ -597,7 +584,7 @@ print("</div>");
         			
         					Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
         				
-		               		Documents::form($SectionID,$URL,$Filename,$Description,$Tags,$AccessCategorys,$DID,false);
+		               		Documents::form($SectionID,$URL,$Type,$Filename,$Description,$Tags,$AccessCategorys,$DID,false);
        			
        					}		
 						
@@ -608,7 +595,7 @@ print("</div>");
         			
         					Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
         				
-		               		Documents::form($SectionID,$URL,$Filename,$Description,$Tags,$AccessCategorys,$DID,false);
+		               		Documents::form($SectionID,$URL,$Type,$Filename,$Description,$Tags,$AccessCategorys,$DID,false);
 
 					}
 					       
@@ -622,7 +609,7 @@ print("</div>");
 	                
 	                $Document = new Documents($DID);
 	                	                	             	
-	                Documents::form($Document->getsection()->getid(),$Document->geturl(),$Document->getfilename(),$Document->getdescription(),$Document->gettags(),$Document->getaccesscategorys(),$Document->getid(),false);
+	                Documents::form($Document->getsection()->getid(),$Document->geturl(),$Document->getfiletype(),$Document->getfilename(),$Document->getdescription(),$Document->gettags(),$Document->getaccesscategorys(),$Document->getid(),false);
 	             }
         	 } else {
         	 //Add
@@ -676,7 +663,7 @@ print("</div>");
         			
         				Forms::generateerrors("Please correct the following errors before continuing.",$Errors,true);
         			
-	               		Documents::form($SectionID,$URL,$Filename,$Description,$Tags,$AccessCategorys,$DID,true);
+	               		Documents::form($SectionID,$URL,$Type,$Filename,$Description,$Tags,$AccessCategorys,$DID,true);
 					}
 				
 				} else {
@@ -687,7 +674,7 @@ print("</div>");
         			
         			Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
         			
-	               	Documents::form($SectionID,$URL,$Filename,$Description,$Tags,$AccessCategorys,$DID,true);
+	               	Documents::form($SectionID,$URL,$Type,$Filename,$Description,$Tags,$AccessCategorys,$DID,true);
 	            }
         	}
 	    }
@@ -731,7 +718,7 @@ print("</div>");
 			}
 	    }
 	     
-    	static public function form($SectionID,$URL,$Filename,$Description,$Tags,$AccessCategorys,$DID,$Add)
+    	static public function form($SectionID,$URL,$Type,$Filename,$Description,$Tags,$AccessCategorys,$DID,$Add)
         {
         	$NoticeCategoryArray = UserCategory::generatearray();
 
@@ -747,7 +734,7 @@ print("</div>");
         	$SendNoticeField = array("Send Notice:","Checkbox","sendnotice",0,0,"",0,1,"shownoticecategorys(this)");
         	$NoticeCategoryField = array("Notice Category:","CheckboxArray","selectnoticecategory",0,0,"","",$NoticeCategoryArray);
         
-			$Fields = array($FileField,$FilenameField,$DescriptionField,$TagField,$AccessGroups,$SendNoticeField,$NoticeCategoryField,$SectionIDField);
+			$Fields = array($FileField,$FilenameField,$DescriptionField,$TagField,$AccessGroups,$SectionIDField);
 
             
 			if($DID == -1){
@@ -762,8 +749,14 @@ print("</div>");
 			
 			Forms::generateform("documentsform","documents.php?did=" . $DID . "&amp;dsid=" . $SectionID . $AddInfo,"return checkdocumentform(this,$Add,2)",true,$Fields,$Button);
            
-           $Section = new Sections($SectionID);
-			
+           $Section = new Sections($SectionID);  
+
+           echo($Type);
+
+           if($Type == 'url'){
+            print("<script type='text/javascript'> $('#fileuploadtabs a:last').tab('show') </script>");
+            }
+
 			print("<p>Return to the <a href=\"documents.php?sid=$SectionID\">" . $Section->getsection() . " Documents List</a></p>");
 
         }
@@ -809,20 +802,51 @@ print("</div>");
         	
         	$Document->save();
         } 
-        
-        static public function lastdocuments(){
-        	$RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE Deleted = 0 ORDER BY DateModified DESC LIMIT 0,5;");
-        	
-        	print("<ul>");
-        	
 
-        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
-        		$Doc = new Documents($row["IDLNK"]);
-        		
-        		print("<li><a href=\"downloads.php?did=" . $Doc->getid() . "\">" . $Doc->getfilename() . "</a></li>");
-        	}
+        static public function lastdocumentscount($LastDate){
+             $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE Deleted = 0 AND DateModified >= '$LastDate' ORDER BY DateModified DESC;");
+
+             return $RQ->getresults()->fetch_array(MYSQLI_BOTH)[0][0];
+
+             //return $row;
+
+        }
+        
+        static public function lastdocuments($LastDate){
         	
-        	print("</ul>");
+            $RQ = new ReadQuery("SELECT IDLNK FROM Documents WHERE Deleted = 0 AND DateModified >= '$LastDate' ORDER BY DateModified DESC;");
+
+            //echo($RQ->getquery());
+
+            $Col1 = array("Document","sectionname",1);
+            $Col2 = array("Date Modified","documents",1);
+            $Cols = array($Col1,$Col2);
+            $Rows = array();
+            $RowCounter = 0;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+
+                $Document = new Documents($row["IDLNK"]);
+
+                if($Document->getfiletype() == 'upload'){
+                    $Type = "File Upload";
+                } else {
+                    $Type = "URL";
+                }
+
+                $Section = $Document->getsection();
+                $Row1 = array("<span class=\"title\"><a href=\"downloads.php?did=" . $Document->getid() . "\">" . $Document->getfilename() . "</a></span> <span class='label label-default'>" . $Type . "</span><br/><span class=\"content\">" . $Document->getdescription() . "</span>"," ");
+                $Row2 = array($Document->getdatemodified()->getnormaldate()," ");
+                
+                $Rows[$RowCounter] = array($Row1,$Row2);
+                $RowCounter ++;
+            }
+
+            Tables::generateadmintable("latestdocumenttable",$Cols,$Rows);
+
+
+        	
+            
         }  
 
         static public function documentsearchbox($Term)

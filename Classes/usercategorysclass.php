@@ -310,7 +310,7 @@
 
         public static function generatearraybygroup($GroupID)
         {
-            $RQ = new ReadQuery("SELECT IDLNK, Title From UserCategorys WHERE IDLNK IN (SELECT UserCategoryIDLNK FROM GroupUserCategorys WHERE GroupIDLNK = $GroupID) ORDER BY Title;");
+            $RQ = new ReadQuery("SELECT IDLNK, Title From UserCategorys WHERE Deleted = 0 AND IDLNK IN (SELECT UserCategoryIDLNK FROM GroupUserCategorys WHERE GroupIDLNK = $GroupID) ORDER BY Title;");
             
             //echo($RQ->getquery());
             
@@ -331,7 +331,7 @@
 
         public static function generatearraybysection($SectionID)
         {
-            $RQ = new ReadQuery("SELECT IDLNK, Title From UserCategorys WHERE IDLNK IN (SELECT UserCategoryIDLNK FROM SectionUserCategorys WHERE SectionIDLNK = $SectionID) ORDER BY Title;");
+            $RQ = new ReadQuery("SELECT IDLNK, Title From UserCategorys WHERE Deleted = 0 AND IDLNK IN (SELECT UserCategoryIDLNK FROM SectionUserCategorys WHERE SectionIDLNK = $SectionID) ORDER BY Title;");
             
             //echo($RQ->getquery());
             
@@ -394,7 +394,7 @@
         {
             $RQ = new ReadQuery("SELECT COUNT(*) FROM SectionUserCategorys WHERE SectionIDLNK = $SectionID;");
 
-            echo($RQ->getquery());
+            //echo($RQ->getquery());
 
             $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
             

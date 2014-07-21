@@ -34,6 +34,7 @@
 				if($MID){
 					if($AID){
 					
+						echo("Delete");
 						Messages::deletemessage($MID);
 					
 						Messages::listall();

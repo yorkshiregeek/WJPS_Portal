@@ -21,7 +21,7 @@
 
 
 
-	Templates::PageHeader("Documents",$Scripts,"documents",2);
+	Templates::PageHeader("Documents",$Scripts,"documents",1);
     		 	
 ?>
     			    		
@@ -122,8 +122,14 @@
 					}
 					
 				} else {
+
+
 					
 					Print("<h2 class='page-header'>Documents</h2>");
+
+					if($Search!=''){
+						Documents::searchadmin($Search);
+					} else {
 					
 					if($GID){
 						Sections::listall($GID);
@@ -132,6 +138,8 @@
 					} else {
 						Groups::listall();
 					}
+
+				}
 				
 				}
 			
@@ -144,12 +152,22 @@
 	</div>
 
 	<script>
+
+$('[data-toggle="tooltip"]').tooltip({
+    'placement': 'top'
+});
+$('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+});
+
+
 /*jslint unparam: true */
 /*global window, $ */
 $(function () {
     'use strict';
     // Change this to the location of your server-side upload handler:
-    var url = 'http://localhost:8888/Portal/WJPS_Portal/Ajax-php/upload.php';
+    var url = 'http://localhost:8888/WJPS_Portal/Ajax-php/upload.php';
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',

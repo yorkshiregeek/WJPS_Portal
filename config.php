@@ -9,9 +9,9 @@
 	define("NOREPLYEMAIL", "noreply@athp.org.uk");
 	define("DEFAULTEMAIL", "admin@athp.org.uk");
 	
-	define("URL","http://localhost:8888/portal");
+	define("URL","http://localhost:8888/WJPS_Portal");
 	//define("FILELOC","../private");
-	define("FILELOC","/Applications/MAMP/htdocs/Portal/private");
+	define("FILELOC","/Applications/MAMP/htdocs/WJPS_Portal/private/");
 	
 	define("LOGO","/Images/ATHP.gif");
 	
@@ -21,7 +21,7 @@
 	define("METAREVISED","WJPS 10/10/10");
 
 	define("DBSERVER","localhost");
-	define("DBNAME","ATHP");
+	define("DBNAME","wjps_portal");
 	define("DBUSER","root");
 	define("DBPASS","root");
 

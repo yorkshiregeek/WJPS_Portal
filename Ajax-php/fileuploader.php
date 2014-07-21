@@ -1,4 +1,6 @@
 <?php
+
+
 /*
  * jQuery File Upload Plugin PHP Class 6.4.2
  * https://github.com/blueimp/jQuery-File-Upload
@@ -38,8 +40,8 @@ class UploadHandler
 
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => '/Applications/MAMP/htdocs/Portal/WJPS_Portal/private/',
-            'upload_url' => $this->get_full_url().'/files/',
+            'upload_dir' => '/Applications/MAMP/htdocs/WJPS_Portal/private/',
+            'upload_url' => 'http://localhost:8888/WJPS_Portal/private/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',

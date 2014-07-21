@@ -145,6 +145,21 @@
             } elseif($Type == "TextArea") {
                 //Text Area
                 print("<textarea class='form-control' placeholder ='" . $EntryText . "' name='" . $Name . "' id='" . $Name . "' cols='" . $Cols . "' rows='" . $Rows . "'" . $ReadOnly . ">" . $Value . "</textarea>");
+            } elseif($Type == "WYSIWYG") {
+                //WYSIWYG
+
+                ?>
+
+                <script src="js/nicEdit.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    bkLib.onDomLoaded(function() {    
+                        new nicEditor({iconsPath : 'js/nicEditorIcons.gif', buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('<? echo($Name); ?>');
+                    });
+                </script>
+
+                <?
+
+                print("<textarea class='form-control' placeholder ='" . $EntryText . "' name='" . $Name . "' id='" . $Name . "' cols='" . $Cols . "' rows='" . $Rows . "'" . $ReadOnly . ">" . $Value . "</textarea>");
             } elseif($Type == "File") {
                 //File Input
                 print("<input type='file' class='form-control' placeholder = '" . $EntryText ."' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "'/>");
@@ -170,13 +185,13 @@
                 print("<div id='files' class='files'></div>");
             } else if($Type == "FileURL"){
 
-                print("<ul class='nav nav-tabs' role='tablist'>");
-                    print("<li class='active'><a href='#home' role='tab' data-toggle='tab'>File</a></li>");
-                    print("<li><a href='#profile' role='tab' data-toggle='tab'>URL</a></li>");
+                print("<ul class='nav nav-tabs' role='tablist' id='fileuploadtabs'>");
+                    print("<li class='active'><a href='#file' role='tab' data-toggle='tab'>File</a></li>");
+                    print("<li><a href='#url' role='tab' data-toggle='tab'>URL</a></li>");
                 print("</ul>");
 
                 print("<div class='tab-content'>");
-                    print("<div class='tab-pane active' id='home'>");
+                    print("<div class='tab-pane active' id='file'>");
                         print("<p></p>");
                         print("<span class='btn btn-default fileinput-button' style='float:left;'>");
                             print("<i class='glyphicon glyphicon-plus'></i>");
@@ -192,7 +207,7 @@
                         print("<input class='form-control' type='hidden' name='fileurl' id='fileurl' value='" . $Value . "'\>");
 
                     print("</div>");
-                    print("<div class='tab-pane' id='profile'>");
+                    print("<div class='tab-pane' id='url'>");
                         print("<p></p>");
                             print("<input class='form-control' placeholder = 'Enter a URL to link to.' type='text' name='fileuploadurl' id='fileuploadurl' size='60' value='" . $Value . "'" . $ReadOnly . "/>");
                     print("</div>");

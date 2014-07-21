@@ -202,8 +202,11 @@
 
                 print("<div class='col-md-12'>");
 						
-			$RQ = new ReadQuery("SELECT *, COUNT * FROM Sections Where GroupIDLNK = IDLNK  FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY GroupName;");
-			
+			//$RQ = new ReadQuery("SELECT *, COUNT * FROM Sections Where GroupIDLNK = IDLNK  FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY GroupName;");
+			$RQ = new ReadQuery("SELECT IDLNK FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY GroupName;");
+            
+
+        //echo($RQ->getquery());
 //SELECT *, (SELECT COUNT(*) FROM Sections Where GroupIDLNK = Groups.IDLNK) FROM Groups WHERE Deleted = 0 AND IDLNK IN (SELECT GroupIDLNK FROM GroupUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = 1)) ORDER BY GroupName
             
 			//echo($RQ->getquery());
@@ -239,15 +242,15 @@
         static public function listadmin()
         {
             //Normal
-            print("<div class=row>");
+           print("<div class=row>");
 
                 print("<div class='col-md-12'>");
-     		
-     		 print("<ol class='breadcrumb'>");
-                print("<li class='active'>Groups</li>");
-            print("</ol>");
+         		
+         		 print("<ol class='breadcrumb'>");
+                    print("<li class='active'>Groups</li>");
+                print("</ol>");
 
-             print("</div>");
+                 print("</div>");
 
             print("</div>");
 
@@ -306,6 +309,10 @@
 			}
 			
 			Tables::generateadmintable("admingroupstable",$Cols,$Rows);
+
+            print("</div>");
+
+            print("</div>");
         
         }
              

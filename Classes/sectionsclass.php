@@ -121,7 +121,7 @@
         	$Group = $this->getgroup();
         	$WQ = new WriteQuery("INSERT INTO Sections (GroupIDLNK, Section, Description, Deleted) VALUES (" . $Group->getid() . ", '" . $this->getsection() ."', '" . $this->getdescription() . "', 0)");
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID = $WQ->getinsertid();
         }
         
         function save()
@@ -279,14 +279,14 @@
 
             //Get Number of Categorys
             $NofC = UserCategory::gettotalbygroup($SGID);
-            
+
             for($c=1;$c<=$NofC;$c++)
             {
                 if(isset($_POST["accesscategory" . $c])){
                     $AccessCategorys[$c-1] = $_POST["accesscategory" . $c];
                 }
             }
-			
+
 			if(isset($_POST["gid"])){
 				$GroupID = $_POST["gid"];
 			} else {
@@ -353,10 +353,14 @@
 						
 						$NewSection->savenew();
 
+                        if($AccessCategorys != ""){
+
                         foreach($AccessCategorys as $AC)
                         {
                             $WQ = new WriteQuery("INSERT INTO SectionUserCategorys (SectionIDLNK, UserCategoryIDLNK) VALUES (" . $NewSection->getid() . ", " . $AC . ");");
                         }
+
+                    }
 					
 						//mkdir($NewSection->geturl());
 										
