@@ -1,0 +1,1 @@
+SELECT IDLNK AS DocID, Filename, (SELECT COUNT(*) FROM Documents WHERE IDLNK = DocID AND FileName Like '%yel%') AS WordCount, (SELECT COUNT(*) FROM DocumentTags JOIN Tags on Tags.IDLNK = DocumentTags.TagIDLNK WHERE Tags.Title LIKE '%yel%' AND DocumentTags.DocumentIDLNK = DocID) AS TagCount  FROM Documents ORDER BY WordCount DESC, TagCount DESC 

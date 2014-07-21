@@ -9,6 +9,8 @@
         var $c_Section;
         var $c_Description;
         var $c_Deleted;
+
+        var $c_AccessCategorys;
         
         function getid()
         {
@@ -65,11 +67,35 @@
         
         function getdocuments()
         {
-          	$RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK = " . $this->getid() . " AND Deleted = 0;");
+
+            if($_SESSION["isadmin"] == true){
+                $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK = " . $this->getid() . " AND Deleted = 0;");
+            } else {
+
+                $RQ = new ReadQuery("SELECT COUNT(IDLNK) FROM Documents WHERE SectionIDLNK = " . $this->getid() . " AND Deleted = 0 AND IDLNK IN (SELECT DocumentIDLNK FROM DocumentUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . "));");
+            }
+
         	$row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
         	
         	return $row["COUNT(IDLNK)"];
 
+        }
+
+        function getaccesscategorys()
+        {
+            $RQ = new ReadQuery("SELECT UserCategoryIDLNK FROM SectionUserCategorys WHERE SectionIDLNK = " . $this->getid() . ";");
+          
+            $Counter = 0;
+            
+            //$Cats = new array;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                $CatArray[$Counter] = $row["UserCategoryIDLNK"];
+                
+                $Counter ++;
+            }
+            
+            return $CatArray;
         }
         
         //Connection Constructor
@@ -95,7 +121,7 @@
         	$Group = $this->getgroup();
         	$WQ = new WriteQuery("INSERT INTO Sections (GroupIDLNK, Section, Description, Deleted) VALUES (" . $Group->getid() . ", '" . $this->getsection() ."', '" . $this->getdescription() . "', 0)");
         	//echo($WQ->getquery());
-            $this->c_ID = mysql_insert_id();
+            $this->c_ID = $WQ->getinsertid();
         }
         
         function save()
@@ -107,6 +133,10 @@
         static public function listall($GID)
         {
      		//Normal
+
+            print("<div class=row>");
+
+            print("<div class='col-md-12'>");
      		
      		$Group = new Groups($GID);
 
@@ -114,11 +144,29 @@
                 print("<li><a href=\"documents.php\">Groups</a></li>");
                 print("<li class='active'>" . $Group->getgroup() . "</li>");
             print("</ol>");
+
+            print("</div>");
+
+            print("</div>");
+
+            print("<div class=row>");
+
+            print("<div class='col-md-9'>");
      			
 			print("<p class='lead'>The list below shows all <strong>" . $Group->getgroup() . "</strong> group sections.</p>");
-							
-			$RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $GID . " AND Deleted = 0 ORDER BY Section");
 			
+            print("</div>");
+
+            Documents:: documentsearchbox($Term);
+
+            print("</div>");
+            print("<div class='row'>");
+            print("<div class='col-md-12'>");
+
+			//SELECT IDLNK FROM Sections WHERE Deleted = 0 AND IDLNK IN (SELECT SectionIDLNK FROM SectioUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = 1)) ORDER BY GroupName;
+
+            $RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = $GID AND Deleted = 0 AND IDLNK IN (SELECT SectionIDLNK FROM SectionUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY Section;");
+        
 			//echo($RQ->getquery());
 			
 			$Col1 = array("Section","sectionname",1);
@@ -138,27 +186,60 @@
 			}
 			
 			Tables::generateadmintable("sectionstable",$Cols,$Rows);
+
+            print("</div>");
+
+            print("</div>");
         
         }
 
         
         static public function listadmin($GID)
         {
-     		//Normal
-     		
-     		$Group = new Groups($GID);
-     		
-     		 print("<ol class='breadcrumb'>");
-                print("<li><a href=\"documents.php\">Groups</a></li>");
-                print("<li class='active'>" . $Group->getgroup() . "</li>");
-            print("</ol>");
+   
+            //Normal
+            print("<div class=row>");
 
-			print("<p class='lead'>The list below shows all <strong>" . $Group->getgroup() . "</strong> group sections. From this page you can add, edit or delete sections.</p>");
+                print("<div class='col-md-12'>");
+             		$Group = new Groups($GID);
+             		
+             		print("<ol class='breadcrumb'>");
+                        print("<li><a href=\"documents.php\">Groups</a></li>");
+                        print("<li class='active'>" . $Group->getgroup() . "</li>");
+                    print("</ol>");
+
+                print("</div>");
+
+            print("</div>");
+
+            print("<div class=row>");
+
+                print("<div class='col-md-9'>");
+
+        			print("<p class='lead'>The list below shows all <strong>" . $Group->getgroup() . "</strong> group sections. From this page you can add, edit or delete sections.</p>");
+        			
+        			print("<p><a href='documents.php?sid=-1&amp;sgid=" . $GID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Section</a></p>");
 			
-			print("<p><a href='documents.php?sid=-1&amp;sgid=" . $GID . "'><span class=\"glyphicon glyphicon-plus\"></span>Add New Section</a></p>");
-				
-			$RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $GID . " AND Deleted = 0 ORDER BY Section");
-			
+                print("</div>");
+
+                Documents:: documentsearchbox($Term);
+
+            print("</div>");
+            
+            print("<div class='row'>");
+            
+                print("<div class='col-md-12'>");
+
+            if($_SESSION["isadmin"] == true){
+
+                $RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = " . $GID . " AND Deleted = 0 ORDER BY Section");
+            
+
+            } else {
+
+                $RQ = new ReadQuery("SELECT IDLNK FROM Sections WHERE GroupIDLNK = $GID AND Deleted = 0 AND IDLNK IN (SELECT SectionIDLNK FROM SectionUserCategorys WHERE UserCategoryIDLNK IN (SELECT CategoryIDLNK FROM UsersCategorys WHERE UserIDLNK = " . $_SESSION["userid"] . ")) ORDER BY Section;");
+            }
+
 			//echo($RQ->getquery());
 			
 			$Col1 = array("Section","sectionname",1);
@@ -184,6 +265,10 @@
 			}
 			
 			Tables::generateadmintable("adminsectionstable",$Cols,$Rows);
+
+            print("</div>");
+
+            print("</div>");
         
         }
              
@@ -191,7 +276,17 @@
 	    {
 			$SectionName = $_POST["section"];
 			$Description = $_POST["description"];
-			
+
+            //Get Number of Categorys
+            $NofC = UserCategory::gettotalbygroup($SGID);
+
+            for($c=1;$c<=$NofC;$c++)
+            {
+                if(isset($_POST["accesscategory" . $c])){
+                    $AccessCategorys[$c-1] = $_POST["accesscategory" . $c];
+                }
+            }
+
 			if(isset($_POST["gid"])){
 				$GroupID = $_POST["gid"];
 			} else {
@@ -219,6 +314,13 @@
 					$NewSection->setdescription($Description);
 					
 					$NewSection->save();
+
+                    $WQ = new WriteQuery("DELETE FROM SectionUserCategorys WHERE GroupIDLNK = " . $NewSection->getid() . ";");
+
+                    foreach($AccessCategorys as $AC)
+                    {
+                        $WQ = new WriteQuery("INSERT INTO SectionUserCategorys (SectionIDLNK, UserCategoryIDLNK) VALUES (" . $NewSection->getid() . ", " . $AC . ");");
+                    }
 					
 					print("<p class='lead'>The section has been succesfully edited.</p>");
 					
@@ -233,12 +335,10 @@
 	                
 	                $Section = new Sections($SID);
 	                	             	
-	                Sections::form($Section->getgroup()->getid(),$Section->getsection(),$Section->getdescription(),$Section->getid(),false);
+	                Sections::form($Section->getgroup()->getid(),$Section->getsection(),$Section->getdescription(),$Section->getaccesscategorys(),$Section->getid(),false);
 	             }
         	 } else {
         	 //Add
-	            //print("<h2>Add New Section</h2>");
-
 	            if($Submit){
 	                //Add
 	                 
@@ -252,6 +352,15 @@
 						//All Ok
 						
 						$NewSection->savenew();
+
+                        if($AccessCategorys != ""){
+
+                        foreach($AccessCategorys as $AC)
+                        {
+                            $WQ = new WriteQuery("INSERT INTO SectionUserCategorys (SectionIDLNK, UserCategoryIDLNK) VALUES (" . $NewSection->getid() . ", " . $AC . ");");
+                        }
+
+                    }
 					
 						//mkdir($NewSection->geturl());
 										
@@ -268,7 +377,7 @@
         			
         				Forms::generateerrors("Please correct the following errors before continuing.",$Errors,true);
         			
-	                	Groups::form($GroupName,$Description,$GID,true);
+	                	Groups::form($GroupName,$Description,$AccessCategorys,$GID,true);
 					}
 					
 									
@@ -280,18 +389,22 @@
         			
         			Forms::generateerrors("Please correct the following errors before continuing.",$Errors,false);
         			
-	                Sections::form($GroupID,$Section,$Description,$SID,true);
+	                Sections::form($GroupID,$Section,$Description,$AccessCategorys,$SID,true);
 	             }
         	 }
 	     }
 	     
-    	static public function form($GroupID,$Section,$Description,$SID,$Add)
+    	static public function form($GroupID,$Section,$Description,$AccessCategorys,$SID,$Add)
         {
+
+            $AccessCategoryArray = UserCategory::generatearraybygroup($GroupID);
+
         	$GroupIDField = array("Group ID:","Hidden","gid",65,0,$GroupID,"","");
         	$SectionField = array("Section:","Text","section",65,0,$Section,"Enter a Section name.","");
         	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a Section descritpion.");
-        
-			$Fields = array($SectionField,$DescriptionField,$GroupIDField);
+            $AccessGroups = array("Access Groups:","CheckboxArrayCollapse","accesscategory",65,0,$AccessCategorys,"",$AccessCategoryArray);
+
+			$Fields = array($SectionField,$DescriptionField,$AccessGroups,$GroupIDField);
 
             
 			if($SID == -1){

@@ -13,6 +13,7 @@
         var $c_Hospital;
         var $c_Userlevel;
         var $c_UserCategory;
+        var $c_LastLogin;
         var $c_Deleted;
         var $salt;
         
@@ -87,11 +88,6 @@
         	return $this->c_Hospital;	
         }
         
-        function setsex($Val)
-        {
-            $this->c_Sex = $Val;
-        }
-            
         function setuserlevel($Val)
         {
             $this->c_UserLevel = $Val;
@@ -100,6 +96,23 @@
         function getuserlevel()
         {
             return $this->c_UserLevel;
+        }
+
+        function setlastlogin($Val)
+        {
+            $this->c_LastLogin = $Val;
+        }
+        
+        function getlastlogin()
+        {
+            return $this->c_LastLogin;
+        }
+
+        function updatelastlogin()
+        {
+            $WQ = new WriteQuery("UPDATE Users Set LastLogin = '" . date("Y-m-d") . "' WHERE IDLNK = " . $this->c_ID . ";");
+            //echo($WQ->getquery());
+            $this->c_LastLogin = date("Y-m-d");
         }
         
         function getuserleveldesc()
@@ -177,6 +190,7 @@
                 $this->c_Hospital = $row["Hospital"];
                 $this->c_UserLevel = $row["Userlevel"];
                 $this->c_UserCategory = $row["UserCategory"];
+                $this->c_LastLogin = $row["LastLogin"];
                 $this->c_Deleted = $row["Deleted"];
             }else{
                 //Create New
@@ -560,14 +574,24 @@
         		
         		if($LoginStatus > 0){
         			$User = new Users($LoginStatus);
+
+                    $User->updatelastlogin();
+
         			$_SESSION["username"] = $User->getusername();
 
         			$_SESSION["password"] = $User->getpassword();
         			
                     $_SESSION["userid"] = $LoginStatus;
+
+                    if($User->getuserlevel() == 3)
+                    {
+                        $_SESSION["isadmin"] = true;
+                    }
         			return true;
         		} else {
         			//Wrong Combination
+
+                    echo("<h2 class=page-header>Secure Login</h2>");
         			
         			echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         			    			
@@ -579,6 +603,8 @@
         			return false;
         		}
         	} else {
+
+                echo("<h2 class=page-header>Secure Login</h2>");
         		
         		echo("<p class='lead'>Before you can access the secure side of this site you must first login using you Username and Password.</p>");
         	
@@ -605,7 +631,6 @@
 
                 $salt = SALT;
                 $salt .= $Password;
-
                 $Password = $salt;
                 //encrypt the password
                  $Password = md5($Password);
@@ -613,6 +638,8 @@
         
         	//Check Username and Password
         	$RQ = new ReadQuery("SELECT IDLNK FROM Users Where Username = '" . $Username . "' AND Password = '" . $Password . "' AND Deleted = 0;");
+
+            //echo($RQ->getquery());
 
         	if($RQ->getnumberofresults() > 0)
         	{
@@ -926,6 +953,35 @@
             Tables::generateadmintable("adminusertable",$Cols,$Rows);
            
         
+        }
+
+        public static function generatearray()
+        {
+            $RQ = new ReadQuery("SELECT IDLNK, Firstname, Surname From Users WHERE Deleted = 0 ORDER BY Surname;");
+            
+            //echo($RQ->getquery());
+            
+            $ReturnArray = array();
+            
+            $Counter = 0;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                //echo($row[1]);
+                $ReturnArray[$Counter] = array($row[0],$row[1] . " " . $row[2]);
+                $Counter ++;
+            }
+            
+            return $ReturnArray;
+            
+        }
+
+        public static function gettotal()
+        {
+            $RQ = new ReadQuery("SELECT Count(*) FROM Users WHERE Deleted = 0;");
+            
+            $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
+            
+            return $row[0];
         }
         
         

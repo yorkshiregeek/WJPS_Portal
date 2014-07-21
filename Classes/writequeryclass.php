@@ -7,6 +7,8 @@
         var $c_connection;
         var $c_query;
         var $c_database = DBNAME;
+
+        var $c_insertid;
         
         //Set Connection
         function setconnection($connection)
@@ -31,6 +33,11 @@
         {
             return $this->c_query;
         }
+
+        function getinsertid()
+        {
+            return $this->c_insertid;
+        }
         
         //Set Database
         function setdatabase($database)
@@ -49,6 +56,7 @@
         {
             $this->c_connection = new Connection();
             $this->runquery($Query);
+
         }
         
         //Run Query
@@ -58,6 +66,7 @@
             if($this->c_query){
               
                  $this->c_results=$this->c_connection->query($this->c_query);
+                 $this->c_insertid = mysqli_insert_id($this->c_connection->getconnection());
             }//end if
         }
     

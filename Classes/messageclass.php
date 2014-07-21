@@ -185,7 +185,7 @@
                 $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);
                 $this->c_ID = $ID;
                 $this->c_Title = $row["Title"];
-                $this->c_Message = $row["Message"];
+                $this->c_Message = htmlspecialchars_decode($row["Message"]);
                 $this->c_ParentID = $row["ParentIDLNK"];
                 $this->c_DateAdded = new DateClass("",$row["DateAdded"],"","","");
                 $this->c_TimeAdded = $row["TimeAdded"];
@@ -201,10 +201,10 @@
         {
         	$DA = $this->getdateadded();
         	$PB = $this->getpostedby();
-        	$WQ = new WriteQuery("INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . $this->getmessage() . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "','" . $this->gettimeadded() . "'," . $PB->getid() . ", 0)");
+        	$WQ = new WriteQuery("INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . addslashes(htmlentities($this->getmessage())) . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "','" . $this->gettimeadded() . "'," . $PB->getid() . ", 0)");
         	//echo($WQ->getquery());
         	//echo($WQ->getquery());
-            $this->c_ID -> insert_id;
+            $this->c_ID  = $WQ->getinsertid();
 
 
         }
@@ -214,7 +214,7 @@
         	$DA = $this->getdateadded();
         	$PB = $this->getpostedby();
         	//echo($this->gettitle());
-            $WQ = new WriteQuery("UPDATE Messages SET Title = '" . $this->gettitle() . "', Message = '" . $this->getmessage() . "', ParentIDLNK = " . $this->getparentid() . ", DateAdded = '" . $DA->getdatabasedate() . "', TimeAdded = '" . $this->gettimeadded() . "', PostedByIDLNK = " . $PB->getid() . ", Deleted = " . $this->getdeleted() . " WHERE IDLNK = " . $this->getid() . ";");
+            $WQ = new WriteQuery("UPDATE Messages SET Title = '" . $this->gettitle() . "', Message = '" . addslashes(htmlentities($this->getmessage())) . "', ParentIDLNK = " . $this->getparentid() . ", DateAdded = '" . $DA->getdatabasedate() . "', TimeAdded = '" . $this->gettimeadded() . "', PostedByIDLNK = " . $PB->getid() . ", Deleted = " . $this->getdeleted() . " WHERE IDLNK = " . $this->getid() . ";");
 			//echo($WQ->getquery());
         }
         
@@ -521,7 +521,7 @@
         	$MessageCategoryArray = UserCategory::generatearraybyuser($_SESSION["userid"]);
         
           	$TitleField = array("Title:","Text","title",65,0,$Title,"Enter a message title");
-        	$MessageField = array("Message:","TextArea","message",85,7,$Message,"Enter a message");
+        	$MessageField = array("Message:","WYSIWYG","message",85,7,$Message,"Enter a message");
         	$CategoryField = array("Category:","CheckboxArray","messagecategory",0,0,$MessagesCategory,"",$MessageCategoryArray);
         	
 			$Fields = array($TitleField,$MessageField,$CategoryField);
