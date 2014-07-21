@@ -91,7 +91,7 @@
 			"file": "/Applications/MAMP/logs/php_error.log",
 			"settings":
 			{
-				"buffer_size": 385198,
+				"buffer_size": 856105,
 				"line_ending": "Unix"
 			}
 		},
@@ -165,6 +165,14 @@
 			"settings":
 			{
 				"buffer_size": 833,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes/writequeryclass.php",
+			"settings":
+			{
+				"buffer_size": 1375,
 				"line_ending": "Unix"
 			}
 		},
@@ -276,30 +284,18 @@
 			}
 		},
 		{
-			"contents": "<?php\n\n    class Documents\n    {\n    \n        //Class Varibles\n        var $c_ID;\n        var $c_Section;\n        var $c_Filename;\n        var $c_Description;\n        var $c_DateModified;\n        var $c_FileSize;\n        var $c_FileType;\n        var $c_File;\n        var $c_Deleted;\n        \n        function getid()\n        {\n            return $this->c_ID;\n        }\n                \n        function setsection($Val)\n        {\n        	$this->c_Section = $Val;\n        }\n        \n        function getsection()\n        {\n        	return $this->c_Section;\n        }\n \n 		function setfilename($Val)\n        {\n        	$this->c_Filename = $Val;\n        }\n        \n        function getfilename()\n        {\n        	return $this->c_Filename;\n        }\n        \n        function setdescription($Val)\n        {\n            $this->c_Description = $Val;\n        }\n        \n        function getdescription()\n        {\n            return $this->c_Description;\n        }\n\n		function setdatemodified($Val)\n        {\n            $this->c_DateModified = $Val;\n        }\n        \n        function getdatemodified()\n        {\n            return $this->c_DateModified;\n        }\n        \n        function setfilesize($Val)\n        {\n            $this->c_FileSize = $Val;\n        }\n        \n        function getfilesize()\n        {\n            return $this->c_FileSize;\n        }\n        \n        function setfiletype($Val)\n        {\n            $this->c_FileType = $Val;\n        }\n        \n        function getfiletype()\n        {\n            return $this->c_FileType;\n        }\n        \n        function setfile($Val)\n        {\n            $this->c_File = $Val;\n        }\n        \n        function getfile()\n        {\n            return $this->c_File;\n        }\n        \n        function setdeleted($Val)\n        {\n            $this->c_Deleted = $Val;\n        }\n        \n        function getdeleted()\n        {\n            return $this->c_Deleted;\n        }\n        \n        function geturl()\n        {	\n        	return $this->getsection()->geturl() . \"/\" . $this->getid() . $this->getfilename();\n        }\n\n        \n        //Connection Constructor\n        function __construct($ID)\n        {\n            if($ID > 0){\n                //Load Using ID\n                $RQ = new ReadQuery(\"SELECT * FROM Documents WHERE IDLNK = \" . $ID . \";\");\n                $row = $RQ->getresults()->fetch_array(MYSQLI_BOTH);\n                $this->c_ID = $ID;\n                $this->c_Section = new Sections($row[\"SectionIDLNK\"]);\n                $this->c_Filename = $row[\"Filename\"];\n                //echo($this->getfilename());\n                $this->c_Description = $row[\"Description\"];\n                $this->c_DateModified = new DateClass(\"\",$row[\"DateModified\"],\"\",\"\",\"\");\n                $this->c_FileSize = $row[\"FileSize\"];\n                $this->c_FileType = $row[\"FileType\"];\n                $this->c_File = stripslashes($row[\"File\"]);\n                $this->c_Deleted = $row[\"Deleted\"];\n            }else{\n                //Create New\n                $this->setdeleted(false);\n            }\n        }\n        \n        function savenew()\n        {\n        	$DM = $this->getdatemodified();\n        	$WQ = new WriteQuery(\"INSERT INTO Documents (SectionIDLNK, Filename, Description, DateModified, Filesize, FileType, Deleted) VALUES (\" . $this->getsection()->getid() . \", '\" . $this->getfilename() .\"', '\" . $this->getdescription() . \"','\" . $DM->getdatabasedate() . \"',\" . $this->getfilesize() . \",'\" . $this->getfiletype() . \"', 0)\");\n        	//echo($WQ->getquery());\n            $this->c_ID = mysql_insert_id();\n        }\n        \n        function save()\n        {\n        	$DM = $this->getdatemodified();\n        	$WQ = new WriteQuery(\"UPDATE Documents SET SectionIDLNK = \" . $this->getsection()->getid() . \", Filename = '\" . $this->getfilename() . \"', Description = '\" . $this->getdescription() . \"', DateModified = '\" . $DM->getdatabasedate() . \"', Filesize = \" . $this->getfilesize() . \", FileType = '\" . $this->getfiletype() . \"', Deleted = \" . $this->getdeleted() . \" WHERE IDLNK = \" . $this->getid() . \";\");\n			//echo($WQ->getquery());\n        }\n        \n        static public function listall($SID)\n        {\n     		//Normal\n     		\n     		$Section = new Sections($SID);\n     		\n     		print(\"<h2><a href=\\\"documents.php\\\">Groups</a> > <a href=\\\"documents.php?gid=\" . $Section->getgroup()->getid() . \"\\\">\" . $Section->getgroup()->getgroup() . \"</a> > <a href=\\\"documents.php?sid=\" . $SID . \"\\\">\" . $Section->getsection() . \"</a></h2>\");\n				\n			print(\"<p>The list below shows all the documents in \" . $Section->getsection() . \".\");\n				\n			$RQ = new ReadQuery(\"SELECT IDLNK FROM Documents WHERE SectionIDLNK = \" . $Section->getid() . \" AND Deleted = 0 ORDER BY Filename\");\n			\n			//echo($RQ->getquery());\n			\n			$Col1 = array(\"Document\",\"sectionname\",1);\n			$Col2 = array(\"Date Modified\",\"documents\",1);\n			$Col3 = array(\"Filesize\",\"documents\",1);\n            $Cols = array($Col1,$Col2,$Col3);\n            $Rows = array();\n            $RowCounter = 0;\n			\n			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n				$Document = new Documents($row[\"IDLNK\"]);\n				$Section = $Document->getsection();\n				$Row1 = array(\"<span class=\\\"title\\\"><a href=\\\"downloads.php?did=\" . $Document->getid() . \"\\\">\" . $Document->getfilename() . \"</a></span><br/><span class=\\\"content\\\">\" . $Document->getdescription() . \"</span>\",\" \");\n				$Row2 = array($Document->getdatemodified()->getnormaldate(),\" \");\n				$Row3 = array(Documents::display_filesize($Document->getfilesize()),\" \");\n				\n				$Rows[$RowCounter] = array($Row1,$Row2,$Row3);\n                $RowCounter ++;\n			}\n			\n			Tables::generateadmintable(\"documenttable\",$Cols,$Rows);\n        \n        }\n\n        \n        static public function listadmin($SID)\n        {\n     		//Normal\n     		\n     		$Section = new Sections($SID);\n     		\n     		print(\"<h2><a href=\\\"documents.php\\\">Groups</a> > <a href=\\\"documents.php?gid=\" . $Section->getgroup()->getid() . \"\\\">\" . $Section->getgroup()->getgroup() . \"</a> > <a href=\\\"documents.php?sid=\" . $SID . \"\\\">\" . $Section->getsection() . \"</a></h2>\");\n				\n			print(\"<p>The list below shows all the documents in \" . $Section->getsection() . \".\");\n						\n			print(\"<p><a href='documents.php?did=-1&amp;dsid=\" . $SID . \"'><span class=\\\"glyphicon glyphicon-plus\\\" alt= \\\"Add New Document\\\" ></span>Add New Document</a></p>\");\n				\n			$RQ = new ReadQuery(\"SELECT IDLNK FROM Documents WHERE SectionIDLNK = \" . $Section->getid() . \" AND Deleted = 0 ORDER BY Filename\");\n			\n			//echo($RQ->getquery());\n			\n			$Col1 = array(\"Document\",\"sectionname\",1);\n			$Col2 = array(\"Date Modified\",\"documents\",1);\n			$Col3 = array(\"Filesize\",\"documents\",1);\n            $Col4 = array(\"\",\"operations\", 2);\n            $Cols = array($Col1,$Col2,$Col3,$Col4);\n            $Rows = array();\n            $RowCounter = 0;\n			\n			while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n				$Document = new Documents($row[\"IDLNK\"]);\n				$Section = $Document->getsection();\n				$Row1 = array(\"<span class=\\\"title\\\"><a href=\\\"downloads.php?did=\" . $Document->getid() . \"\\\">\" . $Document->getfilename() . \"</a></span><br/><span class=\\\"content\\\">\" . $Document->getdescription() . \"</span>\",\" \");\n				$Row2 = array($Document->getdatemodified()->getnormaldate(),\" \");\n				$Row3 = array(Documents::display_filesize($Document->getfilesize()),\" \");\n				$Row4 = array(\"<a  href=?did=\". $Document->getid() .\"&amp;dsid=\" . $Document->getsection()->getid() . \"&amp;aid=5><span class=\\\"glyphicon glyphicon-pencil\\\" alt = \\\"Edit Section\\\"></span></a>\",\"button\");		\n				$Row5 = array(\"<a  onclick=\\\"confirmdialog('Delete Document \" . $Document->getfilename() . \"', '?did=\" . $Document->getid() . \"&amp;dsid=\". $Section->getid() .\"&amp;aid=10');\\\"><span class=\\\"glyphicon glyphicon-trash\\\" alt = \\\"Delete Folder\\\"></span></a>\",\"button\");\n				\n				$Rows[$RowCounter] = array($Row1,$Row2,$Row3,$Row4,$Row5);\n                $RowCounter ++;\n			}\n			\n			Tables::generateadmintable(\"admindocumenttable\",$Cols,$Rows);\n        \n        }\n\n        static public function uppload()\n        {\n\n        Forms::generateform(\"documentsform\",\"documents.php?did=\" . $DID . \"&amp;dsid=\" . $SectionID . $AddInfo,\"return checkdocumentform(this,$Add,2)\",true,$Fields,$Button);\n\n		<form class='form-horizontal' class='form-group' role='form' name='noticesform' id='noticesform' method='post' action='notices.php?nid=-1' onsubmit='return checknoticeform(this,2)'>\n			<div class='form-group'>\n				<div class='col-sm-8'>\n					<label for='title' class='control-label'>Title:</label>\n					<input class='form-control' placeholder = '' type='text' name='title' id='title' size='65' value=''/>\n				</div>\n			</div>\n		<div class='form-group'>\n			<div class='col-sm-8'>\n				<label for='notice' class='control-label'>Notice:</label>\n				<textarea class='form-control' placeholder ='Enter Message Here' name='notice' id='notice' cols='63' rows='7'></textarea>\n			</div>\n		</div>\n		<div class='form-group'>\n			<div class='col-sm-8'>\n				<label for='noticecategory' class='control-label'>Notice Category:</label>\n				<table id='noticecategoryTable' class='table'>\n					<tr>\n						<td>ATHP Associate:</td>\n						<td><input class='checkbox' type='checkbox' name='noticecategory1' value ='2'/></td>\n					</tr>\n					<tr>\n						<td>ATHP Member:</td>\n						<td><input class='checkbox' type='checkbox' name='noticecategory2' value ='1'/></td>\n					</tr>\n				</table>\n			</div>\n		</div>\n		<div class='form-group '>\n			<div class='col-sm-offset-2 col-sm-8'>\n				<input type='submit' class='btn btn-default' id='submit' name='submit' value='Send Notice'/>\n			</div>\n		</div>\n		</form>\n\n\n        	<!-- The file upload form used as target for the file upload widget -->\n    <form id=\"fileupload\" action=\"//jquery-file-upload.appspot.com/\" method=\"POST\" enctype=\"multipart/form-data\">\n        <!-- Redirect browsers with JavaScript disabled to the origin page -->\n        <noscript><input type=\"hidden\" name=\"redirect\" value=\"http://blueimp.github.io/jQuery-File-Upload/\"></noscript>\n        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->\n        <div class=\"row fileupload-buttonbar\">\n            <div class=\"col-lg-7\">\n                <!-- The fileinput-button span is used to style the file input field as button -->\n                <span class=\"btn btn-success fileinput-button\">\n                    <i class=\"glyphicon glyphicon-plus\"></i>\n                    <span>Add files...</span>\n                    <input type=\"file\" name=\"files[]\" multiple>\n                </span>\n                <button type=\"submit\" class=\"btn btn-primary start\">\n                    <i class=\"glyphicon glyphicon-upload\"></i>\n                    <span>Start upload</span>\n                </button>\n                <button type=\"reset\" class=\"btn btn-warning cancel\">\n                    <i class=\"glyphicon glyphicon-ban-circle\"></i>\n                    <span>Cancel upload</span>\n                </button>\n                <button type=\"button\" class=\"btn btn-danger delete\">\n                    <i class=\"glyphicon glyphicon-trash\"></i>\n                    <span>Delete</span>\n                </button>\n                <input type=\"checkbox\" class=\"toggle\">\n                <!-- The global file processing state -->\n                <span class=\"fileupload-process\"></span>\n            </div>\n            <!-- The global progress state -->\n            <div class=\"col-lg-5 fileupload-progress fade\">\n                <!-- The global progress bar -->\n                <div class=\"progress progress-striped active\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                    <div class=\"progress-bar progress-bar-success\" style=\"width:0%;\"></div>\n                </div>\n                <!-- The extended global progress state -->\n                <div class=\"progress-extended\">&nbsp;</div>\n            </div>\n        </div>\n        <!-- The table listing the files available for upload/download -->\n        <table role=\"presentation\" class=\"table table-striped\"><tbody class=\"files\"></tbody></table>\n    </form>\n\n\n\n\n\n\n\n        }\n         \n\n\n\n    	static public function addedit($DID,$DSID)\n	    {\n			$Filename = $_POST[\"filename\"];\n			$Description = $_POST[\"description\"];\n			$File = $_FILES[\"file\"];\n			$SendNotice = $_POST[\"sendnotice\"];\n			\n			if(isset($_POST[\"sid\"])){\n				$SectionID = $_POST[\"sid\"];\n			} else {\n				$SectionID = $DSID;\n			}\n			\n			//Get Number of Categorys\n			$NofC = UserCategory::gettotal();\n			\n			//$UserCategorys = new array();\n			\n			for($c=1;$c<=$NofC;$c++)\n			{\n				if(isset($_POST[\"selectnoticecategory\" . $c])){\n					//$UserCategory .= \",\" . $_POST[\"usercategory\" . $c];\n					$NoticeCategorys[$c-1] = $_POST[\"selectnoticecategory\" . $c];\n				}\n			}\n\n			\n			$Submit = $_POST[\"submit\"];\n			\n			//$Group = \n			\n			$DefaultError = array(\"defaulterror\",\"A document with this name already exists in.\");\n			$DocumentNameError = array(\"documentnameerror\",\"Please enter a Document Name\");\n			$DocumentError = array(\"documenterror\",\"Please select a File.\");\n			$NoticeCategoryError = array(\"noticecategoryerror\",\"Please select at least one Notice Category.\");\n	         \n	        if($DID > 0){\n	            //Edit\n	            print(\"<h2>Edit Document</h2>\");\n\n	        	if($Submit){\n	                //Edit\n	                 \n					$Document = new Documents($DID);\n					\n					$Document->setsection(new Sections($SectionID));\n					$Document->setfilename($Filename);\n					$Document->setdescription($Description);\n					\n					if($File[\"tmp_name\"] != \"\"){\n					\n						if(!Documents::exists($Filename,$SectionID)){\n						\n							$Document->setfilename($Filename);\n							$Document->setdescription($Description);\n							$Document->setdatemodified(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n							$Document->setfilesize($File[\"size\"]);\n							$Document->setfiletype($File[\"type\"]);\n							\n							//$fp = fopen($File[\"tmp_name\"], 'r');\n							//$content = fread($fp, filesize($File[\"tmp_name\"]));\n							//fclose($fp);\n							\n							//$Document->setfile(addslashes($content));\n							\n							$Document->save();\n							\n							//$name = FILELOC . \"/\" . $Document->getid() . \"-\" . $Document->getfilename();\n\n							$name = FILELOC . \"/\" . $Document->getid();\n							\n							//echo($File[\"tmp_name\"] . \" \" . $name);\n							\n							move_uploaded_file($File[\"tmp_name\"], $name);\n							\n							Documents::generatenotice($SendNotice,$Document,$NoticeCategorys,0);\n							\n							//$tmp_name = $File[\"tmp_name\"];\n	       					//$name = $Document->getsection()->geturl() . \"/\" . $Document->getid() . $File[\"name\"];\n	       					\n	       					//move_uploaded_file($tmp_name, $name);\n       					\n       					}else{\n       					\n       						//File Doesnt Exist\n							print(\"<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>\");\n	                \n	               			$Errors = array($DocumentNameError);\n        			\n        					Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n        				\n		               		Documents::form($SectionID,$Filename,$Description,$DID,false);\n       			\n       					}		\n						\n					} else {\n						$Document->save();\n						\n						Documents::generatenotice($SendNotice,$Document,$NoticeCategorys,0);\n\n					}\n					\n					print(\"<p>The doucment has been edited succesfully.</p>\");\n					\n					print(\"<p>Return to <a href='documents.php?sid=$SectionID'>Document Admin</a>.</p>\");\n					       \n			     } else {\n	                //Form\n	                print(\"<p>To Edit the Document complete the form below. Once you have completed it click the Edit Document button.</p>\");\n	                \n	                $Errors = array($DocumentNameError);\n        			\n        			Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n	                \n	                $Document = new Documents($DID);\n	                	                	             	\n	                Documents::form($Document->getsection()->getid(),$Document->getfilename(),$Document->getdescription(),$Document->getid(),false);\n	             }\n        	 } else {\n        	 //Add\n	            print(\"<h2>Add New Document</h2>\");\n\n	            if($Submit){\n	                //Add\n	                 \n					if(!Documents::exists($Filename,$SectionID)){\n						//File Doesnt Exists\n						$Document = new Documents(0);\n						\n						$Document->setsection(new Sections($SectionID));\n						$Document->setfilename($Filename);\n						$Document->setdescription($Description);\n						$Document->setdatemodified(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n						$Document->setfilesize($File[\"size\"]);\n						$Document->setfiletype($File[\"type\"]);\n						$Document->savenew();\n						\n						//$name = \"../private/\" . $Document->getid() . \"-\" . $Document->getfilename();\n						\n						//$name = FILELOC . \"\\\\\" . $Document->getid() . \"-\" . $Document->getfilename();\n\n						$name = FILELOC . \"\\\\\" . $Document->getid();\n						\n						//echo($File[\"tmp_name\"] . \" \" . $name);\n						\n						move_uploaded_file($File[\"tmp_name\"], $name);\n						\n						//$fp = fopen($File[\"tmp_name\"], 'r');\n						//$content = fread($fp, filesize($File[\"tmp_name\"]));\n						//fclose($fp);\n						\n						//$Document->setfile(addslashes($content));\n						\n						Documents::generatenotice($SendNotice,$Document,$NoticeCategorys,1);\n						\n						//$tmp_name = $File[\"tmp_name\"];\n       					//$name = $Document->getsection()->geturl() . \"/\" . $Document->getid() . $File[\"name\"];\n						\n						//move_uploaded_file($tmp_name, $name);\n										\n						print(\"<p>The new section has been added to the system succesfully.</p>\");\n					\n						print(\"<p>Return to <a href='documents.php?sid=$SectionID'>Sections Admin</a>.</p>\");\n					} else {\n						//File Doesnt Exist\n						print(\"<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>\");\n	                \n	               		$Errors = array($DefaultErrors,$DocumentNameError,$DocumentError,$NoticeCategoryError);\n        			\n        				Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,true);\n        			\n	               		Documents::form($SectionID,$Filename,$Description,$DID,true);\n					}\n				\n				} else {\n	                //Form\n	                print(\"<p>To Add a New Document complete the form below. Once you have completed it click the Add Document button.</p>\");\n	                \n	                $Errors = array($DocumentNameError,$DocumentError,$NoticeCategoryError);\n        			\n        			Forms::generateerrors(\"Please correct the following errors before continuing.\",$Errors,false);\n        			\n	               	Documents::form($SectionID,$Filename,$Description,$DID,true);\n	            }\n        	}\n	    }\n	     \n	    static private function generatenotice($SendNotice,$Document,$NoticeCategorys,$Add){\n	    	if($SendNotice == 1){\n	    	\n		    	$NewNotice = new Notices(0);\n		    	\n		    	$User = new Users($_SESSION[\"userid\"]);\n		    	\n		    	if ($Add){\n		    		$AddEditStr = \"added to\";\n		    	} else {\n		    		$AddEditStr = \"edited on\";\n		    	}\n									\n				$Notice .= \"<p>A new document has been \" . $AddEditStr . \" the \" . SHORTNAME . \" website. Details are shown below.</p>\";\n				\n				$Notice .= \"<dl>\";\n				$Notice .= \"<dt>Filename</dt><dd><a href=\\\"\" . URL . \"/downloads.php?did=\" . $Document->getid() . \"\\\">\" . $Document->getfilename() . \"</a></dd>\";\n				$Notice .= \"<dt>Description</dt><dd>\" . $Document->getdescription() . \"</dd>\";	\n				$Notice .= \"</dl>\";\n				\n				$Notice .= \"<p>You can download the file by clicking the filename and logging into the \" . SHORTNAME . \" website.</p>\";\n	\n				$NewNotice->settitle(\"Document \" . $Document->getfilename() . \" added to \" . SHORTNAME . \" website.\");\n				$NewNotice->setnotice($Notice);\n				$NewNotice->setdateadded(new DateClass(\"\",\"\",\"\",\"\",\"\"));\n				$NewNotice->setpostedby($User);\n				$NewNotice->savenew();\n				\n				foreach($NoticeCategorys as $NC)\n				{\n					$WQ = new WriteQuery(\"INSERT INTO NoticesCategorys (NoticeIDLNK, CategoryIDLNK, Deleted) VALUES (\" . $NewNotice->getid() . \", \" . $NC . \",0);\");\n					\n					//echo($WQ->getquery());\n				}\n				\n				Notices::sendemail($NewNotice->getid());\n			}\n	    }\n	     \n    	static public function form($SectionID,$Filename,$Description,$DID,$Add)\n        {\n        	$NoticeCategoryArray = UserCategory::generatearray();\n        	$SectionIDField = array(\"Section ID:\",\"Hidden\",\"sid\",65,0,$SectionID,\"\",\"\");\n        	$FilenameField = array(\"Filename:\",\"Text\",\"filename\",65,0,$Filename,\"\",\"\");\n        	$DescriptionField = array(\"Description:\",\"TextArea\",\"description\",63,7,$Description);\n        	$FileField = array(\"File:\",\"DynamicFile\",\"file\",43,0,\"\",\"\",\"getuploadname()\");\n        	$SendNoticeField = array(\"Send Notice:\",\"Checkbox\",\"sendnotice\",0,0,0,1,\"shownoticecategorys(this)\");\n        	$NoticeCategoryField = array(\"Notice Category:\",\"CheckboxArray\",\"selectnoticecategory\",0,0,\"\",$NoticeCategoryArray);\n        \n			$Fields = array($FileField,$FilenameField,$DescriptionField,$SendNoticeField,$NoticeCategoryField,$SectionIDField);\n\n            \n			if($DID == -1){\n				$Button = \"Add Document\";\n  			} else {\n				$Button = \"Edit Document\";\n			}\n			\n			if(!$Add){\n				$AddInfo = \"&amp;aid=5\";\n			}\n			\n			Forms::generateform(\"documentsform\",\"documents.php?did=\" . $DID . \"&amp;dsid=\" . $SectionID . $AddInfo,\"return checkdocumentform(this,$Add,2)\",true,$Fields,$Button);\n           \n           $Section = new Sections($SectionID);\n			\n			print(\"<p>Return to the <a href=\\\"documents.php?sid=$SectionID\\\">\" . $Section->getsection() . \" Documents List</a></p>\");\n\n        }\n	\n        \n	    function display_filesize($filesize)\n	    {\n			if(is_numeric($filesize)){\n			    $decr = 1024; $step = 0;\n			    $prefix = array('Byte','KB','MB','GB','TB','PB');\n			       \n			    while(($filesize / $decr) > 0.9){\n			        $filesize = $filesize / $decr;\n			        $step++;\n			    }\n		    	return round($filesize,2).' '.$prefix[$step];\n		    } else {\n		    	return $filesize;\n			}\n		}\n   \n\n        \n        static public function exists($Filename, $Section)\n        {\n        	$RQ = new ReadQuery(\"SELECT IDLNK FROM Documents WHERE Filename = '\" . $Filename . \"' AND SectionIDLNK = \" . $Section . \" AND Deleted = 0;\");\n        	\n        	//echo($RQ->getquery());\n        	\n        	if($RQ->getnumberofresults() > 0)\n        	{\n        		return true;\n        	} else {\n        		return false;\n        	}\n        }\n\n        \n		static public function deletedocument($DID){\n        	$Document = new Documents($DID);\n        	\n        	$Document->setdeleted(1);\n        	\n        	$Document->save();\n        } \n        \n        static public function lastdocuments(){\n        	$RQ = new ReadQuery(\"SELECT IDLNK FROM Documents WHERE Deleted = 0 ORDER BY DateModified DESC LIMIT 0,5;\");\n        	\n        	print(\"<ul>\");\n        	\n\n        	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){\n        		$Doc = new Documents($row[\"IDLNK\"]);\n        		\n        		print(\"<li><a href=\\\"downloads.php?did=\" . $Doc->getid() . \"\\\">\" . $Doc->getfilename() . \"</a></li>\");\n        	}\n        	\n        	print(\"</ul>\");\n        }    \n                       \n    }\n\n?>\n",
 			"file": "Classes/documentsclass.php",
-			"file_size": 19228,
-			"file_write_time": 130473893860000000,
 			"settings":
 			{
-				"buffer_size": 23320,
+				"buffer_size": 19213,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Applications/MAMP/htdocs/survey/index.php",
-			"settings":
-			{
-				"buffer_size": 10421,
-				"line_ending": "Unix",
-				"name": "<!DOCTYPE html>"
 			}
 		},
 		{
 			"file": "/Applications/MAMP/htdocs/survey/css/style.css",
 			"settings":
 			{
-				"buffer_size": 63,
+				"buffer_size": 779,
 				"line_ending": "Unix",
 				"name": ".carousel {"
 			}
@@ -565,6 +561,9 @@
 	"file_history":
 	[
 <<<<<<< HEAD
+		"/Applications/MAMP/htdocs/survey/index.php",
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/eventsclass.php",
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/Classes/formsclass.php",
@@ -610,6 +609,7 @@
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/portal.sublime-project",
 =======
 =======
+>>>>>>> master
 		"/Applications/MAMP/htdocs/Portal/WJPS_Portal/js/nicToolbar.js",
 >>>>>>> Jason-Branch
 		"/Users/jason/Downloads/nicEdit-93b522b5e6e2331d12d3b36ee0e100df/nicEdit.js",
@@ -743,6 +743,9 @@
 	[
 		{
 <<<<<<< HEAD
+			"selected": 24,
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 			"selected": 4,
 =======
@@ -751,6 +754,7 @@
 =======
 			"selected": 15,
 >>>>>>> Jason-Branch
+>>>>>>> master
 			"sheets":
 			[
 				{
@@ -768,7 +772,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 385198,
+						"buffer_size": 856105,
 						"regions":
 						{
 						},
@@ -787,7 +791,7 @@
 						"translation.y": 1311.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -818,7 +822,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -848,7 +852,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 34,
+					"stack_index": 35,
 					"type": "text"
 				},
 				{
@@ -864,8 +868,8 @@
 						"selection":
 						[
 							[
-								27863,
-								27863
+								33667,
+								33667
 							]
 						],
 						"settings":
@@ -875,10 +879,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 11316.0,
+						"translation.y": 13364.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 35,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -907,7 +911,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
@@ -936,7 +940,7 @@
 						"translation.y": 1134.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -965,7 +969,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
@@ -995,7 +999,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 28,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
@@ -1024,7 +1028,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1040,8 +1044,8 @@
 						"selection":
 						[
 							[
-								797,
-								826
+								826,
+								797
 							]
 						],
 						"settings":
@@ -1053,11 +1057,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 10,
+					"file": "Classes/writequeryclass.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
 					"file": "Classes/contactclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1087,7 +1121,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "Classes/positionsclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1111,11 +1145,11 @@
 						"translation.y": 1121.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 33,
+					"stack_index": 34,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "Classes/sectionsclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1141,11 +1175,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 14,
 					"file": "Classes/siteclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1171,11 +1205,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 15,
 					"file": "Classes/trustclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1205,7 +1239,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "directory.php",
 					"semi_transient": false,
 					"settings":
@@ -1230,11 +1264,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "admin/pu.php",
 					"semi_transient": false,
 					"settings":
@@ -1259,11 +1293,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "js/jquery-draggable.js",
 					"semi_transient": false,
 					"settings":
@@ -1290,11 +1324,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "js/jquery-draggable.js",
 					"semi_transient": false,
 					"settings":
@@ -1325,7 +1359,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "positions.php",
 					"semi_transient": false,
 					"settings":
@@ -1372,7 +1406,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "js/jquery-sortable.js",
 					"semi_transient": false,
 					"settings":
@@ -1427,11 +1461,11 @@
 >>>>>>> Jason-Branch
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "Classes/usercategorysclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1457,11 +1491,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "Classes/groupsclass.php",
 					"semi_transient": false,
 					"settings":
@@ -1510,55 +1544,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "Classes/documentsclass.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 23320,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13800,
-								13800
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5786.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 24,
-					"file": "/Applications/MAMP/htdocs/survey/index.php",
+					"file": "Classes/documentsclass.php",
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
+						"buffer_size": 19213,
+=======
 <<<<<<< HEAD
 						"buffer_size": 1341,
 >>>>>>> Jason-Branch
 =======
 						"buffer_size": 10421,
 >>>>>>> Jason-Branch
+>>>>>>> master
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
+								3559,
+								3559
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 								28515,
@@ -1571,10 +1585,19 @@
 								10377,
 								10377
 >>>>>>> Jason-Branch
+>>>>>>> master
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 2.0,
+						"translation.y": 5151.0,
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 							"syntax": "Packages/PHP/PHP.tmLanguage",
@@ -1608,9 +1631,10 @@
 =======
 						"translation.x": 0.0,
 						"translation.y": 938.0,
+>>>>>>> master
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1619,15 +1643,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 63,
+						"buffer_size": 779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								63,
-								63
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1639,8 +1663,12 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
+					"stack_index": 8,
+=======
 					"stack_index": 1,
 >>>>>>> Jason-Branch
+>>>>>>> master
 					"type": "text"
 				},
 				{
@@ -1670,7 +1698,7 @@
 						"translation.y": 156.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1707,6 +1735,9 @@
 						"zoom_level": 1.0
 					},
 <<<<<<< HEAD
+					"stack_index": 21,
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"stack_index": 0,
 =======
@@ -1714,6 +1745,7 @@
 =======
 					"stack_index": 19,
 >>>>>>> Jason-Branch
+>>>>>>> master
 					"type": "text"
 				},
 				{
@@ -1773,7 +1805,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 31,
+					"stack_index": 32,
 					"type": "text"
 				},
 				{
@@ -1789,8 +1821,8 @@
 						"selection":
 						[
 							[
-								4725,
-								4725
+								7175,
+								7395
 							]
 						],
 						"settings":
@@ -1800,10 +1832,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 382.0,
+						"translation.y": 433.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1832,7 +1864,7 @@
 						"translation.y": 6405.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
@@ -1861,7 +1893,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 30,
+					"stack_index": 31,
 					"type": "text"
 				},
 				{
@@ -1919,7 +1951,7 @@
 						"translation.y": 147.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 32,
+					"stack_index": 33,
 					"type": "text"
 				},
 				{
@@ -1949,7 +1981,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
@@ -1978,7 +2010,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 29,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
@@ -2007,7 +2039,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
@@ -2066,7 +2098,7 @@
 						"translation.y": 962.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -2095,7 +2127,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
@@ -2151,7 +2183,7 @@
 						"translation.y": 1117.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
@@ -2197,8 +2229,8 @@
 						"selection":
 						[
 							[
-								11594,
-								11720
+								3886,
+								3860
 							]
 						],
 						"settings":
@@ -2208,10 +2240,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5033.0,
+						"translation.y": 1484.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

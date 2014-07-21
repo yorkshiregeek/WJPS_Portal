@@ -401,10 +401,18 @@
 						}
 						
 						//Send Email to User
-					
-						$msg = "<h1>Account Setup</h1><p>You are now setup as a registered user on the " . SITENAME . " website. You can log into the website (" . URL . ") using your details below.</p><br/><dl><dt>Username:</dt><dd>$Username</dd><dt>Password:</dt><dd>" . $NewUser->getpassword() . "</dd></dl><br/><p>After you have logged onto the system we suggest that you change your password by using the change password link in the menu.</p>";
-					
-						Emails::sendemail($Email,SITENAME . " Website Account",$msg);
+					       
+						//$msg = SITENAME . URL . ") using your details below.</p><br/><dl><dt>Username:</dt><dd>$Username</dd><dt>Password:</dt><dd>" . $NewUser->getpassword() . "</dd></dl><br/><p>After you have logged onto the system we suggest that you change your password by using the change password link in the menu.</p>";
+					    
+                        
+                        $Userpass = $NewUser->getpassword();
+
+
+
+                        //$msg = "<h1>Account Setup</h1><p>You are now setup as a registered user on the " . SITENAME . " website. You can log into the website (" . URL . ") using your details below.</p><br/><dl><dt>Username:</dt><dd>$Username</dd><dt>Password:</dt><dd>" . $NewUser->getpassword() . "</dd></dl><br/><p>After you have logged onto the system we suggest that you change your password by using the change password link in the menu.</p>";
+
+
+						Emails::newuser($Email,SITENAME . " Website Account",$Username, $Userpass, $Firstname, $Surname, URL);
 					
 	               		 print("<p class='lead'>You have succesfully added a new user. The users login details have been emailed to the users email address.</p>");
 	               		 
@@ -527,7 +535,25 @@
         	
         	return substr($List, 1);
         }
-        
+
+        static public function allusers()    {
+            $RQ = new ReadQuery("SELECT IDLNK FROM Users WHERE Deleted = 0;");
+            
+            $List = array();
+
+            $c = 0;
+            
+            while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
+                $User = new Users($row["IDLNK"]);
+                $List[$c] = $User;
+                $c += 1;
+            }
+            
+            //echo(substr($List,1));
+            
+            return $List;
+        }
+           
         static public function allemailsbycategory($Categorys)
         {
         	$RQ0 = new ReadQuery("SELECT UserIDLNK FROM UsersCategorys WHERE CategoryIDLNK IN (" . $Categorys . ");");
@@ -770,9 +796,12 @@
         	
         	$User->save();
         	
-        	$msg = "<h1>Reset Password</h1><p>You password for " . URL . " has been reset by the administrator. Your new user login details are show below.</p><br/><dl><dt>Username:</dt><dd>" . $User->getusername() . "</dd><dt>Password:</dt><dd>" . $User->getpassword() . "</dd></dl><br/>";
+        	//$msg = "<h1>Reset Password</h1><p>You password for " . URL . " has been reset by the administrator. Your new user login details are show below.</p><br/><dl><dt>Username:</dt><dd>" . $User->getusername() . "</dd><dt>Password:</dt><dd>" . $User->getpassword() . "</dd></dl><br/>";
         	
-        	Emails::sendemail($User->getemail(),SITENAME . " Account",$msg);
+
+            Emails::reset($User->getemail(),SITENAME . " Website Account",$User->getusername(), $User->getpassword(), URL);
+
+        	//Emails::sendemail($User->getemail(),SITENAME . " Account",$msg);
         	
         	print("<p>The Users password has been succesfully reset and sent to them via email.</p>");
         	
