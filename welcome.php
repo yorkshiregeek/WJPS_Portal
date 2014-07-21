@@ -19,8 +19,12 @@
                 
                 <h2 class='page-header'>Welcome</h2>
                 
-                <p>Welcome to the restricted area of <? print(SITENAME); ?> website. From here you can view <a href="documents.php">documents</a> and <a href="notices.php">notices</a>.</p>
+                <p class='lead'>Welcome to the restricted area of <? print(SITENAME); ?> website. Using the Secure menu at the top of the page you can access the secure sections of the website including <a href="documents.php">documents</a>, <a href="notices.php">notices</a> and <a href="events.php">events</a>.</p>
                 
+                <h3>Latest Documents</h3>
+
+                <p>Since your last login on <? echo($User->getlastlogin()); ?> the following documents have changed.</p>
+
                 <p>The latest notices added to the system are shown below:</p>
                 
             <?

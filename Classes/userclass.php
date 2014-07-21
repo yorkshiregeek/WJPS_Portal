@@ -13,6 +13,7 @@
         var $c_Hospital;
         var $c_Userlevel;
         var $c_UserCategory;
+        var $c_LastLogin;
         var $c_Deleted;
         var $salt;
         
@@ -87,11 +88,6 @@
         	return $this->c_Hospital;	
         }
         
-        function setsex($Val)
-        {
-            $this->c_Sex = $Val;
-        }
-            
         function setuserlevel($Val)
         {
             $this->c_UserLevel = $Val;
@@ -100,6 +96,23 @@
         function getuserlevel()
         {
             return $this->c_UserLevel;
+        }
+
+        function setlastlogin($Val)
+        {
+            $this->c_LastLogin = $Val;
+        }
+        
+        function getlastlogin()
+        {
+            return $this->c_LastLogin;
+        }
+
+        function updatelastlogin()
+        {
+            $WQ = new WriteQuery("UPDATE Users Set LastLogin = '" . date("Y-m-d") . "' WHERE IDLNK = " . $this->c_ID . ";");
+            //echo($WQ->getquery());
+            $this->c_LastLogin = date("Y-m-d");
         }
         
         function getuserleveldesc()
@@ -177,6 +190,7 @@
                 $this->c_Hospital = $row["Hospital"];
                 $this->c_UserLevel = $row["Userlevel"];
                 $this->c_UserCategory = $row["UserCategory"];
+                $this->c_LastLogin = $row["LastLogin"];
                 $this->c_Deleted = $row["Deleted"];
             }else{
                 //Create New
@@ -560,6 +574,9 @@
         		
         		if($LoginStatus > 0){
         			$User = new Users($LoginStatus);
+
+                    $User->updatelastlogin();
+
         			$_SESSION["username"] = $User->getusername();
 
         			$_SESSION["password"] = $User->getpassword();
