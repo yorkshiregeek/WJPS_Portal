@@ -8,7 +8,7 @@
 	$Scripts[0] = "Script/NoticesScript.js";
 	$Scripts[1] = "js/nicEdit.js";  
 
-	?>
+	
 
 	
 
