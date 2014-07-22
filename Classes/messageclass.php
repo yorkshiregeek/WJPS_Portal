@@ -91,6 +91,7 @@
         function getcategorys()
         {
         	$RQ = new ReadQuery("SELECT CategoryIDLNK FROM MessagesCategorys WHERE MessageIDLNK = " . $this->getid() . " AND Deleted = 0;");
+
         	
         	//echo($RQ->getquery());
         
@@ -100,13 +101,14 @@
         	
         	while($row = $RQ->getresults()->fetch_array(MYSQLI_BOTH)){
         		
-                $CatArray[$Counter] = $row["CategoryIDLNK"];
+               $CatArray[$Counter] = $row["CategoryIDLNK"];
+           
         		
         		$Counter ++;
         	}
         	
         	//print_r($CatArray);
-        	
+        	//$CatArray = "";
         	return $CatArray;
         }
         
@@ -204,7 +206,11 @@
         	$WQ = new WriteQuery("INSERT INTO Messages (Title, Message, ParentIDLNK, DateAdded, TimeAdded, PostedByIDLNK, Deleted) VALUES ('" . $this->gettitle() .  "', '" . addslashes(htmlentities($this->getmessage())) . "'," . $this->getparentid() . ",'" . $DA->getdatabasedate() . "','" . $this->gettimeadded() . "'," . $PB->getid() . ", 0)");
         	//echo($WQ->getquery());
         	//echo($WQ->getquery());
-            $this->c_ID  = $WQ->getinsertid();
+
+            $this->c_ID = $WQ->getinsertid();
+
+            //echo("The ID" . $this->c_ID);
+
 
 
         }
@@ -443,7 +449,9 @@
 				$NewMessage->setpostedby($User);
 				$NewMessage->setparentid($HiddenTID);
 				$NewMessage->savenew();
-				
+
+                print $NewMessage->getid();
+			
 				Messages::sendemail($NewMessage->getid());
 									
 				print("<p class='lead'>The reply has been added to the topic and sent to the chosen user groups successfully.</p>");
@@ -563,7 +571,7 @@
         	
         	//echo(Users::allemailsbycategory($Notice->getcategorysbyid()));
 					
-			Emails::sendemail(Users::allemails($Message->getcategorys()),$Title,$msg);
+			Emails::sendemail(Users::allusers($Message->getcategorys()),$Title,$msg);
         }
         
 		static public function deletemessage($MID){

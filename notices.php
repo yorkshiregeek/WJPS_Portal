@@ -6,12 +6,23 @@
 	include_once("Classes/noticesclass.php");
 	
 	$Scripts[0] = "Script/NoticesScript.js";
+	$Scripts[1] = "js/nicEdit.js";  
+
 	
+
+	
+
 	Templates::PageHeader("Notices",$Scripts,"notices",1);
+
  	
 ?>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
     		    		
+
 	<div class='col-md-12' id='content'>
+
 
 		<? 
 		
@@ -68,7 +79,8 @@
 				}
 			
 			} 
-			    			
+			  
+				
 		?>
 		
 	</div>

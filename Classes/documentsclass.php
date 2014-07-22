@@ -200,9 +200,11 @@
         function savenew()
         {
         	$DM = $this->getdatemodified();
+
         	$WQ = new WriteQuery("INSERT INTO Documents (SectionIDLNK, Filename, URL,  Description, DateModified, Filesize, FileType, Deleted) VALUES (" . $this->getsection()->getid() . ", '" . $this->getfilename() ."', '" . $this->geturl() . "', '" . $this->getdescription() . "','" . $DM->getdatabasedate() . "'," . $this->getfilesize() . ",'" . $this->getfiletype() . "', 0)");
             $this->c_ID = $WQ->getinsertid();
             $this->savetags($this->c_ID);
+
         }
         
         function save()
@@ -462,7 +464,10 @@ print("</div>");
 		//}
         
         }
-             
+
+
+
+
     	static public function addedit($DID,$DSID)
 	    {
 
@@ -722,8 +727,10 @@ print("</div>");
         {
         	$NoticeCategoryArray = UserCategory::generatearray();
 
+
         	$AccessCategoryArray = UserCategory::generatearraybysection($SectionID);
         
+
         	$SectionIDField = array("Section ID:","Hidden","sid",65,0,$SectionID,"","");
         	$FilenameField = array("Document Title:","Text","filename",65,0,$Filename,"Enter a file name.","","");
         	$DescriptionField = array("Description:","TextArea","description",63,7,$Description,"Enter a file description.");
