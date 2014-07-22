@@ -427,7 +427,7 @@
         	$NoticeCategoryArray = UserCategory::generatearray();
         
         	$TitleField = array("Event Title:","Text","title",65,0,$Title,"Enter the  Event Title.","",!$Add);
-        	$DetailsField = array("Details:","TextArea","details",63,10,$Details,"Enter Event Details.");
+        	$DetailsField = array("Details:","WYSIWYG","details",63,10,$Details,"Enter Event Details.");
         	$LocationField = array("Location:","Text","location",65,0,$Location,"Enter the Event Location.");
         	$EventDateField = array("Event Date:","Text","eventdate",10,0,$EventDate,"Enter the Event Date (DD/MM/YYYY).");
         	$EventTimeField = array("Event Time:","Text","eventtime",10,0,$EventTime,"Enter the Event Time (HH:MM)");
@@ -437,7 +437,7 @@
 
         	
         	
-        	$Fields = array($TitleField,$DetailsField,$LocationField,$EventDateField,$EventTimeField,$DurationField,$SendNoticeField,$NoticeCategoryField);
+        	$Fields = array($TitleField,$DetailsField,$LocationField,$EventDateField,$EventTimeField,$DurationField); //,$SendNoticeField,$NoticeCategoryField);
 
             
 			if($EID == -1){

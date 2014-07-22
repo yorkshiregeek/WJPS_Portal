@@ -283,7 +283,7 @@
         	Messages::generatemessagethread($MessageID,false);
         	
         	//Form for Reply goes here.
-        	$MessageField = array("Reply:","TextArea","message",85,7,$Message);
+        	$MessageField = array("Reply:","WYSIWYG","message",85,7,$Message);
         	$ThreadField = array("ThreadID:","Hidden","thredid",0,0,$MessageID);
         	
         	$ReplyError = array("replyerror","Please enter a Reply.");

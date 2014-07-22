@@ -371,7 +371,7 @@
         	$NoticeCategoryArray = UserCategory::generatearray();
 
           	$TitleField = array("Title:","Text","title",65,0,$Title,"Enter a Notice Title.");
-        	$NoticeField = array("Notice:","TextArea","notice",63,7,$Notice,"Enter the Notice.");
+        	$NoticeField = array("Notice:","WYSIWYG","notice",63,7,$Notice,"Enter the Notice.");
         	$NoticeCategoryField = array("Notice Category:","CheckboxArray","noticecategory",0,0,$NoticeCategory,"",$NoticeCategoryArray);
 
         	

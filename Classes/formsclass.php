@@ -1,5 +1,5 @@
 <?php 
-	
+    
     class Forms
     {
     
@@ -11,26 +11,26 @@
         
         static public function generateerrors($ErrorTitle,$Errors,$ShowDefault)
         {
-        	if($ShowDefault)
-        	{
-        		//Show By Default
-        		print("<div id='errorsshow' class='alert alert-danger'>");
-        	} else {
-        		print("<div id='errors' class='alert alert-danger'>");
-        	}
-        	
-            	print("<p class='title'>$ErrorTitle</p>");
-            	print("<ul>");
-            	foreach($Errors as $Error)
-            	{
-            		if($Error[0] == "defaulterror")
-            		{
-            			print("<li id='defaulterror'>" . $Error[1] . "</li>");
-            		} else {
-            			print("<li id='" . $Error[0] . "'>" . $Error[1] . "</li>");
-            		}
-            	}
-            	print("</ul>");
+            if($ShowDefault)
+            {
+                //Show By Default
+                print("<div id='errorsshow' class='alert alert-danger'>");
+            } else {
+                print("<div id='errors' class='alert alert-danger'>");
+            }
+            
+                print("<p class='title'>$ErrorTitle</p>");
+                print("<ul>");
+                foreach($Errors as $Error)
+                {
+                    if($Error[0] == "defaulterror")
+                    {
+                        print("<li id='defaulterror'>" . $Error[1] . "</li>");
+                    } else {
+                        print("<li id='" . $Error[0] . "'>" . $Error[1] . "</li>");
+                    }
+                }
+                print("</ul>");
             print("</div>");
         }
         
@@ -47,9 +47,8 @@
                         {
 
                              print("<div class='form-group'>");
-                               
+                                print("<label for='" . $Field[2] . "' class='col-sm-2 control-label'>" . $Field[0] .  "</label>");
                                     print("<div class='col-sm-8'>");
-                                     print("<label for='" . $Field[2] . "' class='control-label'>" . $Field[0] .  "</label>");
                         }
                                         forms::generatefield($Field);
 
@@ -119,7 +118,7 @@
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "'" . $ReadOnly . "/>");
             } elseif($Type == "DynamicText") {
                 //Dynamic Text Box
-                print("<textarea class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "' onchange='" . $Action . "'><span id='" . $Name . "Image'></span></textarea>");
+                print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "' onchange='" . $Action . "'/><span id='" . $Name . "Image'></span>");
             } elseif($Type == "DatePicker"){
                 //Date Picker
                 $dp = new datepicker();
@@ -136,7 +135,7 @@
                     $ControlName = $dp->show($Name);
                 }
                 //print("<dd id='" . $Name . "Field'><input type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/><input type='button' value='...' onclick='" . $ControlName . "'></dd>");
-                print("<input class='form-control 1' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/> <input class='calendarbutton' type='image' src='../Images/Pres/Calendar.gif' onclick='" . $ControlName . "' height='16'/>");
+                print("<input class='form-control' placeholder = '" . $EntryText ."' type='text' name='" . $Name . "' id='" . $Name . "' size='10' value='" . $Value . "'" . $ReadOnly . "/> <input class='calendarbutton' type='image' src='../Images/Pres/Calendar.gif' onclick='" . $ControlName . "' height='16'/>");
             } elseif($Type == "Password") {
                 //Password Text Box
                 print("<input class='form-control' placeholder = '" . $EntryText ."' type='password' name='" . $Name . "' id='" . $Name . "' size='" . $Cols . "' value='" . $Value . "'/>");            
@@ -154,7 +153,7 @@
                 <script src="js/nicEdit.js" type="text/javascript"></script>
                 <script type="text/javascript">
                     bkLib.onDomLoaded(function() {    
-                        new nicEditor({iconsPath : 'js/nicEditorIcons.gif', buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image']}).panelInstance('<? echo($Name); ?>');
+                        new nicEditor({iconsPath : 'js/nicEditorIcons.gif', buttonList : ['fontSize','bold','italic','underline','strikeThrough','subscript','superscript','ol','ul']}).panelInstance('<? echo($Name); ?>');
                     });
                 </script>
 
